@@ -1,8 +1,8 @@
 {
-    "name": "papposilene/laravel-cartography",
+    "name": "papposilene/laravel-addressbook",
     "type": "project",
-    "description": "A Laravel-based addresses book",
-    "keywords": ["laravel", "address book"],
+    "description": "A Laravel-based address book",
+    "keywords": ["laravel", "address book", "cartography", "map"],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
