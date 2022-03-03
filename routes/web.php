@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Livewire\Category\ListAddress;
-use App\Http\Livewire\Category\ShowAddress;
+use App\Http\Livewire\Address\ListAddress;
+use App\Http\Livewire\Address\ShowAddress;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Category\ShowCategory;
 use App\Http\Livewire\Dashboard\ShowDashboard;
