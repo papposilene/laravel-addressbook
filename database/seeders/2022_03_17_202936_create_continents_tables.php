@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Papposilene\Geodata\GeodataRegistrar;
+
+class CreateContinentsTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('geodata__continents', function (Blueprint $table) {
+            $table->id();
+            $table->string('slug', 255)->unique();
+            $table->string('name', 255)->unique();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('geodata__continents');
+    }
+}
