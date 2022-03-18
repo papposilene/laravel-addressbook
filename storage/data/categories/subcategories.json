@@ -3,7 +3,7 @@
         "category_slug": "other",
         "name": "To be classified",
         "slug": "to-be-classified",
-        "icon_image": "",
+        "icon_image": "clipboard",
         "icon_options": "",
         "translations": {
             "en": "To be classified",
@@ -18,7 +18,7 @@
         "category_slug": "other",
         "name": "Unclassifiable",
         "slug": "unclassifiable",
-        "icon_image": "",
+        "icon_image": "clipboard",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous",
@@ -33,7 +33,7 @@
         "category_slug": "gastronomy",
         "name": "Cafe",
         "slug": "cafe",
-        "icon_image": "",
+        "icon_image": "coffee-pot",
         "icon_options": "",
         "translations": {
             "en": "Cafés",
@@ -48,7 +48,7 @@
         "category_slug": "gastronomy",
         "name": "Restaurant",
         "slug": "restaurant",
-        "icon_image": "",
+        "icon_image": "fork-knife",
         "icon_options": "",
         "translations": {
             "en": "Restaurants",
@@ -63,7 +63,7 @@
         "category_slug": "gastronomy",
         "name": "Fast Food",
         "slug": "fast-food",
-        "icon_image": "",
+        "icon_image": "burger-fries",
         "icon_options": "",
         "translations": {
             "en": "Fast Food",
@@ -78,7 +78,7 @@
         "category_slug": "gastronomy",
         "name": "Ice cream",
         "slug": "ice-cream",
-        "icon_image": "",
+        "icon_image": "ice-cream",
         "icon_options": "",
         "translations": {
             "en": "Ice cream",
@@ -93,7 +93,7 @@
         "category_slug": "gastronomy",
         "name": "Pastry",
         "slug": "pastry",
-        "icon_image": "",
+        "icon_image": "croissant",
         "icon_options": "",
         "translations": {
             "en": "Pastries",
@@ -108,7 +108,7 @@
         "category_slug": "gastronomy",
         "name": "Bar",
         "slug": "bar",
-        "icon_image": "",
+        "icon_image": "beer-mug",
         "icon_options": "",
         "translations": {
             "en": "Bars",
@@ -123,7 +123,7 @@
         "category_slug": "gastronomy",
         "name": "Chocolate",
         "slug": "chocolate",
-        "icon_image": "",
+        "icon_image": "candy-bar",
         "icon_options": "",
         "translations": {
             "en": "Chocolate factories",
@@ -138,7 +138,7 @@
         "category_slug": "gastronomy",
         "name": "Cheese",
         "slug": "cheese",
-        "icon_image": "",
+        "icon_image": "cheese",
         "icon_options": "",
         "translations": {
             "en": "Cheese !",
@@ -153,7 +153,7 @@
         "category_slug": "gastronomy",
         "name": "Marketplace",
         "slug": "marketplace",
-        "icon_image": "",
+        "icon_image": "bag-shopping",
         "icon_options": "",
         "translations": {
             "en": "Markets and marketplace",
@@ -168,7 +168,7 @@
         "category_slug": "gastronomy",
         "name": "Grocery",
         "slug": "grocery",
-        "icon_image": "",
+        "icon_image": "basket-shopping",
         "icon_options": "",
         "translations": {
             "en": "Groceries",
@@ -183,7 +183,7 @@
         "category_slug": "gastronomy",
         "name": "Miscellaneous gastronomy",
         "slug": "gastronomy-other",
-        "icon_image": "",
+        "icon_image": "basket-shopping-simple",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous gastronomy",
@@ -198,7 +198,7 @@
         "category_slug": "tourism",
         "name": "Museum",
         "slug": "museum",
-        "icon_image": "",
+        "icon_image": "building-columns",
         "icon_options": "",
         "translations": {
             "en": "Museums",
@@ -213,7 +213,7 @@
         "category_slug": "tourism",
         "name": "Gallery",
         "slug": "gallery",
-        "icon_image": "",
+        "icon_image": "palette",
         "icon_options": "",
         "translations": {
             "en": "Art galleries",
@@ -228,7 +228,7 @@
         "category_slug": "tourism",
         "name": "Art centre",
         "slug": "art-centre",
-        "icon_image": "",
+        "icon_image": "palette",
         "icon_options": "",
         "translations": {
             "en": "Art centres",
@@ -243,7 +243,7 @@
         "category_slug": "tourism",
         "name": "Foundation",
         "slug": "foundation",
-        "icon_image": "",
+        "icon_image": "palette",
         "icon_options": "",
         "translations": {
             "en": "Cultural foundations",
@@ -258,7 +258,7 @@
         "category_slug": "tourism",
         "name": "Landscape",
         "slug": "landscape",
-        "icon_image": "",
+        "icon_image": "mountain-sun",
         "icon_options": "",
         "translations": {
             "en": "Landscapes",
@@ -273,7 +273,7 @@
         "category_slug": "tourism",
         "name": "Archaeological site",
         "slug": "archaeological-site",
-        "icon_image": "",
+        "icon_image": "archway",
         "icon_options": "",
         "translations": {
             "en": "Archaeological sites",
@@ -288,7 +288,7 @@
         "category_slug": "tourism",
         "name": "Modern site",
         "slug": "modern-site",
-        "icon_image": "",
+        "icon_image": "landmark-dome",
         "icon_options": "",
         "translations": {
             "en": "Modern & contemporary sites",
@@ -303,7 +303,7 @@
         "category_slug": "tourism",
         "name": "Monument",
         "slug": "monument",
-        "icon_image": "",
+        "icon_image": "monument",
         "icon_options": "",
         "translations": {
             "en": "Monuments",
@@ -318,7 +318,7 @@
         "category_slug": "tourism",
         "name": "Attraction",
         "slug": "attraction",
-        "icon_image": "",
+        "icon_image": "arrows-to-circle",
         "icon_options": "",
         "translations": {
             "en": "Touristic attractions",
@@ -333,7 +333,7 @@
         "category_slug": "tourism",
         "name": "Event",
         "slug": "event",
-        "icon_image": "",
+        "icon_image": "calendar",
         "icon_options": "",
         "translations": {
             "en": "Events",
@@ -348,7 +348,7 @@
         "category_slug": "tourism",
         "name": "Miscellaneous tourism",
         "slug": "tourism-other",
-        "icon_image": "",
+        "icon_image": "notebook",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous tourism",
@@ -363,7 +363,7 @@
         "category_slug": "shop",
         "name": "Store",
         "slug": "store",
-        "icon_image": "",
+        "icon_image": "store",
         "icon_options": "",
         "translations": {
             "en": "Stores",
@@ -378,7 +378,7 @@
         "category_slug": "shop",
         "name": "Clothes",
         "slug": "clothes",
-        "icon_image": "",
+        "icon_image": "clothes-hanger",
         "icon_options": "",
         "translations": {
             "en": "Clothes stores",
@@ -393,7 +393,7 @@
         "category_slug": "shop",
         "name": "Crafts",
         "slug": "crafts",
-        "icon_image": "",
+        "icon_image": "pen-ruler",
         "icon_options": "",
         "translations": {
             "en": "Crafts",
@@ -408,7 +408,7 @@
         "category_slug": "shop",
         "name": "Pharmacy",
         "slug": "pharmacy",
-        "icon_image": "",
+        "icon_image": "mortar-pestle",
         "icon_options": "",
         "translations": {
             "en": "Pharmacies",
@@ -423,7 +423,7 @@
         "category_slug": "shop",
         "name": "Bookshop",
         "slug": "bookshop",
-        "icon_image": "",
+        "icon_image": "books",
         "icon_options": "",
         "translations": {
             "en": "Bookshops",
@@ -438,7 +438,7 @@
         "category_slug": "shop",
         "name": "Glassware",
         "slug": "glassware",
-        "icon_image": "",
+        "icon_image": "glass",
         "icon_options": "",
         "translations": {
             "en": "Glasswares",
@@ -453,7 +453,7 @@
         "category_slug": "shop",
         "name": "Stationery",
         "slug": "stationery",
-        "icon_image": "",
+        "icon_image": "scroll",
         "icon_options": "",
         "translations": {
             "en": "Stationeries",
@@ -468,7 +468,7 @@
         "category_slug": "shop",
         "name": "Toys",
         "slug": "toys",
-        "icon_image": "",
+        "icon_image": "teddy-bear",
         "icon_options": "",
         "translations": {
             "en": "Toys",
@@ -483,7 +483,7 @@
         "category_slug": "shop",
         "name": "Fleamarket",
         "slug": "fleamarket",
-        "icon_image": "",
+        "icon_image": "bag-shopping",
         "icon_options": "",
         "translations": {
             "en": "Fleamarkets",
@@ -498,7 +498,7 @@
         "category_slug": "shop",
         "name": "Miscellaneous shop",
         "slug": "shop-other",
-        "icon_image": "",
+        "icon_image": "notebook",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous shops",
@@ -513,7 +513,7 @@
         "category_slug": "religion",
         "name": "Place of worship",
         "slug": "place-of-worship",
-        "icon_image": "",
+        "icon_image": "place-of-worship",
         "icon_options": "",
         "translations": {
             "en": "Places of worship",
@@ -528,7 +528,7 @@
         "category_slug": "religion",
         "name": "Miscellaneous religion",
         "slug": "religion-other",
-        "icon_image": "",
+        "icon_image": "place-of-worship",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous worships",
@@ -543,7 +543,7 @@
         "category_slug": "amenity",
         "name": "Hotel",
         "slug": "hotel",
-        "icon_image": "",
+        "icon_image": "hotel",
         "icon_options": "",
         "translations": {
             "en": "Hotels",
@@ -558,7 +558,7 @@
         "category_slug": "amenity",
         "name": "Park",
         "slug": "park",
-        "icon_image": "",
+        "icon_image": "bench-tree",
         "icon_options": "",
         "translations": {
             "en": "Parks (and recreation)",
@@ -573,7 +573,7 @@
         "category_slug": "amenity",
         "name": "Neighbourhood",
         "slug": "neighbourhood",
-        "icon_image": "",
+        "icon_image": "tree-city",
         "icon_options": "",
         "translations": {
             "en": "Neighbourhoods",
@@ -586,13 +586,13 @@
     },
     {
         "category_slug": "amenity",
-        "name": "Theatre",
-        "slug": "theatre",
-        "icon_image": "",
+        "name": "Venue",
+        "slug": "venue",
+        "icon_image": "masks-theater",
         "icon_options": "",
         "translations": {
-            "en": "Theatre & cultural places",
-            "fr": "Théâtres et lieux culturels"
+            "en": "Theatre & other venus",
+            "fr": "Théâtres et autres lieux culturels"
         },
         "descriptions": {
             "en": "Some places to fit in the place!",
@@ -603,7 +603,7 @@
         "category_slug": "amenity",
         "name": "Club",
         "slug": "club",
-        "icon_image": "",
+        "icon_image": "martini-glass",
         "icon_options": "",
         "translations": {
             "en": "Clubs",
@@ -618,7 +618,7 @@
         "category_slug": "amenity",
         "name": "Miscellaneous amenity",
         "slug": "amenity-other",
-        "icon_image": "",
+        "icon_image": "notebook",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous amenities",
@@ -633,7 +633,7 @@
         "category_slug": "administrative",
         "name": "City",
         "slug": "city",
-        "icon_image": "",
+        "icon_image": "city",
         "icon_options": "",
         "translations": {
             "en": "Cities",
@@ -648,7 +648,7 @@
         "category_slug": "administrative",
         "name": "Miscellaneous administrative",
         "slug": "administrative-other",
-        "icon_image": "",
+        "icon_image": "notebook",
         "icon_options": "",
         "translations": {
             "en": "Miscellaneous administrative",

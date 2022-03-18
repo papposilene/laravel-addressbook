@@ -2,7 +2,7 @@
     {
         "name": "Gastronomy",
         "slug": "gastronomy",
-        "icon_image": "",
+        "icon_image": "fork-knife",
         "icon_options": "",
         "translations": {
             "en": "Gastronomy",
@@ -16,7 +16,7 @@
     {
         "name": "Tourism",
         "slug": "tourism",
-        "icon_image": "",
+        "icon_image": "landmark",
         "icon_options": "",
         "translations": {
             "en": "Tourism",
@@ -30,7 +30,7 @@
     {
         "name": "Shop",
         "slug": "shop",
-        "icon_image": "",
+        "icon_image": "store",
         "icon_options": "",
         "translations": {
             "en": "Shops",
@@ -44,7 +44,7 @@
     {
         "name": "Religion",
         "slug": "religion",
-        "icon_image": "",
+        "icon_image": "place-of-worship",
         "icon_options": "",
         "translations": {
             "en": "Religious places",
@@ -58,7 +58,7 @@
     {
         "name": "Amenity",
         "slug": "amenity",
-        "icon_image": "",
+        "icon_image": "map-location",
         "icon_options": "",
         "translations": {
             "en": "Amenities",
@@ -72,7 +72,7 @@
     {
         "name": "Administrative",
         "slug": "administrative",
-        "icon_image": "",
+        "icon_image": "building",
         "icon_options": "",
         "translations": {
             "en": "Areas to visit",
@@ -86,7 +86,7 @@
     {
         "name": "Other",
         "slug": "other",
-        "icon_image": "",
+        "icon_image": "notebook",
         "icon_options": "",
         "translations": {
             "en": "Other addresses",
