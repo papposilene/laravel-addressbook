@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class CategoriesSeeder extends Seeder

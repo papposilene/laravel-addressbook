@@ -7,10 +7,10 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-class AddressSeeder extends Seeder
+class AddressesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,19 +25,23 @@ class AddressSeeder extends Seeder
         DB::table('subcategories__')->delete();
 
         foreach (glob(storage_path('data/addresses/*.json')) as $filename) {
-            $file = File::get();
+            $file = File::get($filename);
+            $json = json_decode($file);
 
-            foreach ($addresses as $data)
+            foreach ($json as $data)
             {
                 $category = Category::firstOrCreate([
                         'name' => $data->category,
                     ],
                     [
                         'slug' => Str::slug($data->category, '-'),
-                        'slug' =>
-                        'slug' =>
                     ]);
-                $subcategory = Subcategory::firstOrCreate([]);
+                $subcategory = Subcategory::firstOrCreate([
+                    'name' => $data->category,
+                ],
+                [
+                    'slug' => Str::slug($data->category, '-'),
+                ]);
 
 
                 Address::create([
