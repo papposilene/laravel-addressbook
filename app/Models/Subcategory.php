@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Exceptions\CategoryDoesNotExist;
+use App\Exceptions\SubcategoryDoesNotExist;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Translatable\HasTranslations;
 
-class Category extends Model
+class Subcategory extends Model
 {
     use HasTranslations, SoftDeletes;
 
@@ -18,7 +18,7 @@ class Category extends Model
      *
      * @var string
      */
-    protected $table = 'categories__';
+    protected $table = 'categories__subcategories';
     protected $primaryKey = 'uuid';
 
     /**
@@ -65,6 +65,7 @@ class Category extends Model
      */
     protected $fillable = [
         'uuid',
+        'category_slug',
         'slug',
         'name',
         'icon_image',
@@ -86,55 +87,55 @@ class Category extends Model
     }
 
     /**
-     * Get all the subcategories for a specific category.
+     * Get the parent category.
      */
-    public function hasManyCategory(): HasMany
+    public function belongsToCategory(): BelongsTo
     {
-        return $this->hasMany(
-            Subcategory::class,
-            'slug',
-            'category_slug'
+        return $this->belongsTo(
+            Category::class,
+            'category_slug',
+            'slug'
         );
     }
 
     /**
-     * Find a category by its uuid.
+     * Find a subcategory by its uuid.
      *
      * @param string $uuid
      *
-     * @throws \App\Exceptions\CategoryDoesNotExist
+     * @throws \App\Exceptions\SubcategoryDoesNotExist
      *
-     * @return Category
+     * @return Subcategory
      */
-    public static function findById(string $uuid): Category
+    public static function findById(string $uuid): Subcategory
     {
-        $category = static::find($uuid);
+        $subcategory = static::find($uuid);
 
-        if (!$category) {
-            throw CategoryDoesNotExist::withId($uuid);
+        if (!$subcategory) {
+            throw SubcategoryDoesNotExist::withId($uuid);
         }
 
-        return $category;
+        return $subcategory;
     }
 
     /**
-     * Find a category by its name.
+     * Find a subcategory by its name.
      *
      * @param string $name
      *
-     * @throws \App\Exceptions\CategoryDoesNotExist
+     * @throws \App\Exceptions\SubcategoryDoesNotExist
      *
-     * @return Category
+     * @return Subcategory
      */
-    public static function findByName(string $name): Category
+    public static function findByName(string $name): Subcategory
     {
-        $category = self::where('name', $name)->first();
+        $subcategory = self::where('name', $name)->first();
 
-        if (!$category) {
-            throw CategoryDoesNotExist::named($name);
+        if (!$subcategory) {
+            throw SubcategoryDoesNotExist::named($name);
         }
 
-        return $category;
+        return $subcategory;
     }
 
     /**
@@ -142,19 +143,19 @@ class Category extends Model
      *
      * @param string $slug
      *
-     * @throws \App\Exceptions\CategoryDoesNotExist
+     * @throws \App\Exceptions\SubcategoryDoesNotExist
      *
-     * @return Category
+     * @return Subcategory
      */
-    public static function findBySlug(string $slug): Category
+    public static function findBySlug(string $slug): Subcategory
     {
-        $category = self::where('slug', $slug)->first();
+        $subcategory = self::where('slug', $slug)->first();
 
-        if (!$category) {
-            throw CategoryDoesNotExist::withSlug($slug);
+        if (!$subcategory) {
+            throw SubcategoryDoesNotExist::withSlug($slug);
         }
 
-        return $category;
+        return $subcategory;
     }
 
 }
