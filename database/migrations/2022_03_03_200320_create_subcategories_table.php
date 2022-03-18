@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories__', function (Blueprint $table) {
+        Schema::create('categories__subcategories', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->string('slug', 255)->unique();
             $table->string('name', 255)->unique();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories__');
+        Schema::dropIfExists('categories__subcategories');
     }
 };
