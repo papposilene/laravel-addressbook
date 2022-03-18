@@ -1,0 +1,662 @@
+[
+    {
+        "category_slug": "other",
+        "name": "To be classified",
+        "slug": "to-be-classified",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "To be classified",
+            "fr": "A classer"
+        },
+        "descriptions": {
+            "en": "Not yet classfied addresses",
+            "fr": "Addresses à classer"
+        }
+    },
+    {
+        "category_slug": "other",
+        "name": "Unclassifiable",
+        "slug": "unclassifiable",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous",
+            "fr": "Inclassable"
+        },
+        "descriptions": {
+            "en": "Miscellaneous addresses",
+            "fr": "Adresses inclassables"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Cafe",
+        "slug": "cafe",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Cafés",
+            "fr": "Cafés"
+        },
+        "descriptions": {
+            "en": "Where to sip coffee and watch people go by?",
+            "fr": "Où siroter un petit café en regardant les gens passer ?"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Restaurant",
+        "slug": "restaurant",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Restaurants",
+            "fr": "Restaurants"
+        },
+        "descriptions": {
+            "en": "Restaurants",
+            "fr": "Restaurants"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Fast Food",
+        "slug": "fast-food",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Fast Food",
+            "fr": "Fast Food"
+        },
+        "descriptions": {
+            "en": "Fast food !",
+            "fr": "A emporter, à grignoter !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Ice cream",
+        "slug": "ice-cream",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Ice cream",
+            "fr": "Glaciers"
+        },
+        "descriptions": {
+            "en": "Ice cream",
+            "fr": "Des glaciers pour se rafraîchir"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Pastry",
+        "slug": "pastry",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Pastries",
+            "fr": "Pâtisseries"
+        },
+        "descriptions": {
+            "en": "Good places to have a snack on the go!",
+            "fr": "Les bonnes adresses pour grignoter sur le pouce !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Bar",
+        "slug": "bar",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Bars",
+            "fr": "Bars"
+        },
+        "descriptions": {
+            "en": "It's time for an aperitif!",
+            "fr": "C'est l'heure de l'apéritif !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Chocolate",
+        "slug": "chocolate",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Chocolate factories",
+            "fr": "Chocolateries"
+        },
+        "descriptions": {
+            "en": "For all the chocolics!",
+            "fr": "Pour tous les chocolics !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Cheese",
+        "slug": "cheese",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Cheese !",
+            "fr": "Fromageries"
+        },
+        "descriptions": {
+            "en": "For all the cheesolics!",
+            "fr": "Les endroits où trouver d'autres Français !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Marketplace",
+        "slug": "marketplace",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Markets and marketplace",
+            "fr": "Marchés"
+        },
+        "descriptions": {
+            "en": "Where is the market place?",
+            "fr": "Où faire son marché ?"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Grocery",
+        "slug": "grocery",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Groceries",
+            "fr": "Epiceries"
+        },
+        "descriptions": {
+            "en": "Not gross groceries",
+            "fr": "Plus ou moins fines, voici les épiceries !"
+        }
+    },
+    {
+        "category_slug": "gastronomy",
+        "name": "Miscellaneous gastronomy",
+        "slug": "gastronomy-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous gastronomy",
+            "fr": "Miscellanées gastronomiques"
+        },
+        "descriptions": {
+            "en": "Miscellaneous gastronomy",
+            "fr": "Miscellanées gastronomiques"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Museum",
+        "slug": "museum",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Museums",
+            "fr": "Musées"
+        },
+        "descriptions": {
+            "en": "Museums and cultural institutions",
+            "fr": "Musées et institutions culturelles"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Gallery",
+        "slug": "gallery",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Art galleries",
+            "fr": "Galeries d'art"
+        },
+        "descriptions": {
+            "en": "Art galleries",
+            "fr": "Galeries d'art"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Art centre",
+        "slug": "art-centre",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Art centres",
+            "fr": "Centres d'art"
+        },
+        "descriptions": {
+            "en": "Art centres",
+            "fr": "Centres d'art et artistiques"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Foundation",
+        "slug": "foundation",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Cultural foundations",
+            "fr": "Fondations culturelles"
+        },
+        "descriptions": {
+            "en": "Cultural foundations",
+            "fr": "Fondations culturelles"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Landscape",
+        "slug": "landscape",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Landscapes",
+            "fr": "Paysages"
+        },
+        "descriptions": {
+            "en": "Landscapes (to see?)",
+            "fr": "Paysages à voir"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Archaeological site",
+        "slug": "archaeological-site",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Archaeological sites",
+            "fr": "Sites archéologiques"
+        },
+        "descriptions": {
+            "en": "All this to see three standing stones...",
+            "fr": "Tout cela pour voir trois pierres debout..."
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Modern site",
+        "slug": "modern-site",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Modern & contemporary sites",
+            "fr": "Sites modernes & contemporains"
+        },
+        "descriptions": {
+            "en": "Modern sites",
+            "fr": "Sites modernes & contemporains"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Monument",
+        "slug": "monument",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Monuments",
+            "fr": "Monuments"
+        },
+        "descriptions": {
+            "en": "Things with some interest...",
+            "fr": "Les choses avec un intérêt quelconque..."
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Attraction",
+        "slug": "attraction",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Touristic attractions",
+            "fr": "Attractions touristiques"
+        },
+        "descriptions": {
+            "en": "Things with any interest...",
+            "fr": "Les choses avec un quelconque intérêt..."
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Event",
+        "slug": "event",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Events",
+            "fr": "Evénements"
+        },
+        "descriptions": {
+            "en": "Touristic events",
+            "fr": "Evénements touristiques"
+        }
+    },
+    {
+        "category_slug": "tourism",
+        "name": "Miscellaneous tourism",
+        "slug": "tourism-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous tourism",
+            "fr": "Miscellanées touristiques"
+        },
+        "descriptions": {
+            "en": "Miscellaneous tourism",
+            "fr": "Miscellanées touristiques"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Store",
+        "slug": "store",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Stores",
+            "fr": "Magasins"
+        },
+        "descriptions": {
+            "en": "Stores and shops",
+            "fr": "Boutiques et magasins"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Clothes",
+        "slug": "clothes",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Clothes stores",
+            "fr": "Magasins de vêtements"
+        },
+        "descriptions": {
+            "en": "When it's time to redo your wardrobe...",
+            "fr": "Quand il faut refaire sa garde-robe..."
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Crafts",
+        "slug": "crafts",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Crafts",
+            "fr": "Artisanat"
+        },
+        "descriptions": {
+            "en": "Good addresses for crafts",
+            "fr": "Les bonnes adresses d'artisanat"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Pharmacy",
+        "slug": "pharmacy",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Pharmacies",
+            "fr": "Pharmacies et officines"
+        },
+        "descriptions": {
+            "en": "Where to cure his homesickness...",
+            "fr": "Pour soigner son mal du pays..."
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Bookshop",
+        "slug": "bookshop",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Bookshops",
+            "fr": "Libraries"
+        },
+        "descriptions": {
+            "en": "Where to buy a book before going to a café?",
+            "fr": "Où acheter un livre avant d'aller prendre un café en terrasse ?"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Glassware",
+        "slug": "glassware",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Glasswares",
+            "fr": "Verreries"
+        },
+        "descriptions": {
+            "en": "Good addresses for glassware",
+            "fr": "Vers les verreries !"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Stationery",
+        "slug": "stationery",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Stationeries",
+            "fr": "Papeteries"
+        },
+        "descriptions": {
+            "en": "Good addresses for stationery",
+            "fr": "Papeteries et objets de bureau."
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Toys",
+        "slug": "toys",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Toys",
+            "fr": "Jeux et jouets"
+        },
+        "descriptions": {
+            "en": "Good addresses for childhood",
+            "fr": "Pour les enfants, les petits comme les grands !"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Fleamarket",
+        "slug": "fleamarket",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Fleamarkets",
+            "fr": "Marchés aux puces"
+        },
+        "descriptions": {
+            "en": "Addresses where to find all kinds of objects!",
+            "fr": "Les bonnes adresses où chiner des objets en tout genres !"
+        }
+    },
+    {
+        "category_slug": "shop",
+        "name": "Miscellaneous shop",
+        "slug": "shop-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous shops",
+            "fr": "Miscellanées consuméristes"
+        },
+        "descriptions": {
+            "en": "Miscellaneous shops",
+            "fr": "Miscellanées consuméristes"
+        }
+    },
+    {
+        "category_slug": "religion",
+        "name": "Place of worship",
+        "slug": "place-of-worship",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Places of worship",
+            "fr": "Lieux de culte"
+        },
+        "descriptions": {
+            "en": "Places of worship",
+            "fr": "Lieux de culte et de culture"
+        }
+    },
+    {
+        "category_slug": "religion",
+        "name": "Miscellaneous religion",
+        "slug": "religion-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous worships",
+            "fr": "Miscellanées cultuelles"
+        },
+        "descriptions": {
+            "en": "Miscellaneous worships",
+            "fr": "Miscellanées cultuelles"
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Hotel",
+        "slug": "hotel",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Hotels",
+            "fr": "Hôtels"
+        },
+        "descriptions": {
+            "en": "Hotels",
+            "fr": "Un repos bien mérité..."
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Park",
+        "slug": "park",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Parks (and recreation)",
+            "fr": "Parcs (et zones naturelles)"
+        },
+        "descriptions": {
+            "en": "Parks and Recreation",
+            "fr": "Zones naturelles (plus ou moins protégées)."
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Neighbourhood",
+        "slug": "neighbourhood",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Neighbourhoods",
+            "fr": "Quartiers"
+        },
+        "descriptions": {
+            "en": "You came to the good neighborhood!",
+            "fr": "Vous êtes au bon endroit !"
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Theatre",
+        "slug": "theatre",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Theatre & cultural places",
+            "fr": "Théâtres et lieux culturels"
+        },
+        "descriptions": {
+            "en": "Some places to fit in the place!",
+            "fr": "Les endroits où se mettre dans la peau d'un local."
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Club",
+        "slug": "club",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Clubs",
+            "fr": "Discothèques"
+        },
+        "descriptions": {
+            "en": "No bass, no fun!",
+            "fr": "No bass, no fun!"
+        }
+    },
+    {
+        "category_slug": "amenity",
+        "name": "Miscellaneous amenity",
+        "slug": "amenity-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous amenities",
+            "fr": "Commodes miscellanées"
+        },
+        "descriptions": {
+            "en": "Miscellaneous amenities",
+            "fr": "Commodes miscellanées"
+        }
+    },
+    {
+        "category_slug": "administrative",
+        "name": "City",
+        "slug": "city",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Cities",
+            "fr": "Villes"
+        },
+        "descriptions": {
+            "en": "Cities to live in.",
+            "fr": "Les villes à vivre."
+        }
+    },
+    {
+        "category_slug": "administrative",
+        "name": "Miscellaneous administrative",
+        "slug": "administrative-other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Miscellaneous administrative",
+            "fr": "Miscellanées administratives"
+        },
+        "descriptions": {
+            "en": "Miscellaneous administrative",
+            "fr": "Miscellanées administratives"
+        }
+    }
+]
