@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('categories__subcategories', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
+            $table->unsignedBigInteger('category_slug');
             $table->string('slug', 255)->unique();
             $table->string('name', 255)->unique();
             $table->string('icon_image', 255);
             $table->string('icon_options', 255);
-            $table->json('translation')->nullable();
-            $table->json('description')->nullable();
+            $table->json('translations')->nullable();
+            $table->json('descriptions')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('category_slug')->references('slug')->on('categories__');
         });
     }
 
