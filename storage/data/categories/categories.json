@@ -1,0 +1,100 @@
+[
+    {
+        "name": "Gastronomy",
+        "slug": "gastronomy",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Gastronomy",
+            "fr": "Gastronomie"
+        },
+        "descriptions": {
+            "en": "Everything about food!",
+            "fr": "Tout ce qui concerne la nourriture !"
+        }
+    },
+    {
+        "name": "Tourism",
+        "slug": "tourism",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Tourism",
+            "fr": "Tourisme"
+        },
+        "descriptions": {
+            "en": "Good tourist addresses for visiting the region.",
+            "fr": "Les bonnes adresses touristiques pour visiter la région."
+        }
+    },
+    {
+        "name": "Shop",
+        "slug": "shop",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Shops",
+            "fr": "Magasins"
+        },
+        "descriptions": {
+            "en": "The address book for good shopping.",
+            "fr": "Le carnet d'adresses pour faire de bonnes emplettes."
+        }
+    },
+    {
+        "name": "Religion",
+        "slug": "religion",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Religious places",
+            "fr": "Lieux religieux et de cultes"
+        },
+        "descriptions": {
+            "en": "Religious places to see.",
+            "fr": "Tourisme cultuel"
+        }
+    },
+    {
+        "name": "Amenity",
+        "slug": "amenity",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Amenities",
+            "fr": "Lieux d'intérêt"
+        },
+        "descriptions": {
+            "en": "Amenities et other facilities",
+            "fr": "Lieux d'intérêt et autres commodités."
+        }
+    },
+    {
+        "name": "Administrative",
+        "slug": "administrative",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Areas to visit",
+            "fr": "Régions à visiter"
+        },
+        "descriptions": {
+            "en": "",
+            "fr": ""
+        }
+    },
+    {
+        "name": "Other",
+        "slug": "other",
+        "icon_image": "",
+        "icon_options": "",
+        "translations": {
+            "en": "Other addresses",
+            "fr": "Adresses inclassables"
+        },
+        "descriptions": {
+            "en": "The rest of the addresses, unclassifiable or not classified...",
+            "fr": "Le reste des adresses, inclassables ou non classées..."
+        }
+    }
+]
