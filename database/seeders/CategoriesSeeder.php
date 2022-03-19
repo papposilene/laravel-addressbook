@@ -33,8 +33,8 @@ class CategoriesSeeder extends Seeder
             [
                 'icon_image' => $data->icon_image,
                 'icon_options' => $data->icon_options,
-                'translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
-                'descriptions' => json_encode($data->descriptions, JSON_FORCE_OBJECT)
+                'translations' => json_decode(json_encode($data->translations), true),
+                'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
 
             $category = Subcategory::firstOrCreate([
@@ -45,8 +45,8 @@ class CategoriesSeeder extends Seeder
             [
                 'icon_image' => $data->icon_image,
                 'icon_options' => $data->icon_options,
-                'translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
-                'descriptions' => json_encode($data->descriptions, JSON_FORCE_OBJECT)
+                'translations' => json_decode(json_encode($data->translations), true),
+                'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
         }
     }

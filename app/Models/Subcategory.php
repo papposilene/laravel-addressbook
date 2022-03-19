@@ -74,6 +74,11 @@ class Subcategory extends Model
         'descriptions',
     ];
 
+    public $translatable = [
+        'descriptions',
+        'translations'
+    ];
+
     /**
      * Boot the Model.
      */

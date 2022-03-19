@@ -32,6 +32,7 @@ Thumbs.db
 
 # Logs and databases #
 ######################
+**/adminer
 *.log
 *.sql
 *.sqlite

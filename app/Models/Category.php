@@ -73,6 +73,11 @@ class Category extends Model
         'descriptions',
     ];
 
+    public $translatable = [
+        'descriptions',
+        'translations'
+    ];
+
     /**
      * Boot the Model.
      */

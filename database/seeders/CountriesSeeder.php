@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -24,22 +26,57 @@ class CountriesSeeder extends Seeder
 
         $file = File::get(storage_path('data/geodata/countries/countries.json'));
         $json = json_decode($file);
+
         foreach ($json as $data) {
+            if (property_exists($data, 'geo')) {
+                $region = $data->geo->region;
+                $subregion = $data->geo->subregion;
+                $landlocked = $data->geo->landlocked;
+                $independent = (bool) ($data->geo->independent === true ? true : false);
+                $lat = $data->geo->latlng[1];
+                $lon = $data->geo->latlng[0];
+            } else {
+                $region = $data->region;
+                $subregion = $data->subregion;
+                $landlocked = $data->landlocked;
+                $independent = (bool) ($data->independent === true ? true : false);
+                $lat = $data->latlng[1];
+                $lon = $data->latlng[0];
+            }
+
+            $flag = '🏳️';
+            if (property_exists($data, 'flag')) {
+                $flag = $data->flag;
+            }
+            if (property_exists($data, 'flag') && property_exists($data->flag, 'emoji')) {
+                $flag = $data->flag->emoji;
+            }
+
+            if (property_exists($data, 'dialling')) {
+                $dialling = json_encode($data->dialling, JSON_FORCE_OBJECT);
+            }
+            elseif (property_exists($data, 'callingCodes')) {
+                $dialling = json_encode($data->callingCodes, JSON_FORCE_OBJECT);
+            }
+            else {
+                $dialling = null;
+            }
+
             $continent = Continent::firstOrCreate(
                 [
-                    'name' => $data->region
+                    'name' => $region
                 ],
                 [
-                    'slug' => Str::slug($data->region, '-'),
+                    'slug' => Str::slug($region, '-'),
                 ]
             );
 
             $subcontinent = Subcontinent::firstOrCreate(
                 [
-                    'name' => $data->subregion
+                    'name' => $subregion
                 ],
                 [
-                    'slug' => Str::slug($data->subregion, '-'),
+                    'slug' => Str::slug($subregion, '-'),
                     'continent_id' => $continent->id,
                 ]
             );
@@ -50,31 +87,35 @@ class CountriesSeeder extends Seeder
                 // Various identifiant codes
                 'cca2'              => $data->cca2,
                 'cca3'              => $data->cca3,
-                'ccn3'              => $data->ccn3,
-                'cioc'              => $data->cioc,
+                'ccn3'              => (is_string($data->ccn3) ? $data->ccn3 : null),
                 // Name, common and formal, in english
                 'name_eng_common'   => addslashes($data->name->common),
                 'name_eng_formal'   => addslashes($data->name->official),
                 // Centered geolocation (for mainland if necessary)
-                'lat'               => (float) $data->latlng[1],
-                'lon'               => (float) $data->latlng[0],
+                'lat'               => (float) $lat,
+                'lon'               => (float) $lon,
                 // Borders
-                'landlocked'        => (bool) ($data->landlocked === true ? 'true' : 'false'),
+                'landlocked'        => (bool) $landlocked,
                 'neighbourhood'     => (empty($data->borders) ? 'null' : json_encode($data->borders, JSON_FORCE_OBJECT)),
                 // Geopolitc status
                 'status'            => $data->status,
-                'independent'       => (bool) ($data->independent === true ? 'true' : 'false'),
-                'un_member'         => (bool) ($data->unMember === true ? 'true' : 'false'),
+                'independent'       => $independent,
                 // Flag
-                'flag'              => $data->flag,
+                'flag'              => $flag,
                 // Extra
-                'idd'               => json_encode($data->idd, JSON_FORCE_OBJECT),
-                'capital'           => json_encode($data->capital, JSON_FORCE_OBJECT),
+                'dialling'          => $dialling,
                 'currencies'        => json_encode($data->currencies, JSON_FORCE_OBJECT),
+                'capital'           => json_encode($data->capital, JSON_FORCE_OBJECT),
                 'demonyms'          => json_encode($data->demonyms, JSON_FORCE_OBJECT),
                 'languages'         => json_encode($data->languages, JSON_FORCE_OBJECT),
                 'name_native'       => json_encode($data->name->native, JSON_FORCE_OBJECT),
-                'name_translations' => json_encode($data->translations, JSON_FORCE_OBJECT)
+                'name_translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
+                'extra' => json_encode([
+                    'un_member' => (property_exists($data, 'un_member') && $data->un_member ? true : false),
+                    'eu_member' => (property_exists($data, 'eu_member') ? true : false),
+                    'wikidata' => (property_exists($data, 'wikidataid') ? $data->wikidataid : null),
+                    'woe_id' => (property_exists($data, 'woe_id') ? $data->woe_id : null),
+                ], JSON_FORCE_OBJECT),
             ]);
         }
     }

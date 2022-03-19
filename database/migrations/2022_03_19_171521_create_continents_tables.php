@@ -20,6 +20,16 @@ return new class extends Migration
             $table->string('name', 255)->unique();
             $table->timestamps();
         });
+
+        Schema::create('geodata__subcontinents', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 255)->unique();
+            $table->string('slug', 255)->unique();
+            $table->unsignedBigInteger('continent_id');
+            $table->timestamps();
+
+            $table->foreign('continent_id')->references('id')->on('geodata__continents');
+        });
     }
 
     /**
@@ -29,6 +39,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::drop('geodata__subcontinents');
         Schema::drop('geodata__continents');
     }
-}
+};

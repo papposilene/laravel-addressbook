@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('cca2', 2)->unique();
             $table->string('cca3', 3)->unique();
             $table->string('ccn3', 3)->nullable();
-            $table->string('cioc', 3)->nullable();
             // Name, common and formal, in english
             $table->string('name_eng_common', 255)->unique();
             $table->string('name_eng_formal', 255)->unique();
@@ -35,14 +34,13 @@ return new class extends Migration
             // Geopolitic status
             $table->string('status', 255)->nullable();
             $table->boolean('independent')->default(true);
-            $table->boolean('un_member')->default(true);
             // Flag
             $table->string('flag', 50)->nullable();
             // Extra data in JSON
             $table->json('capital')->nullable();
             $table->json('currencies')->nullable();
             $table->json('demonyms')->nullable();
-            $table->json('dialling_codes')->nullable();
+            $table->json('dialling')->nullable();
             $table->json('languages')->nullable();
             $table->json('name_native')->nullable();
             $table->json('name_translations')->nullable();
@@ -54,6 +52,25 @@ return new class extends Migration
             $table->foreign('continent_id')->references('id')->on('geodata__continents');
             $table->foreign('subcontinent_id')->references('id')->on('geodata__subcontinents');
         });
+
+        Schema::create('geodata__cities', function (Blueprint $table) {
+            $table->id();
+            // Administrative layers
+            $table->string('country_cca3', 3);
+            $table->string('state', 255)->nullable(); // adm1name
+            // City data
+            $table->string('name', 255);
+            $table->point('lat')->nullable();
+            $table->point('lon')->nullable();
+            // Extra data in JSON
+            $table->json('postcodes')->nullable();
+            $table->json('extra')->nullable();
+            // Internal data
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('country_cca3')->references('cca3')->on('geodata__countries');
+        });
     }
 
     /**
@@ -63,6 +80,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::drop('geodata__cities');
         Schema::drop('geodata__countries');
     }
-}
+};
