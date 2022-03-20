@@ -60,6 +60,9 @@
                             <td class="break-words">
 
                             </td>
+                            <td class="break-words">
+
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
