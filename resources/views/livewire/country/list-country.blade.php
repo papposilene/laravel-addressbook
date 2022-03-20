@@ -39,8 +39,8 @@
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center p-3">@ucfirst(__('country.cca3'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('country.flag'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('country.name_formal'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('country.flag_icon'))</th>
+                            <th class="w-5/12 text-center">@ucfirst(__('country.name_common'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
                             <th class="w-3/12 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
@@ -49,12 +49,8 @@
                         @foreach($countries as $country)
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                            <td class="break-words">
-                                {{ $country->cca3 }}
-                            </td>
-                            <td class="break-words">
-                                {{ $country->flag }}
-                            </td>
+                            <td class="text-center">{{ $country->cca3 }}</td>
+                            <td class="text-center">{{ $country->flag }}</td>
                             <td class="break-words">
                                 {{ $country->name_eng_common }}
                             </td>
