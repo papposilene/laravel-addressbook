@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Category;
 
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -34,6 +35,7 @@ class ListCategory extends Component
             ->orWhere('descriptions', 'like', '%'.$this->search.'%')
             ->orWhere('translations', 'like', '%'.$this->search.'%')
             ->orderBy('name', 'asc')
+            ->withCount('hasAddresses')
             ->paginate(25);
 
         return view('livewire.category.list-category', [
