@@ -47,7 +47,7 @@ class AddressesSeeder extends Seeder
                     'address_number' => (int) $data->address->number,
                     'address_street' => (string) $data->address->street,
                     'address_postcode' => (string) $data->address->postcode,
-                    'address_city' => $city->name,
+                    'address_city' => $city->uuid,
                     'address_country' => $country->cca3,
                     'address_lat' => (string) $data->geolocation->lat,
                     'address_lon' => (string) $data->geolocation->lon,
