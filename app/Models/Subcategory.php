@@ -19,7 +19,7 @@ class Subcategory extends Model
      * @var string
      */
     protected $table = 'categories__subcategories';
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = ['uuid', 'slug'];
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -69,7 +69,7 @@ class Subcategory extends Model
         'slug',
         'name',
         'icon_image',
-        'icon_style',
+        'icon_options',
         'translations',
         'descriptions',
     ];
