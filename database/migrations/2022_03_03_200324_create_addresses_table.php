@@ -30,13 +30,16 @@ return new class extends Migration
             $table->string('details_wikidata', 255)->nullable();
             $table->text('description')->nullable();
             $table->uuid('subcategory_slug');
-            $table->foreign('subcategory_slug')
-                ->references('slug')->on('categories__subcategories')->onDelete('cascade');
             $table->integer('osm_id')->nullable();
             $table->integer('osm_place_id')->nullable();
             $table->string('gmap_pluscode', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('address_country')
+                ->references('cca3')->on('geodata__countries')->onDelete('cascade');
+            $table->foreign('subcategory_slug')
+                ->references('slug')->on('categories__subcategories');
         });
     }
 
