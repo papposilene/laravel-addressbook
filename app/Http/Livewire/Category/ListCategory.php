@@ -15,12 +15,14 @@ class ListCategory extends Component
     public $filter = '';
     public $page = 1;
     public $search = '';
+    public $hasAddresses = 0;
     public Category $category;
 
     protected $queryString = [
         'filter' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
+        'hasAddresses' => ['except' => 0],
     ];
 
     public function updatingSearch()
