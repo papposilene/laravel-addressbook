@@ -17,7 +17,7 @@ return [
     'closed' => 'fermé',
     'count' => 'nombre d’adresses',
     'gmap_pluscode' => 'Google Maps +Code',
-    'name' => 'nom',
+    'name' => 'dénomination',
     'open' => 'ouvert',
     'openinghours' => 'heures d’ouverture',
     'osmid' => 'OpenStreetMap ID',
