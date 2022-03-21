@@ -19,7 +19,7 @@ class Category extends Model
      * @var string
      */
     protected $table = 'categories__';
-    protected $primaryKey = ['uuid', 'slug'];
+    protected $primaryKey = 'slug';
 
     /**
      * Indicates if the IDs are auto-incrementing.
