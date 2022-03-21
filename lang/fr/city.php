@@ -4,15 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | App Language Lines
+    | Country Language Lines
     |--------------------------------------------------------------------------
     */
 
-    'actions' => 'actions',
-    'count' => 'total',
-    'list_of' => 'liste des :what',
-    'search' => 'rechercher',
-    'total' => 'total',
+    'city' => 'ville',
+    'cities' => 'villes',
 
+    'count' => 'nombre de villes',
 
 ];
