@@ -32,7 +32,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'icon_image' => $data->icon_image,
-                'icon_options' => $data->icon_options,
+                'icon_style' => $data->icon_style,
                 'translations' => json_decode(json_encode($data->translations), true),
                 'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
@@ -44,7 +44,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'icon_image' => $data->icon_image,
-                'icon_options' => $data->icon_options,
+                'icon_style' => $data->icon_style,
                 'translations' => json_decode(json_encode($data->translations), true),
                 'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
