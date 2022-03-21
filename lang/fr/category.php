@@ -4,18 +4,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | City Language Lines
+    | Category Language Lines
     |--------------------------------------------------------------------------
     */
 
     'pronoun_sg' => 'de la',
     'pronoun_pl' => 'des',
 
-    'city' => 'ville',
-    'cities' => 'villes',
+    'category' => 'catégorie',
+    'categories' => 'catégories',
+    'subcategory' => 'sous-catégorie',
+    'subcategories' => 'sous-catégories',
 
-    'count' => 'nombre de villes',
-    'postcode' => 'code postal',
-    'state' => 'région',
+    'name' => 'nom',
+
+
 
 ];

@@ -8,6 +8,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'pronoun_sg' => 'du',
+    'pronoun_pl' => 'des',
+
     'continent' => 'continent',
     'continents' => 'continents',
     'subcontinent' => 'subcontinent',
