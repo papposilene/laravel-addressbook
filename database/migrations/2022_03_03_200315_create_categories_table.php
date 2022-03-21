@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('categories__', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
-            $table->string('slug', 255)->unique();
+            $table->string('slug', 255)->primary();
             $table->string('name', 255)->unique();
             $table->string('icon_image', 255);
             $table->string('icon_options', 255);
