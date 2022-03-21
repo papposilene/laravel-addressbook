@@ -17,13 +17,14 @@ return new class extends Migration
             $table->uuid('uuid')->primary();
             $table->string('place_name', 255);
             $table->boolean('place_status')->default(1);
-            $table->string('address_number', 255);
-            $table->string('address_street', 255);
-            $table->string('address_postcode', 255);
+            $table->string('address_number', 255)->nullable();
+            $table->string('address_street', 255)->nullable();
+            $table->string('address_postcode', 255)->nullable();
             $table->uuid('address_city');
             $table->string('address_country', 3);
             $table->float('address_lat');
             $table->float('address_lon');
+            $table->text('descriptions')->nullable();
             $table->json('details')->nullable();
             $table->uuid('subcategory_slug');
             $table->integer('osm_id')->nullable();
