@@ -20,15 +20,11 @@ return new class extends Migration
             $table->string('address_number', 255);
             $table->string('address_street', 255);
             $table->string('address_postcode', 255);
-            $table->string('address_city', 255);
+            $table->uuid('address_city');
             $table->string('address_country', 3);
             $table->float('address_lat');
             $table->float('address_lon');
-            $table->string('details_openinghours', 255)->nullable();
-            $table->integer('details_phone')->nullable();
-            $table->string('details_website', 255)->nullable();
-            $table->string('details_wikidata', 255)->nullable();
-            $table->text('description')->nullable();
+            $table->json('details')->nullable();
             $table->uuid('subcategory_slug');
             $table->integer('osm_id')->nullable();
             $table->integer('osm_place_id')->nullable();
@@ -36,6 +32,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('address_city')
+                ->references('uuid')->on('geodata__cities')->onDelete('cascade');
             $table->foreign('address_country')
                 ->references('cca3')->on('geodata__countries')->onDelete('cascade');
             $table->foreign('subcategory_slug')
