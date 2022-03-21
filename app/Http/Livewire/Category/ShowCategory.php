@@ -26,7 +26,7 @@ class ShowCategory extends Component
 
     public function mount($slug)
     {
-        $this->subcategory = Subcategory::where('slug', $this->slug);
+        $this->subcategory = Subcategory::find( $this->slug);
     }
 
     public function updatingSearch()
@@ -37,7 +37,11 @@ class ShowCategory extends Component
     public function render()
     {
         return view('livewire.category.show-category', [
-            'subcategory' => $subcategory,
+            'subcategory' => $this->subcategory,
+            'addresses' => $this->subcategory
+                ->hasAddresses()
+                ->orderBy('created_at', 'desc')
+                ->paginate(25),
         ]);
     }
 }
