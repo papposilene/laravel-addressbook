@@ -42,9 +42,9 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-
+                        <x-interfaces.toggle wire:model="hasAddresses" type="toggle" class="ml-2" :placeholder="@ucfirst(__('app.toggle'))" />
                     </div>
-                    <!--x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" /-->
+                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>
                 <!-- End of navigation and search -->
 
@@ -80,7 +80,7 @@
                                 <td class="break-words">{{ $subcategory->translations }}</td>
                                 <td class="break-words">{{ $subcategory->description }}</td>
                                 <td class="text-center">
-                                    {{ $subcategory->hasAddresses()->count() }}
+                                    {{ $subcategory->has_addresses_count }}
                                 </td>
                                 <td class="break-words">
                                     <svg><use xlink:href="#show"></use></svg>

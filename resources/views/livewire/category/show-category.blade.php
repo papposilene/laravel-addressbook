@@ -44,7 +44,6 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-
                     </div>
                     <!--x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" /-->
                 </div>

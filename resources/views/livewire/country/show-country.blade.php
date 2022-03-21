@@ -3,11 +3,18 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['what' => __('app.countries')]))</span>
+            <span>@ucfirst(__($country->name_eng_common))</span>
         </h2>
     </x-slot>
 
     <div>
+        <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw"></i>
+
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
@@ -29,10 +36,10 @@
             <!-- End of navigation and search -->
 
             <!-- Pagination -->
-            {{ $countries->links() }}
+            {{ $addresses->links() }}
             <!-- End of pagination -->
 
-            <!-- Countries -->
+            <!-- Addresses -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
@@ -71,10 +78,10 @@
                     </tbody>
                 </table>
             </div>
-            <!-- End of countries -->
+            <!-- End of addresses -->
 
             <!-- Pagination -->
-            {{ $countries->links() }}
+            {{ $addresses->links() }}
             <!-- End of pagination -->
         </div>
     </div>

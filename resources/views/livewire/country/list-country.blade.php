@@ -1,13 +1,20 @@
-@section('title', @ucfirst(__('app.list_of', ['what' => __('country.countries')])))
+@section('title', @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.countries')])))
 
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['what' => __('country.countries')]))</span>
+            <span>@ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.countries')]))</span>
         </h2>
     </x-slot>
 
     <div>
+        <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw"></i>
+
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
             <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
@@ -66,7 +73,8 @@
 
                             </td>
                             <td class="break-words">
-
+                                <svg><use xlink:href="#see"></use></svg>
+                                <svg><use xlink:href="#edit"></use></svg>
                             </td>
                         </tr>
                         @endforeach
