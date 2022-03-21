@@ -68,7 +68,7 @@ class Category extends Model
         'slug',
         'name',
         'icon_image',
-        'icon_options',
+        'icon_style',
         'translations',
         'descriptions',
     ];
