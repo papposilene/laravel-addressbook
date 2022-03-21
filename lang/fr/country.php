@@ -20,7 +20,9 @@ return [
     'countries' => 'pays',
 
     'cca2' => 'CCA2',
+    'cca2_alt' => 'code ISO 3166-1 alpha-2 du pays',
     'cca3' => 'CCA3',
+    'cca3_alt' => 'code ISO 3166-1 alpha-3 du pays',
     'flag_icon' => '🏳️',
     'flag_name' => 'Drapeau',
     'name_common' => 'Pays',
