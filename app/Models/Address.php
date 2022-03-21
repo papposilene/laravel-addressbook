@@ -97,14 +97,14 @@ class Address extends Model
     }
 
     /**
-     * Get the country for a specific place.
+     * Get the subcategory for a specific place.
      */
-    public function inCategory()
+    public function inSubcategory()
     {
         return $this->belongsTo(
-            'App\Models\Category',
-            'category_uuid',
-            'uuid'
+            'App\Models\Subcategory',
+            'subcategory_slug',
+            'slug'
         );
     }
 
