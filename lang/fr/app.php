@@ -11,6 +11,8 @@ return [
     // Plain strings
 
     'about' => 'a propos',
+    'account' => 'compte',
+    'account_manage' => 'gérer mon compte',
     'actions' => 'actions',
     'all' => 'tout',
     'count' => 'total',
@@ -32,10 +34,13 @@ return [
     'nothing' => 'aucun résultat',
     'other' => 'autre',
     'private' => 'privé',
+    'profile' => 'profil',
+    'profile_manage' => 'gérer mon profil',
     'public' => 'public',
     'save' => 'enregistrer',
     'search' => 'rechercher',
     'slug' => 'identifiant unique textuel',
+    'statistics' => 'statistiques',
     'title' => 'intitulé',
     'total' => 'total',
     'translation' => 'traduction',
