@@ -15,15 +15,28 @@ class ListCategory extends Component
     public $filter = '';
     public $page = 1;
     public $search = '';
-    public $hasAddresses = 0;
-    public Category $category;
+    public $withAddresses = 0;
+    public Category $categories;
+    public Subcategory $subcategories;
 
     protected $queryString = [
         'filter' => ['except' => ''],
         'page' => ['except' => 1],
         'search' => ['except' => ''],
-        'hasAddresses' => ['except' => 0],
+        'withAddresses' => ['except' => 0],
     ];
+
+    public function mount()
+    {
+        $this->categories = Category::all();
+        $this->subcategories = Subcategory::where('name', 'like', '%'.$this->search.'%')
+            ->orWhere('descriptions', 'like', '%'.$this->search.'%')
+            ->orWhere('translations', 'like', '%'.$this->search.'%')
+            ->orderBy('name', 'asc')
+            ->withCount('hasAddresses')
+            ->has('hasAddresses', '>=', $this->withAddresses)
+            ->paginate(25);
+    }
 
     public function updatingSearch()
     {
@@ -32,17 +45,9 @@ class ListCategory extends Component
 
     public function render()
     {
-        $categories = Category::all();
-        $subcategories = Subcategory::where('name', 'like', '%'.$this->search.'%')
-            ->orWhere('descriptions', 'like', '%'.$this->search.'%')
-            ->orWhere('translations', 'like', '%'.$this->search.'%')
-            ->orderBy('name', 'asc')
-            ->withCount('hasAddresses')
-            ->paginate(25);
-
         return view('livewire.category.list-category', [
-            'categories' => $categories,
-            'subcategories' => $subcategories,
+            'categories' => $this->categories,
+            'subcategories' => $this->subcategories,
         ]);
     }
 }

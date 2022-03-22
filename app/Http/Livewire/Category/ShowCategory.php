@@ -12,11 +12,11 @@ class ShowCategory extends Component
 {
     use WithPagination;
 
-    public Category $category;
     public $filter = '';
     public $page = 1;
     public $search = '';
     public $slug;
+    public Category $category;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -26,7 +26,7 @@ class ShowCategory extends Component
 
     public function mount($slug)
     {
-        $this->subcategory = Subcategory::find( $this->slug);
+        $this->subcategory = Subcategory::find($this->slug);
     }
 
     public function updatingSearch()
