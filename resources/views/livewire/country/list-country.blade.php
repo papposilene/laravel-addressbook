@@ -9,11 +9,11 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw h-8 w-8"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw h-8 w-8"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw h-8 w-8"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw h-8 w-8"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw h-8 w-8"></i>
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw"></i>
 
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
@@ -72,9 +72,9 @@
                             <td class="break-words">
 
                             </td>
-                            <td class="break-words">
-                                <svg><use xlink:href="#see"></use></svg>
-                                <svg><use xlink:href="#edit"></use></svg>
+                            <td class="flex flex-row justify-center">
+                                <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
                             </td>
                         </tr>
                         @endforeach
