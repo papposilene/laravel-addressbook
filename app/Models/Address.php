@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Spatie\Tags\HasTags;
 
 class Address extends Model
 {
-    use HasFactory, HasTags, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
         /**
      * The table associated with the model.

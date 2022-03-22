@@ -91,18 +91,6 @@ class Category extends Model
     }
 
     /**
-     * Get all the subcategories for a specific category.
-     */
-    public function hasManyCategory(): HasMany
-    {
-        return $this->hasMany(
-            Subcategory::class,
-            'slug',
-            'category_slug'
-        );
-    }
-
-    /**
      * Find a category by its uuid.
      *
      * @param string $uuid
@@ -160,6 +148,32 @@ class Category extends Model
         }
 
         return $category;
+    }
+
+    /**
+     * Get all the subcategories for a specific category.
+     */
+    public function hasManyCategories(): HasMany
+    {
+        return $this->hasMany(
+            Subcategory::class,
+            'slug',
+            'category_slug'
+        );
+    }
+
+    /**
+     * A category has many subcategories.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hasSubcategories(): HasMany
+    {
+        return $this->hasMany(
+            Subcategory::class,
+            'slug',
+            'subcategory_slug'
+        );
     }
 
 }
