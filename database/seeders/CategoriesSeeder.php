@@ -22,10 +22,11 @@ class CategoriesSeeder extends Seeder
         DB::table('categories__')->delete();
         DB::table('categories__subcategories')->delete();
 
-        $file = File::get(storage_path('data/categories/categories.json'));
-        $json = json_decode($file);
+        // First, categories...
+        $fileC = File::get(storage_path('data/categories/categories.json'));
+        $jsonC = json_decode($fileC);
 
-        foreach ($json as $data) {
+        foreach ($jsonC as $data) {
             $category = Category::firstOrCreate([
                 'name' => $data->name,
                 'slug' => Str::slug($data->name, '-'),
@@ -36,6 +37,15 @@ class CategoriesSeeder extends Seeder
                 'translations' => json_decode(json_encode($data->translations), true),
                 'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
+        }
+
+        // Then, subcategories.
+        $fileS = File::get(storage_path('data/categories/subcategories.json'));
+        $jsonS = json_decode($fileS);
+
+        foreach ($jsonS as $data) {
+            $slug = Str::slug($data->category_slug, '-');
+            $category = Category::find($slug);
 
             $category = Subcategory::firstOrCreate([
                 'category_slug' => $category->slug,
