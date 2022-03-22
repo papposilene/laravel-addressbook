@@ -161,7 +161,7 @@ class Subcategory extends Model
     {
         return $this->belongsTo(
             Category::class,
-            'subcategory_slug',
+            'category_slug',
             'slug'
         );
     }

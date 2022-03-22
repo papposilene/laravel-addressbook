@@ -22,6 +22,7 @@ return [
     'https' => 'https://www.',
     'import' => 'importer',
     'informations' => 'informations',
+    'iteration' => '#',
     'latitude' => 'latitude',
     'loading' => 'chargement des données en cours...',
     'longitude' => 'longitude',
