@@ -45,7 +45,7 @@
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
                     </div>
-                    <!--x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" /-->
+                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>
                 <!-- End of navigation and search -->
 
@@ -61,9 +61,9 @@
                                 <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                                 <th class="w-1/12 text-center p-3">@ucfirst(__('country.cca3'))</th>
                                 <th class="w-2/12 text-center">@ucfirst(__('city.city'))</th>
-                                <th class="w-4/12 text-center">@ucfirst(__('address.name'))</th>
+                                <th class="w-5/12 text-center">@ucfirst(__('address.name'))</th>
                                 <th class="w-1/12 text-center">@ucfirst(__('address.status'))</th>
-                                <th class="w-3/12 text-center">@ucfirst(__('app.actions'))</th>
+                                <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                             </tr>
                         </thead>
                         <tbody>

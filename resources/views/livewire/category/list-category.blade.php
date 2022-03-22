@@ -44,7 +44,7 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-                        <x-interfaces.toggle wire:model="hasAddresses" type="toggle" class="ml-2" :placeholder="@ucfirst(__('app.toggle'))" />
+                        <x-interfaces.toggle wire:model="withAddresses" type="toggle" class="ml-2" :placeholder="@ucfirst(__('app.toggle'))" />
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>

@@ -31,57 +31,51 @@
                 <div class="flex flex-wrap">
 
                 </div>
-                <!--x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" /-->
+                <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
             </div>
             <!-- End of navigation and search -->
 
             <!-- Pagination -->
-            {{ $addresses->links() }}
+            {{ $cities->links() }}
             <!-- End of pagination -->
 
-            <!-- Addresses -->
+            <!-- Cities -->
             <div class="py-5">
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
                         <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 text-center p-3">@ucfirst(__('country.cca3'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('country.flag_icon'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('country.name_common'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('country.states'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('city.cities'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
-                            <th class="w-3/12 text-center">@ucfirst(__('app.actions'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($countries as $country)
+                        @foreach($cities as $city)
                         <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $country->cca3 }}</td>
-                            <td class="text-center">{{ $country->flag }}</td>
+                            <td class="break-words">{{ $city->state }}</td>
                             <td class="break-words">
-                                {{ $country->name_eng_common }}
+                                {{ $city->name }}
                             </td>
                             <td class="text-center">
-                                {{ $country->belongsToContinent->name }}
+                                {{ $city->has_addresses_count }}
                             </td>
-                            <td class="text-center">
-                                {{ $country->hasCities()->count() }}
-                            </td>
-                            <td class="break-words">
-
-                            </td>
-                            <td class="break-words">
-
+                            <td class="flex flex-auto grow items-center justify-evenly">
+                                <svg class="h-6 w-6"><use xlink:href="#show"></use></svg>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            <!-- End of addresses -->
+            <!-- End of cities -->
 
             <!-- Pagination -->
-            {{ $addresses->links() }}
+            {{ $cities->links() }}
             <!-- End of pagination -->
         </div>
     </div>
