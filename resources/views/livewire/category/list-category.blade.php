@@ -9,16 +9,17 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="icons" class="fas fa-icons"></i>
-        <i data-fa-symbol="create" class="fas fa-plus"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis"></i>
+        <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw"></i>
 
         <div class="flex flex-row max-w-7xl mx-auto py-5 px-6">
             <div class="flex flex-col pr-2 w-1/4">
-                <ol>
+                <h3 class="text-xl">@ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))</h3>
+                <ol class="">
                     @foreach($categories as $category)
                     <li class="flex flex-row justify-between">
                         <span class="">{{ $category->translations }}</span>
@@ -72,7 +73,7 @@
                             @foreach($subcategories as $subcategory)
                             <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td class="text-center">
+                                <td class="flex flex-auto grow items-center justify-evenly">
                                     <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }}"></i>
                                     <svg class="{{ $subcategory->icon_style }} h-6 w-6"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
                                 </td>
@@ -83,10 +84,10 @@
                                 <td class="text-center">
                                     {{ $subcategory->has_addresses_count }}
                                 </td>
-                                <td class="flex flex-row justify-center">
-                                    <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
-                                    <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
-                                    <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
+                                <td class="flex flex-auto grow items-center justify-evenly">
+                                    <svg class="h-6 w-6"><use xlink:href="#show"></use></svg>
+                                    <svg class="h-6 w-6"><use xlink:href="#edit"></use></svg>
+                                    <svg class="h-6 w-6"><use xlink:href="#delete"></use></svg>
                                 </td>
                             </tr>
                             @endforeach
