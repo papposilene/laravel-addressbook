@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('addresses__', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->uuid('uuid');
             $table->string('place_name', 255);
             $table->boolean('place_status')->default(1);
             $table->string('address_number', 255)->nullable();
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->foreign('address_country')
                 ->references('cca3')->on('geodata__countries')->onDelete('cascade');
             $table->foreign('subcategory_slug')
-                ->references('slug')->on('categories__subcategories');
+                ->references('slug')->on('categories__subcategories')->onDelete('cascade');
         });
     }
 
