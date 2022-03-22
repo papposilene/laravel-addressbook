@@ -6,10 +6,11 @@ use App\Http\Livewire\Address\ListAddress;
 use App\Http\Livewire\Address\ShowAddress;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Category\ShowCategory;
-//use App\Http\Livewire\City\ShowCity;
+use App\Http\Livewire\City\ShowCity;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowDashboard;
+use App\Http\Livewire\Map\ShowMap;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/dashboard', 301);
+Route::get('/', ShowMap::class)->name('map');
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
-//Route::get('/about', ShowAbout::class)->name('front.about');
 
 // Addresses
 Route::get('/addresses', ListAddress::class)->name('front.address.index');
@@ -35,10 +35,10 @@ Route::get('/address/{uuid}', ShowAddress::class)->name('front.address.show');
 Route::get('/categories', ListCategory::class)->name('front.category.index');
 Route::get('/category/{uuid}', ShowCategory::class)->name('front.category.show');
 
-// Countries
+// Countries & cities
 Route::get('/countries', ListCountry::class)->name('front.country.index');
-Route::get('/country/{uuid}', ShowCountry::class)->name('front.country.show');
-//Route::get('/country/{uuid}/{uuid}', ShowCity::class)->name('front.city.show');
+Route::get('/country/{cca3}', ShowCountry::class)->name('front.country.show');
+Route::get('/country/{cca3}/{uuid}', ShowCity::class)->name('front.city.show');
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Addresses
