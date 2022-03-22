@@ -17,6 +17,7 @@ return [
     'all' => 'tout',
     'count' => 'total',
     'create' => 'ajouter',
+    'dashboard' => 'dashboard',
     'delete' => 'supprimer',
     'description' => 'description',
     'ddmmyyyy' => 'JJ/MM/AAAA',

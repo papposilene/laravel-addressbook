@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Country;
 
-use App\Models\Country;
+use Papposilene\Geodata\Models\Country;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,7 +15,7 @@ class ListCountry extends Component
     public $page = 1;
     public $search = '';
     public $withAddresses = 0;
-    public Country $countries;
+    protected $countries;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -33,8 +33,8 @@ class ListCountry extends Component
             ->orWhere('name_native', 'like', '%'.$this->search.'%')
             ->orWhere('name_translations', 'like', '%'.$this->search.'%')
             ->orderBy('cca3', 'asc')
-            ->withCount('hasAddresses')
-            ->has('hasAddresses', '>=', $this->withAddresses)
+            //->withCount('hasAddresses')
+            //->has('hasAddresses', '>=', $this->withAddresses)
             ->paginate(25);
     }
 

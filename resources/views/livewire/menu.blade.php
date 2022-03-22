@@ -19,15 +19,15 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.country.*')">
-                        @ucfirst(__('app.countries'))
+                        @ucfirst(__('country.countries'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.category.*')">
-                        @ucfirst(__('app.categories'))
+                        @ucfirst(__('category.categories'))
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-bluegray-900 dark:text-bluegray-100"
                         :active="request()->routeIs('front.address.*')">
-                        @ucfirst(__('app.addresses'))
+                        @ucfirst(__('address.addresses'))
                     </x-jet-nav-link>
                     @auth
                     <x-jet-nav-link href="" class="text-bluegray-900 dark:text-bluegray-100"

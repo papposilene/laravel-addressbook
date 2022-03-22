@@ -16,8 +16,8 @@ class ListCategory extends Component
     public $page = 1;
     public $search = '';
     public $withAddresses = 0;
-    public Category $categories;
-    public Subcategory $subcategories;
+    protected $categories;
+    protected $subcategories;
 
     protected $queryString = [
         'filter' => ['except' => ''],

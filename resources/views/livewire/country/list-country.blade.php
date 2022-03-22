@@ -41,11 +41,14 @@
 
             <!-- Countries -->
             <div class="py-5">
+                <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
                 <table class="w-full p-5 table-fixed rounded shadow">
                     <thead>
-                        <tr class="bg-bluegray-700 dark:bg-gray-900 text-white">
+                        <tr class="bg-slate-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('country.continents'))</th>
+                            <th class="w-1/12 text-center">
+                                <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
+                            </th>
                             <th class="w-1/12 text-center p-3">@ucfirst(__('country.cca3'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('country.flag_icon'))</th>
                             <th class="w-5/12 text-center">@ucfirst(__('country.name_common'))</th>
