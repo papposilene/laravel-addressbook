@@ -6,11 +6,10 @@ use App\Http\Livewire\Address\ListAddress;
 use App\Http\Livewire\Address\ShowAddress;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Category\ShowCategory;
+//use App\Http\Livewire\City\ShowCity;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowDashboard;
-use App\Http\Livewire\Tag\ListTag;
-use App\Http\Livewire\Tag\ShowTag;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,10 +38,7 @@ Route::get('/category/{uuid}', ShowCategory::class)->name('front.category.show')
 // Countries
 Route::get('/countries', ListCountry::class)->name('front.country.index');
 Route::get('/country/{uuid}', ShowCountry::class)->name('front.country.show');
-
-// Tags
-Route::get('/tags', ListTag::class)->name('front.tag.index');
-Route::get('/tag/{uuid}', ShowTag::class)->name('front.tag.show');
+//Route::get('/country/{uuid}/{uuid}', ShowCity::class)->name('front.city.show');
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Addresses
