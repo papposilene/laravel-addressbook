@@ -3,7 +3,7 @@
         "name": "Gastronomy",
         "slug": "gastronomy",
         "icon_image": "fork-knife",
-        "icon_style": "",
+        "icon_style": "stroke-red-700 dark:stroke-red-200",
         "translations": {
             "en": "Gastronomy",
             "fr": "Gastronomie"
@@ -17,7 +17,7 @@
         "name": "Tourism",
         "slug": "tourism",
         "icon_image": "landmark",
-        "icon_style": "",
+        "icon_style": "stroke-yellow-700 dark:stroke-yellow-200",
         "translations": {
             "en": "Tourism",
             "fr": "Tourisme"
@@ -31,7 +31,7 @@
         "name": "Shop",
         "slug": "shop",
         "icon_image": "store",
-        "icon_style": "",
+        "icon_style": "stroke-rose-700 dark:stroke-rose-200",
         "translations": {
             "en": "Shops",
             "fr": "Magasins"
@@ -45,7 +45,7 @@
         "name": "Religion",
         "slug": "religion",
         "icon_image": "place-of-worship",
-        "icon_style": "",
+        "icon_style": "stroke-cyan-700 dark:stroke-cyan-200",
         "translations": {
             "en": "Religious places",
             "fr": "Lieux religieux et de cultes"
@@ -59,7 +59,7 @@
         "name": "Amenity",
         "slug": "amenity",
         "icon_image": "map-location",
-        "icon_style": "",
+        "icon_style": "stroke-orange-700 dark:stroke-orange-200",
         "translations": {
             "en": "Amenities",
             "fr": "Lieux d'intérêt"
@@ -73,7 +73,7 @@
         "name": "Administrative",
         "slug": "administrative",
         "icon_image": "building",
-        "icon_style": "",
+        "icon_style": "stroke-purple-700 dark:stroke-purple-200",
         "translations": {
             "en": "Areas to visit",
             "fr": "Régions à visiter"
@@ -87,7 +87,7 @@
         "name": "Other",
         "slug": "other",
         "icon_image": "notebook",
-        "icon_style": "",
+        "icon_style": "stroke-slate-700 dark:stroke-slate-200",
         "translations": {
             "en": "Other addresses",
             "fr": "Adresses inclassables"
