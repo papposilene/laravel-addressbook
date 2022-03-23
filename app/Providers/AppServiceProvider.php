@@ -60,6 +60,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('uppercase', function ($expression) {
             return "<?php echo strtoupper($expression); ?>";
         });
+        Blade::directive('urlencode', function ($expression) {
+            return "<?php echo urlencode($expression); ?>";
+        });
         Blade::directive('year', function ($expression) {
             return "<?php echo ($expression)->format('Y'); ?>";
         });
