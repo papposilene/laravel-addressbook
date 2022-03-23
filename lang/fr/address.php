@@ -24,7 +24,7 @@ return [
     'osmid' => 'OpenStreetMap ID',
     'placeid' => 'Place ID',
     'phone' => 'numéro de téléphone',
-    'search_with' => 'chercher le lieu via',
+    'search_with' => 'se rendre à l’adresse avec',
     'search_with_citymapper' => 'Citymapper',
     'search_with_gmaps' => 'Google Maps',
     'search_with_osm_pid' => 'OpenStreetMap',
