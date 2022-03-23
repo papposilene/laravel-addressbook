@@ -10,11 +10,11 @@
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
         <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw"></i>
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
 
         <div class="flex flex-row max-w-7xl mx-auto py-5 px-6">
             <div class="flex flex-col pr-2 w-1/4">
@@ -30,11 +30,11 @@
                     @foreach($categories as $category)
                     <li>
                         <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                            <span class="">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }}"></i>
+                            <span class="inline-flex align-middle">
+                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
                                 <svg class="{{ $category->icon_style }} h-5 w-5">
                                     <use xlink:href="#{{ $category->slug }}"></use>
-                                </svg>
+                                </svg>&nbsp;
                                 {{ $category->translations }}
                             </span>
                             <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
