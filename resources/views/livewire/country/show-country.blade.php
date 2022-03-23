@@ -3,11 +3,9 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
-            <span class="text-gray-500">
-                {{ $country->belongsToContinent->name }} /
-                {{ $country->belongsToSubcontinent->name }} /
-            </span>
-            <span>
+            <span class="inline-flex align-middle">
+                {{ $country->belongsToContinent->name }}&nbsp;/
+                {{ $country->belongsToSubcontinent->name }}&nbsp;/
                 {{ $country->flag }}&nbsp;
                 {{ $country->name_eng_formal }}
             </span>

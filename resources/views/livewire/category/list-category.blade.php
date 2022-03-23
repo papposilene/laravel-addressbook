@@ -3,7 +3,9 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))</span>
+            <span class="inline-flex align-middle">
+                @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
+            </span>
         </h2>
     </x-slot>
 
@@ -23,8 +25,11 @@
                 </h3>
                 <ol class="bg-slate-200 p-3 rounded-b">
                     <li>
-                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
-                            <span class="mb-1.5">@ucfirst(__('category.all'))</span>
+                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
+                            <span class="inline-flex align-middle">
+                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
+                                @ucfirst(__('category.all'))
+                            </span>
                         </a>
                     </li>
                     @foreach($categories as $category)
@@ -98,12 +103,16 @@
                                 <td class="break-words">
                                     {{ $subcategory->belongsToCategory->translations }}
                                 </td>
-                                <td class="break-words">{{ $subcategory->translations }}</td>
+                                <td class="break-words">
+                                    <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}">
+                                        {{ $subcategory->translations }}
+                                    </a>
+                                </td>
                                 <td class="text-center">
                                     {{ $subcategory->has_addresses_count }}
                                 </td>
                                 <td class="flex flex-row h-12 items-center justify-center">
-                                    <a href="#" class="mx-1">
+                                    <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}" class="mx-1">
                                         <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
                                     </a>
                                     <a href="#" class="mx-1">

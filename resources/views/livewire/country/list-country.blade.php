@@ -3,7 +3,9 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
-            <span>@ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.countries')]))</span>
+            <span class="inline-flex align-middle">
+                @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.countries')]))
+            </span>
         </h2>
     </x-slot>
 
@@ -23,7 +25,7 @@
                 </h3>
                 <ol class="bg-slate-200 p-3 rounded-b">
                     <li>
-                        <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between m-1">
+                        <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between mb-2">
                             <span class="mb-1.5">@ucfirst(__('country.all_subcontinents'))</span>
                         </a>
                     </li>
