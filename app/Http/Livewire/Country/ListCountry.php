@@ -26,8 +26,6 @@ class ListCountry extends Component
         'withAddresses' => ['except' => 0],
     ];
 
-
-
     public function updatingSearch()
     {
         $this->resetPage();

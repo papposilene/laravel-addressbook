@@ -12,11 +12,13 @@ class ShowCategory extends Component
 {
     use WithPagination;
 
-    public $filter = '';
+    public string $filter = '';
     public $page = 1;
-    public $search = '';
-    public $slug;
-    public Category $category;
+    public string $search = '';
+    public string $slug;
+    protected $addresses;
+    protected $categories;
+    protected $subcategory;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -26,7 +28,7 @@ class ShowCategory extends Component
 
     public function mount($slug)
     {
-        $this->subcategory = Subcategory::find($this->slug);
+        $this->slug = $slug;
     }
 
     public function updatingSearch()
@@ -36,7 +38,11 @@ class ShowCategory extends Component
 
     public function render()
     {
+        $this->categories = Category::all();
+        $this->subcategory = Subcategory::findOrFail($this->slug);
+
         return view('livewire.category.show-category', [
+            'categories' => $this->categories,
             'subcategory' => $this->subcategory,
             'addresses' => $this->subcategory
                 ->hasAddresses()
