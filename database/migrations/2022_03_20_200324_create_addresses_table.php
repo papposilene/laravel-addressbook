@@ -20,22 +20,24 @@ return new class extends Migration
             $table->string('address_number', 255)->nullable();
             $table->string('address_street', 255)->nullable();
             $table->string('address_postcode', 255)->nullable();
-            $table->uuid('address_city');
-            $table->string('address_country', 3);
+            $table->string('address_city', 255);
+            $table->string('address_country', 255);
+            $table->uuid('city_uuid')->nullable();
+            $table->string('country_cca3', 3);
             $table->float('address_lat');
             $table->float('address_lon');
-            $table->text('descriptions')->nullable();
+            $table->text('description')->nullable();
             $table->json('details')->nullable();
             $table->uuid('subcategory_slug');
-            $table->integer('osm_id')->nullable();
-            $table->integer('osm_place_id')->nullable();
+            $table->integer('osm_id', false)->nullable();
+            $table->integer('osm_place_id', false)->nullable();
             $table->string('gmap_pluscode', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('address_city')
+            $table->foreign('city_uuid')
                 ->references('uuid')->on('geodata__cities')->onDelete('cascade');
-            $table->foreign('address_country')
+            $table->foreign('country_cca3')
                 ->references('cca3')->on('geodata__countries')->onDelete('cascade');
             $table->foreign('subcategory_slug')
                 ->references('slug')->on('categories__subcategories')->onDelete('cascade');

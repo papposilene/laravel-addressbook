@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             CountriesSeeder::class,
             CitiesSeeder::class,
             CategoriesSeeder::class,
-            //AddressesSeeder::class,
+            AddressesSeeder::class,
         ]);
     }
 }
