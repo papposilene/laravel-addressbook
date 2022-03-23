@@ -77,13 +77,13 @@ class CountriesSeeder extends Seeder
                 ],
                 [
                     'slug' => Str::slug($subregion, '-'),
-                    'continent_id' => $continent->id,
+                    'continent_slug' => $continent->slug,
                 ]
             );
 
             Country::create([
-                'continent_id'      => $continent->id,
-                'subcontinent_id'   => $subcontinent->id,
+                'continent_slug'      => $continent->slug,
+                'subcontinent_slug'   => $subcontinent->slug,
                 // Various identifiant codes
                 'cca2'              => strtolower($data->cca2),
                 'cca3'              => strtolower($data->cca3),
