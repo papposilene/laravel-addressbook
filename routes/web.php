@@ -33,7 +33,7 @@ Route::get('/address/{uuid}', ShowAddress::class)->name('front.address.show');
 
 // Categories
 Route::get('/categories', ListCategory::class)->name('front.category.index');
-Route::get('/category/{uuid}', ShowCategory::class)->name('front.category.show');
+Route::get('/category/{slug}', ShowCategory::class)->name('front.category.show');
 
 // Countries & cities
 Route::get('/countries', ListCountry::class)->name('front.country.index');
