@@ -48,7 +48,7 @@
         "category_slug": "gastronomy",
         "name": "Restaurant",
         "slug": "restaurant",
-        "icon_image": "fork-knife",
+        "icon_image": "utensils",
         "icon_style": "",
         "translations": {
             "en": "Restaurants",
@@ -93,7 +93,7 @@
         "category_slug": "gastronomy",
         "name": "Pastry",
         "slug": "pastry",
-        "icon_image": "croissant",
+        "icon_image": "cake-candles",
         "icon_style": "",
         "translations": {
             "en": "Pastries",
@@ -198,7 +198,7 @@
         "category_slug": "gastronomy",
         "name": "Miscellaneous gastronomy",
         "slug": "gastronomy-other",
-        "icon_image": "basket-shopping-simple",
+        "icon_image": "clipboard-list",
         "icon_style": "",
         "translations": {
             "en": "Miscellaneous gastronomy",
@@ -483,7 +483,7 @@
         "category_slug": "shop",
         "name": "Toys",
         "slug": "toys",
-        "icon_image": "teddy-bear",
+        "icon_image": "gamepad",
         "icon_style": "",
         "translations": {
             "en": "Toys",
@@ -573,7 +573,7 @@
         "category_slug": "amenity",
         "name": "Park",
         "slug": "park",
-        "icon_image": "bench-tree",
+        "icon_image": "tree",
         "icon_style": "",
         "translations": {
             "en": "Parks (and recreation)",
