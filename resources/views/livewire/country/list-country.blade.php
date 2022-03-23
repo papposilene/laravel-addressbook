@@ -76,8 +76,12 @@
 
                             </td>
                             <td class="flex flex-row justify-center">
-                                <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
-                                <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
+                                <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}">
+                                    <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                </a>
+                                <a href="">
+                                    <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
