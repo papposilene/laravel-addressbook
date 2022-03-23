@@ -13,8 +13,10 @@ return [
 
     'continent' => 'continent',
     'continents' => 'continents',
-    'subcontinent' => 'subcontinent',
-    'subcontinents' => 'subcontinents',
+    'subcontinent' => 'sous-continent',
+    'subcontinents' => 'sous-continents',
+    'all_continents' => 'tous les continents',
+    'all_subcontinents' => 'tous les sous-continents',
 
     'country' => 'pays',
     'countries' => 'pays',
