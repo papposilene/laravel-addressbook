@@ -26,21 +26,6 @@ class ListCategory extends Component
         'withAddresses' => ['except' => 0],
     ];
 
-    public function mount()
-    {
-        $this->categories = Category::orderBy('slug', 'asc')->get();
-        $this->subcategories = Subcategory::where('category_slug', 'like', '%'.$this->filter.'%')
-            ->where(function($query) {
-                $query->where('name', 'like', '%'.$this->search.'%')
-                    ->where('descriptions', 'like', '%'.$this->search.'%')
-                    ->where('translations', 'like', '%'.$this->search.'%');
-            })
-            ->orderBy('name', 'asc')
-            ->withCount('hasAddresses')
-            ->has('hasAddresses', '>=', $this->withAddresses)
-            ->paginate(25);
-    }
-
     public function updatingSearch()
     {
         $this->resetPage();
@@ -48,6 +33,20 @@ class ListCategory extends Component
 
     public function render()
     {
+        $this->categories = Category::orderBy('slug', 'asc')->get();
+        $this->subcategories = Subcategory::where('category_slug', 'like', '%'.$this->filter.'%')
+            ->where(function($query) {
+                $query->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('slug', 'like', '%'.$this->search.'%')
+                    ->orWhere('category_slug', 'like', '%'.$this->search.'%')
+                    ->orWhere('descriptions', 'like', '%'.$this->search.'%')
+                    ->orWhere('translations', 'like', '%'.$this->search.'%');
+            })
+            ->orderBy('name', 'asc')
+            ->withCount('hasAddresses')
+            ->has('hasAddresses', '>=', $this->withAddresses)
+            ->paginate(25);
+
         return view('livewire.category.list-category', [
             'categories' => $this->categories,
             'subcategories' => $this->subcategories,
