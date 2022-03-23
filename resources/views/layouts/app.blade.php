@@ -49,14 +49,14 @@
         <!-- End Matomo Code -->
         @endif
     </head>
-    <body class="antialiased font-sans bg-bluegray-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="antialiased font-sans bg-slate-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div id="addressbook" class="flex flex-col h-min-screen">
             <livewire:menu />
 
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="flex bg-white dark:bg-gray-900 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-start max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
