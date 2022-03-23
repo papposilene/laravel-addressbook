@@ -2,21 +2,23 @@
 
 namespace App\Http\Livewire\Country;
 
-use App\Models\Country;
+use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Papposilene\Geodata\Models\Country;
 
 class ShowCountry extends Component
 {
     use WithPagination;
 
-    public $filter = '';
+    public string $cca3;
+    public string $filter = '';
     public $page = 1;
-    public $search = '';
-    public $withAddresses = 0;
-    public City $cities;
-    public Country $country;
+    public string $search = '';
+    public int $withAddresses = 0;
+    protected $cities;
+    protected $country;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -27,8 +29,10 @@ class ShowCountry extends Component
 
     public function mount($cca3)
     {
-        $this->country = Country::firstOrFail($cca3);
-        $this->cities = City::where('country_cca3', $cca3)
+        $this->cca3 = $cca3;
+        $this->country = Country::where('cca3', $this->cca3)->firstOrFail();
+        $this->cities = City::where('country_cca3', $this->cca3)
+            ->orderBy('state', 'asc')
             ->orderBy('name', 'asc')
             ->withCount('hasAddresses')
             ->has('hasAddresses', '>=', $this->withAddresses)
