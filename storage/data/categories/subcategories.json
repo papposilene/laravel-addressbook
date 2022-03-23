@@ -151,6 +151,21 @@
     },
     {
         "category_slug": "gastronomy",
+        "name": "Winery",
+        "slug": "winery",
+        "icon_image": "wine-bottle",
+        "icon_style": "",
+        "translations": {
+            "en": "Wineries",
+            "fr": "Vignobles"
+        },
+        "descriptions": {
+            "en": "The fruit of the vine...",
+            "fr": "Le fruit de la vigne (et le travail des hommes)..."
+        }
+    },
+    {
+        "category_slug": "gastronomy",
         "name": "Marketplace",
         "slug": "marketplace",
         "icon_image": "bag-shopping",
@@ -616,6 +631,21 @@
     },
     {
         "category_slug": "amenity",
+        "name": "Spa",
+        "slug": "spa",
+        "icon_image": "spa",
+        "icon_style": "",
+        "translations": {
+            "en": "Spa & resort",
+            "fr": "Spa et autres décontractions"
+        },
+        "descriptions": {
+            "en": "Hotels",
+            "fr": "Un repos bien mérité..."
+        }
+    },
+    {
+        "category_slug": "amenity",
         "name": "Miscellaneous amenity",
         "slug": "amenity-other",
         "icon_image": "clipboard-list",
@@ -642,6 +672,21 @@
         "descriptions": {
             "en": "Cities to live in.",
             "fr": "Les villes à vivre."
+        }
+    },
+    {
+        "category_slug": "administrative",
+        "name": "Island",
+        "slug": "island",
+        "icon_image": "mountain",
+        "icon_style": "",
+        "translations": {
+            "en": "Islands",
+            "fr": "Îles"
+        },
+        "descriptions": {
+            "en": "Some places where you can maybe find Robinson Crusoe.",
+            "fr": "Les endroits où espérer retrouver Robinson Crusoé."
         }
     },
     {
