@@ -1569,6 +1569,9 @@ select {
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
+.fill-purple-700 {
+  fill: #7e22ce;
+}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1851,6 +1854,10 @@ select {
 .text-slate-800 {
   --tw-text-opacity: 1;
   color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+.text-purple-500 {
+  --tw-text-opacity: 1;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -2167,6 +2174,9 @@ select {
 .dark .dark\:bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.dark .dark\:fill-purple-200 {
+  fill: #e9d5ff;
 }
 .dark .dark\:text-gray-300 {
   --tw-text-opacity: 1;

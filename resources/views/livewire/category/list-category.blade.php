@@ -30,7 +30,13 @@
                     @foreach($categories as $category)
                     <li>
                         <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                            <span class="">{{ $category->translations }}</span>
+                            <span class="">
+                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }}"></i>
+                                <svg class="{{ $category->icon_style }} h-5 w-5">
+                                    <use xlink:href="#{{ $category->slug }}"></use>
+                                </svg>
+                                {{ $category->translations }}
+                            </span>
                             <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
                                 {{ $category->hasSubcategories()->count() }}
                             </span>
@@ -86,8 +92,8 @@
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                                 <td class="flex flex-row h-12 items-center justify-center">
-                                    <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }}"></i>
-                                    <svg class="{{ $subcategory->icon_style }} h-6 w-6"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
+                                    <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
+                                    <svg class="{{ $subcategory->icon_style }} h-5 w-5"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
                                 </td>
                                 <td class="break-words">
                                     {{ $subcategory->belongsToCategory->translations }}
