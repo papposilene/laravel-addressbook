@@ -103,13 +103,18 @@
                         </p>
                     </div>
 
-                    <livewire:interfaces.map :address="$address" :wire:key="$address->uuid" />
+                    @livewire('interfaces.map', [
+                        'address' => $address,
+                        'classes' => 'h-64 w-full rounded-t',
+                        'styles' => 'height:300px;',
+                        'key' => $address->uuid,
+                    ])
 
                     <div class="flex flex-row pb-3">
                         <i data-fa-symbol="openstreetmap" class="fa-solid fa-map-location-dot fa-fw"></i>
                         <i data-fa-symbol="citymapper" class="fa-solid fa-signs-post fa-fw"></i>
                         <i data-fa-symbol="google" class="fa-brands fa-google fa-fw"></i>
-                        <span class="flex grow bg-slate-300 text-black py-2 px-4 inline-flex items-center rounded-l">
+                        <span class="flex grow bg-slate-300 text-black py-2 px-4 inline-flex items-center rounded-bl">
                             @ucfirst(__('address.search_with'))
                         </span>
                         <a href="https://nominatim.openstreetmap.org/ui/details.html?place_id=@urlencode($address->osm_place_id)" target="_blank"
@@ -131,7 +136,7 @@
                             </span>
                         </a>
                         <a href="https://www.google.com/maps?q=@urlencode($address->gmap_pluscode)" target="_blank"
-                           class="bg-slate-300 hover:bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-r">
+                           class="bg-slate-300 hover:bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-br">
                             <span class="inline-flex">
                                 <svg class="mt-1 h-5 w-5">
                                     <use xlink:href="#google"></use>

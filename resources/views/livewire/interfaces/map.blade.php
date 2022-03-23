@@ -1,4 +1,4 @@
-<div class="flex flex-row pt-3 w-full" id="cartography"></div>
+<div id="cartography" class="flex flex-row pt-3 bg-red-500 {{ $classes }}" style="{{ $styles }}"></div>
 
 <script>
 document.addEventListener('livewire:load', function () {
