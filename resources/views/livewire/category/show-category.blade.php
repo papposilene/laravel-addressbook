@@ -1,4 +1,4 @@
-@section('title', $subcategory->slug)
+@section('title', $subcategory->translations)
 
 <div>
     <x-slot name="header">
@@ -98,12 +98,9 @@
                         <thead>
                         <tr class="bg-slate-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-1/12 text-center p-3">
-                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
-                            </th>
-                            <th class="w-3/12 text-center">@ucfirst(__('category.categories'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('category.name'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
+                            <th class="w-2/12 text-center">@ucfirst(__('country.name_common'))</th>
+                            <th class="w-6/12 text-center">@ucfirst(__('address.name'))</th>
+                            <th class="w-1/12 text-center">@ucfirst(__('address.status'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
                         </thead>
@@ -111,31 +108,34 @@
                         @foreach($addresses as $address)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td class="flex flex-row h-12 items-center justify-center">
-                                    <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
-                                    <svg class="{{ $subcategory->icon_style }} h-5 w-5"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
+                                <td class="break-words text-center">
+                                    <a href="{{ route('front.country.show', ['cca3' => $address->belongsToCountry->cca3]) }}">
+                                        {{ $address->belongsToCountry->flag }}
+                                        @uppercase($address->belongsToCountry->cca3)
+                                    </a>
                                 </td>
                                 <td class="break-words">
-                                    {{ $subcategory->belongsToCategory->translations }}
+                                    {{ $address->place_name }}
                                 </td>
-                                <td class="break-words">
-                                    <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}">
-                                        {{ $subcategory->translations }}
-                                    </a>
+                                <td>
+                                    <p class="flex flex-row h-12 items-center justify-center">
+                                        <i data-fa-symbol="closed" class="fas fa-times fa-fw text-red-500"></i>
+                                        <i data-fa-symbol="open" class="fas fa-check fa-fw text-green-500"></i>
+                                        <svg class="h-5 w-5"><use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use></svg>
+                                    </p>
                                 </td>
-                                <td class="text-center">
-                                    {{ $subcategory->has_addresses_count }}
-                                </td>
-                                <td class="flex flex-row h-12 items-center justify-center">
-                                    <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
-                                    </a>
-                                    <a href="#" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
-                                    </a>
-                                    <a href="#" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
-                                    </a>
+                                <td>
+                                    <p class="flex flex-row h-12 items-center justify-center">
+                                        <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
+                                            <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                        </a>
+                                        <a href="#" class="mx-1">
+                                            <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
+                                        </a>
+                                        <a href="#" class="mx-1">
+                                            <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
+                                        </a>
+                                    </p>
                                 </td>
                             </tr>
                         @endforeach

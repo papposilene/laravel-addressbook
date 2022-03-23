@@ -111,16 +111,25 @@
                                 <td class="text-center">
                                     {{ $subcategory->has_addresses_count }}
                                 </td>
-                                <td class="flex flex-row h-12 items-center justify-center">
-                                    <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
-                                    </a>
-                                    <a href="#" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
-                                    </a>
-                                    <a href="#" class="mx-1">
-                                        <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
-                                    </a>
+                                <td>
+                                    <p class="flex flex-row h-12 items-center justify-center">
+                                        <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
+                                           class="mx-1">
+                                            <svg class="h-5 w-5">
+                                                <use xlink:href="#show"></use>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="mx-1">
+                                            <svg class="h-5 w-5">
+                                                <use xlink:href="#edit"></use>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="mx-1">
+                                            <svg class="h-5 w-5">
+                                                <use xlink:href="#delete"></use>
+                                            </svg>
+                                        </a>
+                                    </p>
                                 </td>
                             </tr>
                             @endforeach
