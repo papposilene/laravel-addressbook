@@ -85,7 +85,7 @@
                             @foreach($subcategories as $subcategory)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td class="flex flex-auto grow items-stretch justify-center">
+                                <td class="flex flex-row h-12 items-center justify-center">
                                     <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }}"></i>
                                     <svg class="{{ $subcategory->icon_style }} h-6 w-6"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
                                 </td>
@@ -96,10 +96,16 @@
                                 <td class="text-center">
                                     {{ $subcategory->has_addresses_count }}
                                 </td>
-                                <td class="flex flex-auto grow items-stretch justify-evenly">
-                                    <svg class="h-6 w-6"><use xlink:href="#show"></use></svg>
-                                    <svg class="h-6 w-6"><use xlink:href="#edit"></use></svg>
-                                    <svg class="h-6 w-6"><use xlink:href="#delete"></use></svg>
+                                <td class="flex flex-row h-12 items-center justify-center">
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                    </a>
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
+                                    </a>
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

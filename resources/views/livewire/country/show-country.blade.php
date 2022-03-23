@@ -69,8 +69,10 @@
                             <td class="text-center">
                                 {{ $city->has_addresses_count }}
                             </td>
-                            <td class="flex flex-auto grow items-center justify-evenly">
-                                <svg class="h-6 w-6"><use xlink:href="#show"></use></svg>
+                            <td class="flex flex-row h-12 items-center justify-center">
+                                <a href="#" class="mx-1">
+                                    <svg class="h-6 w-6"><use xlink:href="#show"></use></svg>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

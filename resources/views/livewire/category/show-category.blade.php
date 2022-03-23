@@ -80,10 +80,16 @@
                                 </td>
                                 <td class="break-words">{{ $address->place_name }}</td>
                                 <td class="text-center">{{ $address->place_status }}</td>
-                                <td class="break-words">
-                                    <svg><use xlink:href="#show"></use></svg>
-                                    <svg><use xlink:href="#edit"></use></svg>
-                                    <svg><use xlink:href="#delete"></use></svg>
+                                <td class="flex flex-row h-12 items-center justify-center">
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                    </a>
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
+                                    </a>
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

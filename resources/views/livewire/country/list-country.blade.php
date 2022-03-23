@@ -77,11 +77,11 @@
                             <td class="break-words">
 
                             </td>
-                            <td class="flex flex-row justify-center">
-                                <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}">
+                            <td class="flex flex-row h-12 items-center justify-center">
+                                <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}" class="mx-1">
                                     <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
                                 </a>
-                                <a href="">
+                                <a href="" class="mx-1">
                                     <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
                                 </a>
                             </td>
