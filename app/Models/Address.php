@@ -84,6 +84,33 @@ class Address extends Model
     ];
 
     /**
+     * The attributes that are visible.
+     *
+     * @var array
+     */
+    protected $visible = [
+        'uuid',
+        'place_name',
+        'place_status',
+        'address_number',
+        'address_street',
+        'address_postcode',
+        'address_city',
+        'address_lat',
+        'address_lon',
+        'details_openinghours',
+        'details_phone',
+        'details_website',
+        'details_wikidata',
+        'description',
+        'category_uuid',
+        'country_uuid',
+        'osm_id',
+        'osm_place_id',
+        'gmap_pluscode',
+    ];
+
+    /**
      * Boot the Model.
      */
     public static function boot()
@@ -93,6 +120,21 @@ class Address extends Model
         self::creating(function ($model) {
             $model->uuid = (string) Str::uuid();
         });
+    }
+
+    /**
+     * Get the category for a specific place.
+     */
+    public function belongsToCategory()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Category',
+            'App\Models\Subcategory',
+            'category_slug',
+            'slug',
+            'slug',
+            'subcategory_slug',
+        );
     }
 
     /**

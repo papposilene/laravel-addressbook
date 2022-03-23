@@ -93,6 +93,34 @@ class Subcategory extends Model
     }
 
     /**
+     * A subcategory belongs to one category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function belongsToCategory(): BelongsTo
+    {
+        return $this->belongsTo(
+            Category::class,
+            'category_slug',
+            'slug'
+        );
+    }
+
+    /**
+     * A subcategory has many addresses.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hasAddresses(): HasMany
+    {
+        return $this->hasMany(
+            Address::class,
+            'subcategory_slug',
+            'slug'
+        );
+    }
+
+    /**
      * Find a subcategory by its uuid.
      *
      * @param string $uuid
@@ -151,33 +179,4 @@ class Subcategory extends Model
 
         return $subcategory;
     }
-
-    /**
-     * A subcategory belongs to one category.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function belongsToCategory(): BelongsTo
-    {
-        return $this->belongsTo(
-            Category::class,
-            'category_slug',
-            'slug'
-        );
-    }
-
-    /**
-     * A subcategory has many addresses.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function hasAddresses(): HasMany
-    {
-        return $this->hasMany(
-            Address::class,
-            'subcategory_slug',
-            'slug'
-        );
-    }
-
 }
