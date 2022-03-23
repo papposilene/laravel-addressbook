@@ -50,7 +50,7 @@ class CategoriesSeeder extends Seeder
             $category = Subcategory::firstOrCreate([
                 'category_slug' => $category->slug,
                 'name' => $data->name,
-                'slug' => Str::slug($data->name, '-'),
+                'slug' => Str::slug($data->slug, '-'),
             ],
             [
                 'icon_image' => $data->icon_image,

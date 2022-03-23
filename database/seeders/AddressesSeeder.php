@@ -33,8 +33,7 @@ class AddressesSeeder extends Seeder
             foreach ($json->regions as $region)
             {
                 foreach ($region->addresses as $data) {
-                    $subcategory = Subcategory::where('name', $data->category->type)
-                        ->orWhere('slug', Str::slug($data->category->type, '-'))
+                    $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
                         ->firstOrFail();
 
                     $city = City::where([
@@ -43,18 +42,18 @@ class AddressesSeeder extends Seeder
                     ])->first();
 
                     Address::create([
-                        'place_name' => $data->names->name,
+                        'place_name' => Str::of($data->names->name)->trim(),
                         'place_status' => $data->details->status,
                         'address_number' => (int) $data->address->number,
                         'address_street' => (string) $data->address->street,
                         'address_postcode' => (string) $data->address->postcode,
                         'address_city' => ($data->address->city ? $data->address->city : null),
                         'address_country' => $country->name_eng_common,
-                        'city_uuid' => $city->uuid,
+                        'city_uuid' => ($city ? $city->uuid : null),
                         'country_cca3' => $country->cca3,
                         'address_lat' => (float) $data->geolocation->lat,
                         'address_lon' => (float) $data->geolocation->lon,
-                        'description' => $data->details->description,
+                        'description' => Str::of($data->details->description)->trim(),
                         'details' => json_encode([
                             'opening_hours' => $data->details->opening_hours,
                             'phone' => $data->details->phone,
