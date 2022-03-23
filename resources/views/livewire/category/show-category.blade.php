@@ -39,7 +39,7 @@
                 <h3 class="bg-slate-300 p-3 text-xl rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
-                <ol class="bg-slate-200 p-3 rounded-b">
+                <ul class="bg-slate-200 p-3 rounded-b">
                     <li>
                         <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
                             <span class="inline-flex align-middle">
@@ -51,20 +51,20 @@
                     @foreach($categories as $category)
                         <li>
                             <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
-                                <svg class="{{ $category->icon_style }} h-5 w-5">
-                                    <use xlink:href="#{{ $category->slug }}"></use>
-                                </svg>&nbsp;
-                                {{ $category->translations }}
-                            </span>
+                                <span class="inline-flex align-middle">
+                                    <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                    <svg class="{{ $category->icon_style }} h-5 w-5">
+                                        <use xlink:href="#{{ $category->slug }}"></use>
+                                    </svg>&nbsp;
+                                    {{ $category->translations }}
+                                </span>
                                 <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
-                                {{ $category->hasSubcategories()->count() }}
-                            </span>
+                                    {{ $category->hasSubcategories()->count() }}
+                                </span>
                             </a>
                         </li>
                     @endforeach
-                </ol>
+                </ul>
             </div>
             <div class="flex flex-col pl-2 w-3/4">
                 @if ($errors->any())
@@ -115,7 +115,9 @@
                                     </a>
                                 </td>
                                 <td class="break-words">
-                                    {{ $address->place_name }}
+                                    <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}">
+                                        {{ $address->place_name }}
+                                    </a>
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">

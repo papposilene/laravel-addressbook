@@ -67,10 +67,14 @@
                             <td class="text-center">
                                 {{ $city->has_addresses_count }}
                             </td>
-                            <td class="flex flex-row h-12 items-center justify-center">
-                                <a href="#" class="mx-1">
-                                    <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
-                                </a>
+                            <td>
+                                <p class="flex flex-row h-12 items-center justify-center">
+                                    <a href="#" class="mx-1">
+                                        <svg class="h-5 w-5">
+                                            <use xlink:href="#show"></use>
+                                        </svg>
+                                    </a>
+                                </p>
                             </td>
                         </tr>
                         @endforeach

@@ -23,7 +23,7 @@
                 <h3 class="bg-slate-300 p-3 text-xl rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.subcontinents')]))
                 </h3>
-                <ol class="bg-slate-200 p-3 rounded-b">
+                <ul class="bg-slate-200 p-3 rounded-b">
                     <li>
                         <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between mb-2">
                             <span class="mb-1.5">@ucfirst(__('country.all_subcontinents'))</span>
@@ -68,18 +68,18 @@
 
                 <!-- Countries -->
                 <div class="py-5">
-                    <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
                     <table class="w-full p-5 table-fixed rounded shadow">
                         <thead>
                         <tr class="bg-slate-700 dark:bg-gray-900 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 text-center">
-                                <svg class="h-5 w-5">
-                                    <use xlink:href="#globe"></use>
-                                </svg>
+                            <th class="w-1/12 p-3">
+                                <p class="flex flex-row items-center justify-center">
+                                    <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
+                                    <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
+                                </p>
                             </th>
                             <th class="w-1/12 text-center">@ucfirst(__('country.flag_icon'))</th>
-                            <th class="w-4/12 text-center">@ucfirst(__('country.name_common'))</th>
+                            <th class="w-5/12 text-center">@ucfirst(__('country.name_common'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('city.count'))</th>
                             <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
@@ -104,13 +104,12 @@
                                 <td class="break-words">
 
                                 </td>
-                                <td class="flex flex-row h-12 items-center justify-center">
-                                    <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}"
-                                       class="mx-1">
-                                        <svg class="h-5 w-5">
-                                            <use xlink:href="#show"></use>
-                                        </svg>
-                                    </a>
+                                <td>
+                                    <p class="flex flex-row h-12 items-center justify-center">
+                                        <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}" class="mx-1">
+                                            <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
+                                        </a>
+                                    </p>
                                 </td>
                             </tr>
                         @endforeach

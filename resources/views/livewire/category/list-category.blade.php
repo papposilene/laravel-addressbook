@@ -23,7 +23,7 @@
                 <h3 class="bg-slate-300 p-3 text-xl rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
-                <ol class="bg-slate-200 p-3 rounded-b">
+                <ul class="bg-slate-200 p-3 rounded-b">
                     <li>
                         <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
                             <span class="inline-flex align-middle">
@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     @endforeach
-                </ol>
+                </ul>
             </div>
             <div class="flex flex-col pl-2 w-3/4">
                 @if ($errors->any())
@@ -83,8 +83,10 @@
                         <thead>
                             <tr class="bg-slate-700 dark:bg-gray-900 text-white">
                                 <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                                <th class="w-1/12 text-center p-3">
-                                    <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
+                                <th class="w-1/12 p-3">
+                                    <p class="flex flex-row items-center justify-center">
+                                        <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
+                                    </p>
                                 </th>
                                 <th class="w-3/12 text-center">@ucfirst(__('category.categories'))</th>
                                 <th class="w-4/12 text-center">@ucfirst(__('category.name'))</th>
@@ -96,9 +98,13 @@
                             @foreach($subcategories as $subcategory)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td class="flex flex-row h-12 items-center justify-center">
-                                    <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
-                                    <svg class="{{ $subcategory->icon_style }} h-5 w-5"><use xlink:href="#{{ $subcategory->slug }}"></use></svg>
+                                <td>
+                                    <p class="flex flex-row h-12 items-center justify-center">
+                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
+                                        <svg class="{{ $subcategory->icon_style }} h-5 w-5">
+                                            <use xlink:href="#{{ $subcategory->slug }}"></use>
+                                        </svg>
+                                    </p>
                                 </td>
                                 <td class="break-words">
                                     {{ $subcategory->belongsToCategory->translations }}
