@@ -81,9 +81,6 @@
                                 <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}" class="mx-1">
                                     <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
                                 </a>
-                                <a href="" class="mx-1">
-                                    <svg class="h-5 w-5"><use xlink:href="#edit"></use></svg>
-                                </a>
                             </td>
                         </tr>
                         @endforeach
