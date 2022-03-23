@@ -11,10 +11,11 @@ class ListAddress extends Component
 {
     use WithPagination;
 
-    public $filter = '';
+    public string $filter = '';
     public $page = 1;
-    public $search = '';
-    public Address $address;
+    public string $search = '';
+    protected $addresses;
+    protected $subcategories;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -29,13 +30,9 @@ class ListAddress extends Component
 
     public function render()
     {
-        if (Auth::check() && Auth::user()->can('publish addresses'))
-        {
-            return;
-        }
-
         $addresses = Address::where('place_name', 'like', '%'.$this->search.'%')
-            ->orderBy('place_name', 'desc')
+            ->orWhere('description', 'like', '%'.$this->search.'%')
+            ->orderBy('place_name', 'asc')
             ->paginate(25);
 
         return view('livewire.address.list-address', [
