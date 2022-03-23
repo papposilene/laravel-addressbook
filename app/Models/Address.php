@@ -98,12 +98,36 @@ class Address extends Model
     /**
      * Get the subcategory for a specific place.
      */
-    public function inSubcategory()
+    public function belongsToSubcategory()
     {
         return $this->belongsTo(
             'App\Models\Subcategory',
             'subcategory_slug',
             'slug'
+        );
+    }
+
+    /**
+     * Get the country for a specific place.
+     */
+    public function belongsToCountry()
+    {
+        return $this->belongsTo(
+            'Papposilene\Geodata\Models\Country',
+            'country_cca3',
+            'cca3'
+        );
+    }
+
+    /**
+     * Get the city for a specific place.
+     */
+    public function belongsToCity()
+    {
+        return $this->belongsTo(
+            'App\Models\City',
+            'city_uuid',
+            'uuid'
         );
     }
 
