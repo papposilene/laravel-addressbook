@@ -1,3 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import 'leaflet/dist/leaflet.css';
+@import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+@import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
+
+@import 'orejime/dist/orejime.css';

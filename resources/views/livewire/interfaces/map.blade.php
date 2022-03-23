@@ -1,14 +1,10 @@
-<div>
-    <div class="flex">
-        <div id="leaflet-map" class="w-full rounded shadow h-72"></div>
-    </div>
-</div>
+<div class="flex flex-row pt-3 w-full" id="cartography"></div>
 
 <script>
 document.addEventListener('livewire:load', function () {
-    var leafletMap = L.map('leaflet-map', {
+    var leafletMap = L.map('cartography', {
         center: [{{ $address->address_lat }}, {{ $address->address_lon }}],
-        zoom: 14,
+        zoom: 10,
         zoomControl: false
     });
 
