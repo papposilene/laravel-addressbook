@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
+        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span>@ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))</span>
         </h2>
     </x-slot>
@@ -22,9 +22,14 @@
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
                 <ol class="bg-slate-200 p-3 rounded-b">
+                    <li>
+                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
+                            <span class="mb-1.5">@ucfirst(__('category.all'))</span>
+                        </a>
+                    </li>
                     @foreach($categories as $category)
-                    <li class="flex flex-row justify-between m-1">
-                        <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}">
+                    <li>
+                        <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
                             <span class="">{{ $category->translations }}</span>
                             <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
                                 {{ $category->hasSubcategories()->count() }}
@@ -48,6 +53,9 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
+                        <button class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                            <svg class="h-6 w-6"><use xlink:href="#create"></use></svg>
+                        </button>
                         <x-interfaces.toggle wire:model="withAddresses" type="toggle" class="ml-2" :placeholder="@ucfirst(__('app.toggle'))" />
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />

@@ -16,6 +16,7 @@ return [
     'subcategory' => 'sous-catégorie',
     'subcategories' => 'sous-catégories',
 
+    'all' => 'toutes les catégories',
     'name' => 'nom',
 
 

@@ -12,10 +12,10 @@ class ListCategory extends Component
 {
     use WithPagination;
 
-    public $filter = '';
+    public string $filter = '';
     public $page = 1;
-    public $search = '';
-    public $withAddresses = 0;
+    public string $search = '';
+    public int $withAddresses = 0;
     protected $categories;
     protected $subcategories;
 
@@ -28,10 +28,13 @@ class ListCategory extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
-        $this->subcategories = Subcategory::where('name', 'like', '%'.$this->search.'%')
-            ->orWhere('descriptions', 'like', '%'.$this->search.'%')
-            ->orWhere('translations', 'like', '%'.$this->search.'%')
+        $this->categories = Category::orderBy('slug', 'asc')->get();
+        $this->subcategories = Subcategory::where('category_slug', 'like', '%'.$this->filter.'%')
+            ->where(function($query) {
+                $query->where('name', 'like', '%'.$this->search.'%')
+                    ->where('descriptions', 'like', '%'.$this->search.'%')
+                    ->where('translations', 'like', '%'.$this->search.'%');
+            })
             ->orderBy('name', 'asc')
             ->withCount('hasAddresses')
             ->has('hasAddresses', '>=', $this->withAddresses)
