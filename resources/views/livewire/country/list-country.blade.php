@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                         @foreach($countries as $country)
-                        <tr class="border-b border-bluegray-300 border-dashed h-12 w-12 p-4">
+                        <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
                             <td>
                                 {{ $country->belongsToContinent->name }}
@@ -67,7 +67,9 @@
                             <td class="text-center">{{ $country->cca3 }}</td>
                             <td class="text-center">{{ $country->flag }}</td>
                             <td class="break-words">
-                                {{ $country->name_eng_common }}
+                                <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}">
+                                    {{ $country->name_eng_common }}
+                                </a>
                             </td>
                             <td class="text-center">
                                 {{ $country->hasCities()->count() }}
