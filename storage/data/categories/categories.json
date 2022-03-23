@@ -86,7 +86,7 @@
     {
         "name": "Other",
         "slug": "other",
-        "icon_image": "notebook",
+        "icon_image": "clipboard-list",
         "icon_style": "stroke-slate-700 dark:stroke-slate-200",
         "translations": {
             "en": "Other addresses",

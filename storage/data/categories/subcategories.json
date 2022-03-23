@@ -33,7 +33,7 @@
         "category_slug": "gastronomy",
         "name": "Cafe",
         "slug": "cafe",
-        "icon_image": "coffee-pot",
+        "icon_image": "mug-hot",
         "icon_style": "",
         "translations": {
             "en": "Cafés",
@@ -63,7 +63,7 @@
         "category_slug": "gastronomy",
         "name": "Fast Food",
         "slug": "fast-food",
-        "icon_image": "burger-fries",
+        "icon_image": "burger",
         "icon_style": "",
         "translations": {
             "en": "Fast Food",
@@ -108,7 +108,7 @@
         "category_slug": "gastronomy",
         "name": "Bar",
         "slug": "bar",
-        "icon_image": "beer-mug",
+        "icon_image": "beer-mug-empty",
         "icon_style": "",
         "translations": {
             "en": "Bars",
@@ -123,7 +123,7 @@
         "category_slug": "gastronomy",
         "name": "Chocolate",
         "slug": "chocolate",
-        "icon_image": "candy-bar",
+        "icon_image": "cookie",
         "icon_style": "",
         "translations": {
             "en": "Chocolate factories",
@@ -348,7 +348,7 @@
         "category_slug": "tourism",
         "name": "Miscellaneous tourism",
         "slug": "tourism-other",
-        "icon_image": "notebook",
+        "icon_image": "clipboard-list",
         "icon_style": "",
         "translations": {
             "en": "Miscellaneous tourism",
@@ -378,7 +378,7 @@
         "category_slug": "shop",
         "name": "Clothes",
         "slug": "clothes",
-        "icon_image": "clothes-hanger",
+        "icon_image": "shirt",
         "icon_style": "",
         "translations": {
             "en": "Clothes stores",
@@ -423,7 +423,7 @@
         "category_slug": "shop",
         "name": "Bookshop",
         "slug": "bookshop",
-        "icon_image": "books",
+        "icon_image": "book",
         "icon_style": "",
         "translations": {
             "en": "Bookshops",
@@ -438,7 +438,7 @@
         "category_slug": "shop",
         "name": "Glassware",
         "slug": "glassware",
-        "icon_image": "glass",
+        "icon_image": "wine-glass-empty",
         "icon_style": "",
         "translations": {
             "en": "Glasswares",
@@ -498,7 +498,7 @@
         "category_slug": "shop",
         "name": "Miscellaneous shop",
         "slug": "shop-other",
-        "icon_image": "notebook",
+        "icon_image": "clipboard-list",
         "icon_style": "",
         "translations": {
             "en": "Miscellaneous shops",
@@ -618,7 +618,7 @@
         "category_slug": "amenity",
         "name": "Miscellaneous amenity",
         "slug": "amenity-other",
-        "icon_image": "notebook",
+        "icon_image": "clipboard-list",
         "icon_style": "",
         "translations": {
             "en": "Miscellaneous amenities",
@@ -647,8 +647,8 @@
     {
         "category_slug": "administrative",
         "name": "Miscellaneous administrative",
-        "slug": "administrative-other",
-        "icon_image": "notebook",
+        "slug": "building",
+        "icon_image": "clipboard-list",
         "icon_style": "",
         "translations": {
             "en": "Miscellaneous administrative",
