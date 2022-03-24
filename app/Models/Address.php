@@ -33,6 +33,7 @@ class Address extends Model
      */
     protected $casts = [
         //'uuid' => 'uuid',
+        'details' => 'array',
     ];
 
     /**
