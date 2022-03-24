@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories__', function (Blueprint $table) {
-            $table->uuid('uuid');
+            $table->uuid();
             $table->string('slug', 255)->primary();
             $table->string('name', 255)->unique();
             $table->string('icon_image', 255);

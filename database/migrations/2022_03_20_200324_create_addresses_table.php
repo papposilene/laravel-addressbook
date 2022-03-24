@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('addresses__', function (Blueprint $table) {
-            $table->uuid('uuid');
+            $table->uuid()->primary();
             $table->string('place_name', 255);
             $table->boolean('place_status')->default(1);
             $table->string('address_number', 255)->nullable();
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('address_country', 255);
             $table->uuid('city_uuid')->nullable();
             $table->string('country_cca3', 3);
-            $table->float('address_lat');
-            $table->float('address_lon');
+            $table->decimal('address_lat', 20, 16);
+            $table->decimal('address_lon', 20, 16);
             $table->text('description')->nullable();
             $table->json('details')->nullable();
             $table->uuid('subcategory_slug');

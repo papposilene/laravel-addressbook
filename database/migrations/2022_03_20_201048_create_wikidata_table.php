@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statistics__', function (Blueprint $table) {
+        Schema::create('addresses__wikipedia', function (Blueprint $table) {
             $table->uuid()->primary();
-            $table->uuid('model');
-            $table->integer('count', false)->default(0);
+            $table->uuid('address_uuid');
+            $table->string('wikidata_id', 255);
+            $table->string('wikipedia_url', 255);
+            $table->json('wikipedia_text');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('address_uuid')
+                ->references('uuid')->on('addresses__')->onDelete('cascade');
         });
     }
 
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statistics__');
+        Schema::dropIfExists('addresses__wikipedia');
     }
 };
