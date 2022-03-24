@@ -54,12 +54,12 @@ class AddressesSeeder extends Seeder
                         'address_lat' => (float) $data->geolocation->lat,
                         'address_lon' => (float) $data->geolocation->lon,
                         'description' => Str::of($data->details->description)->trim(),
-                        'details' => json_encode([
+                        'details' => [
                             'opening_hours' => $data->details->opening_hours,
                             'phone' => $data->details->phone,
                             'website' => $data->details->website,
                             'wikidata' => $data->details->wikidata,
-                        ], JSON_FORCE_OBJECT),
+                        ],
                         'subcategory_slug' => $subcategory->slug,
                         'osm_id' => (int)$data->geolocation->osm_id,
                         'osm_place_id' => (int)$data->geolocation->osm_place_id,
