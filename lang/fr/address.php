@@ -25,13 +25,14 @@ return [
     'placeid' => 'Place ID',
     'phone' => 'numéro de téléphone',
     'search_with' => 'se rendre à l’adresse avec',
+    'search_with_amap' => 'Apple Map',
     'search_with_citymapper' => 'Citymapper',
     'search_with_gmaps' => 'Google Maps',
     'search_with_osm_pid' => 'OpenStreetMap',
     'status' => 'status de l’adresse',
     'streetname' => 'rue',
     'streetnumber' => 'numéro de rue',
-    'suggesions' => 'suggestions',
+    'suggestions' => 'suggestions',
     'website' => 'site internet',
 
 ];
