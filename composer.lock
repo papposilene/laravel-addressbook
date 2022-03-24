@@ -2493,12 +2493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/papposilene/geodata.git",
-                "reference": "e1b8c4ca5a5cda43d2bdc5dac575d53b4a6cef81"
+                "reference": "1531bc44d439883c59e27b99ba0c9c85e77ad19c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/papposilene/geodata/zipball/e1b8c4ca5a5cda43d2bdc5dac575d53b4a6cef81",
-                "reference": "e1b8c4ca5a5cda43d2bdc5dac575d53b4a6cef81",
+                "url": "https://api.github.com/repos/papposilene/geodata/zipball/1531bc44d439883c59e27b99ba0c9c85e77ad19c",
+                "reference": "1531bc44d439883c59e27b99ba0c9c85e77ad19c",
                 "shasum": ""
             },
             "require": {
@@ -2563,7 +2563,7 @@
                 "issues": "https://github.com/papposilene/geodata/issues",
                 "source": "https://github.com/papposilene/geodata/tree/main"
             },
-            "time": "2022-03-23T10:59:55+00:00"
+            "time": "2022-03-24T18:51:47+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -8437,16 +8437,16 @@
         },
         {
             "name": "spatie/ignition",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "982f69f3c2e525cef62fa23ada047d745e4bcda9"
+                "reference": "be24d33a9de271638314924b5da85e168e4148e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/982f69f3c2e525cef62fa23ada047d745e4bcda9",
-                "reference": "982f69f3c2e525cef62fa23ada047d745e4bcda9",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/be24d33a9de271638314924b5da85e168e4148e4",
+                "reference": "be24d33a9de271638314924b5da85e168e4148e4",
                 "shasum": ""
             },
             "require": {
@@ -8503,7 +8503,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-19T14:07:30+00:00"
+            "time": "2022-03-23T11:02:14+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
