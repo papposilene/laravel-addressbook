@@ -9,13 +9,15 @@ class Map extends Component
 {
     public string $classes;
     public string $styles;
+    public int $zoom;
     public Address $address;
 
-    public function mount($address, $classes, $styles)
+    public function mount($address, $classes, $styles, $zoom)
     {
+        $this->address = $address;
         $this->classes = $classes;
         $this->styles = $styles;
-        $this->address = $address;
+        $this->zoom = $zoom;
     }
 
     public function render()
@@ -24,6 +26,7 @@ class Map extends Component
             'address' => $this->address,
             'classes' => $this->classes,
             'styles' => $this->styles,
+            'zoom' => $this->zoom,
         ]);
     }
 }
