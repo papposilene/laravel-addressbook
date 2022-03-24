@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-slate-100 dark:bg-gray-900 dark:border-gray-100">
+<nav x-data="{ open: false }" class="bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-900">
     <!-- Primary Navigation Menu -->
     <!-- Primary Navigation Menu for authentificated users -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

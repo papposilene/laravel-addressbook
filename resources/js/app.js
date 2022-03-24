@@ -9,13 +9,17 @@ import Alpine from 'alpinejs';
 //import '@fortawesome/fontawesome-free/js/regular';
 //import '@fortawesome/fontawesome-free/js/brands';
 
-/* ChartJS */
-import 'chart.js/dist/chart.js';
+/* Apache ECharts */
+import 'echarts/core';
+import 'echarts/charts';
+import 'echarts/components';
+import 'echarts/renderers';
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js';
-import 'leaflet-ajax/dist/leaflet.ajax.js';
 import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
+import 'leaflet.locatecontrol/src/L.Control.Locate.js';
+import 'leaflet-ajax/dist/leaflet.ajax.js';
 
 window.Alpine = Alpine;
 
