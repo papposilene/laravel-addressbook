@@ -47,6 +47,7 @@ return [
     'translation' => 'traduction',
     'translations' => 'traductions',
     'wikidata' => 'Wikidata',
+    'wikipedia' => 'Wikipedia',
     'yes' => 'oui',
 
     // Placeholders strings
