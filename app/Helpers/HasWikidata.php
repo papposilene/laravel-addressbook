@@ -14,7 +14,7 @@ if (!function_exists('hasWikidata')) {
         $cache = \App\Models\Wikidata::where('wikidata_id', $wikidata)->first();
 
         if (is_null($cache)) {
-            $dataJson = file_get_contents('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=sitelinks&ids=' . $slug);
+            $dataJson = file_get_contents('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=sitelinks&ids=' . $wikidata);
             $dataFile = json_decode($dataJson, true);
             if ($dataFile['entities'][$wikidata]['sitelinks'][$lang . 'wiki']) {
                 $title = $dataFile['entities'][$wikidata]['sitelinks'][$lang . 'wiki']['title'];
