@@ -49,14 +49,14 @@
                 <!-- Map -->
                 <div class="flex flex-col pt-2 text-black">
                     <div class="flex flex-row pt-2">
-                        <p class="flex flex-col bg-slate-400 justify-center items-center py-1 w-full rounded-t lg:rounded-tl">
+                        <h4 class="flex flex-col bg-slate-400 justify-center items-center py-1 text-lg w-full rounded-t lg:rounded-tl">
                             <span class="px-1">
                                 {{ $address->address_number }} {{ $address->address_street }}
                             </span>
                             <span class="px-1">
                                 {{ $address->address_postcode }} {{ $address->address_city }}
                             </span>
-                        </p>
+                        </h4>
                     </div>
                     @livewire('interfaces.map', [
                         'address' => $address,
@@ -128,9 +128,9 @@
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
                 <!-- Country and city -->
-                <h4 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h5 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('category.categories'))
-                </h4>
+                </h5>
                 <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
                     <li>
                         <a href="{{ route('front.category.index', ['filter' => $address->belongsToSubcategory->belongsToCategory->slug]) }}"
@@ -164,9 +164,9 @@
                 <!-- End of country and city -->
 
                 <!-- Suggestions -->
-                <h4 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h5 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('address.suggestions'))
-                </h4>
+                </h5>
                 <ul class="bg-gray-500 text-gray-200 p-3 rounded-b">
                     @foreach($suggestions as $suggestion)
                         <li>
