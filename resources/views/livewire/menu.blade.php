@@ -13,24 +13,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" class="text-slate-100"
+                    <x-jet-nav-link href="{{ route('dashboard') }}" class="text-slate-100 hover:text-white"
                         :active="request()->routeIs('dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-100 hover:text-white"
                         :active="request()->routeIs('front.country.*')">
                         @ucfirst(__('country.countries'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-100 hover:text-white"
                         :active="request()->routeIs('front.category.*')">
                         @ucfirst(__('category.categories'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-100 hover:text-white"
                         :active="request()->routeIs('front.address.*')">
                         @ucfirst(__('address.addresses'))
                     </x-jet-nav-link>
                     @auth
-                    <x-jet-nav-link href="" class="text-slate-100"
+                    <x-jet-nav-link href="" class="text-slate-100 hover:text-white"
                         :active="request()->routeIs('front.stat')">
                         @ucfirst(__('app.statistics'))
                     </x-jet-nav-link>

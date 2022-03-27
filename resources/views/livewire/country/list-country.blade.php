@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-300 leading-tight">
             <span class="inline-flex align-middle">
                 @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.countries')]))
             </span>
@@ -18,30 +18,8 @@
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
         <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
 
-        <div class="flex flex-row max-w-7xl mx-auto py-5 px-6">
-            <div class="flex flex-col pr-2 w-1/4">
-                <h3 class="bg-slate-300 p-3 text-xl rounded-t">
-                    @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.subcontinents')]))
-                </h3>
-                <ul class="bg-slate-200 p-3 rounded-b">
-                    <li>
-                        <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between mb-2">
-                            <span class="mb-1.5">@ucfirst(__('country.all_subcontinents'))</span>
-                        </a>
-                    </li>
-                    @foreach($subcontinents as $subcontinent)
-                        <li>
-                            <a href="{{ route('front.country.index', ['filter' => $subcontinent->slug]) }}" class="flex flex-row justify-between m-1">
-                                <span class="">{{ $subcontinent->name }}</span>
-                                <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
-                                    {{ $subcontinent->hasCountries()->count() }}
-                                </span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ol>
-            </div>
-            <div class="flex flex-col pl-2 w-3/4">
+        <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
+            <div class="flex flex-col pl-2 pr-2 w-full lg:w-3/4">
                 @if ($errors->any())
                     <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
                         <ul>
@@ -68,41 +46,41 @@
 
                 <!-- Countries -->
                 <div class="py-5">
-                    <table class="w-full p-5 table-fixed rounded shadow">
+                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-700 dark:bg-gray-900 text-white">
+                        <tr class="bg-slate-600 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-1/12 p-3">
-                                <p class="flex flex-row items-center justify-center">
+                            <th class="w-1/12 p-3 hidden lg:table-cell">
+                                <p class="flex flex-row items-center justify-center p-3">
                                     <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
                                     <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
                                 </p>
                             </th>
-                            <th class="w-1/12 text-center">@ucfirst(__('country.flag_icon'))</th>
-                            <th class="w-5/12 text-center">@ucfirst(__('country.name_common'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('city.count'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
+                            <th class="w-1/12 p-3 hidden lg:table-cell text-center">@ucfirst(__('country.flag_icon'))</th>
+                            <th class="w-5/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
+                            <th class="w-1/12 p-3 text-center">@ucfirst(__('city.count'))</th>
+                            <th class="w-1/12 p-3 text-center">@ucfirst(__('address.count'))</th>
+                            <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($countries as $country)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
-                                <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td>
+                                <td class="hidden lg:table-cell text-center text-gray-800">{{ $loop->iteration }}</td>
+                                <td class="hidden lg:table-cell text-gray-800">
                                     {{ $country->belongsToContinent->name }}
                                 </td>
-                                <td class="text-center">{{ $country->flag }}</td>
-                                <td class="break-words">
+                                <td class="hidden lg:table-cell text-center">{{ $country->flag }}</td>
+                                <td class="break-words p-3">
                                     <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}">
                                         {{ $country->name_eng_common }}
                                     </a>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center text-gray-800">
                                     {{ $country->hasCities()->count() }}
                                 </td>
-                                <td class="break-words">
-
+                                <td class="text-center text-gray-800">
+                                    {{ $country->hasCities()->count() }}
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
@@ -121,6 +99,29 @@
                 <!-- Pagination -->
                 {{ $countries->links() }}
                 <!-- End of pagination -->
+            </div>
+
+            <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
+                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                    @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' => __('country.subcontinents')]))
+                </h3>
+                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                    <li>
+                        <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between mb-2">
+                            <span class="mb-1.5">@ucfirst(__('country.all_subcontinents'))</span>
+                        </a>
+                    </li>
+                    @foreach($subcontinents as $subcontinent)
+                        <li>
+                            <a href="{{ route('front.country.index', ['filter' => $subcontinent->slug]) }}" class="flex flex-row justify-between m-1">
+                                <span class="">{{ $subcontinent->name }}</span>
+                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                    @leadingzero($subcontinent->hasCountries()->count())
+                                </span>
+                            </a>
+                        </li>
+                        @endforeach
+                </ul>
             </div>
         </div>
     </div>

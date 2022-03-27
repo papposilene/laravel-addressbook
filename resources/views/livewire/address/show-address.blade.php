@@ -128,10 +128,10 @@
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
                 <!-- Country and city -->
-                <h4 class="bg-slate-500 text-gray-800 font-semibold text-xl p-3 rounded-t">
+                <h4 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('category.categories'))
                 </h4>
-                <ul class="bg-slate-300 text-gray-800 p-3 mb-3 rounded-b">
+                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
                     <li>
                         <a href="{{ route('front.category.index', ['filter' => $address->belongsToSubcategory->belongsToCategory->slug]) }}"
                            class="flex flex-row justify-between m-1">
@@ -164,10 +164,10 @@
                 <!-- End of country and city -->
 
                 <!-- Suggestions -->
-                <h4 class="bg-slate-500 text-gray-800 font-semibold text-xl p-3 rounded-t">
+                <h4 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('address.suggestions'))
                 </h4>
-                <ul class="bg-slate-300 text-gray-800 p-3 rounded-b">
+                <ul class="bg-gray-500 text-gray-200 p-3 rounded-b">
                     @foreach($suggestions as $suggestion)
                         <li>
                             <a href="{{ route('front.address.show', ['uuid' => $suggestion->uuid]) }}"

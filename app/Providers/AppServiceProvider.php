@@ -39,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('gravatar', function ($expression) {
             return "<?php echo md5(strtolower(trim($expression))); ?>";
         });
+        Blade::directive('leadingzero', function ($expression) {
+            return "<?php echo str_pad($expression, 2, '0', STR_PAD_LEFT); ?>";
+        });
         Blade::directive('lcfirst', function ($expression) {
             return "<?php echo lcfirst($expression); ?>";
         });
