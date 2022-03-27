@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Helpers;
-
-if (!function_exists('hasWikipedia')) {
+if (!function_exists('hasWikidata')) {
     /**
      * Check if an address with a Wikidata id has already its Wikipedia article in the database.
      *
@@ -10,7 +8,7 @@ if (!function_exists('hasWikipedia')) {
      * @param string $wikidata The Wikidata id
      * @return string The uuid of the stored Wikipedia article
      */
-    function hasWikipedia(string $uuid, string $wikidata): string
+    function hasWikidata(string $uuid, string $wikidata): string
     {
         $lang = app()->getLocale();
         $cache = \App\Models\Wikidata::where('wikidata_id', $wikidata)->first();
