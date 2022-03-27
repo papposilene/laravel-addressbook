@@ -52,22 +52,22 @@
                         <thead>
                             <tr class="bg-slate-600 text-white">
                                 <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                                <th class="w-1/12 p-3">
+                                <th class="w-1/12 p-3 hidden lg:table-cell">
                                     <p class="flex flex-row items-center justify-center">
                                         <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
                                     </p>
                                 </th>
-                                <th class="w-3/12 text-center">@ucfirst(__('category.categories'))</th>
-                                <th class="w-4/12 text-center">@ucfirst(__('category.name'))</th>
-                                <th class="w-1/12 text-center">@ucfirst(__('address.count'))</th>
-                                <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
+                                <th class="w-3/12 p-3 text-center hidden lg:table-cell">@ucfirst(__('category.categories'))</th>
+                                <th class="w-4/12 p-3 text-center">@ucfirst(__('category.name'))</th>
+                                <th class="w-1/12 p-3 text-center">@ucfirst(__('address.count'))</th>
+                                <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($subcategories as $subcategory)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                                 <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
-                                <td>
+                                <td class="hidden lg:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center text-gray-800">
                                         <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $subcategory->icon_style }} h-5 w-5">
@@ -75,10 +75,12 @@
                                         </svg>
                                     </p>
                                 </td>
-                                <td class="break-words text-gray-800">
-                                    {{ $subcategory->belongsToCategory->translations }}
+                                <td class="break-words text-gray-800 hidden lg:table-cell">
+                                    <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}">
+                                        {{ $subcategory->belongsToCategory->translations }}
+                                    </a>
                                 </td>
-                                <td class="break-words">
+                                <td class="break-words p-3">
                                     <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}">
                                         {{ $subcategory->translations }}
                                     </a>

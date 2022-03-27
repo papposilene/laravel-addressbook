@@ -34,39 +34,8 @@
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
         <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
 
-        <div class="flex flex-row max-w-7xl mx-auto py-5 px-6">
-            <div class="flex flex-col pr-2 w-1/4">
-                <h3 class="bg-slate-300 p-3 text-xl rounded-t">
-                    @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
-                </h3>
-                <ul class="bg-slate-200 p-3 rounded-b">
-                    <li>
-                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
-                            <span class="inline-flex align-middle">
-                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
-                                @ucfirst(__('category.all'))
-                            </span>
-                        </a>
-                    </li>
-                    @foreach($categories as $category)
-                        <li>
-                            <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                                <span class="inline-flex align-middle">
-                                    <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
-                                    <svg class="{{ $category->icon_style }} h-5 w-5">
-                                        <use xlink:href="#{{ $category->slug }}"></use>
-                                    </svg>&nbsp;
-                                    {{ $category->translations }}
-                                </span>
-                                <span class="bg-blue-100 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800">
-                                    {{ $category->hasSubcategories()->count() }}
-                                </span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="flex flex-col pl-2 w-3/4">
+        <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
+            <div class="flex flex-col pl-2 pr-2 w-full lg:w-3/4">
                 @if ($errors->any())
                     <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
                         <ul>
@@ -94,9 +63,9 @@
 
                 <!-- Addresses -->
                 <div class="py-5">
-                    <table class="w-full p-5 table-fixed rounded shadow">
+                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-700 dark:bg-gray-900 text-white">
+                        <tr class="bg-slate-600 text-white">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('country.name_common'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('address.name'))</th>
@@ -149,6 +118,38 @@
                 <!-- Pagination -->
                 {{ $addresses->links() }}
                 <!-- End of pagination -->
+            </div>
+
+            <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
+                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                    @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
+                </h3>
+                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                    <li>
+                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
+                            <span class="inline-flex align-middle">
+                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
+                                @ucfirst(__('category.all'))
+                            </span>
+                        </a>
+                    </li>
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
+                                <span class="inline-flex align-middle">
+                                    <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                    <svg class="{{ $category->icon_style }} h-5 w-5">
+                                        <use xlink:href="#{{ $category->slug }}"></use>
+                                    </svg>&nbsp;
+                                    {{ $category->translations }}
+                                </span>
+                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                    @leadingzero($category->hasSubcategories()->count())
+                                </span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
