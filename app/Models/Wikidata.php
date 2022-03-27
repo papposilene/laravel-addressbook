@@ -33,6 +33,8 @@ class Wikidata extends Model
      */
     protected $casts = [
         //'uuid' => 'uuid',
+        'wikipedia_title' => 'array',
+        'wikipedia_text' => 'array',
     ];
 
     /**
@@ -64,7 +66,8 @@ class Wikidata extends Model
     protected $fillable = [
         'address_uuid',
         'wikidata_id',
-        'wikipedia_url',
+        'wikipedia_pid',
+        'wikipedia_title',
         'wikipedia_text',
     ];
 
@@ -75,10 +78,16 @@ class Wikidata extends Model
      */
     protected $visible = [
         'uuid',
-        'wikidata_id',
         'address_uuid',
-        'wikipedia_url',
+        'wikidata_id',
+        'wikipedia_pid',
+        'wikipedia_title',
         'wikipedia_text',
+    ];
+
+    public $translatable = [
+        'wikipedia_title',
+        'wikipedia_text'
     ];
 
     /**
