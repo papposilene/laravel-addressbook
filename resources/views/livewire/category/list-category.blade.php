@@ -59,7 +59,7 @@
                                 </th>
                                 <th class="w-3/12 p-3 text-center hidden lg:table-cell">@ucfirst(__('category.categories'))</th>
                                 <th class="w-4/12 p-3 text-center">@ucfirst(__('category.name'))</th>
-                                <th class="w-1/12 p-3 text-center">@ucfirst(__('address.count'))</th>
+                                <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
                                 <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
                             </tr>
                         </thead>

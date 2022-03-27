@@ -61,8 +61,8 @@
                             <th class="w-1/12 p-3 hidden lg:table-cell text-center">@ucfirst(__('country.flag_icon'))
                             </th>
                             <th class="w-5/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
-                            <th class="w-1/12 p-3 text-center">@ucfirst(__('city.count'))</th>
-                            <th class="w-1/12 p-3 text-center">@ucfirst(__('address.count'))</th>
+                            <th class="w-1/12 p-3 text-center">@ucfirst(__('city.cities'))</th>
+                            <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
                             <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
                         </thead>
