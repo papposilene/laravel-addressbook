@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    prefix="og: http://ogp.me/ns#" x-cloak
-    x-data="{darkMode: localStorage.getItem('dark') === 'true'}"
-    x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
-    x-bind:class="{'dark': darkMode}">
+    prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,13 +46,13 @@
         <!-- End Matomo Code -->
         @endif
     </head>
-    <body class="antialiased font-sans bg-gray-100 dark:bg-gray-700" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="antialiased font-sans bg-gray-700 text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div id="addressbook" class="flex flex-col h-min-screen">
             <livewire:menu />
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="flex bg-gray-200 dark:bg-gray-800 shadow">
+                <header class="flex bg-gray-800 shadow">
                     <div class="flex max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

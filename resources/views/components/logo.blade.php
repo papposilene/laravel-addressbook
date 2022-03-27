@@ -1,6 +1,6 @@
 <div class="inline-flex items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" {{ $attributes }}>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
-    <h1 class="font-bold p-5 text-2xl sm:visible lg:hidden text-black dark:text-white">{{ $slot }}</h1>
+    <h1 class="font-bold p-5 text-2xl sm:visible lg:hidden text-white">{{ $slot }}</h1>
 </div>

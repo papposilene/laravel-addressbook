@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-900">
+<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-900">
     <!-- Primary Navigation Menu -->
     <!-- Primary Navigation Menu for authentificated users -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,24 +13,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" class="text-slate-900 dark:text-slate-100"
+                    <x-jet-nav-link href="{{ route('dashboard') }}" class="text-slate-100"
                         :active="request()->routeIs('dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-900 dark:text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-100"
                         :active="request()->routeIs('front.country.*')">
                         @ucfirst(__('country.countries'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-900 dark:text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-100"
                         :active="request()->routeIs('front.category.*')">
                         @ucfirst(__('category.categories'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-900 dark:text-slate-100"
+                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-100"
                         :active="request()->routeIs('front.address.*')">
                         @ucfirst(__('address.addresses'))
                     </x-jet-nav-link>
                     @auth
-                    <x-jet-nav-link href="" class="text-slate-900 dark:text-slate-100"
+                    <x-jet-nav-link href="" class="text-slate-100"
                         :active="request()->routeIs('front.stat')">
                         @ucfirst(__('app.statistics'))
                     </x-jet-nav-link>
@@ -97,7 +97,7 @@
                 @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <div class="ml-3 relative">
-                        <div class="block text-xs text-black dark:text-white">
+                        <div class="block text-xs text-white">
                             <a href="{{ route('login') }}" title="@ucfirst(__('auth.login'))">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -111,7 +111,7 @@
 
                 <!-- Hamburger -->
                 <div class="-mr-2 flex sm:hidden">
-                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-black dark:text-white transition">
+                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white transition">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -119,7 +119,8 @@
                     </button>
                 </div>
 
-                <div class="flex ml-2">
+                <!-- Dark mode -->
+                <!--div class="flex ml-2">
                     <x-forms.button @click="darkMode = !darkMode" class="focus:outline-none focus:border-slate-300 transition text-black dark:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" x-show="darkMode === false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -130,7 +131,7 @@
                                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </x-forms.button>
-                </div>
+                </div-->
             </div>
         </div>
     </div>
@@ -139,31 +140,31 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}"
-                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('dashboard')">
+                class="text-slate-100" :active="request()->routeIs('dashboard')">
                 @ucfirst(__('app.dashboard'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.country.index') }}"
-                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('front.country.*')">
-                @ucfirst(__('app.countries'))
+                class="text-slate-100" :active="request()->routeIs('front.country.*')">
+                @ucfirst(__('country.countries'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.category.index') }}"
-                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('front.category.*')">
-                @ucfirst(__('app.categories'))
+                class="text-slate-100" :active="request()->routeIs('front.category.*')">
+                @ucfirst(__('category.categories'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.address.index') }}"
-                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('front.address.*')">
-                @ucfirst(__('app.addresses'))
+                class="text-slate-100" :active="request()->routeIs('front.address.*')">
+                @ucfirst(__('address.addresses'))
             </x-jet-responsive-nav-link>
             @auth
             <x-jet-responsive-nav-link href=""
-                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('front.stat')">
+                class="text-slate-100" :active="request()->routeIs('front.stat')">
                 @ucfirst(__('app.statistics'))
             </x-jet-responsive-nav-link>
             @endauth
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-slate-200 dark:border-slate-800">
+        <div class="pt-4 pb-1 border-t border-slate-800">
             <div class="flex items-center px-4">
                 @auth
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -173,8 +174,8 @@
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-slate-800 dark:text-slate-200">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-slate-500 dark:text-slate-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-slate-200">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-slate-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 
@@ -190,21 +191,20 @@
                 </x-jet-responsive-nav-link>
                 @endif
 
-                <div class="border-t border-slate-100 dark:text-slate-900"></div>
+                <div class="border-t border-slate-100 text-slate-900"></div>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
+                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
                         this.closest('form').submit();">
                         @ucfirst(__('auth.logout'))
                     </x-jet-responsive-nav-link>
                 </form>
 
                 @else
-                <x-jet-nav-link href="{{ route('login') }}" class="text-slate-900 dark:text-slate-100" >
+                <x-jet-nav-link href="{{ route('login') }}" class="text-slate-100" >
                     @ucfirst(__('auth.login'))
                 </x-jet-nav-link>
                 @endauth
