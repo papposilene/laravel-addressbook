@@ -42,10 +42,19 @@
                 <!-- Address -->
                 <div class="flex flex-col bg-slate-200 p-3 text-xl rounded-b">
                     <div class="flex flex-row pt-1 px-2 mb-5">
-                        <p class="text-black text-xl">@nl2br($address->description)</p>
+                        @if($address->description)
+                        <p class="text-black text-xl">
+                            @nl2br($address->description)
+                        </p>
+                        @else
+                        <p class="text-black text-base italic">
+                            @ucfirst(__('address.no_description'))
+                        </p>
+                        @endif
                     </div>
                 </div>
                 <!-- End of address -->
+
 
                 <!-- Contact details -->
                 <div class="flex flex-col lg:flex-row pt-2 mt-2 pb-1">
