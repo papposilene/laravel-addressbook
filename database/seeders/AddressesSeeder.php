@@ -30,42 +30,38 @@ class AddressesSeeder extends Seeder
 
             $country = Country::where('cca3', $json->country_cca3)->firstOrFail();
 
-            foreach ($json->regions as $region)
-            {
-                foreach ($region->addresses as $data) {
-                    $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
-                        ->firstOrFail();
+            foreach ($json->addresses as $data) {
+                $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
+                    ->firstOrFail();
 
-                    $city = City::where([
-                        ['country_cca3', $country->cca3],
-                        ['name', $data->address->city],
-                    ])->first();
+                $city = City::where([
+                    ['country_cca3', $country->cca3],
+                    ['name', $data->address->city],
+                ])->first();
 
-                    Address::create([
-                        'place_name' => Str::of($data->names->name)->trim(),
-                        'place_status' => $data->details->status,
-                        'address_number' => (!empty($data->address->number) ? $data->address->number : null),
-                        'address_street' => (!empty($data->address->street) ? $data->address->street : null),
-                        'address_postcode' => (!empty($data->address->postcode) ? $data->address->postcode : null),
-                        'address_city' => (!empty($data->address->city) ? $data->address->city : null),
-                        'address_country' => $country->name_eng_common,
-                        'city_uuid' => ($city ? $city->uuid : null),
-                        'country_cca3' => $country->cca3,
-                        'address_lat' => (float) $data->geolocation->lat,
-                        'address_lon' => (float) $data->geolocation->lon,
-                        'description' => Str::of($data->details->description)->trim(),
-                        'details' => [
-                            'opening_hours' => $data->details->opening_hours,
-                            'phone' => $data->details->phone,
-                            'website' => $data->details->website,
-                            'wikidata' => $data->details->wikidata,
-                        ],
-                        'subcategory_slug' => $subcategory->slug,
-                        'osm_id' => (int)$data->geolocation->osm_id,
-                        'osm_place_id' => (int)$data->geolocation->osm_place_id,
-                        'gmap_pluscode' => (string)$data->geolocation->gmaps_pluscode,
-                    ]);
-                }
+                Address::create([
+                    'place_name' => Str::of($data->names->name)->trim(),
+                    'place_status' => $data->details->status,
+                    'address_number' => (!empty($data->address->number) ? $data->address->number : null),
+                    'address_street' => (!empty($data->address->street) ? $data->address->street : null),
+                    'address_postcode' => (!empty($data->address->postcode) ? $data->address->postcode : null),
+                    'address_city' => (!empty($data->address->city) ? $data->address->city : null),
+                    'address_country' => $country->name_eng_common,
+                    'city_uuid' => ($city ? $city->uuid : null),
+                    'country_cca3' => $country->cca3,
+                    'address_lat' => (float)$data->geolocation->lat,
+                    'address_lon' => (float)$data->geolocation->lon,
+                    'description' => Str::of($data->details->description)->trim(),
+                    'details' => [
+                        'opening_hours' => $data->details->opening_hours,
+                        'phone' => $data->details->phone,
+                        'website' => $data->details->website,
+                        'wikidata' => $data->details->wikidata,
+                    ],
+                    'subcategory_slug' => $subcategory->slug,
+                    'osm_place_id' => (int)$data->geolocation->osm_place_id,
+                    'gmap_pluscode' => (string)$data->geolocation->gmaps_pluscode,
+                ]);
             }
         }
     }

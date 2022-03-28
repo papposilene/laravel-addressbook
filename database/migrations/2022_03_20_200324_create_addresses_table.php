@@ -29,7 +29,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->json('details')->nullable();
             $table->uuid('subcategory_slug');
-            $table->bigInteger('osm_id', false)->nullable();
             $table->bigInteger('osm_place_id', false)->nullable();
             $table->string('gmap_pluscode', 255)->nullable();
             $table->timestamps();
