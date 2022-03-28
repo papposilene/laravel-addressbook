@@ -39,12 +39,49 @@
                     {{ $address->place_name }}
                 </h3>
 
-                <div class="bg-slate-200 p-3 text-xl rounded-b">
-                    <!-- Address -->
+                <!-- Address -->
+                <div class="flex flex-col bg-slate-200 p-3 text-xl rounded-b">
                     <div class="flex flex-row pt-1 px-2 mb-5">
                         <p class="text-black text-xl">@nl2br($address->description)</p>
                     </div>
                 </div>
+                <!-- End of address -->
+
+                <!-- Contact details -->
+                <div class="flex flex-col lg:flex-row pt-2 mt-2 pb-1">
+                    <div class="grow-0 bg-slate-400 py-2 px-4 inline-flex items-center rounded-l">
+                        &nbsp;
+                    </div>
+                    @if($address->details['opening_hours'])
+                    <!--div class="grow-0 bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-l">
+                        <i class="fa-solid fa-clock"></i>&nbsp;
+                        {{ $address->details['opening_hours'] }}
+                    </div-->
+                    @endif
+                    @if($address->details['phone'])
+                    <div class="grow-0 bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                        <a href="tel:{{ $address->details['phone'] }}" class=" hover:text-white">
+                            <i class="fa-solid fa-phone"></i>&nbsp;
+                            {{ $address->details['phone'] }}
+                        </a>
+                    </div>
+                    @endif
+                    @if($address->details['website'])
+                    <div class="grow-0 bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                        <a href="{{ $address->details['website'] }}" class=" hover:text-white" target="_blank">
+                            <i class="fa-solid fa-link"></i>&nbsp;
+                            @urlhost($address->details['website'])
+                        </a>
+                    </div>
+                    @endif
+                    <div class="grow bg-slate-400 py-2 px-4 inline-flex items-center">
+                        &nbsp;
+                    </div>
+                    <div class="grow-0 bg-slate-400 py-2 px-4 inline-flex items-center rounded-r">
+                        &nbsp;
+                    </div>
+                </div>
+                <!-- End of contact details -->
 
                 <!-- Map -->
                 <div class="flex flex-col pt-2 text-black">
@@ -59,18 +96,19 @@
                         </h4>
                     </div>
                     @livewire('interfaces.map', [
-                        'address' => $address,
-                        'classes' => 'w-full',
-                        'key' => $address->uuid,
-                        'styles' => 'height:300px;',
-                        'zoom' => 14,
+                    'address' => $address,
+                    'classes' => 'w-full',
+                    'key' => $address->uuid,
+                    'styles' => 'height:300px;',
+                    'zoom' => 14,
                     ])
                     <div class="flex flex-col lg:flex-row pb-1 text-sm">
                         <i data-fa-symbol="applemap" class="fa-brands fa-apple fa-fw"></i>
                         <i data-fa-symbol="openstreetmap" class="fa-solid fa-map-location-dot fa-fw"></i>
                         <i data-fa-symbol="citymapper" class="fa-solid fa-signs-post fa-fw"></i>
                         <i data-fa-symbol="google" class="fa-brands fa-google fa-fw"></i>
-                        <span class="flex grow bg-slate-400 text-black py-2 px-4 inline-flex items-center lg:rounded-bl">
+                        <span
+                            class="flex grow bg-slate-400 text-black py-2 px-4 inline-flex items-center lg:rounded-bl">
                             @ucfirst(__('address.search_with'))
                         </span>
                         <a href="https://citymapper.com/directions?endcoord=@urlencode($address->address_lat . ',' .$address->address_lon)"
@@ -117,12 +155,12 @@
                 </div>
 
                 @if($address->details['wikidata'])
-                <!-- Wikipedia -->
-                @livewire('interfaces.wikipedia', [
+                    <!-- Wikipedia -->
+                    @livewire('interfaces.wikipedia', [
                     'address_uuid' => $address->uuid,
                     'wikidata' => $address->details['wikidata'],
-                ])
-                <!-- End of Wikipedia -->
+                    ])
+                    <!-- End of Wikipedia -->
                 @endif
             </div>
 

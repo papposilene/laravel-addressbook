@@ -35,8 +35,7 @@
                     <div class="flex flex-wrap">
 
                     </div>
-                    <x-forms.input wire:model="search" type="search" class="ml-2"
-                                   :placeholder="@ucfirst(__('app.search'))"/>
+                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))"/>
                 </div>
                 <!-- End of navigation and search -->
 
@@ -83,7 +82,7 @@
                                     {{ $country->hasCities()->count() }}
                                 </td>
                                 <td class="text-center text-gray-800">
-                                    {{ $country->hasCities()->count() }}
+                                    {{ $country->has_addresses_count }}
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
