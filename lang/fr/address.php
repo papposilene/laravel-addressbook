@@ -16,6 +16,8 @@ return [
 
     'closed' => 'fermé',
     'count' => 'nombre d’adresses',
+    'description' => 'description',
+    'no_description' => 'pas encore de description...',
     'gmap_pluscode' => 'Google Maps +Code',
     'name' => 'dénomination',
     'names' => 'dénominations',
