@@ -91,13 +91,13 @@
     },
     {
         "category_slug": "gastronomy",
-        "name": "Pastry",
-        "slug": "pastry",
+        "name": "Bakery & Pastry",
+        "slug": "bakery-pastry",
         "icon_image": "cake-candles",
         "icon_style": "",
         "translations": {
-            "en": "Pastries",
-            "fr": "Pâtisseries"
+            "en": "Bakeries & pastries",
+            "fr": "Boulangeries-pâtisseries"
         },
         "descriptions": {
             "en": "Good places to have a snack on the go!",
