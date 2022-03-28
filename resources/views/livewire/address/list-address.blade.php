@@ -32,13 +32,14 @@
             <!-- Navigation and search -->
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
-                    <button class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                    @hasrole('admin')
+                    <a href="{{ route('admin.address.create') }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
                         <svg class="h-6 w-6">
                             <use xlink:href="#create"></use>
                         </svg>
-                    </button>
-                    <x-interfaces.toggle wire:model="withAddresses" type="toggle" class="ml-2"
-                                         :placeholder="@ucfirst(__('app.toggle'))"/>
+                    </a>
+                    @endhasrole
+                    @livewire('interfaces.toggle')
                 </div>
                 <x-forms.input wire:model="search" type="search" class="ml-2"
                                :placeholder="@ucfirst(__('app.search'))"/>
@@ -102,11 +103,15 @@
                                 <p class="flex flex-row h-12 items-center justify-center">
                                     <i data-fa-symbol="closed" class="fas fa-times fa-fw text-red-400"></i>
                                     <i data-fa-symbol="open" class="fas fa-check fa-fw text-green-400"></i>
-                                    <svg class="h-5 w-5"><use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use></svg>
+                                    <svg class="h-5 w-5" aria-label="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}"
+                                         title="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}">
+                                        <use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use>
+                                    </svg>
                                 </p>
                             </td>
                             <td>
                                 <p class="flex flex-row h-12 items-center justify-center">
+                                    @hasrole('admin')
                                     <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}"
                                        class="mx-1">
                                         <svg class="h-5 w-5">
@@ -123,6 +128,11 @@
                                             <use xlink:href="#delete"></use>
                                         </svg>
                                     </a>
+                                    @else
+                                    <span class="mx-1">
+                                        ---
+                                    </span>
+                                    @endhasrole
                                 </p>
                             </td>
                         </tr>
