@@ -76,7 +76,7 @@
                         <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
                             <td class="break-words text-gray-800">
-                                <a href="{{ route('front.country.show', ['cca3' => $address->belongsToCountry->cca3]) }}">
+                                <a href="{{ route('front.address.index', ['filter' => $address->belongsToCountry->cca3]) }}">
                                     {{ $address->belongsToCountry->flag }}
                                     @uppercase($address->belongsToCountry->cca3)
                                 </a>
