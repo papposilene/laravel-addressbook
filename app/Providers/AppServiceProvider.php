@@ -66,6 +66,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('urlencode', function ($expression) {
             return "<?php echo urlencode($expression); ?>";
         });
+        Blade::directive('urlhost', function ($expression) {
+            return "<?php echo parse_url($expression, PHP_URL_HOST); ?>";
+        });
         Blade::directive('year', function ($expression) {
             return "<?php echo ($expression)->format('Y'); ?>";
         });
