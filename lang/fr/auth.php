@@ -25,6 +25,7 @@ return [
     'input_password' => 'mot de passe',
     'input_name' => 'identifiant',
     'login' => 'se connecter',
+    'login_mandatory' => 'vous devez être connecté à votre compte pour effectuer cette opération.',
     'logout' => 'se déconnecter',
     'password' => 'Le mot de passe est erroné.',
     'password_forgot' => 'mot de passe oublié ?',

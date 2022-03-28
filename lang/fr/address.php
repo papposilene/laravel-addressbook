@@ -30,6 +30,8 @@ return [
     'search_with_gmaps' => 'Google Maps',
     'search_with_osm_pid' => 'OpenStreetMap',
     'status' => 'status de l’adresse',
+    'status_close' => 'Adresse définitivement fermée',
+    'status_open' => 'Adresse ouverte aux jours et heures en vigueur',
     'streetname' => 'rue',
     'streetnumber' => 'numéro de rue',
     'suggestions' => 'suggestions',
