@@ -42,6 +42,7 @@ Route::get('/country/{cca3}/{uuid}', ShowCity::class)->name('front.city.show');
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Addresses
+    Route::get('/address/create', [AddressController::class, 'create'])->name('admin.address.create');
     Route::post('/address/store', [AddressController::class, 'store'])->name('admin.address.store');
     Route::post('/address/update', [AddressController::class, 'update'])->name('admin.address.update');
     Route::post('/address/import', [AddressController::class, 'import'])->name('admin.address.import');
