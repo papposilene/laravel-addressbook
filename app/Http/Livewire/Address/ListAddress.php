@@ -15,7 +15,6 @@ class ListAddress extends Component
     public $page = 1;
     public string $search = '';
     protected $addresses;
-    protected $subcategories;
 
     protected $queryString = [
         'filter' => ['except' => ''],
@@ -30,8 +29,11 @@ class ListAddress extends Component
 
     public function render()
     {
-        $addresses = Address::where('place_name', 'like', '%'.$this->search.'%')
-            ->orWhere('description', 'like', '%'.$this->search.'%')
+        $addresses = Address::where('country_cca3', 'like', '%'.$this->filter.'%')
+            ->where(function($query) {
+                $query->where('place_name', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%');
+            })
             ->orderBy('place_name', 'asc')
             ->paginate(25);
 

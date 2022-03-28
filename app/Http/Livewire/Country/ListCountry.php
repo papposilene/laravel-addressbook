@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Country;
 
+use App\Models\Country;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Papposilene\Geodata\Models\Subcontinent;
-use Papposilene\Geodata\Models\Country;
 
 class ListCountry extends Component
 {
@@ -43,7 +43,8 @@ class ListCountry extends Component
                     ->orWhere('name_native', 'like', '%'.$this->search.'%')
                     ->orWhere('name_translations', 'like', '%'.$this->search.'%');
             })
-            ->orderBy('continent_slug', 'asc')
+            ->withCount('hasAddresses')
+            ->orderBy('has_addresses_count', 'desc')
             ->orderBy('cca3', 'asc')
             ->paginate(25);
 
