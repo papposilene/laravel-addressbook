@@ -10,6 +10,7 @@ use App\Http\Livewire\City\ShowCity;
 use App\Http\Livewire\Country\ListCountry;
 use App\Http\Livewire\Country\ShowCountry;
 use App\Http\Livewire\Dashboard\ShowDashboard;
+use App\Http\Livewire\Dashboard\ShowLanding;
 use App\Http\Livewire\Map\ShowMap;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ShowMap::class)->name('map');
+Route::get('/', ShowLanding::class)->name('index');
+Route::get('/map', ShowMap::class)->name('map');
 Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
 
 // Addresses
