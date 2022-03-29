@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Interfaces;
+namespace App\Http\Livewire\Chart;
 
 use Livewire\Component;
 
-class ChartDoughnut extends Component
+class Pie extends Component
 {
     public string $api;
 
     public function render()
     {
-        return view('livewire.interfaces.chart-doughnut', [
+        return view('livewire.chart.pie', [
             'api' => $this->api,
         ]);
     }

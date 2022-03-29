@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Interfaces;
+namespace App\Http\Livewire\Chart;
 
 use Livewire\Component;
 
