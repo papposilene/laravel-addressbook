@@ -95,6 +95,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
+                                        @hasrole('admin')
                                         <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
                                            class="mx-1">
                                             <svg class="h-5 w-5">
@@ -111,6 +112,11 @@
                                                 <use xlink:href="#delete"></use>
                                             </svg>
                                         </a>
+                                        @else
+                                        <span class="mx-1">
+                                            ---
+                                        </span>
+                                        @endhasrole
                                     </p>
                                 </td>
                             </tr>
@@ -148,7 +154,7 @@
                                 </svg>&nbsp;
                                 {{ $category->translations }}
                             </span>
-                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
+                            <span class="bg-white text-black text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
                                 @leadingzero($category->hasSubcategories()->count())
                             </span>
                         </a>

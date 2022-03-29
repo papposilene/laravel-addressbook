@@ -49,9 +49,14 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-                        <button class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
-                            <svg class="h-6 w-6"><use xlink:href="#create"></use></svg>
-                        </button>
+                        @hasrole('admin')
+                        <a href="#" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                            <svg class="h-6 w-6">
+                                <use xlink:href="#edit"></use>
+                            </svg>
+                        </a>
+                        @endhasrole
+                        @livewire('interfaces.toggle')
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>
@@ -76,8 +81,8 @@
                         <tbody>
                         @foreach($addresses as $address)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
-                                <td class="text-center hidden lg:table-cell">{{ $loop->iteration }}</td>
-                                <td class="break-words text-center">
+                                <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
+                                <td class="break-words text-center text-gray-800">
                                     <a href="{{ route('front.country.show', ['cca3' => $address->belongsToCountry->cca3]) }}">
                                         {{ $address->belongsToCountry->flag }}
                                         @uppercase($address->belongsToCountry->cca3)
@@ -97,6 +102,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
+                                        @hasrole('admin')
                                         <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
                                             <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
                                         </a>
@@ -106,6 +112,11 @@
                                         <a href="#" class="mx-1">
                                             <svg class="h-5 w-5"><use xlink:href="#delete"></use></svg>
                                         </a>
+                                        @else
+                                        <span class="mx-1">
+                                            ---
+                                        </span>
+                                        @endhasrole
                                     </p>
                                 </td>
                             </tr>
@@ -143,7 +154,7 @@
                                 </svg>&nbsp;
                                 {{ $category->translations }}
                             </span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                            <span class="bg-white text-black text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
                                 @leadingzero($category->hasSubcategories()->count())
                             </span>
                         </a>
