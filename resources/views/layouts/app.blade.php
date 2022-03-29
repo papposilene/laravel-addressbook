@@ -70,6 +70,7 @@
         @stack('modals')
 
         @livewireScripts
+        @stack('scripts')
 
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->

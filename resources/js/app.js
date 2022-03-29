@@ -1,26 +1,33 @@
 require('./bootstrap');
-require('@fortawesome/fontawesome-free/js/all.js');
 
 import Alpine from 'alpinejs';
 
 /* FontAwesome */
+require('@fortawesome/fontawesome-free/js/all.js');
 //import '@fortawesome/fontawesome-free/js/fontawesome';
 //import '@fortawesome/fontawesome-free/js/solid';
 //import '@fortawesome/fontawesome-free/js/regular';
 //import '@fortawesome/fontawesome-free/js/brands';
 
+/* ChartJS */
+//import Chart from 'chart.js/auto';
+
 /* Apache ECharts */
-import * as echarts from 'echarts/core';
-import { BarChart, PieChart } from 'echarts/charts';
+import * as echarts from 'echarts/dist/echarts.js';
+import {
+    BarChart,
+    LineChart,
+    PieChart,
+} from 'echarts/charts.js';
 import {
     TitleComponent,
     TooltipComponent,
     GridComponent,
     DatasetComponent,
     TransformComponent
-} from 'echarts/components';
-import { LabelLayout, UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
+} from 'echarts/components.js';
+import { LabelLayout, UniversalTransition } from 'echarts/features.js';
+import { SVGRenderer } from 'echarts/renderers.js';
 
 echarts.use([
     TitleComponent,
@@ -29,10 +36,11 @@ echarts.use([
     DatasetComponent,
     TransformComponent,
     BarChart,
+    LineChart,
     PieChart,
     LabelLayout,
     UniversalTransition,
-    CanvasRenderer
+    SVGRenderer
 ]);
 
 /* Leaflet */
@@ -43,4 +51,3 @@ import 'leaflet-ajax/dist/leaflet.ajax.js';
 
 window.Alpine = Alpine;
 Alpine.start();
-

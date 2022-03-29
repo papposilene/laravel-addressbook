@@ -89,7 +89,7 @@
                         Pays
                     </h3>
                     <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-                        @livewire('chart.doughnut', [
+                        @livewire('chart.pie', [
                             'api' => route('api.country.index', [
                                 'limit' => 5,
                                 'sortby' => 'has_addresses_count',
