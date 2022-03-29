@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ShowLanding::class)->name('index');
-Route::get('/map', ShowMap::class)->name('map');
-Route::get('/dashboard', ShowDashboard::class)->name('dashboard');
+Route::get('/', ShowLanding::class)->name('front.index');
+Route::get('/map', ShowMap::class)->name('front.map.index');
+Route::get('/dashboard', ShowDashboard::class)->name('front.dashboard');
 
 // Addresses
 Route::get('/addresses', ListAddress::class)->name('front.address.index');
