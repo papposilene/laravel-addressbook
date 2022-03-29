@@ -6,7 +6,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('map') }}">
                         <x-logo class="block h-9 w-auto">{{ config('app.name', 'My Address Book') }}</x-logo>
                     </a>
                 </div>
