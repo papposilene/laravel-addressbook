@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Chart;
 
 use Livewire\Component;
 
-class ChartBar extends Component
+class Bar extends Component
 {
     public function render()
     {
