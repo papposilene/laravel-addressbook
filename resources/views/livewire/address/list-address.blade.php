@@ -62,12 +62,8 @@
                                 <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
                             </p>
                         </th>
-                        <th class="w-2/12 p-3">
-                            <p class="flex flex-row items-center justify-center">
-                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
-                            </p>
-                        </th>
-                        <th class="w-5/12 text-center">@ucfirst(__('address.names'))</th>
+                        <th class="w-3/12 p-3">@ucfirst(__('category.categories'))</th>
+                        <th class="w-4/12 text-center">@ucfirst(__('address.names'))</th>
                         <th class="w-1/12 text-center">@ucfirst(__('address.status'))</th>
                         <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
                     </tr>
@@ -82,11 +78,12 @@
                                     @uppercase($address->belongsToCountry->cca3)
                                 </a>
                             </td>
-                            <td class="text-gray-800">
-                                <a href="{{ route('front.category.show', ['slug' => $address->belongsToSubcategory->slug]) }}">
+                            <td>
+                                <a href="{{ route('front.category.show', ['slug' => $address->belongsToSubcategory->slug]) }}"
+                                   class="{{ $address->belongsToCategory->icon_style }} px-1.5 rounded">
                                     <span class="inline-flex align-middle">
                                         <i data-fa-symbol="{{ $address->belongsToSubcategory->slug }}"
-                                            class="fas fa-{{ $address->belongsToSubcategory->icon_image }} fa-fw"></i>
+                                           class="fas fa-{{ $address->belongsToSubcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $address->belongsToSubcategory->icon_style }} h-5 w-5">
                                             <use xlink:href="#{{ $address->belongsToSubcategory->slug }}"></use>
                                         </svg>&nbsp;
