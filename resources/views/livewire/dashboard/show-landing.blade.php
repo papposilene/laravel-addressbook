@@ -21,13 +21,13 @@
                     </h3>
                     <div class="flex flex-row flex-wrap">
                         @foreach($countries as $country)
-                        <div class="flex grow bg-gray-500 hover:bg-gray-400 text-gray-200 p-2 lg:mb-3">
+                        <div class="flex grow bg-gray-500 hover:bg-gray-400 text-gray-200 hover:text-black p-2 lg:mb-3">
                             <a href="{{ route('front.map.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
                                 <span class="inline-flex align-middle mt-1">
                                     {{ $country->flag }}&nbsp;
                                     {{ $country->name_eng_common }}
                                 </span>
-                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
+                                <span class="bg-white text-black text-sm font-semibold h-8 inline-flex items-center p-1.5 border-1 border-black border-dotted rounded-full">
                                     @leadingzero($country->has_addresses_count)
                                 </span>
                             </a>
@@ -53,7 +53,7 @@
                                     </svg>&nbsp;
                                     {{ $category->translations }}
                                 </span>
-                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
+                                <span class="bg-white text-black text-sm font-semibold h-8 inline-flex items-center p-1.5 border-1 border-black border-dotted rounded-full">
                                     @leadingzero($category->hasAddresses()->count())
                                 </span>
                             </a>
