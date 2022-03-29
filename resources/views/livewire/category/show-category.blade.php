@@ -134,20 +134,20 @@
                         </a>
                     </li>
                     @foreach($categories as $category)
-                        <li>
-                            <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                                <span class="inline-flex align-middle">
-                                    <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
-                                    <svg class="{{ $category->icon_style }} h-5 w-5">
-                                        <use xlink:href="#{{ $category->slug }}"></use>
-                                    </svg>&nbsp;
-                                    {{ $category->translations }}
-                                </span>
-                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                    @leadingzero($category->hasSubcategories()->count())
-                                </span>
-                            </a>
-                        </li>
+                    <li class="{{ $category->icon_style }} rounded">
+                        <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
+                            <span class="inline-flex align-middle mt-1">
+                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                <svg class="{{ $category->icon_style }} h-5 w-5">
+                                    <use xlink:href="#{{ $category->slug }}"></use>
+                                </svg>&nbsp;
+                                {{ $category->translations }}
+                            </span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($category->hasSubcategories()->count())
+                            </span>
+                        </a>
+                    </li>
                     @endforeach
                 </ul>
             </div>
