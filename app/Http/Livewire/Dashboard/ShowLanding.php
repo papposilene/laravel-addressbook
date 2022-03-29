@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class ShowLanding extends Component
 {
+
     protected $categories;
     protected $countries;
 
