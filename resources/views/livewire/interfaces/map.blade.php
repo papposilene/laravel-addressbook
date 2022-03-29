@@ -2,7 +2,7 @@
 
 <script>
 document.addEventListener('livewire:load', function () {
-    var leafletMap = L.map('cartography', {
+    const leafletMap = L.map('cartography', {
         center: [{{ $address->address_lat }}, {{ $address->address_lon }}],
         zoom: {{ $zoom }},
         zoomControl: false

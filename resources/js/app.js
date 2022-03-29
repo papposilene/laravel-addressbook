@@ -10,10 +10,30 @@ import Alpine from 'alpinejs';
 //import '@fortawesome/fontawesome-free/js/brands';
 
 /* Apache ECharts */
-import 'echarts/core';
-import 'echarts/charts';
-import 'echarts/components';
-import 'echarts/renderers';
+import * as echarts from 'echarts/core';
+import { BarChart, PieChart } from 'echarts/charts';
+import {
+    TitleComponent,
+    TooltipComponent,
+    GridComponent,
+    DatasetComponent,
+    TransformComponent
+} from 'echarts/components';
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([
+    TitleComponent,
+    TooltipComponent,
+    GridComponent,
+    DatasetComponent,
+    TransformComponent,
+    BarChart,
+    PieChart,
+    LabelLayout,
+    UniversalTransition,
+    CanvasRenderer
+]);
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js';
@@ -22,5 +42,5 @@ import 'leaflet.locatecontrol/src/L.Control.Locate.js';
 import 'leaflet-ajax/dist/leaflet.ajax.js';
 
 window.Alpine = Alpine;
-
 Alpine.start();
+

@@ -89,8 +89,12 @@
                         Pays
                     </h3>
                     <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-                        @livewire('interfaces.chart-doughnut', [
-                            'api' => route('api.country.index', ['limit' => 10, 'orderby' => 'desc']),
+                        @livewire('chart.doughnut', [
+                            'api' => route('api.country.index', [
+                                'limit' => 5,
+                                'sortby' => 'has_addresses_count',
+                                'orderby' => 'desc'
+                            ]),
                         ])
                     </div>
                 </div>
