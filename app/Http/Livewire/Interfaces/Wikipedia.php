@@ -20,8 +20,8 @@ class Wikipedia extends Component
     {
         $slug = $this->wikidata;
 
-        $toredArticle = hasWikidata($this->address_uuid, $slug);
-        $wikipedia = Wikidata::findOrFail($toredArticle);
+        $storedArticle = hasWikidata($this->address_uuid, $slug);
+        $wikipedia = Wikidata::find($storedArticle);
 
         return view('livewire.interfaces.wikipedia', [
             'wikipedia' => $wikipedia,
