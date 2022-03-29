@@ -25,7 +25,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.address.create-address');
     }
 
     /**
