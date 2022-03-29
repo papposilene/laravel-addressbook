@@ -32,15 +32,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const modalOpenShowAbout = document.getElementById('modalOpenShowAbout');
+            const modalCloseShowAbout = document.getElementById('modalCloseShowAbout');
+            const modalWindowShowAbout = document.getElementById('modalWindowShowAbout');
+
+            modalOpenShowAbout.addEventListener('click',()=>modalWindowShowAbout.classList.remove('scale-0'));
+            modalCloseShowAbout.addEventListener('click',()=>modalWindowShowAbout.classList.add('scale-0'));
+        })
+    </script>
 </div>
-
-<script>
-document.addEventListener('livewire:load', function () {
-    const modalOpenShowAbout = document.getElementById('modalOpenShowAbout')
-    const modalCloseShowAbout = document.getElementById('modalCloseShowAbout')
-    const modalWindowShowAbout = document.getElementById('modalWindowShowAbout')
-
-    modalOpenShowAbout.addEventListener('click',()=>modalWindowShowAbout.classList.remove('scale-0'))
-    modalCloseShowAbout.addEventListener('click',()=>modalWindowShowAbout.classList.add('scale-0'))
-})
-</script>

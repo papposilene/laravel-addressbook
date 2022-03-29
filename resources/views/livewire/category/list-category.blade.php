@@ -33,10 +33,14 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-                        <button class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
-                            <svg class="h-6 w-6"><use xlink:href="#create"></use></svg>
-                        </button>
-                        <x-interfaces.toggle wire:model="withAddresses" type="toggle" class="ml-2" :placeholder="@ucfirst(__('app.toggle'))" />
+                        @hasrole('admin')
+                        <a href="{{ route('admin.address.create') }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                            <svg class="h-6 w-6">
+                                <use xlink:href="#create"></use>
+                            </svg>
+                        </a>
+                        @endhasrole
+                        @livewire('interfaces.toggle')
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
                 </div>
@@ -76,7 +80,8 @@
                                     </p>
                                 </td>
                                 <td class="break-words text-gray-800 hidden lg:table-cell">
-                                    <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}">
+                                    <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}"
+                                        class="{{ $subcategory->belongsToCategory->icon_style }} px-1.5 rounded">
                                         {{ $subcategory->belongsToCategory->translations }}
                                     </a>
                                 </td>
@@ -90,6 +95,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
+                                        @hasrole('admin')
                                         <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
                                            class="mx-1">
                                             <svg class="h-5 w-5">
@@ -106,6 +112,11 @@
                                                 <use xlink:href="#delete"></use>
                                             </svg>
                                         </a>
+                                        @else
+                                        <span class="mx-1">
+                                            ---
+                                        </span>
+                                        @endhasrole
                                     </p>
                                 </td>
                             </tr>
@@ -134,20 +145,20 @@
                         </a>
                     </li>
                     @foreach($categories as $category)
-                        <li>
-                            <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle">
+                    <li class="{{ $category->icon_style }} rounded">
+                        <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
+                            <span class="inline-flex align-middle mt-1">
                                 <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
-                                <svg class="{{ $category->icon_style }} h-5 w-5">
+                                <svg class="h-5 w-5">
                                     <use xlink:href="#{{ $category->slug }}"></use>
                                 </svg>&nbsp;
                                 {{ $category->translations }}
                             </span>
-                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                            <span class="bg-white text-black text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
                                 @leadingzero($category->hasSubcategories()->count())
                             </span>
-                            </a>
-                        </li>
+                        </a>
+                    </li>
                     @endforeach
                 </ul>
             </div>

@@ -180,27 +180,25 @@
                 </h5>
                 <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
                     <li>
-                        <a href="{{ route('front.category.index', ['filter' => $address->belongsToSubcategory->belongsToCategory->slug]) }}"
-                           class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle">
-                                <i data-fa-symbol="{{ $address->belongsToSubcategory->belongsToCategory->slug }}"
-                                   class="fas fa-{{ $address->belongsToSubcategory->belongsToCategory->icon_image }} fa-fw"></i>
-                                <svg
-                                    class="{{ $address->belongsToSubcategory->belongsToCategory->icon_style }} mt-1 h-5 w-5">
-                                    <use
-                                        xlink:href="#{{ $address->belongsToSubcategory->belongsToCategory->slug }}"></use>
+                        <a href="{{ route('front.category.index', ['filter' => $address->belongsToCategory->slug]) }}"
+                           class="flex flex-row justify-between {{ $address->belongsToCategory->icon_style }} mb-2 px-1.5 rounded">
+                            <span class="inline-flex align-middle mt-1">
+                                <i data-fa-symbol="{{ $address->belongsToCategory->slug }}"
+                                   class="fas fa-{{ $address->belongsToCategory->icon_image }} fa-fw"></i>
+                                <svg class="h-5 w-5">
+                                    <use xlink:href="#{{ $address->belongsToCategory->slug }}"></use>
                                 </svg>&nbsp;
-                                {{ $address->belongsToSubcategory->belongsToCategory->translations }}
+                                {{ $address->belongsToCategory->translations }}
                             </span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('front.category.show', ['slug' => $address->belongsToSubcategory->slug]) }}"
-                           class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle">
+                           class="flex flex-row justify-between {{ $address->belongsToCategory->icon_style }} px-1.5 rounded">
+                            <span class="inline-flex align-middle mt-1">
                                 <i data-fa-symbol="{{ $address->belongsToSubcategory->slug }}"
                                    class="fas fa-{{ $address->belongsToSubcategory->icon_image }} fa-fw"></i>
-                                <svg class="{{ $address->belongsToSubcategory->icon_style }} mt-1 h-5 w-5">
+                                <svg class="h-5 w-5">
                                     <use xlink:href="#{{ $address->belongsToSubcategory->slug }}"></use>
                                 </svg>&nbsp;
                                 {{ $address->belongsToSubcategory->translations }}

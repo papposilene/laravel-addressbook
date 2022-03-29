@@ -32,6 +32,7 @@ return [
     'map' => 'carte',
     'name' => 'nom',
     'no' => 'non',
+    'no_wikipedia' => 'il n’y a pas encore d’article concernant ce lieu dans le Wikipédia de votre langue... Prenez des notes et des photographies pendant votre visite, que vous puissiez contribuer à Wikipédia à votre retour.',
     'nothing' => 'aucun résultat',
     'other' => 'autre',
     'private' => 'privé',

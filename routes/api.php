@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CountryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('1.1')->group(function () {
+    // Countries
+    Route::get('/countries', [CountryController::class, 'index'])->name('api.country.index');
+    Route::get('/countries/{cca3}', [CountryController::class, 'show'])->name('api.country.show');
 });
