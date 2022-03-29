@@ -128,13 +128,13 @@ class Address extends Model
      */
     public function belongsToCategory()
     {
-        return $this->hasManyThrough(
-            'App\Models\Category',
-            'App\Models\Subcategory',
-            'category_slug',
+        return $this->hasOneThrough(
+            Category::class,
+            Subcategory::class,
             'slug',
             'slug',
             'subcategory_slug',
+            'category_slug'
         );
     }
 
@@ -144,7 +144,7 @@ class Address extends Model
     public function belongsToSubcategory()
     {
         return $this->belongsTo(
-            'App\Models\Subcategory',
+            Subcategory::class,
             'subcategory_slug',
             'slug'
         );
@@ -156,7 +156,7 @@ class Address extends Model
     public function belongsToCountry()
     {
         return $this->belongsTo(
-            'Papposilene\Geodata\Models\Country',
+            Country::class,
             'country_cca3',
             'cca3'
         );
@@ -168,7 +168,7 @@ class Address extends Model
     public function belongsToCity()
     {
         return $this->belongsTo(
-            'App\Models\City',
+            City::class,
             'city_uuid',
             'uuid'
         );
