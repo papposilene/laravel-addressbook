@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d1469e377ec4ef12d6f681f9b3ded2d",
+    "content-hash": "df9abfd65612a54502e8c959d806cbe8",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2493,12 +2493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/papposilene/geodata.git",
-                "reference": "1531bc44d439883c59e27b99ba0c9c85e77ad19c"
+                "reference": "c3a5c04d54ab030a9d868bc84da9beddb16bdaff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/papposilene/geodata/zipball/1531bc44d439883c59e27b99ba0c9c85e77ad19c",
-                "reference": "1531bc44d439883c59e27b99ba0c9c85e77ad19c",
+                "url": "https://api.github.com/repos/papposilene/geodata/zipball/c3a5c04d54ab030a9d868bc84da9beddb16bdaff",
+                "reference": "c3a5c04d54ab030a9d868bc84da9beddb16bdaff",
                 "shasum": ""
             },
             "require": {
@@ -2563,7 +2563,7 @@
                 "issues": "https://github.com/papposilene/geodata/issues",
                 "source": "https://github.com/papposilene/geodata/tree/main"
             },
-            "time": "2022-03-24T18:51:47+00:00"
+            "time": "2022-03-31T09:03:02+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -8651,7 +8651,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"
