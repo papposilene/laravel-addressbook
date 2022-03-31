@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address_city', 255);
             $table->string('address_country', 255);
             $table->uuid('city_uuid')->nullable();
+            $table->uuid('region_uuid')->nullable();
             $table->string('country_cca3', 3);
             $table->decimal('address_lat', 20, 16);
             $table->decimal('address_lon', 20, 16);
@@ -36,6 +37,8 @@ return new class extends Migration
 
             $table->foreign('city_uuid')
                 ->references('uuid')->on('geodata__cities')->onDelete('cascade');
+            $table->foreign('region_uuid')
+                ->references('uuid')->on('geodata__regions')->onDelete('cascade');
             $table->foreign('country_cca3')
                 ->references('cca3')->on('geodata__countries')->onDelete('cascade');
             $table->foreign('subcategory_slug')

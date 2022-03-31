@@ -81,19 +81,23 @@ return new class extends Migration
             $table->uuid()->primary();
             // Administrative layers
             $table->string('country_cca3', 3);
-            $table->string('state', 255)->nullable(); // adm1name
-            // City data
-            $table->string('name', 255);
-            $table->decimal('lat', 20, 16)->nullable();
-            $table->decimal('lon', 20, 16)->nullable();
+            $table->uuid('region_uuid')->nullable();
+            // OpenStreetMap ID
+            $table->bigInteger('osm_place_id', false)->nullable();
+            $table->integer('admin_level', false);
+            $table->string('type', 255)->nullable();
+            $table->string('name_loc', 255);
+            $table->string('name_eng', 255);
             // Extra data in JSON
-            $table->json('postcodes')->nullable();
+            $table->json('name_translations');
+            $table->string('postcodes', 10)->nullable();
             $table->json('extra')->nullable();
             // Internal data
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('country_cca3')->references('cca3')->on('geodata__countries');
+            $table->foreign('region_uuid')->references('uuid')->on('geodata__regions');
         });
     }
 
@@ -105,6 +109,7 @@ return new class extends Migration
     public function down()
     {
         Schema::drop('geodata__cities');
+        Schema::drop('geodata__regions');
         Schema::drop('geodata__countries');
     }
 };

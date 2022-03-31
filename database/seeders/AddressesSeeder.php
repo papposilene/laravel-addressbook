@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Papposilene\Geodata\Models\City;
 use Papposilene\Geodata\Models\Country;
+use Papposilene\Geodata\Models\Region;
 
 class AddressesSeeder extends Seeder
 {
@@ -48,6 +49,7 @@ class AddressesSeeder extends Seeder
                     'address_city' => (!empty($data->address->city) ? $data->address->city : null),
                     'address_country' => $country->name_eng_common,
                     'city_uuid' => ($city ? $city->uuid : null),
+                    //'region_uuid' => ($region ? $region->uuid : null),
                     'country_cca3' => $country->cca3,
                     'address_lat' => (float)$data->geolocation->lat,
                     'address_lon' => (float)$data->geolocation->lon,
