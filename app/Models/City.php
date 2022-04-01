@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Papposilene\Geodata\Exceptions\CityDoesNotExist;
 use Papposilene\Geodata\Models\Country;
 use Papposilene\Geodata\GeodataRegistrar;
+use Papposilene\Geodata\Models\Region;
 
 class City extends Model
 {
@@ -20,6 +21,16 @@ class City extends Model
      */
     public $incrementing = false;
     protected $primaryKey = 'uuid';
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //'uuid' => 'uuid',
+        'extra' => 'array',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -63,6 +74,48 @@ class City extends Model
         self::creating(function ($model) {
             $model->uuid = (string) Str::uuid();
         });
+    }
+
+    /**
+     * A city belongs to one country.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function belongsToCountry(): BelongsTo
+    {
+        return $this->belongsTo(
+            Country::class,
+            'country_cca3',
+            'cca3'
+        );
+    }
+
+    /**
+     * A city belongs to one region.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function belongsToRegion(): BelongsTo
+    {
+        return $this->belongsTo(
+            Region::class,
+            'region_uuid',
+            'uuid'
+        );
+    }
+
+    /**
+     * A city can have many addresses.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hasAddresses(): HasMany
+    {
+        return $this->hasMany(
+            Address::class,
+            'address_city',
+            'uuid'
+        );
     }
 
     /**
@@ -176,31 +229,4 @@ class City extends Model
         return $city;
     }
 
-    /**
-     * A city belongs to one country.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function belongsToCountry(): BelongsTo
-    {
-        return $this->belongsTo(
-            Country::class,
-            'country_cca3',
-            'cca3'
-        );
-    }
-
-    /**
-     * A city can have many addresses.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function hasAddresses(): HasMany
-    {
-        return $this->hasMany(
-            Address::class,
-            'address_city',
-            'uuid'
-        );
-    }
 }
