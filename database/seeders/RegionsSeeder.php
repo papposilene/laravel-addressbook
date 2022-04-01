@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ class RegionsSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws \Exception
      */
     public function run()
     {
@@ -29,14 +31,19 @@ class RegionsSeeder extends Seeder
             $country = Country::where('cca2', strtolower(Str::substr($name, 0, 2)))->first();
 
             foreach ($json as $data) {
-                $translations = [];
                 $getNames = $data['all_tags'];
-                $getFiltered = array_filter($getNames, function($key) {
+
+                $getFiltered = array_filter($getNames, function ($key) {
                     return str_starts_with($key, 'name:');
                 }, ARRAY_FILTER_USE_KEY);
-                foreach($getFiltered as $key => $value) {
+
+                foreach ($getFiltered as $key => $value) {
                     $lang = explode(':', $key);
-                    $translations = [$lang[1] => $value];
+                    $translations[$lang[1]] = $value;
+                }
+
+                if (!array_key_exists('en', $translations) && !is_null($data['name_en'])) {
+                    $translations['en'] = $data['name_en'];
                 }
 
                 Region::create([

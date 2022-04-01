@@ -35,10 +35,17 @@ class AddressesSeeder extends Seeder
                 $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
                     ->firstOrFail();
 
-                $city = City::where([
+                $foundCity = City::where([
                     ['country_cca3', $country->cca3],
                     ['name', $data->address->city],
                 ])->first();
+
+                $city = null;
+                $region = null;
+                if(!is_null($foundCity)) {
+                    $city = $foundCity->uuid;
+                    $region = $foundCity->region_uuid;
+                }
 
                 Address::create([
                     'place_name' => Str::of($data->names->name)->trim(),
@@ -48,8 +55,8 @@ class AddressesSeeder extends Seeder
                     'address_postcode' => (!empty($data->address->postcode) ? $data->address->postcode : null),
                     'address_city' => (!empty($data->address->city) ? $data->address->city : null),
                     'address_country' => $country->name_eng_common,
-                    'city_uuid' => ($city ? $city->uuid : null),
-                    //'region_uuid' => ($region ? $region->uuid : null),
+                    'city_uuid' => $city,
+                    'region_uuid' => $region,
                     'country_cca3' => $country->cca3,
                     'address_lat' => (float)$data->geolocation->lat,
                     'address_lon' => (float)$data->geolocation->lon,
