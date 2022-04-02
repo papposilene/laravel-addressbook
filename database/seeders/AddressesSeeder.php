@@ -32,20 +32,31 @@ class AddressesSeeder extends Seeder
             $country = Country::where('cca3', $json->country_cca3)->firstOrFail();
 
             foreach ($json->addresses as $data) {
-                $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
-                    ->firstOrFail();
+                $cityModel = null;
+                $cityName = null;
+                $region = null;
+                $placeId = $data->geolocation->osm_place_id;
+                $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&hierarchy=0&group_hierarchy=1&format=json&place_id=' . $placeId);
+                $dataFile = json_decode($dataJson, true);
+
+                // Get the postal code
+                foreach ($dataFile['address'] as $key => $value) {
+                    if (in_array('postcode', $value)) return $keyPostcode;
+                }
+                $postcode = $dataFile['address'][$keyPostcode]['localname'];
+
+                //$addrPostcode = $dataFile['address'];
+
+                dd($dataFile);
 
                 $foundCity = City::where([
                     ['country_cca3', $country->cca3],
                     ['name', $data->address->city],
                 ])->first();
 
-                $city = null;
-                $region = null;
-                if(!is_null($foundCity)) {
-                    $city = $foundCity->uuid;
-                    $region = $foundCity->region_uuid;
-                }
+
+                $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
+                    ->firstOrFail();
 
                 Address::create([
                     'place_name' => Str::of($data->names->name)->trim(),
@@ -53,9 +64,9 @@ class AddressesSeeder extends Seeder
                     'address_number' => (!empty($data->address->number) ? $data->address->number : null),
                     'address_street' => (!empty($data->address->street) ? $data->address->street : null),
                     'address_postcode' => (!empty($data->address->postcode) ? $data->address->postcode : null),
-                    'address_city' => (!empty($data->address->city) ? $data->address->city : null),
+                    'address_city' => $cityName,
                     'address_country' => $country->name_eng_common,
-                    'city_uuid' => $city,
+                    'city_uuid' => $cityModel,
                     'region_uuid' => $region,
                     'country_cca3' => $country->cca3,
                     'address_lat' => (float)$data->geolocation->lat,

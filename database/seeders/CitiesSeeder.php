@@ -30,14 +30,25 @@ class CitiesSeeder extends Seeder
             $country = Country::where('cca2', strtolower(Str::substr($name, 0, 2)))->first();
 
             foreach ($json as $data) {
+                // OpenStreetMap administrative levels' parents
+                $cleanParents = [];
                 $parents = explode(',', $data['parents']);
                 foreach($parents as $parent) {
-                    $cleanParent[] = intval(preg_replace('/\D/', '', $parent));
+                    $cleanParents[] = intval(preg_replace('/\D/', '', $parent));
                 }
 
-                $region = Region::whereIn('osm_id', $cleanParent)
-                    ->orderBy('osm_admin_level', 'desc')->first();
+                // Convert postal_code to array
+                $cleanPostcodes = [];
+                if(array_key_exists('postal_code', $data['all_tags']))
+                {
+                    $postcodes = explode(';', $data['all_tags']['postal_code']);
+                    foreach($postcodes as $postcode) {
+                        $cleanPostcodes[] = intval(preg_replace('/\D/', '', $postcode));
+                    }
+                }
 
+                $region = Region::whereIn('osm_id', $cleanParents)
+                    ->orderBy('osm_admin_level', 'desc')->first();
                 if(is_null($region)) { continue; }
 
                 $translations = [];
@@ -55,12 +66,12 @@ class CitiesSeeder extends Seeder
                     'region_uuid' => (!empty($region) ? $region->uuid : null),
                     'osm_id' => intval(preg_replace('/\D/', '', $data['osm_id'])),
                     'osm_admin_level' => intval($data['admin_level']),
-                    'osm_parents' => $cleanParent,
+                    'osm_parents' => $cleanParents,
                     'osm_type' => (!is_null($data['boundary']) ? Str::slug($data['boundary'], '_') : null),
                     'name_loc' => $data['local_name'],
                     'name_eng' => (!is_null($data['name_en']) ? $data['name_en'] : $data['name']),
                     'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),
-                    'postcodes' => (array_key_exists('postal_code', $data['all_tags']) ? $data['all_tags']['postal_code'] : null),
+                    'postcodes' => $cleanPostcodes,
                     'extra' => [
                         'wikidata' => (array_key_exists('wikidata', $data['all_tags']) ? $data['all_tags']['wikidata'] : null),
                     ],
