@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -16,7 +15,6 @@ class RegionsSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
-     * @throws \Exception
      */
     public function run()
     {
@@ -31,28 +29,23 @@ class RegionsSeeder extends Seeder
             $country = Country::where('cca2', strtolower(Str::substr($name, 0, 2)))->first();
 
             foreach ($json as $data) {
+                $translations = [];
                 $getNames = $data['all_tags'];
-
-                $getFiltered = array_filter($getNames, function ($key) {
+                $getFiltered = array_filter($getNames, function($key) {
                     return str_starts_with($key, 'name:');
                 }, ARRAY_FILTER_USE_KEY);
-
-                foreach ($getFiltered as $key => $value) {
+                foreach($getFiltered as $key => $value) {
                     $lang = explode(':', $key);
-                    $translations[$lang[1]] = $value;
-                }
-
-                if (!array_key_exists('en', $translations) && !is_null($data['name_en'])) {
-                    $translations['en'] = $data['name_en'];
+                    $translations = [$lang[1] => $value];
                 }
 
                 Region::create([
                     'country_cca2' => $country->cca2,
                     'country_cca3' => $country->cca3,
                     'region_cca2' => (array_key_exists('ISO3166-2', $data['all_tags']) ? $data['all_tags']['ISO3166-2'] : null),
-                    'osm_place_id' => intval($data['osm_id']),
-                    'admin_level' => intval($data['admin_level']),
-                    'type' => (!is_null($data['boundary']) ? Str::slug($data['boundary'], '_') : $data['unknown']),
+                    'osm_id' => intval(preg_replace('/\D/', '', $data['osm_id'])),
+                    'osm_admin_level' => intval($data['admin_level']),
+                    'osm_type' => (!is_null($data['boundary']) ? Str::slug($data['boundary'], '_') : $data['unknown']),
                     'name_loc' => $data['local_name'],
                     'name_eng' => (!is_null($data['name_en']) ? $data['name_en'] : $data['name']),
                     'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),

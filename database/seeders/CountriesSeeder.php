@@ -32,14 +32,14 @@ class CountriesSeeder extends Seeder
                 $region = $data->geo->region;
                 $subregion = $data->geo->subregion;
                 $landlocked = $data->geo->landlocked;
-                $independent = $data->geo->independent === true;
+                $independent = (bool) ($data->geo->independent === true ? true : false);
                 $lat = $data->geo->latlng[1];
                 $lon = $data->geo->latlng[0];
             } else {
                 $region = $data->region;
                 $subregion = $data->subregion;
                 $landlocked = $data->landlocked;
-                $independent = $data->independent === true;
+                $independent = (bool) ($data->independent === true ? true : false);
                 $lat = $data->latlng[1];
                 $lon = $data->latlng[0];
             }
@@ -111,8 +111,8 @@ class CountriesSeeder extends Seeder
                 'name_native'       => json_encode($data->name->native, JSON_FORCE_OBJECT),
                 'name_translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
                 'extra' => json_encode([
-                    'un_member' => property_exists($data, 'un_member') && $data->un_member,
-                    'eu_member' => property_exists($data, 'eu_member'),
+                    'un_member' => (property_exists($data, 'un_member') && $data->un_member ? true : false),
+                    'eu_member' => (property_exists($data, 'eu_member') ? true : false),
                     'wikidata' => (property_exists($data, 'wikidataid') ? $data->wikidataid : null),
                     'woe_id' => (property_exists($data, 'woe_id') ? $data->woe_id : null),
                 ], JSON_FORCE_OBJECT),
