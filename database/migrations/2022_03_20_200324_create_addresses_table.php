@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('address_number', 255)->nullable();
             $table->string('address_street', 255)->nullable();
             $table->string('address_postcode', 255)->nullable();
-            $table->string('address_city', 255);
-            $table->string('address_country', 255);
             $table->uuid('city_uuid')->nullable();
             $table->uuid('region_uuid')->nullable();
             $table->string('country_cca3', 3);
