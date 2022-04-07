@@ -26,16 +26,12 @@ class RegionsSeeder extends Seeder
             $name = File::name($filename);
             $json = json_decode($file, true);
 
-            $country = Country::where('cca2', strtolower(Str::substr($name, 0, 2)))->first();
+            $country = Country::where('cca3', $name)->firstOrFail();
 
             foreach ($json as $data) {
-                $translations = [];
-
-                //dd($data['extra']['un_locode']);
-
                 Region::create([
-                    'country_cca2' => $data['country_cca2'],
-                    'country_cca3' => $data['country_cca3'],
+                    'country_cca2' => $country->cca2,
+                    'country_cca3' => $country->cca3,
                     'region_cca2' => $data['region_cca2'],
                     'osm_id' => $data['osm_id'],
                     'osm_place_id' => $data['osm_place_id'],
@@ -43,7 +39,7 @@ class RegionsSeeder extends Seeder
                     'osm_type' => $data['osm_type'],
                     'name_loc' => $data['name_loc'],
                     'name_eng' => $data['name_eng'],
-                    'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),
+                    'name_translations' => json_encode($data['name_translations'], JSON_FORCE_OBJECT),
                     'extra' => [
                         'un_locode' => (array_key_exists('un_locode', $data['extra']) ? $data['extra']['un_locode'] : null),
                         'wikidata' => (array_key_exists('wikidata', $data['extra']) ? $data['extra']['wikidata'] : null),
