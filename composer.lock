@@ -2969,12 +2969,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/papposilene/geodata.git",
-                "reference": "a29051791586425ce56ab9334b051aefcf5a12fb"
+                "reference": "9df508ec6e0db9b7f2a658e5d5178e8f0d8ec99c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/papposilene/geodata/zipball/a29051791586425ce56ab9334b051aefcf5a12fb",
-                "reference": "a29051791586425ce56ab9334b051aefcf5a12fb",
+                "url": "https://api.github.com/repos/papposilene/geodata/zipball/9df508ec6e0db9b7f2a658e5d5178e8f0d8ec99c",
+                "reference": "9df508ec6e0db9b7f2a658e5d5178e8f0d8ec99c",
                 "shasum": ""
             },
             "require": {
@@ -3039,7 +3039,7 @@
                 "issues": "https://github.com/papposilene/geodata/issues",
                 "source": "https://github.com/papposilene/geodata/tree/main"
             },
-            "time": "2022-04-03T09:47:58+00:00"
+            "time": "2022-04-07T19:20:37+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",

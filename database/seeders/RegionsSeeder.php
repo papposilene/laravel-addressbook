@@ -30,28 +30,23 @@ class RegionsSeeder extends Seeder
 
             foreach ($json as $data) {
                 $translations = [];
-                $getNames = $data['all_tags'];
-                $getFiltered = array_filter($getNames, function($key) {
-                    return str_starts_with($key, 'name:');
-                }, ARRAY_FILTER_USE_KEY);
-                foreach($getFiltered as $key => $value) {
-                    $lang = explode(':', $key);
-                    $translations = [$lang[1] => $value];
-                }
+
+                //dd($data['extra']['un_locode']);
 
                 Region::create([
-                    'country_cca2' => $country->cca2,
-                    'country_cca3' => $country->cca3,
-                    'region_cca2' => (array_key_exists('ISO3166-2', $data['all_tags']) ? $data['all_tags']['ISO3166-2'] : null),
-                    'osm_id' => intval(preg_replace('/\D/', '', $data['osm_id'])),
-                    'osm_place_id' => null,
-                    'osm_admin_level' => intval($data['admin_level']),
-                    'osm_type' => (!is_null($data['boundary']) ? Str::slug($data['boundary'], '_') : $data['unknown']),
-                    'name_loc' => $data['local_name'],
-                    'name_eng' => (!is_null($data['name_en']) ? $data['name_en'] : $data['name']),
+                    'country_cca2' => $data['country_cca2'],
+                    'country_cca3' => $data['country_cca3'],
+                    'region_cca2' => $data['region_cca2'],
+                    'osm_id' => $data['osm_id'],
+                    'osm_place_id' => $data['osm_place_id'],
+                    'osm_admin_level' => $data['osm_admin_level'],
+                    'osm_type' => $data['osm_type'],
+                    'name_loc' => $data['name_loc'],
+                    'name_eng' => $data['name_eng'],
                     'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),
                     'extra' => [
-                        'wikidata' => (array_key_exists('wikidata', $data['all_tags']) ? $data['all_tags']['wikidata'] : null),
+                        'un_locode' => (array_key_exists('un_locode', $data['extra']) ? $data['extra']['un_locode'] : null),
+                        'wikidata' => (array_key_exists('wikidata', $data['extra']) ? $data['extra']['wikidata'] : null),
                     ],
                 ]);
             }
