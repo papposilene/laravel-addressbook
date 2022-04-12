@@ -1,62 +1,63 @@
 <div>
-    <div id="pieChart" style="w-full"></div>
+    <canvas id="{{ $name }}" width="400" height="400"></canvas>
 
     <script type="text/javascript">
         document.addEventListener('livewire:load', function () {
-            async function getData() {
-                let api = await fetch('{!! $api !!}');
+            let getLabels = [];
+            let getDatasets = [];
+            const getColors = [
+                '#EF4444', '#F97316', '#F59E0B', '#EAB308', '#84CC16', '#22C55E',
+                '#10B981', '#14B8A6', '#06B6D4', '#0EA5E9', '#3B82F6', '#818CF8',
+                '#8B5CF6', '#A855F7', '#D946EF', '#EC4899', '#F43F5E',
+                '#F87171', '#FB923C', '#FBBF24', '#FACC15', '#A3E635', '#4ADE80',
+                '#34D399', '#2DD4BF', '#22D3EE', '#38BDF8', '#60A5FA', '#6366F1',
+                '#A78BFA', '#C084FC', '#E879F9', '#F472B6', '#FB7185',
+            ];
+            async function loadChart() {
+                await fetch('{!! $api !!}')
+                    .then(response => response.json())
+                    .then(json => {
+                        json.data.map(function(e) {
+                            getLabels.push(e.name);
+                        });
+                        json.data.map(function(e) {
+                            getDatasets.push(e.has_addresses_count);
+                        });
+                    });
 
-                return api.json();
-            }
-
-            const chartDom = document.getElementById('pieChart');
-            const pieChart = echarts.init(chartDom, 'dark');
-            let option;
-
-            console.info(getData())
-
-            option = {
-                aria: {
-                    enabled: true,
-                    show: true
-                },
-                darkMode: true,
-                title: {
-                    text: 'Referer of a Website',
-                    subtext: 'Fake Data',
-                    left: 'center'
-                },
-                tooltip: {
-                    trigger: 'item'
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left'
-                },
-                series: [
-                    {
-                        name: 'Access From',
-                        type: 'pie',
-                        radius: '50%',
-                        data: [
-                            {value: 1048, name: 'Search Engine'},
-                            {value: 735, name: 'Direct'},
-                            {value: 580, name: 'Email'},
-                            {value: 484, name: 'Union Ads'},
-                            {value: 300, name: 'Video Ads'}
-                        ],
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                const {{ $name }}ChartDom = document.getElementById('{{ $name }}').getContext('2d');
+                const {{ $name }}PieChart = new Chart({{ $name }}ChartDom, {
+                    type: 'pie',
+                    data: {
+                        labels: getLabels,
+                        datasets: [{
+                            label: '# of Votes',
+                            data: getDatasets,
+                            borderWidth: 1,
+                            borderColor: '#fff',
+                            backgroundColor: getColors.sort(() => Math.random() - 0.5),
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#000',
+                                }
+                            },
+                            title: {
+                                display: false,
+                                color: '#000',
+                                text: 'Chart.js Pie Chart'
                             }
                         }
                     }
-                ]
-            };
+                });
+            }
 
-            option && pieChart.setOption(option);
+            loadChart();
 
         });
     </script>

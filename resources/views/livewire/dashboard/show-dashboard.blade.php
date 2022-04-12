@@ -28,16 +28,6 @@
                 </div>
             @endif
 
-            <!-- Navigation and search -->
-            <!--div class="relative flex items-center justify-between mb-2 w-full">
-                <div class="flex flex-wrap">
-
-                </div>
-                <x-forms.input wire:model="search" type="search" class="ml-2"
-                               :placeholder="@ucfirst(__('app.search'))"/>
-            </div-->
-            <!-- End of navigation and search -->
-
             <!-- Dashboard -->
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
@@ -77,21 +67,29 @@
 
                 <div class="flex flex-col w-full lg:px-1 lg:w-1/3">
                     <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
-                        Pays
+                        @ucfirst(__('app.top10_of', ['what' => __('category.categories')]))
                     </h3>
                     <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-
+                        @livewire('chart.pie', [
+                            'name' => 'topCategoriesChart',
+                            'api' => route('api.category.index', [
+                                'limit' => 10,
+                                'sortby' => 'has_addresses_count',
+                                'orderby' => 'desc'
+                            ]),
+                        ])
                     </div>
                 </div>
 
                 <div class="flex flex-col w-full lg:pl-1 lg:w-1/3">
                     <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
-                        Pays
+                        @ucfirst(__('app.top10_of', ['what' => __('country.countries')]))
                     </h3>
                     <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
                         @livewire('chart.pie', [
+                            'name' => 'topCountriesChart',
                             'api' => route('api.country.index', [
-                                'limit' => 5,
+                                'limit' => 10,
                                 'sortby' => 'has_addresses_count',
                                 'orderby' => 'desc'
                             ]),

@@ -2,17 +2,23 @@ require('./bootstrap');
 
 import Alpine from 'alpinejs';
 
+/* TailwindCSS */
+//import resolveConfig from 'tailwindcss/resolveConfig';
+//import tailwindConfig from '../../tailwind.config.js';
+//const tailwind = resolveConfig(tailwindConfig);
+
 /* FontAwesome */
-require('@fortawesome/fontawesome-free/js/all.js');
-//import '@fortawesome/fontawesome-free/js/fontawesome';
-//import '@fortawesome/fontawesome-free/js/solid';
-//import '@fortawesome/fontawesome-free/js/regular';
-//import '@fortawesome/fontawesome-free/js/brands';
+//require('@fortawesome/fontawesome-free/js/all.js');
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
 
 /* ChartJS */
-//import Chart from 'chart.js/auto';
+import 'chart.js/dist/chart.js';
 
 /* Apache ECharts */
+/*
 import * as echarts from 'echarts/dist/echarts.js';
 import {
     BarChart,
@@ -42,6 +48,7 @@ echarts.use([
     UniversalTransition,
     SVGRenderer
 ]);
+*/
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js';
