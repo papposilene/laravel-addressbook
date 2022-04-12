@@ -161,7 +161,6 @@ class Category extends Model
             Subcategory::class,
             'category_slug',
             'slug'
-
         );
     }
 
