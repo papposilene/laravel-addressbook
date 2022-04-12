@@ -44,6 +44,9 @@ class ListCountry extends Component
                     ->orWhere('name_translations', 'like', '%'.$this->search.'%');
             })
             ->withCount('hasAddresses')
+            ->when(!Auth::check(), function ($query) {
+                return $query->has('hasAddresses');
+            })
             ->orderBy('has_addresses_count', 'desc')
             ->orderBy('cca3', 'asc')
             ->paginate(25);

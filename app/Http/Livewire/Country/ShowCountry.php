@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Country;
 
+use App\Models\Country;
 use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Papposilene\Geodata\Models\Country;
 
 class ShowCountry extends Component
 {
@@ -41,13 +41,13 @@ class ShowCountry extends Component
     {
         $this->country = Country::where('cca3', $this->cca3)->firstOrFail();
         $this->cities = City::where('country_cca3', $this->cca3)
-            ->orderBy('state', 'asc')
-            ->orderBy('name', 'asc')
+            ->orderBy('name_local', 'asc')
             ->withCount('hasAddresses')
             ->has('hasAddresses', '>=', $this->withAddresses)
             ->paginate(25);
 
         return view('livewire.country.show-country', [
+            'lang' => app()->getLocale(),
             'country' => $this->country,
             'cities' => $this->cities,
         ]);
