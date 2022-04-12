@@ -3,16 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
+use App\Models\City;
+use App\Models\Region;
 use App\Models\Subcategory;
-use Geocoder\Laravel\ProviderAndDumperAggregator as Geocoder;
-use Geocoder\Provider\Nominatim\Nominatim;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Papposilene\Geodata\Models\City;
 use Papposilene\Geodata\Models\Country;
-use Papposilene\Geodata\Models\Region;
 
 class AddressesSeeder extends Seeder
 {
@@ -112,6 +110,7 @@ class AddressesSeeder extends Seeder
                     'address_number' => (!empty($data->address->number) ? $data->address->number : null),
                     'address_street' => (!empty($data->address->street) ? Str::of($data->address->street)->trim() : null),
                     'address_postcode' => (!empty($data->address->postcode) ? Str::of($data->address->postcode)->trim() : null),
+                    //'address_city' => $city->name_translations,
                     'city_uuid' => $city->uuid,
                     'region_uuid' => $city->region_uuid,
                     'country_cca3' => $country->cca3,
