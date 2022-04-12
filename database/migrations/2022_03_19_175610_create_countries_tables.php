@@ -86,7 +86,6 @@ return new class extends Migration
             $table->bigInteger('osm_id', false)->nullable();
             $table->bigInteger('osm_place_id', false)->nullable();
             $table->integer('osm_admin_level', false);
-            $table->json('osm_parents')->nullable();
             $table->string('osm_type', 255)->nullable();
             $table->string('name_local', 255);
             $table->json('name_translations');

@@ -39,33 +39,37 @@ class AddressesSeeder extends Seeder
 
             foreach ($json->addresses as $data) {
                 echo $data->names->name . PHP_EOL;
-                $cityOsmId = null;
+
+
                 $cityPlaceId = null;
                 $placeId = $data->geolocation->osm_place_id;
 
                 $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email='.$userAgent.'&place_id=' . $placeId);
                 $dataFile = json_decode($dataJson, true);
 
-                // Get the postal code
-                foreach ($dataFile['address'] as $key => $value) {
-                    if ($value['type'] === 'postcode') {
-                        $postcode = $dataFile['address'][$key]['localname'];
-                    }
-                }
-
-                $isCity = City::where([
-                    'country_cca3' => $country->cca3,
-                    'name_local' => $data->address->city,
-                ])->first();
+                $isCity = City::where('country_cca3', $country->cca3)
+                    ->where('name_translations', 'like', '%'.$data->address->city.'%')
+                    ->first();
 
                 if(!is_null($isCity)) {
                     $city = $isCity;
                 } else {
-                    $cityJson = file_get_contents('https://nominatim.openstreetmap.org/search.php?limit=1&format=jsonv2&extratags=1&namedetails=1email='.$userAgent.'&countrycodes='.$data->address->country_cca3.'&city=' . $cityPlaceId);
+                    $getLevels = $dataFile['address'];
+                    foreach($getLevels as $key => $value) {
+                        if ($value['osm_type'] === 'R' && ($value['admin_level'] === 8 || $value['admin_level'] === 7 || $value['admin_level'] === 6 || $value['admin_level'] === 4)) {
+                            $adminLevels[] = $dataFile['address'][$key]['place_id'];
+                        }
+                    }
+
+                    krsort($adminLevels);
+                    $isRegion = Region::whereIn('osm_place_id', $adminLevels)->orderBy('osm_admin_level', 'asc')->first();
+
+                    $cityName = $data->address->city;
+                    $cityJson = file_get_contents('https://nominatim.openstreetmap.org/search.php?limit=1&format=jsonv2&extratags=1&namedetails=1&email='.$userAgent.'&countrycodes='.$data->address->country_cca3.'&city='.urlencode($cityName));
                     $cityData = json_decode($cityJson, true);
 
                     $translations = [];
-                    $getNames = $cityData['names'];
+                    $getNames = $cityData[0]['namedetails'];
                     $getFiltered = array_filter($getNames, function($key) {
                         return str_starts_with($key, 'name:');
                     }, ARRAY_FILTER_USE_KEY);
@@ -74,28 +78,24 @@ class AddressesSeeder extends Seeder
                         $translations[$lang[1]] = $value;
                     }
 
-                    $region = Region::where('country_cca3', $country->cca3)
-                        ->where(function($query) use ($cityData) {
-                            $query->where('region_cca2', $cityData['extratags']['ISO3166-2'])
-                                ->orWhere('description', 'like', '%'.$this->search.'%');
-                        })->first();
-
+                    $cityDisplayName = explode(', ', $cityData[0]['display_name']);
                     $city = City::firstOrCreate(
                         [
                             'country_cca3' => $country->cca3,
                             'osm_place_id' => $cityPlaceId,
                         ],
                         [
-                            'region_uuid' => $region->uuid,
-                            'osm_id' => $cityData['osm_id'],
-                            'osm_place_id' => $cityData['place_id'],
-                            'osm_admin_level' => $cityData['admin_level'],
-                            'osm_type' => $cityData['type'],
-                            'name_local' => $cityData['localname'],
+                            'region_uuid' => ($isRegion ? $isRegion->uuid : null),
+                            'osm_id' => $cityData[0]['osm_id'],
+                            'osm_place_id' => $cityData[0]['place_id'],
+                            'osm_admin_level' => $cityData[0]['place_rank'],
+                            'osm_type' => $cityData[0]['type'],
+                            'name_local' => (count($cityDisplayName) > 0 ? $cityDisplayName[0] : $cityData[0]['display_name']),
                             'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),
                             'postcodes' => null,
                             'extra' => [
-                                'wikidata' => (array_key_exists('wikidata', $cityData['extratags']) ? $cityData['extratags']['wikidata'] : null),
+                                'un_locode' => (array_key_exists('un_locode', $cityData[0]['extratags']) ? $cityData[0]['un_locode'] : null),
+                                'wikidata' => (array_key_exists('wikidata', $cityData[0]['extratags']) ? $cityData[0]['extratags']['wikidata'] : null),
                             ],
                         ]
                     );
