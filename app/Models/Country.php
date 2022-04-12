@@ -11,9 +11,12 @@ use Papposilene\Geodata\Exceptions\CountryDoesNotExist;
 use Papposilene\Geodata\GeodataRegistrar;
 use Papposilene\Geodata\Models\Continent;
 use Papposilene\Geodata\Models\Subcontinent;
+use Spatie\Translatable\HasTranslations;
 
 class Country extends Model
 {
+    use HasTranslations;
+
     protected $primaryKey = 'uuid';
 
     /**
@@ -56,6 +59,15 @@ class Country extends Model
         'name_native',
         'name_translations',
         'extra',
+    ];
+
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    protected $translatable = [
+        'name_translations'
     ];
 
     /**

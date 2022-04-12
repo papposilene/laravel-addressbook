@@ -11,9 +11,12 @@ use Papposilene\Geodata\Exceptions\CityDoesNotExist;
 use Papposilene\Geodata\Models\Country;
 use Papposilene\Geodata\GeodataRegistrar;
 use Papposilene\Geodata\Models\Region;
+use Spatie\Translatable\HasTranslations;
 
 class City extends Model
 {
+    use HasTranslations;
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *
@@ -51,10 +54,39 @@ class City extends Model
      */
     protected $fillable = [
         'country_cca3',
-        'state',
-        'name',
-        'lat',
-        'lon',
+        'region_uuid',
+        'osm_id',
+        'osm_place_id',
+        'osm_admin_level',
+        'osm_type',
+        'name_local',
+        'name_translations',
+        'postcodes',
+        'extra',
+    ];
+
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    protected $translatable = [
+        'name_translations'
+    ];
+
+    /**
+     * The attributes that are visible.
+     *
+     * @var array
+     */
+    protected $visible = [
+        'country_cca3',
+        'osm_id',
+        'osm_place_id',
+        'osm_admin_level',
+        'osm_type',
+        'name_local',
+        'name_translations',
         'postcodes',
         'extra',
     ];
@@ -113,7 +145,7 @@ class City extends Model
     {
         return $this->hasMany(
             Address::class,
-            'address_city',
+            'city_uuid',
             'uuid'
         );
     }
