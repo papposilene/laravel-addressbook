@@ -22,10 +22,17 @@ class CountryController extends Controller
         $sort = $request->get('sortby', 'cca3');
         $order = $request->get('orderby', 'asc');
 
-        $countries = Country::withCount('hasAddresses')
-            ->orderBy($sort, $order)
-            ->limit($limit)
-            ->paginate(25);
+        if($limit) {
+            $countries = Country::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->get();
+        } else {
+            $countries = Country::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->paginate(25);
+        }
 
         return new CountryCollection($countries);
     }
@@ -44,5 +51,4 @@ class CountryController extends Controller
 
         return new CountryResource($country);
     }
-
 }

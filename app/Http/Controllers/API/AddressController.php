@@ -22,9 +22,15 @@ class AddressController extends Controller
         $sort = $request->get('sortby', 'place_name');
         $order = $request->get('orderby', 'asc');
 
-        $addresses = Address::orderBy($sort, $order)
-            ->limit($limit)
-            ->paginate(25);
+        if($limit) {
+            $addresses = Address::orderBy($sort, $order)
+                ->limit($limit)
+                ->get();
+        } else {
+            $addresses = Address::orderBy($sort, $order)
+                ->limit($limit)
+                ->paginate(25);
+        }
 
         return new AddressCollection($addresses);
     }

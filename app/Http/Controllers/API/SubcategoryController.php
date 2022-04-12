@@ -22,9 +22,17 @@ class SubcategoryController extends Controller
         $sort = $request->get('sortby', 'slug');
         $order = $request->get('orderby', 'asc');
 
-        $subcategories = Subcategory::orderBy($sort, $order)
-            ->limit($limit)
-            ->paginate(25);
+        if($limit) {
+            $subcategories = Subcategory::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->get();
+        } else {
+            $subcategories = Subcategory::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->paginate(25);
+        }
 
         return new SubcategoryCollection($subcategories);
     }

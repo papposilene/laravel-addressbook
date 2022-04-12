@@ -22,9 +22,17 @@ class CategoryController extends Controller
         $sort = $request->get('sortby', 'slug');
         $order = $request->get('orderby', 'asc');
 
-        $categories = Category::orderBy($sort, $order)
-            ->limit($limit)
-            ->paginate(25);
+        if($limit) {
+            $categories = Category::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->get();
+        } else {
+            $categories = Category::withCount('hasAddresses')
+                ->orderBy($sort, $order)
+                ->limit($limit)
+                ->paginate(25);
+        }
 
         return new CategoryCollection($categories);
     }
