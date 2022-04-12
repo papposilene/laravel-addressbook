@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Region;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,6 @@ use Illuminate\Support\Str;
 use Papposilene\Geodata\Exceptions\CityDoesNotExist;
 use Papposilene\Geodata\Models\Country;
 use Papposilene\Geodata\GeodataRegistrar;
-use Papposilene\Geodata\Models\Region;
 use Spatie\Translatable\HasTranslations;
 
 class City extends Model
