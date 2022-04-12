@@ -13,7 +13,7 @@
             </span>
             <span class="inline-flex align-middle">
                 {{ $country->flag }}&nbsp;
-                {{ $country->name_eng_formal }}
+                {{ $country->name_translations['common'] }}
             </span>
         </h2>
     </x-slot>
@@ -66,9 +66,9 @@
                         @foreach($cities as $city)
                         <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
-                            <td class="hidden lg:table-cell text-gray-800">{{ $city->state }}</td>
+                            <td class="hidden lg:table-cell text-gray-800">{{ $city->belongsToRegion->name_eng }}</td>
                             <td class="break-words p-3">
-                                {{ $city->name }}
+                                {{ $city->name_local }}
                             </td>
                             <td class="text-center text-gray-800 p-3">
                                 {{ $city->has_addresses_count }}
