@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
@@ -132,7 +134,7 @@ class Address extends Model
     /**
      * Get the category for a specific place.
      */
-    public function belongsToCategory()
+    public function belongsToCategory(): HasOneThrough
     {
         return $this->hasOneThrough(
             Category::class,
@@ -147,7 +149,7 @@ class Address extends Model
     /**
      * Get the subcategory for a specific place.
      */
-    public function belongsToSubcategory()
+    public function belongsToSubcategory(): BelongsTo
     {
         return $this->belongsTo(
             Subcategory::class,
@@ -159,7 +161,7 @@ class Address extends Model
     /**
      * Get the country for a specific place.
      */
-    public function belongsToCountry()
+    public function belongsToCountry(): BelongsTo
     {
         return $this->belongsTo(
             Country::class,
@@ -171,7 +173,7 @@ class Address extends Model
     /**
      * Get the city for a specific place.
      */
-    public function belongsToCity()
+    public function belongsToCity(): BelongsTo
     {
         return $this->belongsTo(
             City::class,

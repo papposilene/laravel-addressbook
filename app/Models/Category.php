@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Exceptions\CategoryDoesNotExist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Translatable\HasTranslations;
@@ -148,6 +149,23 @@ class Category extends Model
         }
 
         return $category;
+    }
+
+    /**
+     * A category has many addresses.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function hasAddresses(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Address::class,
+            Subcategory::class,
+            'category_slug',
+            'subcategory_slug',
+            'slug',
+            'slug'
+        );
     }
 
     /**
