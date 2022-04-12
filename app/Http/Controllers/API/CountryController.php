@@ -25,7 +25,7 @@ class CountryController extends Controller
         $countries = Country::withCount('hasAddresses')
             ->orderBy($sort, $order)
             ->limit($limit)
-            ->get();
+            ->paginate(25);
 
         return new CountryCollection($countries);
     }
