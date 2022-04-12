@@ -58,4 +58,5 @@ return [
     'name_of' => 'nom :pronoun :what',
     'save_' => 'ajouter :pronoun :what',
     'title_of' => 'titre :pronoun :what',
+    'top10_of' => 'top 10 des :what',
 ];
