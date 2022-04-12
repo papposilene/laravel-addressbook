@@ -28,6 +28,7 @@ class CountryResource extends JsonResource
             ],
             'cca2' => $this->cca2,
             'cca3' => $this->cca3,
+            'name' => $this->name_eng_common,
             'name_eng_formal' => $this->name_eng_formal,
             'name_eng_common' => $this->name_eng_common,
             'flag' => $this->flag,

@@ -24,6 +24,7 @@ class CategoryResource extends JsonResource
             'translations' => $this->translations,
 
             'has_subcategories_count' => $this->hasSubcategories()->count(),
+            'has_addresses_count' => $this->hasAddresses()->count(),
 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
