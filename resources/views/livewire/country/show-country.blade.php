@@ -66,7 +66,7 @@
                         @foreach($cities as $city)
                         <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
-                            <td class="hidden lg:table-cell text-gray-800">{{ $city->belongsToRegion->name_eng }}</td>
+                            <td class="hidden lg:table-cell text-gray-800">{{ ($city->belongsToRegion ? $city->belongsToRegion->name_translations : '---') }}</td>
                             <td class="break-words p-3">
                                 {{ $city->name_local }}
                             </td>
