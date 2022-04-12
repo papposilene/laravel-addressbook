@@ -37,8 +37,7 @@ class RegionsSeeder extends Seeder
                     'osm_place_id' => $data['osm_place_id'],
                     'osm_admin_level' => $data['osm_admin_level'],
                     'osm_type' => $data['osm_type'],
-                    'name_loc' => $data['name_loc'],
-                    'name_eng' => $data['name_eng'],
+                    'name_local' => $data['name_loc'],
                     'name_translations' => json_encode($data['name_translations'], JSON_FORCE_OBJECT),
                     'extra' => [
                         'un_locode' => (array_key_exists('un_locode', $data['extra']) ? $data['extra']['un_locode'] : null),

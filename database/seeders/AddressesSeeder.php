@@ -40,8 +40,10 @@ class AddressesSeeder extends Seeder
             foreach ($json->addresses as $data) {
                 echo $data->names->name . PHP_EOL;
 
-
+                $isCity = null;
+                $isRegion = null;
                 $cityPlaceId = null;
+                $adminLevels = [];
                 $placeId = $data->geolocation->osm_place_id;
 
                 $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email='.$userAgent.'&place_id=' . $placeId);
