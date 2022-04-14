@@ -66,7 +66,7 @@ class Country extends Model
      *
      * @var array
      */
-    protected $translatable = [
+    public array $translatable = [
         'name_translations'
     ];
 

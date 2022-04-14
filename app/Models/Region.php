@@ -58,6 +58,7 @@ class Region extends Model
         'osm_admin_level',
         'osm_type',
         'name_local',
+        'name_slug',
         'name_translations',
         'extra',
     ];
@@ -86,6 +87,7 @@ class Region extends Model
         'osm_admin_level',
         'osm_type',
         'name_local',
+        'name_slug',
         'name_translations',
         'extra',
     ];
