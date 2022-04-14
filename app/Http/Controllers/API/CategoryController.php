@@ -30,7 +30,6 @@ class CategoryController extends Controller
         } else {
             $categories = Category::withCount('hasAddresses')
                 ->orderBy($sort, $order)
-                ->limit($limit)
                 ->paginate(25);
         }
 

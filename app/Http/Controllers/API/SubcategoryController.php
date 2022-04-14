@@ -30,7 +30,6 @@ class SubcategoryController extends Controller
         } else {
             $subcategories = Subcategory::withCount('hasAddresses')
                 ->orderBy($sort, $order)
-                ->limit($limit)
                 ->paginate(25);
         }
 
