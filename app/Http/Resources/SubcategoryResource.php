@@ -20,6 +20,7 @@ class SubcategoryResource extends JsonResource
             'name' => $this->name,
             'icon_image' => $this->icon_image,
             'icon_style' => $this->icon_style,
+            'icon_color' => $this->icon_color,
             'descriptions' => $this->descriptions,
             'translations' => $this->translations,
             'category' => [
