@@ -32,14 +32,14 @@ class CountriesSeeder extends Seeder
                 $region = $data->geo->region;
                 $subregion = $data->geo->subregion;
                 $landlocked = $data->geo->landlocked;
-                $independent = (bool) ($data->geo->independent === true ? true : false);
+                $independent = ($data->geo->independent === true ? true : false);
                 $lat = $data->geo->latlng[1];
                 $lon = $data->geo->latlng[0];
             } else {
                 $region = $data->region;
                 $subregion = $data->subregion;
                 $landlocked = $data->landlocked;
-                $independent = (bool) ($data->independent === true ? true : false);
+                $independent = ($data->independent === true ? true : false);
                 $lat = $data->latlng[1];
                 $lon = $data->latlng[0];
             }
@@ -65,12 +65,18 @@ class CountriesSeeder extends Seeder
             $continent = Continent::firstOrCreate(['name' => $region],
                 [
                     'slug' => Str::slug($region, '-'),
+                    'translations' => [
+                        'en' => $region,
+                    ],
                 ]);
 
             $subcontinent = Subcontinent::firstOrCreate(['name' => $subregion],
                 [
                     'slug' => Str::slug($subregion, '-'),
                     'continent_slug' => $continent->slug,
+                    'translations' => [
+                        'en' => $subregion,
+                    ],
                 ]);
 
             Country::create([

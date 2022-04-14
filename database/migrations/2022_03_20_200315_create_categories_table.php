@@ -17,8 +17,9 @@ return new class extends Migration
             $table->uuid();
             $table->string('slug', 255)->primary();
             $table->string('name', 255)->unique();
-            $table->string('icon_image', 255);
-            $table->string('icon_style', 255);
+            $table->string('icon_image', 255)->nullable();
+            $table->string('icon_style', 255)->nullable();
+            $table->string('icon_color', 7)->nullable();
             $table->json('translations')->nullable();
             $table->json('descriptions')->nullable();
             $table->timestamps();

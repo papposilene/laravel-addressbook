@@ -26,7 +26,7 @@ class RegionsSeeder extends Seeder
             $name = File::name($filename);
             $json = json_decode($file, true);
 
-            $country = Country::where('cca3', $name)->firstOrFail();
+            $country = Country::where('cca3', strtolower(Str::substr($name, 0, 3)))->first();
 
             foreach ($json as $data) {
                 Region::create([
@@ -38,7 +38,8 @@ class RegionsSeeder extends Seeder
                     'osm_admin_level' => $data['osm_admin_level'],
                     'osm_type' => $data['osm_type'],
                     'name_local' => $data['name_loc'],
-                    'name_translations' => json_encode($data['name_translations'], JSON_FORCE_OBJECT),
+                    'name_slug' => Str::slug($data['name_loc'], '-'),
+                    'name_translations' => ($data['name_translations'] ? $data['name_translations'] : null),
                     'extra' => [
                         'un_locode' => (array_key_exists('un_locode', $data['extra']) ? $data['extra']['un_locode'] : null),
                         'wikidata' => (array_key_exists('wikidata', $data['extra']) ? $data['extra']['wikidata'] : null),

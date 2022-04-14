@@ -6,9 +6,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Papposilene\Geodata\Models\Continent;
+use Papposilene\Geodata\Models\Subcontinent;
 
-class ContinentsSeeder extends Seeder
+class SubcontinentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,16 +17,14 @@ class ContinentsSeeder extends Seeder
      */
     public function run()
     {
-        $file = File::get(storage_path('data/geodata/countries/continents.json'));
+        $file = File::get(storage_path('data/geodata/countries/subcontinents.json'));
         $json = json_decode($file);
 
         foreach ($json as $data) {
-            Continent::updateOrCreate(
-                ['name' => $data->name],
-                [
-                    'slug' => Str::slug($data->name, '-'),
-                    'translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
-                ]);
+            $subcontinent = Subcontinent::where('name', $data->name)->firstOrFail();
+            $subcontinent->slug = Str::slug($data->name, '-');
+            $subcontinent->replaceTranslations('translations', (array) $data->translations);
+            $subcontinent->save();
         }
     }
 }

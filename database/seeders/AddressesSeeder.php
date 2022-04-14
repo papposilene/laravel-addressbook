@@ -36,8 +36,6 @@ class AddressesSeeder extends Seeder
             $country = Country::where('cca3', $json->country_cca3)->firstOrFail();
 
             foreach ($json->addresses as $data) {
-                echo $data->names->name . PHP_EOL;
-
                 $isCity = null;
                 $isRegion = null;
                 $cityPlaceId = null;
@@ -91,6 +89,7 @@ class AddressesSeeder extends Seeder
                             'osm_admin_level' => $cityData[0]['place_rank'],
                             'osm_type' => $cityData[0]['type'],
                             'name_local' => (count($cityDisplayName) > 0 ? $cityDisplayName[0] : $cityData[0]['display_name']),
+                            'name_slug' => (count($cityDisplayName) > 0 ? Str::slug($cityDisplayName[0], '-') : Str::slug($cityData[0]['display_name'], '-')),
                             'name_translations' => json_encode($translations, JSON_FORCE_OBJECT),
                             'postcodes' => null,
                             'extra' => [

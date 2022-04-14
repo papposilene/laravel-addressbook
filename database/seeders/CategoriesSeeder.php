@@ -19,8 +19,8 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         // Drop the tables
-        DB::table('categories__')->delete();
         DB::table('categories__subcategories')->delete();
+        DB::table('categories__')->delete();
 
         // First, categories...
         $fileC = File::get(storage_path('data/categories/categories.json'));
@@ -34,6 +34,7 @@ class CategoriesSeeder extends Seeder
             [
                 'icon_image' => $data->icon_image,
                 'icon_style' => $data->icon_style,
+                'icon_color' => $data->icon_color,
                 'translations' => json_decode(json_encode($data->translations), true),
                 'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
@@ -55,6 +56,7 @@ class CategoriesSeeder extends Seeder
             [
                 'icon_image' => $data->icon_image,
                 'icon_style' => $data->icon_style,
+                'icon_color' => $data->icon_color,
                 'translations' => json_decode(json_encode($data->translations), true),
                 'descriptions' => json_decode(json_encode($data->descriptions), true)
             ]);
