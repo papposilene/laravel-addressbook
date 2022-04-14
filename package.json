@@ -30,6 +30,7 @@
         "leaflet-ajax": "^2.1.0",
         "leaflet.awesome-markers": "^2.0.5",
         "leaflet.locatecontrol": "^0.76.0",
-        "orejime": "^2.2.1"
+        "orejime": "^2.2.1",
+        "sidebar-v2": "^0.4.0"
     }
 }
