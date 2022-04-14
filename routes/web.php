@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ShowLanding::class)->name('front.index');
+Route::permanentRedirect('/', '/map')->name('front.index');
 Route::get('/map', ShowMap::class)->name('front.map.index');
 Route::get('/dashboard', ShowDashboard::class)->name('front.dashboard');
 
