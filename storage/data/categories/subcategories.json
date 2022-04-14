@@ -5,6 +5,7 @@
         "slug": "to-be-classified",
         "icon_image": "clipboard",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "To be classified",
             "fr": "A classer"
@@ -20,6 +21,7 @@
         "slug": "unclassifiable",
         "icon_image": "clipboard",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous",
             "fr": "Inclassable"
@@ -35,6 +37,7 @@
         "slug": "cafe",
         "icon_image": "mug-hot",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Cafés",
             "fr": "Cafés"
@@ -50,6 +53,7 @@
         "slug": "restaurant",
         "icon_image": "utensils",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Restaurants",
             "fr": "Restaurants"
@@ -65,6 +69,7 @@
         "slug": "fast-food",
         "icon_image": "burger",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Fast Food",
             "fr": "Fast Food"
@@ -80,6 +85,7 @@
         "slug": "ice-cream",
         "icon_image": "ice-cream",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Ice cream",
             "fr": "Glaciers"
@@ -95,6 +101,7 @@
         "slug": "bakery-pastry",
         "icon_image": "cake-candles",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Bakeries & pastries",
             "fr": "Boulangeries-pâtisseries"
@@ -110,6 +117,7 @@
         "slug": "bar",
         "icon_image": "beer-mug-empty",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Bars",
             "fr": "Bars"
@@ -125,6 +133,7 @@
         "slug": "chocolate",
         "icon_image": "cookie",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Chocolate factories",
             "fr": "Chocolateries"
@@ -140,6 +149,7 @@
         "slug": "cheese",
         "icon_image": "cheese",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Cheese !",
             "fr": "Fromageries"
@@ -155,6 +165,7 @@
         "slug": "winery",
         "icon_image": "wine-bottle",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Wineries",
             "fr": "Vignobles"
@@ -170,6 +181,7 @@
         "slug": "marketplace",
         "icon_image": "bag-shopping",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Markets and marketplace",
             "fr": "Marchés"
@@ -185,6 +197,7 @@
         "slug": "grocery",
         "icon_image": "basket-shopping",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Groceries",
             "fr": "Epiceries"
@@ -200,6 +213,7 @@
         "slug": "gastronomy-other",
         "icon_image": "clipboard-list",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous gastronomy",
             "fr": "Miscellanées gastronomiques"
@@ -215,6 +229,7 @@
         "slug": "museum",
         "icon_image": "building-columns",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Museums",
             "fr": "Musées"
@@ -230,6 +245,7 @@
         "slug": "gallery",
         "icon_image": "palette",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Art galleries",
             "fr": "Galeries d'art"
@@ -245,6 +261,7 @@
         "slug": "art-centre",
         "icon_image": "palette",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Art centres",
             "fr": "Centres d'art"
@@ -260,6 +277,7 @@
         "slug": "foundation",
         "icon_image": "palette",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Cultural foundations",
             "fr": "Fondations culturelles"
@@ -275,6 +293,7 @@
         "slug": "landscape",
         "icon_image": "mountain-sun",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Landscapes",
             "fr": "Paysages"
@@ -290,6 +309,7 @@
         "slug": "archaeological-site",
         "icon_image": "archway",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Archaeological sites",
             "fr": "Sites archéologiques"
@@ -305,6 +325,7 @@
         "slug": "modern-site",
         "icon_image": "landmark-dome",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Modern & contemporary sites",
             "fr": "Sites modernes & contemporains"
@@ -320,6 +341,7 @@
         "slug": "monument",
         "icon_image": "monument",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Monuments",
             "fr": "Monuments"
@@ -335,6 +357,7 @@
         "slug": "attraction",
         "icon_image": "arrows-to-circle",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Touristic attractions",
             "fr": "Attractions touristiques"
@@ -350,6 +373,7 @@
         "slug": "event",
         "icon_image": "calendar",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Events",
             "fr": "Evénements"
@@ -365,6 +389,7 @@
         "slug": "tourism-other",
         "icon_image": "clipboard-list",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous tourism",
             "fr": "Miscellanées touristiques"
@@ -380,6 +405,7 @@
         "slug": "store",
         "icon_image": "store",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Stores",
             "fr": "Magasins"
@@ -395,6 +421,7 @@
         "slug": "clothes",
         "icon_image": "shirt",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Clothes stores",
             "fr": "Magasins de vêtements"
@@ -410,6 +437,7 @@
         "slug": "crafts",
         "icon_image": "pen-ruler",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Crafts",
             "fr": "Artisanat"
@@ -425,6 +453,7 @@
         "slug": "pharmacy",
         "icon_image": "mortar-pestle",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Pharmacies",
             "fr": "Pharmacies et officines"
@@ -440,6 +469,7 @@
         "slug": "bookshop",
         "icon_image": "book",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Bookshops",
             "fr": "Libraries"
@@ -455,6 +485,7 @@
         "slug": "glassware",
         "icon_image": "wine-glass-empty",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Glasswares",
             "fr": "Verreries"
@@ -470,6 +501,7 @@
         "slug": "stationery",
         "icon_image": "scroll",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Stationeries",
             "fr": "Papeteries"
@@ -485,6 +517,7 @@
         "slug": "toys",
         "icon_image": "gamepad",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Toys",
             "fr": "Jeux et jouets"
@@ -500,6 +533,7 @@
         "slug": "fleamarket",
         "icon_image": "bag-shopping",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Fleamarkets",
             "fr": "Marchés aux puces"
@@ -515,6 +549,7 @@
         "slug": "shop-other",
         "icon_image": "clipboard-list",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous shops",
             "fr": "Miscellanées consuméristes"
@@ -530,6 +565,7 @@
         "slug": "place-of-worship",
         "icon_image": "place-of-worship",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Places of worship",
             "fr": "Lieux de culte"
@@ -545,6 +581,7 @@
         "slug": "religion-other",
         "icon_image": "place-of-worship",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous worships",
             "fr": "Miscellanées cultuelles"
@@ -560,6 +597,7 @@
         "slug": "hotel",
         "icon_image": "hotel",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Hotels",
             "fr": "Hôtels"
@@ -575,6 +613,7 @@
         "slug": "park",
         "icon_image": "tree",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Parks (and recreation)",
             "fr": "Parcs (et zones naturelles)"
@@ -590,6 +629,7 @@
         "slug": "neighbourhood",
         "icon_image": "tree-city",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Neighbourhoods",
             "fr": "Quartiers"
@@ -605,6 +645,7 @@
         "slug": "venue",
         "icon_image": "masks-theater",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Theatre & other venus",
             "fr": "Théâtres et autres lieux culturels"
@@ -620,6 +661,7 @@
         "slug": "club",
         "icon_image": "martini-glass",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Clubs",
             "fr": "Discothèques"
@@ -635,6 +677,7 @@
         "slug": "spa",
         "icon_image": "spa",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Spa & resort",
             "fr": "Spa et autres décontractions"
@@ -650,6 +693,7 @@
         "slug": "amenity-other",
         "icon_image": "clipboard-list",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous amenities",
             "fr": "Commodes miscellanées"
@@ -665,6 +709,7 @@
         "slug": "city",
         "icon_image": "city",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Cities",
             "fr": "Villes"
@@ -680,6 +725,7 @@
         "slug": "island",
         "icon_image": "mountain",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Islands",
             "fr": "Îles"
@@ -695,6 +741,7 @@
         "slug": "building",
         "icon_image": "clipboard-list",
         "icon_style": "",
+        "icon_color": "",
         "translations": {
             "en": "Miscellaneous administrative",
             "fr": "Miscellanées administratives"
