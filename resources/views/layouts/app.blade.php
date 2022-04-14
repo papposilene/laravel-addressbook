@@ -46,6 +46,7 @@
         <!-- End Matomo Code -->
         @endif
     </head>
+
     <body class="antialiased font-sans bg-gray-700 text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div id="addressbook" class="flex flex-col h-min-screen">
             <livewire:menu />

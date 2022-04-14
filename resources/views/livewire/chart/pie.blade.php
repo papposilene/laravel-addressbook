@@ -3,9 +3,10 @@
 
     <script type="text/javascript">
         document.addEventListener('livewire:load', function () {
-            let getLabels = [];
+            let getColors = [];
             let getDatasets = [];
-            const getColors = [
+            let getLabels = [];
+            const getDefaultColors = [
                 '#EF4444', '#F97316', '#F59E0B', '#EAB308', '#84CC16', '#22C55E',
                 '#10B981', '#14B8A6', '#06B6D4', '#0EA5E9', '#3B82F6', '#818CF8',
                 '#8B5CF6', '#A855F7', '#D946EF', '#EC4899', '#F43F5E',
@@ -19,9 +20,8 @@
                     .then(json => {
                         json.data.map(function(e) {
                             getLabels.push(e.name);
-                        });
-                        json.data.map(function(e) {
                             getDatasets.push(e.has_addresses_count);
+                            if(e.icon_color) { getColors.push(e.icon_color); }
                         });
                     });
 
@@ -34,8 +34,8 @@
                             label: '# of Votes',
                             data: getDatasets,
                             borderWidth: 1,
-                            borderColor: '#fff',
-                            backgroundColor: getColors.sort(() => Math.random() - 0.5),
+                            borderColor: '#000',
+                            backgroundColor: (getColors.length !== 0 ? getColors : getDefaultColors.sort(() => Math.random() - 0.5)),
                         }]
                     },
                     options: {
@@ -44,12 +44,12 @@
                             legend: {
                                 position: 'bottom',
                                 labels: {
-                                    color: '#000',
+                                    color: '#fff',
                                 }
                             },
                             title: {
                                 display: false,
-                                color: '#000',
+                                color: '#fff',
                                 text: 'Chart.js Pie Chart'
                             }
                         }
