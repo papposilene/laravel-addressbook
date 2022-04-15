@@ -67,7 +67,8 @@ class Country extends Model
      * @var array
      */
     public array $translatable = [
-        'name_translations'
+        'name_native',
+        'name_translations',
     ];
 
     /**

@@ -3,16 +3,17 @@
 namespace App\Http\Livewire\Map;
 
 use App\Models\Category;
+use App\Models\Continent;
 use App\Models\Country;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Livewire\Component;
-use Papposilene\Geodata\Models\Continent;
 
 class ShowMap extends Component
 {
     public string $api;
-    public string $center = '[0, 0]';
-    public int $zoom = 4;
+    public string $center = '[25, 0]';
+    public float $zoom = 2.5;
 
     public function render(Request $request)
     {
@@ -31,6 +32,7 @@ class ShowMap extends Component
             ->get();
         $this->continents = Continent::orderBy('name', 'asc')
             ->get();
+        $this->subcategories = Subcategory::all();
 
         $this->api = route('api.address.index', [
             'country' => $cca3,
@@ -43,6 +45,7 @@ class ShowMap extends Component
             'center'=> $this->center,
             'countries' => $this->continents,
             'categories' => $this->categories,
+            'subcategories' => $this->subcategories,
             'zoom'=> $this->zoom,
         ])->layout('layouts.map');
     }

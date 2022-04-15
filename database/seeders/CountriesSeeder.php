@@ -107,7 +107,7 @@ class CountriesSeeder extends Seeder
                 'demonyms'          => json_encode($data->demonyms, JSON_FORCE_OBJECT),
                 'languages'         => json_encode($data->languages, JSON_FORCE_OBJECT),
                 'name_native'       => json_encode($data->name->native, JSON_FORCE_OBJECT),
-                'name_translations' => json_encode($data->translations, JSON_FORCE_OBJECT),
+                'name_translations' => (array) $data->translations,
                 'extra' => json_encode([
                     'un_member' => (property_exists($data, 'un_member') && $data->un_member ? true : false),
                     'eu_member' => (property_exists($data, 'eu_member') ? true : false),

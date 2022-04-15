@@ -45,8 +45,8 @@
             <div class="sidebar-content">
                 <div class="sidebar-pane" id="home">
                     <h1 class="sidebar-header">
-                        sidebar-v2
-                        <span class="sidebar-close">
+                        {{ config('app.name', 'My Address Book') }}
+                        <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
                     </h1>
@@ -65,7 +65,7 @@
                 <div class="sidebar-pane" id="countries">
                     <h1 class="sidebar-header">
                         @ucfirst(__('country.countries'))
-                        <span class="sidebar-close">
+                        <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
                     </h1>
@@ -76,13 +76,14 @@
                                     {{ $continent->translations }}
                                 </div>
                                 @foreach($continent->hasCountries()->get() as $country)
+                                    @php if($country->hasAddresses()->count() === 0) { continue; } @endphp
                                     <div class="flex w-full px-2">
                                         <a href="{{ route('front.map.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
                                             <span class="inline-flex align-middle mt-1">
-                                                {{ $country->translations }}
+                                                {{ $country->name_translations['common'] }}
                                             </span>
                                             <span class="bg-white text-black text-sm font-semibold inline-flex items-center p-1 rounded-full">
-                                                @leadingzero($subcategory->hasAddresses()->count())
+                                                @leadingzero($country->hasAddresses()->count())
                                             </span>
                                         </a>
                                     </div>
@@ -95,7 +96,7 @@
                 <div class="sidebar-pane" id="categories">
                     <h1 class="sidebar-header">
                         @ucfirst(__('category.categories'))
-                        <span class="sidebar-close">
+                        <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
                     </h1>
@@ -135,6 +136,13 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
+            @foreach($subcategories as $subcategory)
+            const @camel($subcategory->slug)Marker = L.AwesomeMarkers.icon({
+                icon: '{{ $subcategory->icon_image }}',
+                markerColor: '{{ $subcategory->belongsToCategory->icon_color }}'
+            });
+            @endforeach
+
             const leafletMap = L.map('leaflet-addresses-map', {
                 center: {{ $center }},
                 zoom: {{ $zoom }},
@@ -160,7 +168,7 @@
                     .then(response => response.json())
                     .then(json => {
                         json.data.map(function(e) {
-                            L.marker([e.address_lat, e.address_lon]).addTo(leafletMap);
+                            L.marker([e.address_lat, e.address_lon], {icon: e.marker}).addTo(leafletMap);
                         });
                     });
             }

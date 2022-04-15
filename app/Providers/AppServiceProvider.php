@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('camel', function ($expression) {
+            return "<?php echo Illuminate\Support\Str::camel($expression); ?>";
+        });
         Blade::directive('currency', function ($expression) {
             return "<?php echo number_format($expression, 2, ',', ' '); ?>";
         });
