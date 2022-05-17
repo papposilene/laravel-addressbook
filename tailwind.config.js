@@ -3,10 +3,11 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
     content: [
+        './resources/views/**/*.blade.php',
+        './storage/framework/views/*.php',
+        './vendor/filament/**/*.blade.php',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
     ],
 
     darkMode: 'class',
@@ -39,6 +40,8 @@ module.exports = {
             fuchsia: colors.fuchsia,
             pink: colors.pink,
             rose: colors.rose,
+            danger: colors.rose,
+            primary: colors.blue,
         },
         extend: {
             fontFamily: {
