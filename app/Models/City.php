@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Papposilene\Geodata\Exceptions\CityDoesNotExist;
-use Papposilene\Geodata\Models\Country;
-use Papposilene\Geodata\GeodataRegistrar;
 use Spatie\Translatable\HasTranslations;
 
 class City extends Model
@@ -31,7 +29,6 @@ class City extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
         'extra' => 'array',
     ];
 
@@ -59,9 +56,9 @@ class City extends Model
         'osm_place_id',
         'osm_admin_level',
         'osm_type',
+        'name_slug',
         'name_local',
         'name_translations',
-        'postcodes',
         'extra',
     ];
 
@@ -85,9 +82,9 @@ class City extends Model
         'osm_place_id',
         'osm_admin_level',
         'osm_type',
+        'name_slug',
         'name_local',
         'name_translations',
-        'postcodes',
         'extra',
     ];
 

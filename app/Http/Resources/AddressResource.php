@@ -14,6 +14,8 @@ class AddressResource extends JsonResource
      */
     public function toArray($request)
     {
+        $hasWikidata = (!is_null($this->details['wikidata']) ? hasWikidata($this->uuid, $this->details['wikidata']) : null);
+
         return [
             'uuid' => $this->uuid,
             'osm_place_id' => $this->osm_place_id,
@@ -29,17 +31,18 @@ class AddressResource extends JsonResource
 
             'region' => $this->belongsToRegion,
             'country' => [
-                //'uuid' => $this->belongsToCountry->uuid,
                 'cca2' => $this->belongsToCountry->cca2,
                 'cca3' => $this->belongsToCountry->cca3,
                 'name_formal' => $this->belongsToCountry->name_eng_common,
                 'name_common' => $this->belongsToCountry->name_eng_formal,
                 'lat' => $this->belongsToCountry->lat,
                 'lon' => $this->belongsToCountry->lon,
-
             ],
 
             'description' => $this->description,
+            'details' => $this->details,
+
+            'wikipedia' => ($this->hasWikipedia ? $this->hasWikipedia->wikipedia_text : null),
 
             'category' => $this->belongsToCategory,
             'subcategory' => $this->belongsToSubcategory,

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -34,7 +35,6 @@ class Address extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
         'details' => 'array',
     ];
 
@@ -178,6 +178,18 @@ class Address extends Model
         return $this->belongsTo(
             City::class,
             'city_uuid',
+            'uuid'
+        );
+    }
+
+    /**
+     * Get the city for a specific place.
+     */
+    public function hasWikipedia(): HasOne
+    {
+        return $this->hasOne(
+            Wikidata::class,
+            'address_uuid',
             'uuid'
         );
     }

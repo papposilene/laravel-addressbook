@@ -14,7 +14,7 @@
         <meta name="twitter:creator" content="{{ __('meta.twitter') }}" />
         <meta property="og:title" content="@yield('title') - {{ config('app.name', 'My Address Book') }}" />
         <meta property="og:description" content="{{ __('meta.description') }}" />
-        <meta property="og:image" content="{{ asset('images/lexporateur.jpg') }}" />
+        <meta property="og:image" content="{{ asset('img/addressbook.jpg') }}" />
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">

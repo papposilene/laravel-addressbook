@@ -32,7 +32,6 @@ class Wikidata extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
         'wikipedia_title' => 'array',
         'wikipedia_text' => 'array',
     ];
