@@ -11,6 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+    stats: {
+        children: true,
+    },
+});
+
+
 mix.options({
     processCssUrls: false,
 });
@@ -18,14 +25,14 @@ mix.options({
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
+        require('postcss-url')(
+            { url: (asset) => `../img/${asset.pathname?.replace(/^.*(\\|\/|\:)/, '')}` },
+        ),
         require('tailwindcss'),
     ]);
 
-mix.js('resources/js/app.js', 'htdocs/js')
-    .postCss('resources/css/app.css', 'htdocs/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+mix.copy('resources/svg', 'public/img');
+mix.copy('public', 'htdocs');
 
 if (mix.inProduction()) {
     mix.version();
