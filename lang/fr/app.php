@@ -9,7 +9,6 @@ return [
     */
 
     // Plain strings
-
     'about' => 'a propos',
     'account' => 'compte',
     'account_manage' => 'gérer mon compte',
@@ -30,6 +29,7 @@ return [
     'loading' => 'chargement des données en cours...',
     'longitude' => 'longitude',
     'map' => 'carte',
+    'map_whereiam' => 'où suis-je ?',
     'name' => 'nom',
     'no' => 'non',
     'no_wikipedia' => 'il n’y a pas encore d’article concernant ce lieu dans le Wikipédia de votre langue... Prenez des notes et des photographies pendant votre visite, que vous puissiez contribuer à Wikipédia à votre retour.',
