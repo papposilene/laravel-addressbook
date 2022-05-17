@@ -1,4 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/img/location-arrow-solid.svg": "/img/location-arrow-solid.svg",
+    "/img/spinner-solid.svg": "/img/spinner-solid.svg",
+    "/htdocs/.DS_Store": "/htdocs/.DS_Store",
+    "/htdocs/.htaccess": "/htdocs/.htaccess",
+    "/htdocs/favicon.ico": "/htdocs/favicon.ico",
+    "/htdocs/index.php": "/htdocs/index.php",
+    "/htdocs/mix-manifest.json": "/htdocs/mix-manifest.json",
+    "/htdocs/robots.txt": "/htdocs/robots.txt"
 }

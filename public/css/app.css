@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -444,8 +444,7 @@ select {
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 [multiple] {
@@ -454,8 +453,7 @@ select {
   background-repeat: unset;
   background-size: initial;
   padding-right: 0.75rem;
-  -webkit-print-color-adjust: unset;
-          color-adjust: unset;
+  print-color-adjust: unset;
 }
 
 [type='checkbox'],[type='radio'] {
@@ -463,8 +461,7 @@ select {
      -moz-appearance: none;
           appearance: none;
   padding: 0;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;
@@ -548,6 +545,7 @@ select {
 }
 
 [type='file']:focus {
+  outline: 1px solid ButtonText;
   outline: 1px auto -webkit-focus-ring-color;
 }
 
@@ -594,6 +592,39 @@ select {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+}
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
 }
 .prose {
   color: var(--tw-prose-body);
@@ -1721,6 +1752,9 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
+.pr-3 {
+  padding-right: 0.75rem;
+}
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1875,6 +1909,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
+.text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
@@ -1898,10 +1936,6 @@ select {
 .text-slate-100 {
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
-}
-.text-slate-500 {
-  --tw-text-opacity: 1;
-  color: rgb(100 116 139 / var(--tw-text-opacity));
 }
 .text-slate-400 {
   --tw-text-opacity: 1;
@@ -2141,7 +2175,7 @@ select {
 	height: 1px;
 	}
 .lvml {
-	behavior: url(#default#VML);
+	behavior: url(../img/undefined);
 	display: inline-block;
 	position: absolute;
 	}
@@ -2339,12 +2373,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	border-radius: 5px;
 	}
 .leaflet-control-layers-toggle {
-	background-image: url(images/layers.png);
+	background-image: url(../img/layers.png);
 	width: 36px;
 	height: 36px;
 	}
 .leaflet-retina .leaflet-control-layers-toggle {
-	background-image: url(images/layers-2x.png);
+	background-image: url(../img/layers-2x.png);
 	background-size: 26px 26px;
 	}
 .leaflet-touch .leaflet-control-layers-toggle {
@@ -2386,7 +2420,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 /* Default icon URLs */
 .leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */
-	background-image: url(images/marker-icon.png);
+	background-image: url(../img/marker-icon.png);
 	}
 /* attribution and scale controls */
 .leaflet-container .leaflet-control-attribution {
@@ -2721,7 +2755,112 @@ Version: 1.0
 .awesome-marker-square {
   background-position-y: -46px;
 }
-/**@import 'leaflet.locatecontrol/src/L.Control.Locate.scss';*/
+/* Compatible with Leaflet 0.7 */
+.leaflet-control-locate {
+  a {
+    cursor: pointer;
+
+    .leaflet-control-locate-location-arrow {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 7px;
+      background-color: black;
+      -webkit-mask-image: url('../img/location-arrow-solid.svg');
+      mask-image: url('../img/location-arrow-solid.svg');
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+    }
+
+    .leaflet-control-locate-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 7px;
+      background-color: black;
+      -webkit-mask-image: url('../img/spinner-solid.svg');
+      mask-image: url('../img/spinner-solid.svg');
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-animation: leaflet-control-locate-spin 2s linear infinite;
+              animation: leaflet-control-locate-spin 2s linear infinite;
+    }
+  }
+
+  &.active a .leaflet-control-locate-location-arrow {
+    background-color: #2074b6;
+  }
+
+  &.following a .leaflet-control-locate-location-arrow {
+    background-color: #fc8428;
+  }
+}
+.leaflet-touch .leaflet-bar .leaflet-locate-text-active {
+  width: 100%;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 10px;
+
+  .leaflet-locate-icon {
+    padding: 0 5px 0 0;
+  }
+}
+.leaflet-control-locate-location circle {
+  -webkit-animation: leaflet-control-locate-throb 4s ease infinite;
+          animation: leaflet-control-locate-throb 4s ease infinite;
+}
+@-webkit-keyframes leaflet-control-locate-throb {
+  0% {
+    stroke-width: 1;
+  }
+
+  50% {
+    stroke-width: 3;
+    transform: scale(0.8, 0.8);
+  }
+
+  100% {
+    stroke-width: 1;
+  }
+}
+@keyframes leaflet-control-locate-throb {
+  0% {
+    stroke-width: 1;
+  }
+
+  50% {
+    stroke-width: 3;
+    transform: scale(0.8, 0.8);
+  }
+
+  100% {
+    stroke-width: 1;
+  }
+}
+@-webkit-keyframes leaflet-control-locate-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes leaflet-control-locate-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /**@import 'sidebar-v2/css/leaflet-sidebar.css';*/
 .sidebar {
     position: absolute;
