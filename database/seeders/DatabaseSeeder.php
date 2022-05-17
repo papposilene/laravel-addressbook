@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             CountriesSeeder::class,
             ContinentsSeeder::class,
             //SubcontinentsSeeder::class,
-            RegionsSeeder::class,
+            //RegionsSeeder::class,
             CategoriesSeeder::class,
             AddressesSeeder::class,
         ]);

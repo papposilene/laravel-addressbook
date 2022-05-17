@@ -65,8 +65,8 @@ return new class extends Migration
             $table->bigInteger('osm_place_id', false)->nullable();
             $table->integer('osm_admin_level', false)->nullable();
             $table->string('osm_type', 255)->nullable();
+            $table->string('name_slug', 255)->unique();
             $table->string('name_local', 255);
-            $table->string('name_slug', 255);
             $table->json('name_translations');
             $table->json('extra')->nullable();
             // Internal data
@@ -87,10 +87,9 @@ return new class extends Migration
             $table->bigInteger('osm_place_id', false)->nullable();
             $table->integer('osm_admin_level', false);
             $table->string('osm_type', 255)->nullable();
+            $table->string('name_slug', 255)->unique();
             $table->string('name_local', 255);
-            $table->string('name_slug', 255);
             $table->json('name_translations');
-            $table->json('postcodes')->nullable();
             $table->json('extra')->nullable();
             // Internal data
             $table->timestamps();
