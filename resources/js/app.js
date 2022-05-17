@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 import Alpine from 'alpinejs';
+import FormsAlpinePlugin from '../../vendor/filament/forms/dist/module.esm'
 
 /* TailwindCSS */
 //import resolveConfig from 'tailwindcss/resolveConfig';
@@ -24,5 +25,6 @@ import 'leaflet.locatecontrol/src/L.Control.Locate.js';
 import 'leaflet-ajax/dist/leaflet.ajax.js';
 import 'sidebar-v2/js/leaflet-sidebar.js';
 
+Alpine.plugin(FormsAlpinePlugin)
 window.Alpine = Alpine;
 Alpine.start();
