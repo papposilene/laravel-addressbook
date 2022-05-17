@@ -21,6 +21,12 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ]);
 
+mix.js('resources/js/app.js', 'htdocs/js')
+    .postCss('resources/css/app.css', 'htdocs/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ]);
+
 if (mix.inProduction()) {
     mix.version();
 }
