@@ -25,6 +25,8 @@ return [
     'import' => 'importer',
     'informations' => 'informations',
     'iteration' => '#',
+    'lang' => 'langue',
+    'langs' => 'langues',
     'latitude' => 'latitude',
     'loading' => 'chargement des données en cours...',
     'longitude' => 'longitude',
