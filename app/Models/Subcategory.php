@@ -70,7 +70,8 @@ class Subcategory extends Model
         'slug',
         'name',
         'icon_image',
-        'icon_options',
+        'icon_style',
+        'icon_color',
         'translations',
         'descriptions',
     ];

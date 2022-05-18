@@ -70,6 +70,7 @@ class Category extends Model
         'name',
         'icon_image',
         'icon_style',
+        'icon_color',
         'translations',
         'descriptions',
     ];
