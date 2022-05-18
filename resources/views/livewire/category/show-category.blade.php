@@ -2,14 +2,14 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
+        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span class="inline-flex align-middle text-gray-500">
                 <a href="{{ route('front.category.index') }}">
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </a>&nbsp;/&nbsp;
                 <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}" class="inline-flex align-middle">
                     <i data-fa-symbol="{{ $subcategory->belongsToCategory->slug }}" class="fas fa-{{ $subcategory->belongsToCategory->icon_image }} fa-fw"></i>
-                    <svg class="{{ $subcategory->belongsToCategory->icon_style }} h-5 w-5">
+                    <svg class="h-5 w-5">
                         <use xlink:href="#{{ $subcategory->belongsToCategory->slug }}"></use>
                     </svg>&nbsp;
                     {{ $subcategory->belongsToCategory->translations }}
@@ -17,7 +17,7 @@
             </span>
             <span class="inline-flex align-middle">
                 <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
-                <svg class="{{ $subcategory->icon_style }} h-5 w-5">
+                <svg class="h-5 w-5">
                     <use xlink:href="#{{ $subcategory->slug }}"></use>
                 </svg>&nbsp;
                 {{ $subcategory->translations }}
@@ -49,13 +49,13 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-                        @hasrole('admin')
-                        <a href="#" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                        @can('manage_categories')
+                        <a href="{{ route('admin.category.edit', ['slug' => $subcategory->slug]) }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#edit"></use>
                             </svg>
                         </a>
-                        @endhasrole
+                        @endcan
                         @livewire('interfaces.toggle')
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
@@ -68,9 +68,9 @@
 
                 <!-- Addresses -->
                 <div class="py-5">
-                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
+                    <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-600 text-white">
+                        <tr class="bg-slate-400 dark:bg-slate-600">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                             <th class="w-2/12 text-center">@ucfirst(__('country.name_common'))</th>
                             <th class="w-6/12 text-center">@ucfirst(__('address.name'))</th>
@@ -102,7 +102,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
-                                        @hasrole('admin')
+                                        @can('manage_categories')
                                         <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
                                             <svg class="h-5 w-5"><use xlink:href="#show"></use></svg>
                                         </a>
@@ -116,7 +116,7 @@
                                         <span class="mx-1">
                                             ---
                                         </span>
-                                        @endhasrole
+                                        @endcan
                                     </p>
                                 </td>
                             </tr>
@@ -132,13 +132,13 @@
             </div>
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
-                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
-                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-                    <li>
-                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
-                            <span class="inline-flex align-middle">
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                    <li class="bg-black text-white rounded">
+                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
+                            <span class="inline-flex align-middle m-1">
                                 <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
                                 @ucfirst(__('category.all'))
                             </span>

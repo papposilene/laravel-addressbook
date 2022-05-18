@@ -8,7 +8,7 @@ use Filament\Forms;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
-class CreateCategory extends Component implements Forms\Contracts\HasForms
+class EditCategory extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
@@ -23,39 +23,49 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
     public $translations;
     public $descriptions;
 
-    protected function getFormModel(): string
+    public function mount(string $slug): void
     {
-        return Subcategory::class;
-    }
+        $this->subcategory = Subcategory::where('slug', $slug)->firstOrFail();
 
-    public function mount(): void
-    {
-        $this->form->fill();
+        $translations = $this->subcategory->getTranslations();
+
+        $this->form->fill([
+            'uuid' => $this->subcategory->uuid,
+            'slug' => $this->subcategory->slug,
+            'category_slug' => $this->subcategory->category_slug,
+            'icon_image' => $this->subcategory->icon_image,
+            'icon_style' => $this->subcategory->icon_style,
+            'icon_color' => $this->subcategory->icon_color,
+            'translations' => $translations['translations'],
+            'descriptions' => $translations['descriptions'],
+        ]);
     }
 
     protected function getFormSchema(): array
     {
         return [
+            Forms\Components\Hidden::make('uuid'),
+            Forms\Components\Hidden::make('slug'),
             Forms\Components\Select::make('category_slug')
                 ->label(ucfirst(__('category.categories')))
                 ->options(Category::orderBy('slug', 'asc')->pluck('name', 'slug'))
-                ->searchable()
+                //->searchable() // if uncommented, the selected attribute will not work
                 ->required(),
             Forms\Components\Grid::make([
-                    'default' => 1,
-                    'lg' => 2,
-                ])->schema([
-                    Forms\Components\TextInput::make('icon_image')
-                        ->label(ucfirst(__('category.iconImageLabel')))
-                        ->helperText(__('category.iconImageHelper'))
-                        ->placeholder('icons')
-                        ->default('icons'),
-                    Forms\Components\TextInput::make('icon_style')
-                        ->label(ucfirst(__('category.iconStyleLabel')))
-                        ->helperText(__('category.iconStyleHelper'))
-                        ->placeholder('bg-black text-white')
-                        ->default('bg-black text-white'),
-                ]),
+                'default' => 1,
+                'lg' => 2,
+            ])->schema([
+                Forms\Components\TextInput::make('icon_image')
+                    ->label(ucfirst(__('category.iconImageLabel')))
+                    ->helperText(__('category.iconImageHelper'))
+                    ->placeholder('icons')
+                    ->default('icons'),
+                Forms\Components\TextInput::make('icon_style')
+                    ->label(ucfirst(__('category.iconStyleLabel')))
+                    ->helperText(__('category.iconStyleHelper'))
+                    ->placeholder('bg-black text-white')
+                    ->default('bg-black text-white'),
+            ]),
             Forms\Components\KeyValue::make('translations')
                 ->helperText(__('category.translationsHelper'))
                 ->keyLabel(ucfirst(__('app.langs')))
@@ -79,7 +89,7 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
         $answers = $this->form->getState();
         $name = reset($answers['translations']);
 
-        $category = new Subcategory();
+        $category = Subcategory::findOrFail($answers['slug']);
         $category->category_slug = $answers['category_slug'];
         $category->slug = Str::slug($name, '-');
         $category->name = $name;
@@ -89,12 +99,12 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
         $category->descriptions = $answers['descriptions'];
         $category->save();
 
-        session()->flash('message', 'Subcategory successfully created.');
+        session()->flash('message', 'Subcategory successfully updated.');
         return redirect()->to('/categories');
     }
 
     public function render()
     {
-        return view('livewire.category.create-category');
+        return view('livewire.category.edit-category');
     }
 }

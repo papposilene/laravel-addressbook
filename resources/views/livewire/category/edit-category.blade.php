@@ -1,10 +1,10 @@
-@section('title', @ucfirst(__('category.create_one')))
+@section('title', @ucfirst(__('category.update_that', ['what' => $subcategory->translations])))
 
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span class="inline-flex align-middle">
-                @ucfirst(__('category.create_one'))
+                @ucfirst(__('category.update_that', ['what' => $subcategory->translations]))
             </span>
         </h2>
     </x-slot>
@@ -21,13 +21,13 @@
         <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
             <div class="flex flex-col pl-2 pr-2 w-full lg:mx-auto lg:w-2/4">
                 @if ($errors->any())
-                <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                    <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
 
                 <!-- Subcategories -->

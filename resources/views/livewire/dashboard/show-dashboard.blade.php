@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
+        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span class="inline-flex align-middle">
                 @ucfirst(__('app.dashboard'))
             </span>

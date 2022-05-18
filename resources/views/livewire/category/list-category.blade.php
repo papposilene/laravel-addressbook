@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
+        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span class="inline-flex align-middle">
                 @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
             </span>
@@ -96,13 +96,12 @@
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
                                         @can('manage_categories')
-                                        <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
-                                           class="mx-1">
+                                        <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}" class="mx-1">
                                             <svg class="h-5 w-5">
                                                 <use xlink:href="#show"></use>
                                             </svg>
                                         </a>
-                                        <a href="#" class="mx-1">
+                                        <a href="{{ route('admin.category.edit', ['slug' => $subcategory->slug]) }}" class="mx-1">
                                             <svg class="h-5 w-5">
                                                 <use xlink:href="#edit"></use>
                                             </svg>
