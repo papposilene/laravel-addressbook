@@ -2,13 +2,10 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Livewire\Address\ListAddress;
-use App\Http\Livewire\Address\ShowAddress;
-use App\Http\Livewire\Category\ListCategory;
-use App\Http\Livewire\Category\ShowCategory;
+use App\Http\Livewire\Address\{ ListAddress, ShowAddress };
+use App\Http\Livewire\Category\{ CreateCategory, ListCategory, ShowCategory };
 use App\Http\Livewire\City\ShowCity;
-use App\Http\Livewire\Country\ListCountry;
-use App\Http\Livewire\Country\ShowCountry;
+use App\Http\Livewire\Country\{ ListCountry, ShowCountry };
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Dashboard\ShowLanding;
 use App\Http\Livewire\Map\ShowMap;
@@ -51,8 +48,9 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/address/export', [AddressController::class, 'export'])->name('admin.address.export');
 
     // Categories
-    Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.address.store');
-    Route::post('/category/update', [CategoryController::class, 'update'])->name('admin.address.update');
-    Route::post('/category/import', [CategoryController::class, 'import'])->name('admin.address.import');
-    Route::post('/category/export', [CategoryController::class, 'export'])->name('admin.address.export');
+    Route::get('/category/create', CreateCategory::class)->name('admin.category.create');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::post('/category/update', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::post('/category/import', [CategoryController::class, 'import'])->name('admin.category.import');
+    Route::post('/category/export', [CategoryController::class, 'export'])->name('admin.category.export');
 });
