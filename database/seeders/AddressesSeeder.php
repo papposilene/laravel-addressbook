@@ -92,7 +92,7 @@ class AddressesSeeder extends Seeder
                         'wikidata' => $data->details->wikidata,
                     ],
                     'subcategory_slug' => $subcategory->slug,
-                    'osm_place_id' => (int)$data->geolocation->osm_place_id,
+                    'osm_id' => (string)$data->geolocation->osm_id,
                     'gmap_pluscode' => (string)$data->geolocation->gmaps_pluscode,
                 ]);
             }
