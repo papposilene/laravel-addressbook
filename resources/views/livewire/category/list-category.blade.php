@@ -33,13 +33,13 @@
                 <!-- Navigation and search -->
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
-                        @hasrole('admin')
-                        <a href="{{ route('admin.address.create') }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                        @can('manage_categories')
+                        <a href="{{ route('admin.category.create') }}" class="bg-slate-700 hover:bg-gray-800 py-2 px-4 rounded inline-flex items-center">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#create"></use>
                             </svg>
                         </a>
-                        @endhasrole
+                        @endcan
                         @livewire('interfaces.toggle')
                     </div>
                     <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
@@ -95,7 +95,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
-                                        @hasrole('admin')
+                                        @can('manage_categories')
                                         <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
                                            class="mx-1">
                                             <svg class="h-5 w-5">
@@ -116,7 +116,7 @@
                                         <span class="mx-1">
                                             ---
                                         </span>
-                                        @endhasrole
+                                        @endcan
                                     </p>
                                 </td>
                             </tr>
@@ -136,9 +136,9 @@
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
                 <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-                    <li>
-                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between mb-2">
-                            <span class="inline-flex align-middle">
+                    <li class="bg-black text-white rounded">
+                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
+                            <span class="inline-flex align-middle m-1">
                                 <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
                                 @ucfirst(__('category.all'))
                             </span>

@@ -19,7 +19,7 @@
         <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
 
         <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
-            <div class="flex flex-col pl-2 pr-2 w-full lg:w-3/4">
+            <div class="flex flex-col pl-2 pr-2 w-full lg:mx-auto lg:w-2/4">
                 @if ($errors->any())
                 <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
                     <ul>
@@ -30,137 +30,17 @@
                 </div>
                 @endif
 
-                <!-- Navigation and search -->
-                <div class="relative flex items-center justify-between mb-2 w-full">
-                    <div class="flex flex-wrap">
-                        @can('manage_categories')
-                        <a href="{{ route('admin.address.create') }}" class="bg-slate-700 hover:bg-gray-800 py-2 px-4 rounded inline-flex items-center">
-                            <svg class="h-6 w-6">
-                                <use xlink:href="#create"></use>
-                            </svg>
-                        </a>
-                        @endcan
-                        @livewire('interfaces.toggle')
-                    </div>
-                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))" />
-                </div>
-                <!-- End of navigation and search -->
-
-                <!-- Pagination -->
-                {{ $subcategories->links() }}
-                <!-- End of pagination -->
-
                 <!-- Subcategories -->
                 <div class="py-5">
-                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
-                        <thead>
-                            <tr class="bg-slate-600 text-white">
-                                <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                                <th class="w-1/12 p-3 hidden lg:table-cell">
-                                    <p class="flex flex-row items-center justify-center">
-                                        <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
-                                    </p>
-                                </th>
-                                <th class="w-3/12 p-3 text-center hidden lg:table-cell">@ucfirst(__('category.categories'))</th>
-                                <th class="w-4/12 p-3 text-center">@ucfirst(__('category.name'))</th>
-                                <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
-                                <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($subcategories as $subcategory)
-                            <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
-                                <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
-                                <td class="hidden lg:table-cell">
-                                    <p class="flex flex-row h-12 items-center justify-center text-gray-800">
-                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
-                                        <svg class="{{ $subcategory->icon_style }} h-5 w-5">
-                                            <use xlink:href="#{{ $subcategory->slug }}"></use>
-                                        </svg>
-                                    </p>
-                                </td>
-                                <td class="break-words text-gray-800 hidden lg:table-cell">
-                                    <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}"
-                                        class="{{ $subcategory->belongsToCategory->icon_style }} px-1.5 rounded">
-                                        {{ $subcategory->belongsToCategory->translations }}
-                                    </a>
-                                </td>
-                                <td class="break-words p-3">
-                                    <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}">
-                                        {{ $subcategory->translations }}
-                                    </a>
-                                </td>
-                                <td class="text-center text-gray-800">
-                                    {{ $subcategory->has_addresses_count }}
-                                </td>
-                                <td>
-                                    <p class="flex flex-row h-12 items-center justify-center">
-                                        @can('manage_categories')
-                                        <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}"
-                                           class="mx-1">
-                                            <svg class="h-5 w-5">
-                                                <use xlink:href="#show"></use>
-                                            </svg>
-                                        </a>
-                                        <a href="#" class="mx-1">
-                                            <svg class="h-5 w-5">
-                                                <use xlink:href="#edit"></use>
-                                            </svg>
-                                        </a>
-                                        <a href="#" class="mx-1">
-                                            <svg class="h-5 w-5">
-                                                <use xlink:href="#delete"></use>
-                                            </svg>
-                                        </a>
-                                        @else
-                                        <span class="mx-1">
-                                            ---
-                                        </span>
-                                        @endcan
-                                    </p>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <form wire:submit.prevent="submit">
+                        {{ $this->form }}
+
+                        <button type="submit">
+                            Submit
+                        </button>
+                    </form>
                 </div>
                 <!-- End of subcategories -->
-
-                <!-- Pagination -->
-                {{ $subcategories->links() }}
-                <!-- End of pagination -->
-            </div>
-
-            <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
-                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
-                    @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
-                </h3>
-                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
-                    <li class="bg-black text-white rounded">
-                        <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle m-1">
-                                <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>&nbsp;
-                                @ucfirst(__('category.all'))
-                            </span>
-                        </a>
-                    </li>
-                    @foreach($categories as $category)
-                    <li class="{{ $category->icon_style }} rounded">
-                        <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
-                            <span class="inline-flex align-middle mt-1">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
-                                <svg class="h-5 w-5">
-                                    <use xlink:href="#{{ $category->slug }}"></use>
-                                </svg>&nbsp;
-                                {{ $category->translations }}
-                            </span>
-                            <span class="bg-white text-black text-sm font-semibold h-8 inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($category->hasSubcategories()->count())
-                            </span>
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
             </div>
         </div>
     </div>
