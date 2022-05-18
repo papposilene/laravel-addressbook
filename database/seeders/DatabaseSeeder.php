@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CountriesSeeder::class,
             ContinentsSeeder::class,
-            //SubcontinentsSeeder::class,
             //RegionsSeeder::class,
             CategoriesSeeder::class,
             AddressesSeeder::class,
