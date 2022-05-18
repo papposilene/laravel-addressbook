@@ -39,7 +39,7 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
             Forms\Components\TextInput::make('icon_image')
                 ->label(ucfirst(__('category.iconImageLabel')))
                 ->helperText(__('category.iconImageHelper'))
-                ->default('fas fa-icons fa-fw'),
+                ->default('icons'),
             Forms\Components\TextInput::make('icon_options')
                 ->label(ucfirst(__('category.iconOptionsLabel')))
                 ->helperText(__('category.iconOptionsHelper'))

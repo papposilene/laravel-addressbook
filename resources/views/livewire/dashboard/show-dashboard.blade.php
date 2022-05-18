@@ -2,7 +2,7 @@
 
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-300 leading-tight">
+        <h2 class="font-semibold text-xl text-bluegray-800 dark:text-bluegray-100 leading-tight">
             <span class="inline-flex align-middle">
                 @ucfirst(__('app.dashboard'))
             </span>
@@ -31,10 +31,10 @@
             <!-- Dashboard -->
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
-                    <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                         Pays
                     </h3>
-                    <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                    <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         <li class="flex flex-row justify-between m-1">
                             <span class="">@ucfirst(__('country.count_of', [
                                 'pronoun' => __('country.pronoun_pl'),
@@ -66,10 +66,10 @@
                 </div>
 
                 <div class="flex flex-col w-full lg:px-1 lg:w-1/3">
-                    <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                         @ucfirst(__('app.top10_of', ['what' => __('category.categories')]))
                     </h3>
-                    <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                    <div class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         @livewire('chart.pie', [
                             'name' => 'topCategoriesChart',
                             'api' => route('api.category.index', [
@@ -82,10 +82,10 @@
                 </div>
 
                 <div class="flex flex-col w-full lg:pl-1 lg:w-1/3">
-                    <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                         @ucfirst(__('app.top10_of', ['what' => __('country.countries')]))
                     </h3>
-                    <div class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                    <div class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         @livewire('chart.pie', [
                             'name' => 'topCountriesChart',
                             'api' => route('api.country.index', [
@@ -96,7 +96,6 @@
                         ])
                     </div>
                 </div>
-
             </div>
             <!-- End of dashboard -->
         </div>

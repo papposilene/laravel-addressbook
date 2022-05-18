@@ -47,7 +47,7 @@
         @endif
     </head>
 
-    <body class="antialiased font-sans bg-black text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="antialiased font-sans bg-slate-100 text-black dark:bg-gray-700 dark:text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div id="addressbook" class="flex flex-col h-min-screen">
 
             <!-- Page Content -->

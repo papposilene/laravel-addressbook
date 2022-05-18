@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark"
-    prefix="og: http://ogp.me/ns#">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class=""
+    prefix="og: http://ogp.me/ns#" x-cloak
+      x-data="{darkMode: localStorage.getItem('dark') === 'true'}"
+      x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+      x-bind:class="{'dark': darkMode}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,13 +50,13 @@
         @endif
     </head>
 
-    <body class="antialiased font-sans bg-gray-700 text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <body class="antialiased font-sans bg-slate-100 text-black dark:bg-gray-700 dark:text-white" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <div id="addressbook" class="flex flex-col h-min-screen">
             <livewire:menu />
 
             <!-- Page Heading -->
             @if (isset($header))
-            <header class="flex bg-gray-800 shadow">
+            <header class="flex bg-white dark:bg-gray-900 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full">
                     {{ $header }}
                 </div>

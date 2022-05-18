@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-900">
+<nav x-data="{ open: false }" class="bg-white border-b border-bluegray-100 dark:bg-gray-900 dark:border-gray-100">
     <!-- Primary Navigation Menu -->
     <!-- Primary Navigation Menu for authentificated users -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,24 +13,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('front.dashboard') }}" class="text-slate-100 hover:text-white"
+                    <x-jet-nav-link href="{{ route('front.dashboard') }}" class="text-slate-900 dark:text-slate-100"
                         :active="request()->routeIs('front.dashboard')">
                         @ucfirst(__('app.dashboard'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-100 hover:text-white"
+                    <x-jet-nav-link href="{{ route('front.country.index') }}" class="text-slate-900 dark:text-slate-100"
                         :active="request()->routeIs('front.country.*')">
                         @ucfirst(__('country.countries'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-100 hover:text-white"
+                    <x-jet-nav-link href="{{ route('front.category.index') }}" class="text-slate-900 dark:text-slate-100"
                         :active="request()->routeIs('front.category.*')">
                         @ucfirst(__('category.categories'))
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-100 hover:text-white"
+                    <x-jet-nav-link href="{{ route('front.address.index') }}" class="text-slate-900 dark:text-slate-100"
                         :active="request()->routeIs('front.address.*')">
                         @ucfirst(__('address.addresses'))
                     </x-jet-nav-link>
                     @auth
-                    <x-jet-nav-link href="" class="text-slate-100 hover:text-white"
+                    <x-jet-nav-link href="" class="text-slate-900 dark:text-slate-100"
                         :active="request()->routeIs('front.stat')">
                         @ucfirst(__('app.statistics'))
                     </x-jet-nav-link>
@@ -120,7 +120,7 @@
                 </div>
 
                 <!-- Dark mode -->
-                <!--div class="flex ml-2">
+                <div class="flex ml-2">
                     <x-forms.button @click="darkMode = !darkMode" class="focus:outline-none focus:border-slate-300 transition text-black dark:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" x-show="darkMode === false" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -131,7 +131,7 @@
                                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </x-forms.button>
-                </div-->
+                </div>
             </div>
         </div>
     </div>
