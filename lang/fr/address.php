@@ -15,7 +15,7 @@ return [
     'addresses' => 'adresses',
 
     'addressHeading' => 'coordonnées',
-    'addressDescription' => '',
+    'addressDescription' => 'les coordonnées, tant postales que géographiques, permettent de situer le lieu à des échelles différentes (pays, région, ville) et de le localiser sur une carte.',
     'city' => 'ville',
     'closed' => 'fermé',
     'count' => 'nombre d’adresses',
@@ -26,6 +26,8 @@ return [
     'latitude' => 'latitude',
     'longitude' => 'longitude',
     'name' => 'dénomination',
+    'nameHeading' => 'Lieu d’intérêt',
+    'nameDescription' => 'Le lieu nécessite d’avoir un intitulé, un status (ouvert ou fermé, temporairement ou définitivement), une catégorie et, de façon facultative, votre commentaire.',
     'names' => 'dénominations',
     'no_description' => 'pas encore de description...',
     'open' => 'ouvert',
@@ -47,8 +49,7 @@ return [
     'website' => 'site internet',
     'wikidata' => 'identifiant Wikidata',
 
-    'nameHeading' => 'Adresse',
-    'nameDescription' => '',
+
 
     'create_one' => 'ajouter une adresse',
     'delete_that' => 'supprimer l’adresse « :what »',
