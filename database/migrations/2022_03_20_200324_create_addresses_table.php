@@ -35,13 +35,24 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('city_uuid')
-                ->references('uuid')->on('geodata__cities')->onDelete('cascade');
+                ->references('uuid')
+                ->on('geodata__cities')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreign('region_uuid')
-                ->references('uuid')->on('geodata__regions')->onDelete('cascade');
+                ->references('uuid')
+                ->on('geodata__regions')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreign('country_cca3')
-                ->references('cca3')->on('geodata__countries')->onDelete('cascade');
+                ->references('cca3')
+                ->on('geodata__countries')
+                ->onDelete('cascade');
             $table->foreign('subcategory_slug')
-                ->references('slug')->on('categories__subcategories')->onDelete('cascade');
+                ->references('slug')
+                ->on('categories__subcategories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

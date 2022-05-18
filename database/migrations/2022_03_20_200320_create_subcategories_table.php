@@ -26,7 +26,11 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('category_slug')->references('slug')->on('categories__');
+            $table->foreign('category_slug')
+                ->references('slug')
+                ->on('categories__')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
