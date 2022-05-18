@@ -35,7 +35,7 @@
                     </div>
                 @endif
 
-                <h3 class="bg-slate-500 font-bold text-xl p-3 rounded-t">
+                <h3 class="bg-slate-300 dark:bg-slate-500 font-bold text-xl p-3 rounded-t">
                     {{ $address->place_name }}
                 </h3>
 
@@ -58,17 +58,17 @@
 
                 <!-- Contact details -->
                 <div class="flex flex-col lg:flex-row pt-2 mt-2 pb-1">
-                    <div class="grow-0 bg-slate-400 py-2 px-4 inline-flex items-center rounded-l">
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center rounded-l">
                         &nbsp;
                     </div>
                     @if($address->details['opening_hours'])
-                    <!--div class="grow-0 bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-l">
+                    <!--div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-l">
                         <i class="fa-solid fa-clock"></i>&nbsp;
                         {{ $address->details['opening_hours'] }}
                     </div-->
                     @endif
                     @if($address->details['phone'])
-                    <div class="grow-0 bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                         <a href="tel:{{ $address->details['phone'] }}" class=" hover:text-white">
                             <i class="fa-solid fa-phone"></i>&nbsp;
                             {{ $address->details['phone'] }}
@@ -76,17 +76,17 @@
                     </div>
                     @endif
                     @if($address->details['website'])
-                    <div class="grow-0 bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                         <a href="{{ $address->details['website'] }}" class=" hover:text-white" target="_blank">
                             <i class="fa-solid fa-link"></i>&nbsp;
                             @urlhost($address->details['website'])
                         </a>
                     </div>
                     @endif
-                    <div class="grow bg-slate-400 py-2 px-4 inline-flex items-center">
+                    <div class="grow bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center">
                         &nbsp;
                     </div>
-                    <div class="grow-0 bg-slate-400 py-2 px-4 inline-flex items-center rounded-r">
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center rounded-r">
                         &nbsp;
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                 <!-- Map -->
                 <div class="flex flex-col pt-2 text-black">
                     <div class="flex flex-row pt-2">
-                        <h4 class="flex flex-col bg-slate-400 justify-center items-center py-1 text-lg w-full rounded-t lg:rounded-tl">
+                        <h4 class="flex flex-col bg-slate-200 dark:bg-slate-400 justify-center items-center py-1 text-lg w-full rounded-t lg:rounded-tl">
                             <span class="px-1">
                                 {{ $address->address_number }} {{ $address->address_street }}
                             </span>
@@ -117,12 +117,12 @@
                         <i data-fa-symbol="citymapper" class="fa-solid fa-signs-post fa-fw"></i>
                         <i data-fa-symbol="google" class="fa-brands fa-google fa-fw"></i>
                         <span
-                            class="flex grow bg-slate-400 text-black py-2 px-4 inline-flex items-center lg:rounded-bl">
+                            class="flex grow bg-slate-200 dark:bg-slate-400 text-black py-2 px-4 inline-flex items-center lg:rounded-bl">
                             @ucfirst(__('address.search_with'))
                         </span>
                         <a href="https://citymapper.com/directions?endcoord=@urlencode($address->address_lat . ',' .$address->address_lon)"
                            target="_blank"
-                           class="bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                           class="bg-slate-200 dark:bg-slate-400  hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                             <span class="inline-flex">
                                 <svg class="mt-1 h-4 w-4">
                                     <use xlink:href="#citymapper"></use>
@@ -132,7 +132,7 @@
                         </a>
                         <a href="https://nominatim.openstreetmap.org/ui/details.html?place_id=@urlencode($address->osm_place_id)"
                            target="_blank"
-                           class="bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                           class="bg-slate-200 dark:bg-slate-400  hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                             <span class="inline-flex">
                                 <svg class="mt-1 h-4 w-4">
                                     <use xlink:href="#openstreetmap"></use>
@@ -141,7 +141,7 @@
                             </span>
                         </a>
                         <a href="https://www.google.com/maps?q=@urlencode($address->gmap_pluscode)" target="_blank"
-                           class="bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                           class="bg-slate-200 dark:bg-slate-400  hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                             <span class="inline-flex">
                                 <svg class="mt-1 h-4 w-4">
                                     <use xlink:href="#google"></use>
@@ -151,7 +151,7 @@
                         </a>
                         <a href="http://maps.apple.com/?sll=@urlencode($address->address_lat . ',' .$address->address_lon)"
                            target="_blank"
-                           class="bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center rounded-b lg:rounded-br">
+                           class="bg-slate-200 dark:bg-slate-400  hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center rounded-b lg:rounded-br">
                             <span class="inline-flex">
                                 <svg class="mt-1 h-4 w-4">
                                     <use xlink:href="#applemap"></use>
@@ -175,10 +175,10 @@
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
                 <!-- Country and city -->
-                <h5 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h5 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('category.categories'))
                 </h5>
-                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                     <li>
                         <a href="{{ route('front.category.index', ['filter' => $address->belongsToCategory->slug]) }}"
                            class="flex flex-row justify-between {{ $address->belongsToCategory->icon_style }} mb-2 px-1.5 rounded">
@@ -209,10 +209,10 @@
                 <!-- End of country and city -->
 
                 <!-- Suggestions -->
-                <h5 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h5 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('address.suggestions'))
                 </h5>
-                <ul class="bg-gray-500 text-gray-200 p-3 rounded-b">
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                     @foreach($suggestions as $suggestion)
                         <li>
                             <a href="{{ route('front.address.show', ['uuid' => $suggestion->uuid]) }}"

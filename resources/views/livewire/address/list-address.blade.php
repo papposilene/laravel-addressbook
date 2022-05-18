@@ -33,7 +33,7 @@
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     @can('manage_addresses')
-                    <a href="{{ route('admin.address.create') }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                    <a href="{{ route('admin.address.create') }}" class="py-2 px-4 rounded inline-flex items-center">
                         <svg class="h-6 w-6">
                             <use xlink:href="#create"></use>
                         </svg>
@@ -52,9 +52,9 @@
 
             <!-- Addresses -->
             <div class="py-5">
-                <table class="bg-slate-500 p-5 table-fixed w-full rounded">
+                <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                     <thead>
-                    <tr class="bg-slate-600 text-white">
+                    <tr class="bg-slate-400 dark:bg-slate-600">
                         <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                         <th class="w-1/12 p-3">
                             <p class="flex flex-row items-center justify-center">

@@ -45,9 +45,9 @@
 
                 <!-- Countries -->
                 <div class="py-5">
-                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
+                    <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-600 text-white">
+                        <tr class="bg-slate-400 dark:bg-slate-600">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                             <th class="w-1/12 p-3 hidden lg:table-cell">
                                 <p class="flex flex-row items-center justify-center p-3">
@@ -107,11 +107,11 @@
             </div>
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
-                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('country.pronoun_pl'), 'what' =>
                     __('country.subcontinents')]))
                 </h3>
-                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                     <li>
                         <a href="{{ route('front.country.index') }}" class="flex flex-row justify-between mb-2">
                             <span class="mb-1.5">@ucfirst(__('country.all_subcontinents'))</span>
@@ -122,8 +122,7 @@
                             <a href="{{ route('front.country.index', ['filter' => $subcontinent->slug]) }}"
                                class="flex flex-row justify-between m-1">
                                 <span class="">{{ $subcontinent->name }}</span>
-                                <span
-                                    class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
                                     @leadingzero($subcontinent->hasCountries()->count())
                                 </span>
                             </a>

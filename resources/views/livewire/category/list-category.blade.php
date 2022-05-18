@@ -34,7 +34,7 @@
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
                         @can('manage_categories')
-                        <a href="{{ route('admin.category.create') }}" class="bg-slate-700 hover:bg-gray-800 py-2 px-4 rounded inline-flex items-center">
+                        <a href="{{ route('admin.category.create') }}" class="py-2 px-4 rounded inline-flex items-center">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#create"></use>
                             </svg>
@@ -52,9 +52,9 @@
 
                 <!-- Subcategories -->
                 <div class="py-5">
-                    <table class="bg-slate-500 p-5 table-fixed w-full rounded">
+                    <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                            <tr class="bg-slate-600 text-white">
+                            <tr class="bg-slate-400 dark:bg-slate-600">
                                 <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                                 <th class="w-1/12 p-3 hidden lg:table-cell">
                                     <p class="flex flex-row items-center justify-center">
@@ -132,10 +132,10 @@
             </div>
 
             <div class="flex flex-col px-2 py-5 w-full lg:py-0 lg:pr-2 lg:w-1/4">
-                <h3 class="bg-gray-600 text-gray-200 font-semibold text-xl p-3 rounded-t">
+                <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </h3>
-                <ul class="bg-gray-500 text-gray-200 p-3 mb-3 rounded-b">
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                     <li class="bg-black text-white rounded">
                         <a href="{{ route('front.category.index') }}" class="flex flex-row justify-between m-1">
                             <span class="inline-flex align-middle m-1">
