@@ -32,7 +32,7 @@ return [
     'translationsHelper' => 'Les traductions, tant du nom que de la description de la catégorie, doivent comporter une langue (au format ISO 639-1, soit deux caractères) et un texte. Au moins une traduction doit être fournie.',
 
     'create_one' => 'ajouter une sous-catégorie',
-    'delete_one' => 'supprimer la sous-catégorie',
+    'delete_that' => 'supprimer la sous-catégorie « :what »',
     'update_that' => 'modifier la sous-catégorie « :what »',
 
 ];
