@@ -3,7 +3,7 @@
         "name": "Gastronomy",
         "slug": "gastronomy",
         "icon_image": "utensils",
-        "icon_style": "bg-red-900 hover:bg-red-400 text-white hover:text-black",
+        "icon_style": "bg-red-900 hover:bg-red-400 text-white",
         "icon_color": "#7F1D1D",
         "translations": {
             "en": "Gastronomy",
@@ -18,7 +18,7 @@
         "name": "Tourism",
         "slug": "tourism",
         "icon_image": "landmark",
-        "icon_style": "bg-yellow-900 hover:bg-yellow-600 text-white hover:text-black",
+        "icon_style": "bg-yellow-900 hover:bg-yellow-600 text-white",
         "icon_color": "#713F12",
         "translations": {
             "en": "Tourism",
@@ -33,7 +33,7 @@
         "name": "Shop",
         "slug": "shop",
         "icon_image": "store",
-        "icon_style": "bg-stone-700 hover:bg-stone-300 text-white hover:text-black",
+        "icon_style": "bg-stone-700 hover:bg-stone-300 text-white",
         "icon_color": "#44403C",
         "translations": {
             "en": "Shops",
@@ -48,7 +48,7 @@
         "name": "Religion",
         "slug": "religion",
         "icon_image": "place-of-worship",
-        "icon_style": "bg-sky-800 hover:bg-sky-200 text-white hover:text-black",
+        "icon_style": "bg-sky-800 hover:bg-sky-200 text-white",
         "icon_color": "#075985",
         "translations": {
             "en": "Religious places",
@@ -63,7 +63,7 @@
         "name": "Amenity",
         "slug": "amenity",
         "icon_image": "map-location",
-        "icon_style": "bg-emerald-900 hover:bg-emerald-600 text-white hover:text-black",
+        "icon_style": "bg-emerald-900 hover:bg-emerald-600 text-white",
         "icon_color": "#064E3B",
         "translations": {
             "en": "Amenities",
@@ -78,7 +78,7 @@
         "name": "Administrative",
         "slug": "administrative",
         "icon_image": "building",
-        "icon_style": "bg-violet-900 hover:bg-violet-600 text-white hover:text-black",
+        "icon_style": "bg-violet-900 hover:bg-violet-600 text-white",
         "icon_color": "#4C1D95",
         "translations": {
             "en": "Areas to visit",
@@ -93,7 +93,7 @@
         "name": "Other",
         "slug": "other",
         "icon_image": "clipboard-list",
-        "icon_style": "bg-slate-900 hover:bg-slate-600 text-white hover:text-black",
+        "icon_style": "bg-slate-900 hover:bg-slate-600 text-white",
         "icon_color": "#0F172A",
         "translations": {
             "en": "Other addresses",
