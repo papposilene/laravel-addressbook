@@ -19,22 +19,12 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    //protected $primaryKey = 'uuid';
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    //public $incrementing = false;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-        //'uuid',
         'name',
         'email',
         'password',
@@ -59,6 +49,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'bool',
     ];
 
     /**
@@ -69,16 +60,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-    /**
-     * Boot the Model.
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        //self::creating(function ($model) {
-        //    $model->uuid = (string) Str::uuid();
-        //});
-    }
 }
