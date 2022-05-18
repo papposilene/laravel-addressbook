@@ -3,7 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Livewire\Address\{ ListAddress, ShowAddress };
-use App\Http\Livewire\Category\{ CreateCategory, ListCategory, ShowCategory };
+use App\Http\Livewire\Category\{ CreateCategory, ListCategory, ShowCategory, EditCategory };
 use App\Http\Livewire\City\ShowCity;
 use App\Http\Livewire\Country\{ ListCountry, ShowCountry };
 use App\Http\Livewire\Dashboard\ShowDashboard;
@@ -49,8 +49,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
     // Categories
     Route::get('/category/create', CreateCategory::class)->name('admin.category.create');
-    Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
-    Route::post('/category/update', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::get('/category/edit/{slug}', EditCategory::class)->name('admin.category.edit');
     Route::post('/category/import', [CategoryController::class, 'import'])->name('admin.category.import');
     Route::post('/category/export', [CategoryController::class, 'export'])->name('admin.category.export');
 });
