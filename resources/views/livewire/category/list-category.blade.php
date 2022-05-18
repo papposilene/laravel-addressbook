@@ -34,7 +34,7 @@
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
                         @can('manage_categories')
-                        <a href="{{ route('admin.category.create') }}" class="py-2 px-4 rounded inline-flex items-center">
+                        <a href="{{ route('admin.category.create') }}" class="bg-slate-200 py-2 px-4 rounded inline-flex items-center">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#create"></use>
                             </svg>

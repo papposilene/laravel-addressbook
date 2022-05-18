@@ -1,10 +1,10 @@
-@section('title', @ucfirst(__('app.create_', ['pronoun' => __('address.pronoun_sg'), 'what' => __('address.address')])))
+@section('title', @ucfirst(__('address.create_one')))
 
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-100 leading-tight">
             <span class="inline-flex align-middle">
-                @ucfirst(__('app.list_of', ['pronoun' => __('address.pronoun_pl'), 'what' => __('address.addresses')]))
+                @ucfirst(__('address.create_one'))
             </span>
         </h2>
     </x-slot>
@@ -12,22 +12,38 @@
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
         <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-400"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-400"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-400"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-400"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-400"></i>
+        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
+        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
+        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
 
-        <div class="max-w-7xl mx-auto py-5 px-6">
-            @if ($errors->any())
-                <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+        <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
+            <div class="flex flex-col pl-2 pr-2 w-full lg:mx-auto lg:w-2/4">
+                @if ($errors->any())
+                    <div class="bg-red-400 border border-red-600 mb-5 p-3 text-white font-bold rounded shadow">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <!-- Create form -->
+                <div class="py-5">
+                    <form wire:submit.prevent="submit">
+                        {{ $this->form }}
+
+                        <div class="flex flex-inline justify-end space-x-4 pt-5">
+                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                @ucfirst(__('app.save'))
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            @endif
+                <!-- End of create form -->
+            </div>
         </div>
     </div>
 </div>

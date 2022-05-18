@@ -50,9 +50,16 @@
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
                         @can('manage_categories')
-                        <a href="{{ route('admin.category.edit', ['slug' => $subcategory->slug]) }}" class="bg-slate-200 hover:bg-gray-200 text-black py-2 px-4 rounded inline-flex items-center">
+                        <a href="{{ route('admin.category.edit', ['slug' => $subcategory->slug]) }}" class="bg-slate-200 py-2 px-4 rounded inline-flex items-center mr-2">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#edit"></use>
+                            </svg>
+                        </a>
+                        @endcan
+                        @can('manage_addresses')
+                        <a href="{{ route('admin.address.create', ['category' => $subcategory->slug]) }}" class="bg-slate-200 py-2 px-4 rounded inline-flex items-center">
+                            <svg class="h-6 w-6">
+                                <use xlink:href="#create"></use>
                             </svg>
                         </a>
                         @endcan

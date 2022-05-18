@@ -30,7 +30,7 @@
                     </div>
                 @endif
 
-                <!-- Subcategories -->
+                <!-- Edit form -->
                 <div class="py-5">
                     <form wire:submit.prevent="submit">
                         {{ $this->form }}
@@ -42,7 +42,7 @@
                         </div>
                     </form>
                 </div>
-                <!-- End of subcategories -->
+                <!-- End of edit form -->
             </div>
         </div>
     </div>
