@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="hidden lg:table-cell text-center">{{ $country->flag }}</td>
                                 <td class="break-words p-3">
-                                    <a href="{{ route('front.country.show', ['cca3' => $country->cca3]) }}">
+                                    <a href="{{ route('front.address.index', ['cca3' => $country->cca3]) }}">
                                         {{ $country->name_eng_common }}
                                     </a>
                                 </td>

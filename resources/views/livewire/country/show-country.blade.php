@@ -75,7 +75,7 @@
                             </td>
                             <td>
                                 <p class="flex flex-row h-12 items-center justify-center">
-                                    <a href="#" class="mx-1">
+                                    <a href="{{ route('front.address.index', ['country' => $city->country_cca3]) }}" class="mx-1">
                                         <svg class="h-5 w-5">
                                             <use xlink:href="#show"></use>
                                         </svg>
