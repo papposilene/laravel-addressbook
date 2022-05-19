@@ -61,12 +61,6 @@
                     <div class="grow-0 bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center rounded-l">
                         &nbsp;
                     </div>
-                    @if($address->details['opening_hours'])
-                    <!--div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black py-2 px-4 inline-flex items-center rounded-l">
-                        <i class="fa-solid fa-clock"></i>&nbsp;
-                        {{ $address->details['opening_hours'] }}
-                    </div-->
-                    @endif
                     @if($address->details['phone'])
                     <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
                         <a href="tel:{{ $address->details['phone'] }}" class=" hover:text-white">
@@ -137,7 +131,7 @@
                                 <svg class="mt-1 h-4 w-4">
                                     <use xlink:href="#openstreetmap"></use>
                                 </svg>&nbsp;
-                                @ucfirst(__('address.search_with_osm_pid'))
+                                @ucfirst(__('address.search_with_osm'))
                             </span>
                         </a>
                         <a href="https://www.google.com/maps?q=@urlencode($address->gmap_pluscode)" target="_blank"
