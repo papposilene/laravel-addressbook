@@ -97,6 +97,7 @@
     <i data-fa-symbol="categories" class="fa-solid fa-clipboard-list fa-fw text-white"></i>
     <i data-fa-symbol="countries" class="fa-solid fa-book-atlas fa-fw text-white"></i>
     <i data-fa-symbol="addresses-info" class="fa-solid fa-circle-info fa-fw text-white"></i>
+    <i data-fa-symbol="about" class="fa-solid fa-address-card fa-fw text-white"></i>
     <i data-fa-symbol="admin" class="fa-solid fa-gear fa-fw text-white"></i>
     <i data-fa-symbol="caret" class="fa-solid fa-caret-left fa-fw text-white"></i>
 
@@ -114,7 +115,7 @@
             <div class="sidebar-tabs">
                 <ul role="tablist">
                     <li>
-                        <a href="#home" class="p-2" role="tab">
+                        <a href="{{ route('front.index') }}" class="p-2" role="tab">
                             <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
                         </a>
                     </li>
@@ -137,6 +138,11 @@
 
                 <ul role="tablist">
                     <li>
+                        <a href="#about" class="p-2" role="tab">
+                            <svg class="h-5 w-5"><use xlink:href="#about"></use></svg>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('front.dashboard') }}" class="p-2" role="tab">
                             <svg class="h-5 w-5"><use xlink:href="#admin"></use></svg>
                         </a>
@@ -146,23 +152,35 @@
 
             <!-- Tab panes -->
             <div class="sidebar-content">
-                <div class="sidebar-pane" id="home">
-                    <h1 class="sidebar-header">
-                        {{ config('app.name', 'My Address Book') }}
-                        <span class="sidebar-close p-2">
-                            <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
-                        </span>
-                    </h1>
+                <div class="sidebar-pane" id="about">
+                    <div class="flex flex-col h-screen">
+                        <h1 class="sidebar-header">
+                            {{ config('app.name', 'My Address Book') }}
+                            <span class="sidebar-close p-2">
+                                <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
+                            </span>
+                        </h1>
 
-                    <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
+                        <div class="flex-grow">
+                            <p class="my-6 text-2xl">
+                                Carnet de bonnes adresses
+                            </p>
 
-                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p class="my-2">
+                                Les adresses référencées sur cette carte sont le fruit de glanage lors de voyage ou de discussions.
+                            </p>
 
-                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p class="my-2">
+                                Certaines peuvent être périmées ou pire avoir perdu de leur saveur, auquel cas j'en suis le premier désolé.
+                                Le cas échéant, n'hésitez pas à m'en informer que la déception ne se propage pas trop.
+                            </p>
+                        </div>
 
-                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <div class="relative -t-5 b-5 px-1 text-xs text-slate-500 font-mono">
+                            Conçu artisanalement avec les outils Laravel 9, Livewire 2, Tailwind CSS 3, FontAwesome 6 et Leaflet 1.8.
+                            Le code source de cette application web est <a href="https://github.com/papposilene/laravel-addressbook" target="_blank">disponible sur Github</a>.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="sidebar-pane" id="countries">
@@ -181,7 +199,7 @@
                                 @foreach($continent->hasCountries()->get() as $country)
                                     @php if($country->hasAddresses()->count() === 0) { continue; } @endphp
                                     <div class="flex w-full px-2">
-                                        <a href="{{ route('front.map.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
+                                        <a href="{{ route('front.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
                                             <span class="inline-flex align-middle mt-1">
                                                 {{ $country->name_translations['common'] }}
                                             </span>
@@ -215,7 +233,7 @@
                             </div>
                             @foreach($category->hasSubcategories()->get() as $subcategory)
                             <div class="flex w-full px-2">
-                                <a href="{{ route('front.map.index', ['category' => $subcategory->slug]) }}" class="flex flex-row justify-between m-1 w-full">
+                                <a href="{{ route('front.index', ['category' => $subcategory->slug]) }}" class="flex flex-row justify-between m-1 w-full">
                                     <span class="inline-flex align-middle mt-1">
                                         <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $subcategory->icon_style }} h-5 w-5 mr-2">
