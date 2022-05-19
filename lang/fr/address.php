@@ -39,7 +39,7 @@ return [
     'search_with_amap' => 'Apple Map',
     'search_with_citymapper' => 'Citymapper',
     'search_with_gmaps' => 'Google Maps',
-    'search_with_osm_pid' => 'OpenStreetMap',
+    'search_with_osm' => 'OpenStreetMap',
     'status' => 'status de l’adresse',
     'status_close' => 'Adresse définitivement fermée',
     'status_open' => 'Adresse ouverte aux jours et heures en vigueur',
