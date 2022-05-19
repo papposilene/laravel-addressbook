@@ -18,7 +18,7 @@ class AddressesSeeder extends Seeder
     {
         // Nominatim's Usage Policy
         // @see https://operations.osmfoundation.org/policies/nominatim/
-        return env('MAIL_FROM_ADDRESS', new \Exception('No MAIL_FROM_ADDRESS key into you .env'));
+        return env('MAIL_FROM_ADDRESS', new \Exception('No MAIL_FROM_ADDRESS key into your .env'));
     }
 
     /**
@@ -44,20 +44,22 @@ class AddressesSeeder extends Seeder
                 $isRegion = null;
                 $regionLevel = null;
                 $cityLevel = null;
-                $placeId = $data->geolocation->osm_place_id;
+                $osmId = $data->geolocation->osm_id;
 
-                $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&place_id=' . $placeId);
+                $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . substr($osmId, 0, 1) . '&osmid=' . substr($osmId, 1));
                 $dataFile = json_decode($dataJson, true);
 
                 // Retrieve all administrative levels from Nominatim
                 $getLevels = $dataFile['address'];
                 foreach ($getLevels as $key => $value) {
                     if ($value['osm_type'] === 'R' && $value['place_type'] === 'state') {
-                        $regionLevel = $dataFile['address'][$key]['place_id'];
+                        $regionLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
+                        $regionLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
                     }
 
                     if ($value['osm_type'] === 'R' && $value['place_type'] === 'city') {
-                        $cityLevel = $dataFile['address'][$key]['place_id'];
+                        $cityLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
+                        $cityLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
                     }
                 }
 
@@ -73,7 +75,7 @@ class AddressesSeeder extends Seeder
                     ->firstOrFail();
 
                 Address::create([
-                    'place_name' => Str::of($data->names->name)->trim(),
+                    'place_name' => Str::of($data->name)->trim(),
                     'place_status' => $data->details->status,
                     'address_number' => (!empty($data->address->number) ? $data->address->number : null),
                     'address_street' => (!empty($data->address->street) ? Str::of($data->address->street)->trim() : null),
@@ -86,28 +88,25 @@ class AddressesSeeder extends Seeder
                     'address_lon' => (float)$data->geolocation->lon,
                     'description' => Str::of($data->details->description)->trim(),
                     'details' => [
-                        'opening_hours' => $data->details->opening_hours,
                         'phone' => $data->details->phone,
                         'website' => $data->details->website,
                         'wikidata' => $data->details->wikidata,
                     ],
                     'subcategory_slug' => $subcategory->slug,
                     'osm_id' => (string)$data->geolocation->osm_id,
-                    'gmap_pluscode' => (string)$data->geolocation->gmaps_pluscode,
                 ]);
             }
         }
     }
 
-    private function getRegion(int $id)
+    private function getRegion(array $id)
     {
-        $setRegion = null;
-        $setRegion = Region::where('osm_place_id', $id)->first();
+        $setRegion = Region::where('osm_id', $id['osm_type'] . $id['osm_id'])->first();
         if (!is_null($setRegion)) {
             return $setRegion;
         }
 
-        $regionJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . $this->getEmail() . '&place_id=' . $id);
+        $regionJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . $this->getEmail() . '&osmtype=' . $id['osm_type'] . '&osmid=' . $id['osm_id']);
         $regionData = json_decode($regionJson, true);
 
         $setRegion = Region::where('name_slug', Str::slug($regionData['localname'], '-'))->first();
@@ -131,8 +130,7 @@ class AddressesSeeder extends Seeder
             'country_cca2' => $isCountry->cca2,
             'country_cca3' => $isCountry->cca3,
             'region_cca2' => (array_key_exists('ISO3166-2', $regionData['extratags']) ? $regionData['extratags']['ISO3166-2'] : null),
-            'osm_id' => $regionData['osm_id'],
-            'osm_place_id' => $regionData['place_id'],
+            'osm_id' => $id['osm_type'] . $id['osm_id'],
             'osm_admin_level' => $regionData['admin_level'],
             'osm_type' => $regionData['type'],
             'name_slug' => Str::slug($regionData['localname'], '-'),
@@ -144,15 +142,14 @@ class AddressesSeeder extends Seeder
         ]);
     }
 
-    private function getCity(int $id)
+    private function getCity(array $id)
     {
-        $setCity = null;
-        $setCity = City::where('osm_place_id', $id)->first();
+        $setCity = City::where('osm_id', $id)->first();
         if (!is_null($setCity)) {
             return $setCity;
         }
 
-        $cityJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . $this->getEmail() . '&place_id=' . $id);
+        $cityJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . $this->getEmail() . '&osmtype=' . $id['osm_type'] . '&osmid=' . $id['osm_id']);
         $cityData = json_decode($cityJson, true);
 
         $setCity = City::where('name_slug', Str::slug($cityData['localname'], '-'))->first();
@@ -175,8 +172,7 @@ class AddressesSeeder extends Seeder
         return City::create([
             'country_cca3' => $isCountry->cca3,
             'region_uuid' => null,
-            'osm_id' => $cityData['osm_id'],
-            'osm_place_id' => $cityData['place_id'],
+            'osm_id' => $id['osm_type'] . $id['osm_id'],
             'osm_admin_level' => $cityData['admin_level'],
             'osm_type' => $cityData['type'],
             'name_slug' => Str::slug($cityData['localname'], '-'),

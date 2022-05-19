@@ -61,10 +61,9 @@ return new class extends Migration
             // Region identifiers
             $table->string('region_cca2', 6)->nullable();
             // OpenStreetMap data
-            $table->bigInteger('osm_id', false)->nullable();
-            $table->bigInteger('osm_place_id', false)->nullable();
-            $table->integer('osm_admin_level', false)->nullable();
             $table->string('osm_type', 255)->nullable();
+            $table->string('osm_id', 255)->nullable();
+            $table->integer('osm_admin_level', false)->nullable();
             $table->string('name_slug', 255)->unique();
             $table->string('name_local', 255);
             $table->json('name_translations');
@@ -83,10 +82,9 @@ return new class extends Migration
             $table->string('country_cca3', 3);
             $table->uuid('region_uuid')->nullable();
             // OpenStreetMap data
-            $table->bigInteger('osm_id', false)->nullable();
-            $table->bigInteger('osm_place_id', false)->nullable();
-            $table->integer('osm_admin_level', false);
             $table->string('osm_type', 255)->nullable();
+            $table->string('osm_id', 255)->nullable();
+            $table->integer('osm_admin_level', false);
             $table->string('name_slug', 255)->unique();
             $table->string('name_local', 255);
             $table->json('name_translations');

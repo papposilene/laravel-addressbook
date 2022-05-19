@@ -30,7 +30,6 @@ return new class extends Migration
             $table->json('details')->nullable();
             $table->uuid('subcategory_slug');
             $table->string('osm_id', 255)->nullable();
-            $table->string('gmap_pluscode', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
 
