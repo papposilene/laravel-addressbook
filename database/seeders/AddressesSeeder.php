@@ -42,8 +42,8 @@ class AddressesSeeder extends Seeder
             foreach ($json->addresses as $data) {
                 $isCity = null;
                 $isRegion = null;
-                $regionLevel = null;
-                $cityLevel = null;
+                $regionLevel = [];
+                $cityLevel = [];
                 $osmId = $data->geolocation->osm_id;
 
                 $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . substr($osmId, 0, 1) . '&osmid=' . substr($osmId, 1));
@@ -52,14 +52,19 @@ class AddressesSeeder extends Seeder
                 // Retrieve all administrative levels from Nominatim
                 $getLevels = $dataFile['address'];
                 foreach ($getLevels as $key => $value) {
-                    if ($value['osm_type'] === 'R' && $value['place_type'] === 'state') {
+                    if ($value['osm_type'] === 'R' && ($value['place_type'] === 'state' || $value['place_type'] === 'province')) {
                         $regionLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
                         $regionLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
                     }
 
-                    if ($value['osm_type'] === 'R' && $value['place_type'] === 'city') {
+                    if ($value['osm_type'] === 'R' && ($value['place_type'] === 'city' || $value['type'] === 'city')) {
                         $cityLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
                         $cityLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
+                    }
+
+                    if(empty($cityLevel) && $regionLevel) {
+                        $cityLevel['osm_type'] = $dataFile['address'][$key-2]['osm_type'];
+                        $cityLevel['osm_id'] = $dataFile['address'][$key-2]['osm_id'];
                     }
                 }
 
@@ -68,7 +73,7 @@ class AddressesSeeder extends Seeder
                 }
 
                 if ($cityLevel) {
-                    $isCity = $this->getCity($cityLevel);
+                    $isCity = $this->getCity($cityLevel, $isRegion);
                 }
 
                 $subcategory = Subcategory::where('slug', Str::slug($data->category->type, '-'))
@@ -115,6 +120,7 @@ class AddressesSeeder extends Seeder
         }
 
         $translations = [];
+        rsort($regionData['names']);
         $getNames = $regionData['names'];
         $getFiltered = array_filter($getNames, function ($key) {
             return str_starts_with($key, 'name:');
@@ -142,7 +148,7 @@ class AddressesSeeder extends Seeder
         ]);
     }
 
-    private function getCity(array $id)
+    private function getCity(array $id, ?Region $isRegion)
     {
         $setCity = City::where('osm_id', $id)->first();
         if (!is_null($setCity)) {
@@ -158,6 +164,7 @@ class AddressesSeeder extends Seeder
         }
 
         $translations = [];
+        rsort($cityData['names']);
         $getNames = $cityData['names'];
         $getFiltered = array_filter($getNames, function ($key) {
             return str_starts_with($key, 'name:');
@@ -171,7 +178,7 @@ class AddressesSeeder extends Seeder
 
         return City::create([
             'country_cca3' => $isCountry->cca3,
-            'region_uuid' => null,
+            'region_uuid' => $isRegion->uuid ?? null,
             'osm_id' => $id['osm_type'] . $id['osm_id'],
             'osm_admin_level' => $cityData['admin_level'],
             'osm_type' => $cityData['type'],
