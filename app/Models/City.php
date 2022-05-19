@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Region;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
-use Papposilene\Geodata\Exceptions\CityDoesNotExist;
 use Spatie\Translatable\HasTranslations;
 
 class City extends Model
@@ -53,9 +50,8 @@ class City extends Model
         'country_cca3',
         'region_uuid',
         'osm_id',
-        'osm_place_id',
-        'osm_admin_level',
         'osm_type',
+        'osm_admin_level',
         'name_slug',
         'name_local',
         'name_translations',
@@ -78,10 +74,10 @@ class City extends Model
      */
     protected $visible = [
         'country_cca3',
+        'region_uuid',
         'osm_id',
-        'osm_place_id',
-        'osm_admin_level',
         'osm_type',
+        'osm_admin_level',
         'name_slug',
         'name_local',
         'name_translations',
@@ -146,116 +142,4 @@ class City extends Model
             'uuid'
         );
     }
-
-    /**
-     * Get the current countries.
-     *
-     * @param array $params
-     * @param bool $onlyOne
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    protected static function getCities(array $params = [], bool $onlyOne = false): Collection
-    {
-        return app(GeodataRegistrar::class)
-            ->setCityClass(static::class)
-            ->getCities($params, $onlyOne);
-    }
-
-    /**
-     * Get the current first country.
-     *
-     * @param array $params
-     *
-     * @return City
-     */
-    protected static function getCity(array $params = []): City
-    {
-        return static::getCities($params, true)->first();
-    }
-
-    /**
-     * Find a city by its uuid.
-     *
-     * @param string $uuid
-     *
-     * @throws \Papposilene\Geodata\Exceptions\CityDoesNotExist
-     *
-     * @return City
-     */
-    public static function findById(string $uuid): City
-    {
-        $city = static::find($uuid);
-
-        if (!$city) {
-            throw CityDoesNotExist::withId($uuid);
-        }
-
-        return $city;
-    }
-
-    /**
-     * Find a city by its name.
-     *
-     * @param string $name
-     *
-     * @throws \Papposilene\Geodata\Exceptions\CityDoesNotExist
-     *
-     * @return City
-     */
-    public static function findByName(string $name): City
-    {
-        $city = self::where('name', $name)->first();
-
-        if (!$city) {
-            throw CityDoesNotExist::named($name);
-        }
-
-        return $city;
-    }
-
-    /**
-     * Find a city by its state.
-     *
-     * @param string $name
-     * @param string $state
-     *
-     * @throws \Papposilene\Geodata\Exceptions\CityDoesNotExist
-     *
-     * @return City
-     */
-    public static function findByState(string $name, string $state): City
-    {
-        $city = self::where([
-            ['name', $name],
-            ['state', $state]
-        ])->first();
-
-        if (!$city) {
-            throw CityDoesNotExist::withState($name, $state);
-        }
-
-        return $city;
-    }
-
-    /**
-     * Find a city by its postcodes.
-     *
-     * @param array $postcodes
-     *
-     * @throws \Papposilene\Geodata\Exceptions\CityDoesNotExist
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public static function findByPostcodes(array $postcodes)
-    {
-        $city = self::getCities($postcodes);
-
-        if (!$city) {
-            throw CityDoesNotExist::withPostcodes($postcodes);
-        }
-
-        return $city;
-    }
-
 }

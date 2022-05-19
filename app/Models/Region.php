@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use Papposilene\Geodata\Exceptions\RegionDoesNotExist;
-use Papposilene\Geodata\GeodataRegistrar;
 use Spatie\Translatable\HasTranslations;
 
 class Region extends Model
@@ -28,7 +25,6 @@ class Region extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
         'extra' => 'array',
     ];
 
@@ -54,9 +50,8 @@ class Region extends Model
         'country_cca3',
         'region_cca2',
         'osm_id',
-        'osm_place_id',
-        'osm_admin_level',
         'osm_type',
+        'osm_admin_level',
         'name_local',
         'name_slug',
         'name_translations',
@@ -83,9 +78,8 @@ class Region extends Model
         'country_cca3',
         'region_cca2',
         'osm_id',
-        'osm_place_id',
-        'osm_admin_level',
         'osm_type',
+        'osm_admin_level',
         'name_local',
         'name_slug',
         'name_translations',
@@ -122,86 +116,4 @@ class Region extends Model
             'cca3'
         );
     }
-
-    /**
-     * Get the current regions.
-     *
-     * @param array $params
-     * @param bool $onlyOne
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    protected static function getRegions(array $params = [], bool $onlyOne = false): Collection
-    {
-        return app(GeodataRegistrar::class)
-            ->setRegionClass(static::class)
-            ->getRegions($params, $onlyOne);
-    }
-
-    /**
-     * Get the current first region.
-     *
-     * @param array $params
-     *
-     * @return Region
-     */
-    protected static function getRegion(array $params = []): Region
-    {
-        return static::getRegions($params, true)->first();
-    }
-
-    /**
-     * Find a region by its name.
-     *
-     * @param string $name
-     *
-     * @return Region
-     */
-    public static function findByName(string $name): Region
-    {
-        $region = static::find($name);
-
-        if (!$region) {
-            throw RegionDoesNotExist::named($name);
-        }
-
-        return $region;
-    }
-
-    /**
-     * Find a region by its uuid.
-     *
-     * @param string $uuid
-     *
-     * @return Region
-     */
-    public static function findById(string $uuid): Region
-    {
-        $region = static::findById($uuid);
-
-        if (!$region) {
-            throw RegionDoesNotExist::withId($id);
-        }
-
-        return $region;
-    }
-
-    /**
-     * Find a region by its CCA2 iso code.
-     *
-     * @param string $cca2
-     *
-     * @return Region
-     */
-    public static function findByCca2(string $cca2): Region
-    {
-        $region = static::findByCca2($cca2);
-
-        if (!$region) {
-            throw RegionDoesNotExist::withCca2($cca2);
-        }
-
-        return $region;
-    }
-
 }
