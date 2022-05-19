@@ -1,0 +1,32 @@
+{
+  "country_cca3": null,
+  "country_name": null,
+  "addresses": [
+    {
+      "geolocation": {
+        "lat": null,
+        "lon": null,
+        "osm_id": null
+      },
+      "category": {
+        "name": "gastronomy",
+        "type": "restaurant"
+      },
+      "name": null,
+      "address": {
+        "number": null,
+        "street": null,
+        "postcode": null,
+        "city": null,
+        "country_cca3": null
+      },
+      "details": {
+        "status": true,
+        "description": null,
+        "phone": null,
+        "website": null,
+        "wikidata": null
+      }
+    }
+  ]
+}
