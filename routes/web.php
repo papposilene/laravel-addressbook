@@ -7,7 +7,6 @@ use App\Http\Livewire\Category\{ CreateCategory, EditCategory, ListCategory, Sho
 use App\Http\Livewire\City\ShowCity;
 use App\Http\Livewire\Country\{ ListCountry, ShowCountry };
 use App\Http\Livewire\Dashboard\ShowDashboard;
-use App\Http\Livewire\Dashboard\ShowLanding;
 use App\Http\Livewire\Map\ShowMap;
 use Illuminate\Support\Facades\Route;
 
