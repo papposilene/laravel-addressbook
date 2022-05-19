@@ -120,10 +120,9 @@ class AddressesSeeder extends Seeder
         }
 
         $translations = [];
-        rsort($regionData['names']);
         $getNames = $regionData['names'];
         $getFiltered = array_filter($getNames, function ($key) {
-            return str_starts_with($key, 'name:');
+            return (str_starts_with($key, 'name:') && !str_ends_with($key, ':pronunciation'));
         }, ARRAY_FILTER_USE_KEY);
         foreach ($getFiltered as $key => $value) {
             $lang = explode(':', $key);
@@ -164,10 +163,9 @@ class AddressesSeeder extends Seeder
         }
 
         $translations = [];
-        rsort($cityData['names']);
         $getNames = $cityData['names'];
         $getFiltered = array_filter($getNames, function ($key) {
-            return str_starts_with($key, 'name:');
+            return (str_starts_with($key, 'name:') && !str_ends_with($key, ':pronunciation'));
         }, ARRAY_FILTER_USE_KEY);
         foreach ($getFiltered as $key => $value) {
             $lang = explode(':', $key);
