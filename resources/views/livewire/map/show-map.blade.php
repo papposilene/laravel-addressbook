@@ -1,6 +1,97 @@
 @section('title', @ucfirst(__('app.map')))
 
 <div>
+    <style>
+        .leaflet-loader-container {
+            height: 100%;
+            width: 100%;
+
+            position: absolute;
+            z-index: 1000;
+
+            cursor: auto;
+        }
+        .leaflet-loader-container .leaflet-loader-background {
+            position:fixed;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .leaflet-loader {
+            width:57.6px;
+            margin: 30em auto;
+
+        }
+
+        @-webkit-keyframes hideLoader {
+            from {opacity: 1;}
+            to {opacity: 0;}
+        }
+        @keyframes hideLoader {
+            from {opacity: 1;}
+            to {opacity: 0;}
+        }
+
+        /*
+        Following css for the loading animations comes from :
+        https://connoratherton.com/loaders
+        */
+
+        @-webkit-keyframes scale {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1; }
+
+            45% {
+                -webkit-transform: scale(0.1);
+                transform: scale(0.1);
+                opacity: 0.7; }
+
+            80% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1; } }
+        @keyframes scale {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1; }
+
+            45% {
+                -webkit-transform: scale(0.1);
+                transform: scale(0.1);
+                opacity: 0.7; }
+
+            80% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1; } }
+
+        .leaflet-loader > div:nth-child(0) {
+            -webkit-animation: scale 0.75s -0.36s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: scale 0.75s -0.36s infinite cubic-bezier(.2, .68, .18, 1.08); }
+        .leaflet-loader > div:nth-child(1) {
+            -webkit-animation: scale 0.75s -0.24s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: scale 0.75s -0.24s infinite cubic-bezier(.2, .68, .18, 1.08); }
+        .leaflet-loader > div:nth-child(2) {
+            -webkit-animation: scale 0.75s -0.12s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: scale 0.75s -0.12s infinite cubic-bezier(.2, .68, .18, 1.08); }
+        .leaflet-loader > div:nth-child(3) {
+            -webkit-animation: scale 0.75s 0s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: scale 0.75s 0s infinite cubic-bezier(.2, .68, .18, 1.08); }
+        .leaflet-loader > div {
+            background-color: #fff;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            display: inline-block; }
+    </style>
+
     <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
     <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw text-white"></i>
     <i data-fa-symbol="categories" class="fa-solid fa-clipboard-list fa-fw text-white"></i>
@@ -217,6 +308,7 @@
 ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 pr-3 text-slate-500"><svg class="h-4 w-4 mr-2"><use xlink:href="#wikipedia"></use></svg>'+this.options.data.wikipedia+'</p>' : ''}
                             ` )});
                         });
+                        loader.hide();
                     });
             }
 
@@ -236,6 +328,49 @@ ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 
 
                 return this;
             }
+
+            L.Control.Loader = L.Control.extend({
+                options: {
+                },
+
+                onAdd: function (map) {
+                    this.container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+
+
+                    this.loaderContainer = L.DomUtil.create('div', 'leaflet-loader-container', this._map._container);
+                    this.loaderBG = L.DomUtil.create('div', 'leaflet-loader-background', this.loaderContainer);
+                    this.loader = L.DomUtil.create('div', 'leaflet-loader', this.loaderBG);
+                    for (i=0; i<3; i++) {
+                        L.DomUtil.create('div', '', this.loader);
+                    }
+
+                    this._map.dragging.disable();
+                    this._map.touchZoom.disable();
+                    this._map.doubleClickZoom.disable();
+                    this._map.scrollWheelZoom.disable();
+
+                    return this.container;
+                },
+                hide: function () {
+                    this.loaderBG.style.animation ="hideLoader 1s";
+                    this.loaderBG.style.webkitAnimationName ="hideLoader 1s";
+                    this.loaderBG.style.opacity ="0";
+
+                    var _this =this;
+                    setTimeout(function (){_this.loaderContainer.style.display ="none";},500);
+                    this._map.dragging.enable();
+                    this._map.touchZoom.enable();
+                    this._map.doubleClickZoom.enable();
+                    this._map.scrollWheelZoom.enable();
+                }
+            });
+
+            L.control.loader = function(options) {
+                const newControl = new L.Control.Loader(options);
+                return newControl;
+            };
+
+            const loader = L.control.loader().addTo(leafletMap);
 
             loadMap();
         })

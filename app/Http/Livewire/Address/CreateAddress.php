@@ -114,6 +114,13 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         ];
     }
 
+    private function getEmail(): string
+    {
+        // Nominatim's Usage Policy
+        // @see https://operations.osmfoundation.org/policies/nominatim/
+        return env('MAIL_FROM_ADDRESS', new \Exception('No MAIL_FROM_ADDRESS key into your .env'));
+    }
+
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -121,7 +128,23 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
     {
         $answers = $this->form->getState();
 
+        if ($answers['osmid']) {
+            $osmType = substr($answers['osmid'], 0, 1);
+            $osmId = substr($answers['osmid'], 1);
+
+            $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . $osmType . '&osmid=' . $osmId);
+            $dataFile = json_decode($dataJson, true);
+
+
+
+        } else {
+
+        }
+
+
         dd($answers);
+
+
         $isCity = City::first();
         $isRegion = Region::first();
         $isCountry = Country::where('cca3', $answers['cca3'])->firstOrFail();
