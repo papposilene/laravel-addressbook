@@ -41,7 +41,6 @@ class ShowCountry extends Component
     {
         $this->country = Country::where('cca3', $this->cca3)->firstOrFail();
         $this->cities = City::where('country_cca3', $this->cca3)
-            ->orderBy('region_uuid', 'asc')
             ->orderBy('name_local', 'asc')
             ->withCount('hasAddresses')
             ->has('hasAddresses', '>=', $this->withAddresses)
