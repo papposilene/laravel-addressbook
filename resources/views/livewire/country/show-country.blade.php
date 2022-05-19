@@ -68,7 +68,7 @@
                             <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell text-gray-800">{{ ($city->belongsToRegion ? $city->belongsToRegion->name_translations : '---') }}</td>
                             <td class="break-words p-3">
-                                {{ $city->name_local }}
+                                {{ $city->name_translations }}
                             </td>
                             <td class="text-center text-gray-800 p-3">
                                 {{ $city->has_addresses_count }}

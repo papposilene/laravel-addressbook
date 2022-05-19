@@ -44,12 +44,12 @@
                             legend: {
                                 position: 'bottom',
                                 labels: {
-                                    color: '#fff',
+                                    color: '#000',
                                 }
                             },
                             title: {
                                 display: false,
-                                color: '#fff',
+                                color: '#000',
                                 text: 'Chart.js Pie Chart'
                             }
                         }

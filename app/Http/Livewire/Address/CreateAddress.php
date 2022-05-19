@@ -17,11 +17,8 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
     public $category = '';
     public $place_name, $place_status;
     public $address_number, $address_street, $address_postcode, $address_city, $address_lat, $address_lon;
-    public $city_uuid, $region_uuid, $cca3, $category_slug;
-    public $details;
-    public $description;
-    public $osm_id, $gmap_pluscode;
-
+    public $city_uuid, $region_uuid, $cca3, $category_slug, $osm_id;
+    public $description, $details;
 
     protected function getFormModel(): string
     {
@@ -98,18 +95,12 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('website')
                         ->label(ucfirst(__('address.website')))
                         ->placeholder('https://www.louvre.fr/'),
-                    Forms\Components\TextInput::make('openinghours')
-                        ->label(ucfirst(__('address.openinghours')))
-                        ->placeholder('Mo,Th,Sa,Su 09:00-18:00; We,Fr 09:00-21:45; Tu off; Jan 01,May 01,Dec 25 off'),
                     Forms\Components\TextInput::make('wikidata')
                         ->label(ucfirst(__('address.wikidata')))
                         ->placeholder('Q19675'),
                     Forms\Components\TextInput::make('osm_id')
                         ->label(ucfirst(__('address.osmid')))
                         ->placeholder('R7515426'),
-                    Forms\Components\TextInput::make('gmap_pluscode')
-                        ->label(ucfirst(__('address.gmap_pluscode')))
-                        ->placeholder('V86Q+63 Paris'),
                 ])->columns(2),
         ];
     }
@@ -128,9 +119,9 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
     {
         $answers = $this->form->getState();
 
-        if ($answers['osmid']) {
-            $osmType = substr($answers['osmid'], 0, 1);
-            $osmId = substr($answers['osmid'], 1);
+        if ($answers['osm_id']) {
+            $osmType = substr($answers['osm_id'], 0, 1);
+            $osmId = substr($answers['osm_id'], 1);
 
             $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . $osmType . '&osmid=' . $osmId);
             $dataFile = json_decode($dataJson, true);
@@ -141,9 +132,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
 
         }
 
-
         dd($answers);
-
 
         $isCity = City::first();
         $isRegion = Region::first();
@@ -164,13 +153,11 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         $address->details = [
             'phone' => $answers['phone'] ?? null,
             'website' => $answers['website'] ?? null,
-            'opening_hours' => $answers['opening_hours'] ?? null,
             'wikidata' => $answers['wikidata'] ?? null,
         ];
         $address->description = $answers['description'];
         $address->subcategory_slug = $answers['subcategory_slug'];
         $address->osm_id = $answers['osm_id'];
-        $address->gmap_pluscode = $answers['pluscode'];
         $address->save();
 
         session()->flash('message', 'Address successfully created.');
