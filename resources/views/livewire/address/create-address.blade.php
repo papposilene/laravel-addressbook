@@ -33,6 +33,13 @@
                 <!-- Create form -->
                 <div class="py-5">
                     <form wire:submit.prevent="submit">
+                        <div class="col-span-full mb-6">
+                            <div class="p-6 space-y-6 bg-white rounded-xl border border-gray-300 filament-forms-section-component">
+                                <div id="leaflet-geocoder" class="flex h-96 pb-5"></div>
+                            </div>
+                        </div>
+
+
                         {{ $this->form }}
 
                         <div class="flex flex-inline justify-end space-x-4 pt-5">
@@ -46,4 +53,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            const map = L.map('leaflet-geocoder').setView([25, 0], 2.5);
+            L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            const search = new GeoSearch.GeoSearchControl({
+                provider: new OpenStreetMapProvider({
+                    params: {
+                        addressdetails: 1,
+                        email: 'dev@psln.nl',
+                    },
+                }),
+                notFoundMessage: 'Sorry, that address could not be found.',
+            });
+            map.addControl(search);
+        })
+    </script>
 </div>
