@@ -6,7 +6,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('front.map.index') }}">
+                    <a href="{{ route('front.index') }}">
                         <x-logo class="block h-9 w-auto">{{ config('app.name', 'My Address Book') }}</x-logo>
                     </a>
                 </div>
@@ -140,24 +140,23 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('front.dashboard') }}"
-                class="text-slate-100" :active="request()->routeIs('front.dashboard')">
+                class="text-slate-100" :active="request()->routeIs('*.dashboard')">
                 @ucfirst(__('app.dashboard'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.country.index') }}"
-                class="text-slate-100" :active="request()->routeIs('front.country.*')">
+                class="text-slate-100" :active="request()->routeIs('*.country.*')">
                 @ucfirst(__('country.countries'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.category.index') }}"
-                class="text-slate-100" :active="request()->routeIs('front.category.*')">
+                class="text-slate-100" :active="request()->routeIs('*.category.*')">
                 @ucfirst(__('category.categories'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.address.index') }}"
-                class="text-slate-100" :active="request()->routeIs('front.address.*')">
+                class="text-slate-100" :active="request()->routeIs('*.address.*')">
                 @ucfirst(__('address.addresses'))
             </x-jet-responsive-nav-link>
             @auth
-            <x-jet-responsive-nav-link href=""
-                class="text-slate-100" :active="request()->routeIs('front.stat')">
+            <x-jet-responsive-nav-link href="" class="text-slate-100" :active="request()->routeIs('*.stat')">
                 @ucfirst(__('app.statistics'))
             </x-jet-responsive-nav-link>
             @endauth
