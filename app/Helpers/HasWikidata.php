@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 if (!function_exists('hasWikidata')) {
     /**
      * Check if an address with a Wikidata id has already its Wikipedia article in the database.
@@ -35,8 +37,13 @@ if (!function_exists('hasWikidata')) {
                 'address_uuid' => $uuid,
                 'wikidata_id' => $wikidata,
                 'wikipedia_pid' => $pediaData['pageid'],
-                'wikipedia_title' => $pediaData['title'],
-                'wikipedia_text' => $pediaData['extract'],
+                'wikipedia_link' => 'https://' . $lang . '.wikipedia.org/wiki/' . Str::replace(' ', '_', $pediaData['title']),
+                'wikipedia_title' => [
+                    $lang => $pediaData['title'],
+                ],
+                'wikipedia_text' => [
+                    $lang => $pediaData['extract'],
+                ],
             ]);
         }
 
