@@ -67,7 +67,7 @@
             }).on('markgeocode', function(e) {
                 const name = e.geocode.properties.display_name.split(',');
                 @this.$set('place_name', name[0]);
-                @this.$set('address_number', e.geocode.properties.address.number);
+                @this.$set('address_number', e.geocode.properties.address.housenumber);
                 @this.$set('address_street', e.geocode.properties.address.road);
                 @this.$set('address_postcode', e.geocode.properties.address.postcode);
                 @this.$set('address_city', e.geocode.properties.address.city ?? e.geocode.properties.address.county);
