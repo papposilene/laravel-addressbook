@@ -42,13 +42,13 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/address/create', CreateAddress::class)
         ->middleware('can:manage_addresses')
         ->name('admin.address.create');
-    Route::post('/address/edit/{uuid}', EditAddress::class)
+    Route::get('/address/edit/{uuid}', EditAddress::class)
         ->middleware('can:manage_addresses')
         ->name('admin.address.edit');
     Route::post('/address/import', [AddressController::class, 'import'])
         ->middleware('can:manage_addresses')
         ->name('admin.address.import');
-    Route::post('/address/export', [AddressController::class, 'export'])
+    Route::get('/address/export', [AddressController::class, 'export'])
         ->middleware('can:manage_addresses')
         ->name('admin.address.export');
 
@@ -62,7 +62,7 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/category/import', [CategoryController::class, 'import'])
         ->middleware('can:manage_categories')
         ->name('admin.category.import');
-    Route::post('/category/export', [CategoryController::class, 'export'])
+    Route::get('/category/export', [CategoryController::class, 'export'])
         ->middleware('can:manage_categories')
         ->name('admin.category.export');
 });
