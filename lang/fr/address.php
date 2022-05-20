@@ -30,6 +30,8 @@ return [
     'nameDescription' => 'Le lieu nécessite d’avoir un intitulé, un status (ouvert ou fermé, temporairement ou définitivement), une catégorie et, de façon facultative, votre commentaire.',
     'names' => 'dénominations',
     'no_description' => 'pas encore de description...',
+    'no_phone' => 'pas de numéro de téléphone',
+    'no_website' => 'pas de site internet',
     'open' => 'ouvert',
     'openinghours' => 'heures d’ouverture',
     'osmid' => 'OpenStreetMap ID',
