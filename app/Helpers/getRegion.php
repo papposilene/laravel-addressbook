@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Region;
 use Illuminate\Support\Str;
@@ -8,24 +7,23 @@ use Illuminate\Support\Str;
 if (!function_exists('getRegion'))
 {
     /**
-     * Check if an address with a Wikidata id has already its Wikipedia article in the database.
+     * Check if an Open Street Map region exists, and then create it
      *
-     * @param string $uuid The uuid of any address
-     * @param string $wikidata The Wikidata id
-     * @return string|null The uuid of the stored Wikipedia article
+     * @param array $id An array with osm_id and the osm_type
+     * @return Region|null The Region model
      */
-
-    public function getRegion(array $id)
+    function getRegion(array $id): ?Region
     {
         $setRegion = Region::where('osm_id', $id['osm_type'] . $id['osm_id'])->first();
         if (!is_null($setRegion)) {
             return $setRegion;
         }
 
-        $regionJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . $this->getEmail() . '&osmtype=' . $id['osm_type'] . '&osmid=' . $id['osm_id']);
+        $regionJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?format=json&email=' . getNominatimEmail() . '&osmtype=' . $id['osm_type'] . '&osmid=' . $id['osm_id']);
         $regionData = json_decode($regionJson, true);
 
         $setRegion = Region::where('name_slug', Str::slug($regionData['localname'], '-'))->first();
+
         if (!is_null($setRegion)) {
             return $setRegion;
         }
@@ -57,5 +55,4 @@ if (!function_exists('getRegion'))
             ],
         ]);
     }
-
 }

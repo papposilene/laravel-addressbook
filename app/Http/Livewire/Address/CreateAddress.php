@@ -126,16 +126,36 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
             $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . $osmType . '&osmid=' . $osmId);
             $dataFile = json_decode($dataJson, true);
 
+            // Retrieve all administrative levels from Nominatim
+            $regionLevel = [];
+            $cityLevel = [];
+            $getLevels = $dataFile['address'];
+            foreach ($getLevels as $key => $value) {
+                if ($value['osm_type'] === 'R' && ($value['place_type'] === 'state' || $value['place_type'] === 'province')) {
+                    $regionLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
+                    $regionLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
+                }
 
+                if ($value['osm_type'] === 'R' && ($value['place_type'] === 'city' || $value['type'] === 'city')) {
+                    $cityLevel['osm_type'] = $dataFile['address'][$key]['osm_type'];
+                    $cityLevel['osm_id'] = $dataFile['address'][$key]['osm_id'];
+                }
 
-        } else {
+                if(empty($cityLevel) && $regionLevel) {
+                    $cityLevel['osm_type'] = $dataFile['address'][$key-2]['osm_type'];
+                    $cityLevel['osm_id'] = $dataFile['address'][$key-2]['osm_id'];
+                }
+            }
 
+            if ($regionLevel) {
+                $isRegion = getRegion($regionLevel);
+            }
+
+            if ($cityLevel) {
+                $isCity = getCity($cityLevel, $isRegion);
+            }
         }
 
-        dd($answers);
-
-        $isCity = City::first();
-        $isRegion = Region::first();
         $isCountry = Country::where('cca3', $answers['cca3'])->firstOrFail();
 
         $address = new Address();

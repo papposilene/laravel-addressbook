@@ -35,7 +35,7 @@
                     <form wire:submit.prevent="submit">
                         <div class="col-span-full mb-6">
                             <div class="p-6 space-y-6 bg-white rounded-xl border border-gray-300 filament-forms-section-component">
-                                <div id="leaflet-geocoder" class="flex h-96 pb-5"></div>
+                                <div id="leaflet-geocoder" class="flex h-96 pb-5" wire:ignore></div>
                             </div>
                         </div>
 
@@ -58,17 +58,24 @@
         document.addEventListener('livewire:load', function () {
             const map = L.map('leaflet-geocoder').setView([25, 0], 2.5);
             L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-            const search = new GeoSearch.GeoSearchControl({
-                provider: new GeoSearch.OpenStreetMapProvider({
-                    params: {
-                        addressdetails: 1,
-                        email: 'dev@psln.nl',
-                    },
-                }),
-                notFoundMessage: 'Sorry, that address could not be found.',
-            });
-            map.addControl(search);
+            L.Control.geocoder({
+                collapsed: false,
+                errorMessage: '@ucfirst(__('app.nothing'))',
+                placeholder: '@ucfirst(__('app.search'))',
+                showResultIcons: true,
+                NominatimOptions: { countrycodes: 'pt' }
+            }).on('markgeocode', function(e) {
+                const name = e.geocode.properties.display_name.split(',');
+                @this.$set('place_name', name[0]);
+                @this.$set('address_number', e.geocode.properties.address.number);
+                @this.$set('address_street', e.geocode.properties.address.road);
+                @this.$set('address_postcode', e.geocode.properties.address.postcode);
+                @this.$set('address_city', e.geocode.properties.address.city ?? e.geocode.properties.address.county);
+                @this.$set('lat', e.geocode.properties.lon);
+                @this.$set('lon', e.geocode.properties.lon);
+                @this.$set('osm_id', e.geocode.properties.osm_type.charAt(0).toUpperCase() + e.geocode.properties.osm_id);
+                @this.$set('wikidata', e.geocode.properties.wikidata);
+            }).addTo(map);
         })
     </script>
 </div>

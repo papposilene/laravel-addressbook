@@ -6,8 +6,8 @@
 
 @import 'leaflet/dist/leaflet.css';
 @import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+@import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 @import 'leaflet.locatecontrol/src/L.Control.Locate.scss';
-@import 'leaflet-geosearch/dist/geosearch.css';
 
 .sidebar {
     position: absolute;

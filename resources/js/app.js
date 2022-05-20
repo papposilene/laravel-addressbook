@@ -20,10 +20,10 @@ import 'chart.js/dist/chart.js';
 
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js';
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
-import 'leaflet.locatecontrol/src/L.Control.Locate.js';
 import 'leaflet-ajax/dist/leaflet.ajax.js';
-import 'leaflet-geosearch/lib/index.js';
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
+import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
+import 'leaflet.locatecontrol/src/L.Control.Locate.js';
 import 'sidebar-v2/js/leaflet-sidebar.js';
 
 Alpine.plugin(FormsAlpinePlugin)
