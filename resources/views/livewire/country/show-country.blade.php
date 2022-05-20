@@ -56,9 +56,8 @@
                     <thead>
                         <tr class="bg-slate-400 dark:bg-slate-600">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('country.states'))</th>
-                            <th class="w-2/12 text-center p-3">@ucfirst(__('city.cities'))</th>
-                            <th class="w-1/12 text-center p-3">@ucfirst(__('address.addresses'))</th>
+                            <th class="w-7/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('country.states'))</th>
+                            <th class="w-2/12 text-center p-3">@ucfirst(__('address.addresses'))</th>
                             <th class="w-2/12 text-center p-3">@ucfirst(__('app.actions'))</th>
                         </tr>
                     </thead>
