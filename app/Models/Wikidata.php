@@ -11,7 +11,7 @@ class Wikidata extends Model
 {
     use HasTranslations, SoftDeletes;
 
-        /**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -66,6 +66,7 @@ class Wikidata extends Model
         'address_uuid',
         'wikidata_id',
         'wikipedia_pid',
+        'wikipedia_link',
         'wikipedia_title',
         'wikipedia_text',
     ];
@@ -80,6 +81,7 @@ class Wikidata extends Model
         'address_uuid',
         'wikidata_id',
         'wikipedia_pid',
+        'wikipedia_link',
         'wikipedia_title',
         'wikipedia_text',
     ];
@@ -97,7 +99,7 @@ class Wikidata extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            $model->uuid = (string) Str::uuid();
+            $model->uuid = (string)Str::uuid();
         });
     }
 
