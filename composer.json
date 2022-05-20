@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.1",
         "filament/forms": "^2.0",
-        "geocoder-php/nominatim-provider": "^5.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/jetstream": "^2.6",
