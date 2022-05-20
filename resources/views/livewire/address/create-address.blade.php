@@ -60,7 +60,7 @@
             L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
             const search = new GeoSearch.GeoSearchControl({
-                provider: new OpenStreetMapProvider({
+                provider: new GeoSearch.OpenStreetMapProvider({
                     params: {
                         addressdetails: 1,
                         email: 'dev@psln.nl',

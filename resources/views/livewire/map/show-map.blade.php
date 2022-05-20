@@ -308,7 +308,7 @@
                     .then(response => response.json())
                     .then(json => {
                         json.data.map(function(e) {
-                            L.marker([e.address_lat, e.address_lon], {uuid: e.uuid, data: e})
+                            L.marker([e.address_lat, e.address_lon], {data: e})
                                 .addTo(leafletMap)
                                 .on("click", function (e) { setContent(`
 <p class="mt-3 font-semibold text-lg">${this.options.data.place_name}</p>
@@ -331,7 +331,8 @@ ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 
             }
 
             function setContent(content) {
-                const container = L.DomUtil.get('address-informations-content');
+                const sidebar = L.DomUtil.get('sidebar');
+                const container = L.DomUtil.get('address-informations');
 
                 if (typeof content === 'string') {
                     container.innerHTML = content;
@@ -343,6 +344,9 @@ ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 
                 }
 
                 L.DomUtil.addClass(container, 'active');
+                if (L.DomUtil.hasClass(sidebar, 'collapsed')) {
+                    L.DomUtil.removeClass(sidebar, 'collapsed');
+                }
 
                 return this;
             }
@@ -384,8 +388,7 @@ ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 
             });
 
             L.control.loader = function(options) {
-                const newControl = new L.Control.Loader(options);
-                return newControl;
+                return new L.Control.Loader(options);
             };
 
             const loader = L.control.loader().addTo(leafletMap);
