@@ -158,6 +158,7 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
                 }
             }
 
+            $isRegion = null;
             if ($regionLevel) {
                 $isRegion = getRegion($regionLevel);
             }
