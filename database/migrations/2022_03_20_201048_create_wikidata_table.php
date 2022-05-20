@@ -18,6 +18,7 @@ return new class extends Migration
             $table->uuid('address_uuid');
             $table->string('wikidata_id', 255);
             $table->string('wikipedia_pid', 255);
+            $table->string('wikipedia_link', 255);
             $table->json('wikipedia_title');
             $table->json('wikipedia_text');
             $table->timestamps();
