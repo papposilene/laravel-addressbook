@@ -55,6 +55,6 @@ return [
 
     'create_one' => 'ajouter une adresse',
     'delete_that' => 'supprimer l’adresse « :what »',
-    'update_that' => 'modifier l’adresse « :what »',
+    'edit_that' => 'modifier l’adresse « :what »',
 
 ];
