@@ -36,7 +36,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
             Forms\Components\Section::make(ucfirst(__('address.nameHeading')))
                 ->description(ucfirst(__('address.nameDescription')))
                 ->schema([
-                    Forms\Components\Textinput::make('place_name')
+                    Forms\Components\TextInput::make('place_name')
                         ->label(ucfirst(__('address.name')))
                         ->placeholder('Musée du Louvre')
                         ->required(),
