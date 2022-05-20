@@ -39,14 +39,30 @@ Route::get('/country/{cca3}/{uuid}', ShowCity::class)->name('front.city.show');
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
     // Addresses
-    Route::get('/address/create', CreateAddress::class)->name('admin.address.create');
-    Route::post('/address/edit/{uuid}', EditAddress::class)->name('admin.address.edit');
-    Route::post('/address/import', [AddressController::class, 'import'])->name('admin.address.import');
-    Route::post('/address/export', [AddressController::class, 'export'])->name('admin.address.export');
+    Route::get('/address/create', CreateAddress::class)
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.create');
+    Route::post('/address/edit/{uuid}', EditAddress::class)
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.edit');
+    Route::post('/address/import', [AddressController::class, 'import'])
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.import');
+    Route::post('/address/export', [AddressController::class, 'export'])
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.export');
 
     // Categories
-    Route::get('/category/create', CreateCategory::class)->name('admin.category.create');
-    Route::get('/category/edit/{slug}', EditCategory::class)->name('admin.category.edit');
-    Route::post('/category/import', [CategoryController::class, 'import'])->name('admin.category.import');
-    Route::post('/category/export', [CategoryController::class, 'export'])->name('admin.category.export');
+    Route::get('/category/create', CreateCategory::class)
+        ->middleware('can:manage_categories')
+        ->name('admin.category.create');
+    Route::get('/category/edit/{slug}', EditCategory::class)
+        ->middleware('can:manage_categories')
+        ->name('admin.category.edit');
+    Route::post('/category/import', [CategoryController::class, 'import'])
+        ->middleware('can:manage_categories')
+        ->name('admin.category.import');
+    Route::post('/category/export', [CategoryController::class, 'export'])
+        ->middleware('can:manage_categories')
+        ->name('admin.category.export');
 });
