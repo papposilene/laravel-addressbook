@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="hidden lg:table-cell text-center">{{ $country->flag }}</td>
                                 <td class="break-words p-3">
-                                    <a href="{{ route('front.address.index', ['cca3' => $country->cca3]) }}">
+                                    <a href="{{ route('front.address.index', ['filter' => $country->cca3]) }}">
                                         {{ $country->name_eng_common }}
                                     </a>
                                 </td>
@@ -86,7 +86,7 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
-                                        <a href="{{ route('front.address.index', ['cca3' => $country->cca3]) }}"
+                                        <a href="{{ route('front.address.index', ['filter' => $country->cca3]) }}"
                                            class="mx-1">
                                             <svg class="h-5 w-5">
                                                 <use xlink:href="#show"></use>
