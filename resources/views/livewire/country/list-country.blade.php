@@ -49,7 +49,7 @@
                         <thead>
                         <tr class="bg-slate-400 dark:bg-slate-600">
                             <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-1/12 p-3 hidden lg:table-cell">
+                            <th class="w-2/12 p-3 hidden lg:table-cell">
                                 <p class="flex flex-row items-center justify-center p-3">
                                     <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
                                     <svg class="h-5 w-5">
@@ -59,8 +59,8 @@
                             </th>
                             <th class="w-1/12 p-3 hidden lg:table-cell text-center">@ucfirst(__('country.flag_icon'))
                             </th>
-                            <th class="w-7/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
-                            <th class="w-2/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
+                            <th class="w-6/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
+                            <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
                             <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
                         </tr>
                         </thead>
