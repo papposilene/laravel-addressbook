@@ -100,7 +100,7 @@ class EditCategory extends Component implements Forms\Contracts\HasForms
         $category->save();
 
         session()->flash('message', 'Subcategory successfully updated.');
-        return redirect()->to('/categories');
+        return redirect()->to('/category/' . $category->slug);
     }
 
     public function render()

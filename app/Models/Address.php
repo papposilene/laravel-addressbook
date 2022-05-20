@@ -81,7 +81,6 @@ class Address extends Model
         'details',
         'subcategory_slug',
         'osm_id',
-        'gmap_pluscode',
     ];
 
     /**
@@ -106,7 +105,6 @@ class Address extends Model
         'details',
         'subcategory_slug',
         'osm_id',
-        'gmap_pluscode',
     ];
 
     /**

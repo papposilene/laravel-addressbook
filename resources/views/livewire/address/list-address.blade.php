@@ -16,7 +16,7 @@
         <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-400"></i>
         <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-400"></i>
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-400"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-400"></i>
+        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
@@ -109,13 +109,12 @@
                             <td>
                                 <p class="flex flex-row h-12 items-center justify-center">
                                     @can('manage_addresses')
-                                    <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}"
-                                       class="mx-1">
+                                    <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
                                         <svg class="h-5 w-5">
                                             <use xlink:href="#show"></use>
                                         </svg>
                                     </a>
-                                    <a href="#" class="mx-1">
+                                    <a href="{{ route('admin.address.edit', ['uuid' => $address->uuid]) }}" class="mx-1">
                                         <svg class="h-5 w-5">
                                             <use xlink:href="#edit"></use>
                                         </svg>

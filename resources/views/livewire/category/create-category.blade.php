@@ -16,7 +16,7 @@
         <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
         <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="show" class="fas fa-ellipsis fa-fw text-green-500"></i>
+        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
             <div class="flex flex-col pl-2 pr-2 w-full lg:mx-auto lg:w-2/4">
