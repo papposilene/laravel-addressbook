@@ -49,6 +49,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
                             '1' => ucfirst(__('address.status_open')),
                             '0' => ucfirst(__('address.status_close')),
                         ])
+                        ->default('1')
                         ->required(),
                     Forms\Components\Select::make('subcategory_slug')
                         ->label(ucfirst(__('category.categories')))
@@ -59,11 +60,11 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
             Forms\Components\Section::make(ucfirst(__('address.addressHeading')))
                 ->description(ucfirst(__('address.addressDescription')))
                 ->schema([
-                    Forms\Components\TextInput::make('lat')
+                    Forms\Components\TextInput::make('address_lat')
                         ->label(ucfirst(__('address.latitude')))
                         ->placeholder('48.860646512951334')
                         ->required(),
-                    Forms\Components\TextInput::make('lon')
+                    Forms\Components\TextInput::make('address_lon')
                         ->label(ucfirst(__('address.longitude')))
                         ->placeholder('2.337661796776722')
                         ->required(),
@@ -105,13 +106,6 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         ];
     }
 
-    private function getEmail(): string
-    {
-        // Nominatim's Usage Policy
-        // @see https://operations.osmfoundation.org/policies/nominatim/
-        return env('MAIL_FROM_ADDRESS', new \Exception('No MAIL_FROM_ADDRESS key into your .env'));
-    }
-
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -123,7 +117,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
             $osmType = substr($answers['osm_id'], 0, 1);
             $osmId = substr($answers['osm_id'], 1);
 
-            $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . $this->getEmail() . '&osmtype=' . $osmType . '&osmid=' . $osmId);
+            $dataJson = file_get_contents('https://nominatim.openstreetmap.org/details.php?addressdetails=1&format=json&email=' . getNominatimEmail() . '&osmtype=' . $osmType . '&osmid=' . $osmId);
             $dataFile = json_decode($dataJson, true);
 
             // Retrieve all administrative levels from Nominatim
@@ -159,17 +153,17 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         $isCountry = Country::where('cca3', $answers['cca3'])->firstOrFail();
 
         $address = new Address();
-        $address->place_name = $answers['name'];
-        $address->place_status = $answers['status'];
-        $address->address_number = $answers['number'];
-        $address->address_street = $answers['street'];
-        $address->address_postcode = $answers['postcode'];
-        $address->address_city = $answers['city'];
+        $address->place_name = $answers['place_name'];
+        $address->place_status = $answers['place_status'];
+        $address->address_number = $answers['address_number'];
+        $address->address_street = $answers['address_street'];
+        $address->address_postcode = $answers['address_postcode'];
+        $address->address_city = $answers['address_city'];
         $address->city_uuid = $isCity->uuid ?? null;
         $address->region_uuid = $isRegion->uuid ?? null;
         $address->country_cca3 = $isCountry->cca3;
-        $address->address_lat = $answers['latitude'];
-        $address->address_lon = $answers['longitude'];
+        $address->address_lat = $answers['address_lat'];
+        $address->address_lon = $answers['address_lon'];
         $address->details = [
             'phone' => $answers['phone'] ?? null,
             'website' => $answers['website'] ?? null,
@@ -181,7 +175,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         $address->save();
 
         session()->flash('message', 'Address successfully created.');
-        return redirect()->to('/categories');
+        return redirect()->to('/addresses');
     }
 
     public function render()

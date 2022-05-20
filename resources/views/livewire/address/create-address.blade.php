@@ -71,8 +71,8 @@
                 @this.$set('address_street', e.geocode.properties.address.road);
                 @this.$set('address_postcode', e.geocode.properties.address.postcode);
                 @this.$set('address_city', e.geocode.properties.address.city ?? e.geocode.properties.address.county);
-                @this.$set('lat', e.geocode.properties.lon);
-                @this.$set('lon', e.geocode.properties.lon);
+                @this.$set('address_lat', e.geocode.properties.lat);
+                @this.$set('address_lon', e.geocode.properties.lon);
                 @this.$set('osm_id', e.geocode.properties.osm_type.charAt(0).toUpperCase() + e.geocode.properties.osm_id);
                 @this.$set('wikidata', e.geocode.properties.wikidata);
             }).addTo(map);
