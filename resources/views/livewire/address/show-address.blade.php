@@ -68,13 +68,21 @@
                             {{ $address->details['phone'] }}
                         </a>
                     </div>
+                    @else
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                        @ucfirst(__('address.no_phone'))
+                    </div>
                     @endif
                     @if($address->details['website'])
-                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black hover:bg-gray-800 hover:text-white py-2 px-4 inline-flex items-center">
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black py-2 px-4 inline-flex items-center">
                         <a href="{{ $address->details['website'] }}" class=" hover:text-white" target="_blank">
                             <i class="fa-solid fa-link"></i>&nbsp;
                             @urlhost($address->details['website'])
                         </a>
+                    </div>
+                    @else
+                    <div class="grow-0 bg-slate-200 dark:bg-slate-400 text-black py-2 px-4 inline-flex items-center">
+                        @ucfirst(__('address.no_website'))
                     </div>
                     @endif
                     <div class="grow bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center">
@@ -158,12 +166,12 @@
                 </div>
 
                 @if($address->details['wikidata'])
-                    <!-- Wikipedia -->
-                    @livewire('interfaces.wikipedia', [
+                <!-- Wikipedia -->
+                @livewire('interfaces.wikipedia', [
                     'address_uuid' => $address->uuid,
                     'wikidata' => $address->details['wikidata'],
-                    ])
-                    <!-- End of Wikipedia -->
+                ])
+                <!-- End of Wikipedia -->
                 @endif
             </div>
 

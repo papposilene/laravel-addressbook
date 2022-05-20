@@ -19,7 +19,7 @@
     </div>
     @if(!is_null($wikipedia))
     <div class="flex justify-end bg-slate-200 p-2 w-full rounded-b">
-        <a href="https://{{ app()->getLocale() }}.wikipedia.org/wiki/?curid={{ $wikipedia->wikipedia_pid }}" target="_blank"
+        <a href="{{ $wikipedia->wikipedia_link }}" target="_blank"
            class="flex grow-0 hover:bg-gray-800 p-3 text-gray-800 hover:text-white text-sm rounded">
             @ucfirst(__('app.wikipedia'))
         </a>
