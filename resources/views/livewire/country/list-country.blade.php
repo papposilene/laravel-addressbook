@@ -78,9 +78,6 @@
                                     </a>
                                 </td>
                                 <td class="text-center text-gray-800">
-                                    {{ $country->hasCities()->count() }}
-                                </td>
-                                <td class="text-center text-gray-800">
                                     {{ $country->has_addresses_count }}
                                 </td>
                                 <td>

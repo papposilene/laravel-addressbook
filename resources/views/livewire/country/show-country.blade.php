@@ -66,9 +66,6 @@
                         <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
                             <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
                             <td class="hidden lg:table-cell text-gray-800">{{ ($city->belongsToRegion ? $city->belongsToRegion->name_translations : '---') }}</td>
-                            <td class="break-words p-3">
-                                {{ (!empty($city->name_translations) ? $city->name_translations : $city->name_local) }}
-                            </td>
                             <td class="text-center text-gray-800 p-3">
                                 {{ $city->has_addresses_count }}
                             </td>
