@@ -15,8 +15,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
         "papposilene/geodata": "dev-main",
-        "spatie/laravel-translatable": "^6.0",
-        "toin0u/geocoder-laravel": "^4.5"
+        "spatie/laravel-translatable": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -33,6 +32,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
+            "app/Helpers/GetCity.php",
+            "app/Helpers/GetNominatimEmail.php",
+            "app/Helpers/GetRegion.php",
             "app/Helpers/HasWikidata.php"
         ]
     },
