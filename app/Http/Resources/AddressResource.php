@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class AddressResource extends JsonResource
 {
@@ -18,8 +19,6 @@ class AddressResource extends JsonResource
 
         return [
             'uuid' => $this->uuid,
-            'osm_place_id' => $this->osm_place_id,
-            'gmap_pluscode' => $this->gmap_pluscode,
             'place_name' => $this->place_name,
             'place_status' => $this->place_status,
             'address_number' => $this->address_number,
@@ -42,10 +41,27 @@ class AddressResource extends JsonResource
             'description' => $this->description,
             'details' => $this->details,
 
-            'wikipedia' => ($this->hasWikipedia ? $this->hasWikipedia->wikipedia_text : null),
+            'wikipedia' => [
+                'link' => ($this->hasWikipedia ? $this->hasWikipedia->wikipedia_link : null),
+                'summary' => ($this->hasWikipedia ? $this->hasWikipedia->wikipedia_text : null),
+            ],
 
-            'category' => $this->belongsToCategory,
-            'subcategory' => $this->belongsToSubcategory,
+            'category' => [
+                'name' => $this->belongsToCategory->name,
+                'slug' => $this->belongsToCategory->slug,
+                'camelSlug' => Str::camel($this->belongsToCategory->slug),
+                'icon_image' => $this->belongsToCategory->icon_image,
+                'icon_style' => $this->belongsToCategory->icon_style,
+                'icon_color' => $this->belongsToCategory->icon_color,
+            ],
+            'subcategory' => [
+                'name' => $this->belongsToSubcategory->name,
+                'slug' => $this->belongsToSubcategory->slug,
+                'camelSlug' => Str::camel($this->belongsToSubcategory->slug),
+                'icon_image' => $this->belongsToSubcategory->icon_image,
+                'icon_style' => $this->belongsToSubcategory->icon_style,
+                'icon_color' => $this->belongsToSubcategory->icon_color,
+            ],
 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

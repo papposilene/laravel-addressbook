@@ -270,10 +270,11 @@
     <script>
         document.addEventListener('livewire:load', function () {
             @foreach($subcategories as $subcategory)
-            const @camel($subcategory->slug)Marker = L.AwesomeMarkers.icon({
-                prefix: 'fa',
+            var @camel($subcategory->slug)Marker = L.AwesomeMarkers.icon({
+                extraClasses: 'pt-2',
                 icon: '{{ $subcategory->icon_image }}',
-                markerColor: '{{ $subcategory->belongsToCategory->icon_color }}'
+                markerColor: '{{ $subcategory->belongsToCategory->icon_color }}',
+                prefix: 'fa'
             });
             @endforeach
 
@@ -323,7 +324,7 @@
     </li>
     ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
 </ul>
-${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 pr-3 text-slate-500"><svg class="h-4 w-4 mr-2"><use xlink:href="#wikipedia"></use></svg>'+this.options.data.wikipedia+'</p>' : ''}
+${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-500">'+this.options.data.wikipedia.summary+'<br /><br />Plus d’informations sur Wikipedia : <a href="'+this.options.data.wikipedia.link+'" target="_blank">'+this.options.data.wikipedia.link+'</a></p>' : ''}
                             ` )});
                         });
                         loader.hide();
@@ -333,14 +334,15 @@ ${this.options.data.wikipedia ? '<p class="inline-flex w-full align-middle pt-1 
             function setContent(content) {
                 const sidebar = L.DomUtil.get('sidebar');
                 const container = L.DomUtil.get('address-informations');
+                const contenter = L.DomUtil.get('address-informations-content');
 
                 if (typeof content === 'string') {
-                    container.innerHTML = content;
+                    contenter.innerHTML = content;
                 } else {
-                    while (container.firstChild) {
-                        container.removeChild(container.firstChild);
+                    while (contenter.firstChild) {
+                        container.removeChild(contenter.firstChild);
                     }
-                    container.appendChild(content);
+                    container.appendChild(contenter);
                 }
 
                 L.DomUtil.addClass(container, 'active');
