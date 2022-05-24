@@ -319,8 +319,8 @@
     ${this.options.data.details.website ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#website"></use></svg><a href="'+this.options.data.details.website+'" target="_blank">'+this.options.data.details.website+'</a></li>' : ''}
     <li class="inline-flex w-full align-middle py-1">
         <svg class="h-4 w-4 mr-2"><use xlink:href="#address"></use></svg>
-        ${this.options.data.address_number} ${this.options.data.address_street}<br />
-        ${this.options.data.address_postcode} ${this.options.data.address_city}
+        ${this.options.data.address_number ?? ''} ${this.options.data.address_street ?? ''}<br />
+        ${this.options.data.address_postcode ?? ''} ${this.options.data.address_city}
     </li>
     ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
 </ul>
