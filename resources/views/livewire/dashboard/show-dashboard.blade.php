@@ -64,43 +64,16 @@
                     </h3>
                     <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('country.pronoun_pl'),
-                                'what' => __('country.continents')
+                            <span class="m-1 font-bold">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('address.pronoun_pl'),
+                                'what' => __('address.addresses')
                             ]))</span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($continents->count())
+                            <span class="bg-blue-200 text-blue-800 text-sm font-bold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($addresses->count())
                             </span>
                         </li>
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('country.pronoun_pl'),
-                                'what' => __('country.subcontinents')
-                            ]))</span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($subcontinents->count())
-                            </span>
-                        </li>
-                        <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('country.pronoun_pl'),
-                                'what' => __('country.countries')
-                            ]))</span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($countries->count())
-                            </span>
-                        </li>
-                        <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('category.pronoun_pl'),
-                                'what' => __('category.categories')
-                            ]))</span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($categories->count())
-                            </span>
-                        </li>
-                        <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
+                            <span class="m-1">@ucfirst(__('app.count_of', [
                                 'pronoun' => __('category.pronoun_pl'),
                                 'what' => __('category.subcategories')
                             ]))</span>
@@ -109,12 +82,39 @@
                             </span>
                         </li>
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('address.pronoun_pl'),
-                                'what' => __('address.addresses')
+                            <span class="m-1">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('category.pronoun_pl'),
+                                'what' => __('category.categories')
                             ]))</span>
                             <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($addresses->count())
+                                @leadingzero($categories->count())
+                            </span>
+                        </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="m-1">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('country.pronoun_pl'),
+                                'what' => __('country.countries')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($countries->count())
+                            </span>
+                        </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="m-1">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('country.pronoun_pl'),
+                                'what' => __('country.subcontinents')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($subcontinents->count())
+                            </span>
+                        </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="m-1">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('country.pronoun_pl'),
+                                'what' => __('country.continents')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($continents->count())
                             </span>
                         </li>
                     </ul>
