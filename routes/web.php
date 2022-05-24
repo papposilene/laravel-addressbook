@@ -62,7 +62,10 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/category/import', [CategoryController::class, 'import'])
         ->middleware('can:manage_categories')
         ->name('admin.category.import');
-    Route::get('/category/export', [CategoryController::class, 'export'])
+    Route::get('/category/export/categories', [CategoryController::class, 'exportCategories'])
         ->middleware('can:manage_categories')
-        ->name('admin.category.export');
+        ->name('admin.category.exportCategories');
+    Route::get('/category/export/subcategories', [CategoryController::class, 'exportSubcategories'])
+        ->middleware('can:manage_categories')
+        ->name('admin.category.exportSubcategories');
 });
