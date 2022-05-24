@@ -19,7 +19,7 @@ if (!function_exists('hasWikidata')) {
             $dataJson = file_get_contents('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=sitelinks&ids=' . $wikidata);
             $dataFile = json_decode($dataJson, true);
 
-            if (array_key_exists('entities', $dataFile['entities'])) {
+            if (array_key_exists('entities', $dataFile)) {
                 if (array_key_exists($lang . 'wiki', $dataFile['entities'][$wikidata]['sitelinks'])) {
                     $title = $dataFile['entities'][$wikidata]['sitelinks'][$lang . 'wiki']['title'];
                 } elseif (array_key_exists('enwiki', $dataFile['entities'][$wikidata]['sitelinks'])) {
