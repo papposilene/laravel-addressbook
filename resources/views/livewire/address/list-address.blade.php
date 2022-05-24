@@ -15,6 +15,8 @@
         <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-400"></i>
         <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-400"></i>
         <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-400"></i>
+        <i data-fa-symbol="export" class="fas fa-file-arrow-down fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="import" class="fas fa-file-arrow-up fa-fw text-yellow-500"></i>
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-400"></i>
         <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
@@ -33,9 +35,16 @@
             <div class="relative flex items-center justify-between mb-2 w-full">
                 <div class="flex flex-wrap">
                     @can('manage_addresses')
-                    <a href="{{ route('admin.address.create') }}" class="bg-slate-200 py-2 px-4 rounded inline-flex items-center">
+                    <a href="{{ route('admin.address.create') }}" class="inline-flex items-center bg-slate-200 mr-2 py-2 px-4 rounded"
+                       title="@ucfirst(__('address.create_one'))">
                         <svg class="h-6 w-6">
                             <use xlink:href="#create"></use>
+                        </svg>
+                    </a>
+                    <a href="{{ route('admin.address.export') }}" class="inline-flex items-center bg-slate-200 py-2 px-4 rounded"
+                       title="@ucfirst(__('app.export_', ['pronoun' => __('address.pronoun_pl'), 'what' => __('address.addresses')]))">
+                        <svg class="h-6 w-6">
+                            <use xlink:href="#export"></use>
                         </svg>
                     </a>
                     @endcan

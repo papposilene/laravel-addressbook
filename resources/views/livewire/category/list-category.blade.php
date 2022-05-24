@@ -15,6 +15,8 @@
         <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
         <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
         <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="export" class="fas fa-file-arrow-down fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="import" class="fas fa-file-arrow-up fa-fw text-yellow-500"></i>
         <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
         <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
@@ -34,7 +36,8 @@
                 <div class="relative flex items-center justify-between mb-2 w-full">
                     <div class="flex flex-wrap">
                         @can('manage_categories')
-                        <a href="{{ route('admin.category.create') }}" class="bg-slate-200 py-2 px-4 rounded inline-flex items-center">
+                        <a href="{{ route('admin.category.create') }}" class="inline-flex items-center bg-slate-200 mr-2 py-2 px-4 rounded"
+                           title="@ucfirst(__('category.create_one'))">
                             <svg class="h-6 w-6">
                                 <use xlink:href="#create"></use>
                             </svg>
@@ -160,6 +163,32 @@
                     </li>
                     @endforeach
                 </ul>
+
+                @can('manage_categories')
+                <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
+                    @ucfirst(__('app.administration'))
+                </h3>
+                <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded">
+                    <li class="flex w-full mb-3">
+                        <a href="{{ route('admin.category.exportCategories') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                           title="@ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))">
+                            <svg class="h-6 w-6 mr-2">
+                                <use xlink:href="#export"></use>
+                            </svg>
+                            @ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
+                        </a>
+                    </li>
+                    <li class="flex w-full">
+                        <a href="{{ route('admin.category.exportSubcategories') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                           title="@ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.subcategories')]))">
+                            <svg class="h-6 w-6 mr-2">
+                                <use xlink:href="#export"></use>
+                            </svg>
+                            @ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.subcategories')]))
+                        </a>
+                    </li>
+                </ul>
+                @endcan
             </div>
         </div>
     </div>

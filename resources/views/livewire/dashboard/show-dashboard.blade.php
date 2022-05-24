@@ -32,10 +32,10 @@
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
                     @auth
-                    <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                    <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded">
                         @can('manage_categories')
                             <li class="flex w-full mb-3">
-                                <a href="{{ route('admin.address.create') }}" class="inline-flex w-full bg-slate-300 p-2 rounded inline-flex items-center">
+                                <a href="{{ route('admin.address.create') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded">
                                     <svg class="h-6 w-6 mr-2">
                                         <use xlink:href="#create"></use>
                                     </svg>
@@ -45,7 +45,7 @@
                         @endcan
                         @can('manage_addresses')
                         <li class="flex w-full">
-                            <a href="{{ route('admin.address.create') }}" class="inline-flex w-full bg-slate-300 p-2 rounded inline-flex items-center">
+                            <a href="{{ route('admin.address.create') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded">
                                 <svg class="h-6 w-6 mr-2">
                                     <use xlink:href="#create"></use>
                                 </svg>
