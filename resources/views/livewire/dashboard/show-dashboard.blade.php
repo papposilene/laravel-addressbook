@@ -32,6 +32,9 @@
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
                     @auth
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
+                        @ucfirst(__('app.administration'))
+                    </h3>
                     <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded">
                         @can('manage_categories')
                             <li class="flex w-full mb-3">

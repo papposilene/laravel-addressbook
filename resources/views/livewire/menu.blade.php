@@ -29,12 +29,6 @@
                         :active="request()->routeIs('*.address.*')">
                         @ucfirst(__('address.addresses'))
                     </x-jet-nav-link>
-                    @auth
-                    <x-jet-nav-link href="" class="text-slate-900 dark:text-slate-100"
-                        :active="request()->routeIs('*.stat')">
-                        @ucfirst(__('app.statistics'))
-                    </x-jet-nav-link>
-                    @endauth
                 </div>
             </div>
 
@@ -155,11 +149,6 @@
                 class="text-slate-100" :active="request()->routeIs('*.address.*')">
                 @ucfirst(__('address.addresses'))
             </x-jet-responsive-nav-link>
-            @auth
-            <x-jet-responsive-nav-link href="" class="text-slate-100" :active="request()->routeIs('*.stat')">
-                @ucfirst(__('app.statistics'))
-            </x-jet-responsive-nav-link>
-            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
