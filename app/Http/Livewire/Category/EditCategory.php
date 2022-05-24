@@ -92,9 +92,9 @@ class EditCategory extends Component implements Forms\Contracts\HasForms
         $category = Subcategory::findOrFail($answers['slug']);
         $category->category_slug = $answers['category_slug'];
         $category->slug = Str::slug($name, '-');
-        $category->name = Str::trim($name);
-        $category->icon_image = Str::trim($answers['icon_image']);
-        $category->icon_style = Str::trim($answers['icon_style']);
+        $category->name = Str::of($name)->trim();
+        $category->icon_image = Str::of($answers['icon_image'])->trim();
+        $category->icon_style = Str::of($answers['icon_style'])->trim();
         $category->translations = $answers['translations'];
         $category->descriptions = $answers['descriptions'];
         $category->save();

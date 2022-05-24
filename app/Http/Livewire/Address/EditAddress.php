@@ -172,25 +172,25 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
         $isCountry = Country::where('cca3', $answers['cca3'])->firstOrFail();
 
         $address = Address::findOrFail($answers['uuid']);
-        $address->place_name = Str::trim($answers['place_name']);
+        $address->place_name = Str::of($answers['place_name'])->trim();
         $address->place_status = $answers['place_status'];
-        $address->address_number = Str::trim($answers['address_number']);
-        $address->address_street = Str::trim($answers['address_street']);
-        $address->address_postcode = Str::trim($answers['address_postcode']);
-        $address->address_city = Str::trim($answers['address_city']);
+        $address->address_number = Str::of($answers['address_number'])->trim();
+        $address->address_street = Str::of($answers['address_street'])->trim();
+        $address->address_postcode = Str::of($answers['address_postcode'])->trim();
+        $address->address_city = Str::of($answers['address_city'])->trim();
         $address->city_uuid = $isCity->uuid ?? null;
         $address->region_uuid = $isRegion->uuid ?? null;
         $address->country_cca3 = $isCountry->cca3;
-        $address->address_lat = Str::trim($answers['address_lat']);
-        $address->address_lon = Str::trim($answers['address_lon']);
+        $address->address_lat = Str::of($answers['address_lat'])->trim();
+        $address->address_lon = Str::of($answers['address_lon'])->trim();
         $address->details = [
-            'phone' => Str::trim($answers['phone']) ?? null,
-            'website' => Str::trim($answers['website']) ?? null,
-            'wikidata' => Str::trim($answers['wikidata']) ?? null,
+            'phone' => Str::of($answers['phone'])->trim() ?? null,
+            'website' => Str::of($answers['website'])->trim() ?? null,
+            'wikidata' => Str::of($answers['wikidata'])->trim() ?? null,
         ];
-        $address->description = Str::trim($answers['description']);
+        $address->description = Str::of($answers['description'])->trim();
         $address->subcategory_slug = $answers['subcategory_slug'];
-        $address->osm_id = Str::trim($answers['osm_id']);
+        $address->osm_id = Str::of($answers['osm_id'])->trim();
         $address->save();
 
         session()->flash('message', 'Address successfully updated.');
