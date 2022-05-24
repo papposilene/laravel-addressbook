@@ -48,9 +48,12 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/address/import', [AddressController::class, 'import'])
         ->middleware('can:manage_addresses')
         ->name('admin.address.import');
-    Route::get('/address/export', [AddressController::class, 'export'])
+    Route::get('/address/export/xlsx', [AddressController::class, 'exportExcel'])
         ->middleware('can:manage_addresses')
-        ->name('admin.address.export');
+        ->name('admin.address.export.addressesExcel');
+    Route::get('/address/export/json', [AddressController::class, 'exportJson'])
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.export.addressesJson');
 
     // Categories
     Route::get('/category/create', CreateCategory::class)
@@ -62,10 +65,10 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::post('/category/import', [CategoryController::class, 'import'])
         ->middleware('can:manage_categories')
         ->name('admin.category.import');
-    Route::get('/category/export/categories', [CategoryController::class, 'exportCategories'])
+    Route::get('/category/export/categories', [CategoryController::class, 'exportCategoriesExcel'])
         ->middleware('can:manage_categories')
-        ->name('admin.category.exportCategories');
-    Route::get('/category/export/subcategories', [CategoryController::class, 'exportSubcategories'])
+        ->name('admin.category.export.categoriesExcel');
+    Route::get('/category/export/subcategories', [CategoryController::class, 'exportSubcategoriesExcel'])
         ->middleware('can:manage_categories')
-        ->name('admin.category.exportSubcategories');
+        ->name('admin.category.export.subcategoriesExcel');
 });
