@@ -97,7 +97,7 @@
                 @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <div class="ml-3 relative">
-                        <div class="block text-xs text-white">
+                        <div class="block text-xs">
                             <a href="{{ route('login') }}" title="@ucfirst(__('auth.login'))">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

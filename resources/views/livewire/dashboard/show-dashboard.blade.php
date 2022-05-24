@@ -31,20 +31,30 @@
             <!-- Dashboard -->
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
-                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
-                        @ucfirst(__('app.statistics'))
-                    </h3>
-                    <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
-                        <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('app.count_of', [
-                                'pronoun' => __('country.pronoun_pl'),
-                                'what' => __('country.continents')
-                            ]))</span>
-                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
-                                @leadingzero($continents->count())
-                            </span>
+                    @auth
+                    <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                        @can('manage_categories')
+                            <li class="flex w-full mb-3">
+                                <a href="{{ route('admin.address.create') }}" class="inline-flex w-full bg-slate-300 p-2 rounded inline-flex items-center">
+                                    <svg class="h-6 w-6 mr-2">
+                                        <use xlink:href="#create"></use>
+                                    </svg>
+                                    @ucfirst(__('category.create_one'))
+                                </a>
+                            </li>
+                        @endcan
+                        @can('manage_addresses')
+                        <li class="flex w-full">
+                            <a href="{{ route('admin.address.create') }}" class="inline-flex w-full bg-slate-300 p-2 rounded inline-flex items-center">
+                                <svg class="h-6 w-6 mr-2">
+                                    <use xlink:href="#create"></use>
+                                </svg>
+                                @ucfirst(__('address.create_one'))
+                            </a>
                         </li>
+                        @endcan
                     </ul>
+                    @endauth
 
                     <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
                         @ucfirst(__('app.statistics'))
