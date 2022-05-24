@@ -13,7 +13,9 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "papposilene/geodata": "dev-main",
+        "psr/simple-cache": "^1.0",
         "spatie/laravel-translatable": "^6.0"
     },
     "require-dev": {
