@@ -13,6 +13,7 @@ return [
     'account' => 'compte',
     'account_manage' => 'gérer mon compte',
     'actions' => 'actions',
+    'administration' => 'administration',
     'all' => 'tout',
     'count' => 'total',
     'create' => 'ajouter',
@@ -56,6 +57,7 @@ return [
     // Placeholders strings
     'count_of' => 'nombre :pronoun :what',
     'edit_' => 'modifier :pronoun :what',
+    'export_' => 'exporter :pronoun :what',
     'delete_' => 'supprimer :pronoun :what',
     'list_of' => 'liste :pronoun :what',
     'name_of' => 'nom :pronoun :what',
