@@ -20,11 +20,11 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
+        <i data-fa-symbol="create" class="fa-solid fa-plus fa-fw text-green-500"></i>
+        <i data-fa-symbol="delete" class="fa-solid fa-trash fa-fw text-red-500"></i>
+        <i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="show" class="fa-solid fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())

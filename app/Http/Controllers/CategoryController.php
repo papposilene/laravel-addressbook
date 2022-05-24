@@ -13,7 +13,19 @@ class CategoryController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function exportCategories()
+    public function exportCategoriesExcel()
+    {
+        $date = date('Y_m_d_hh_ii_ss');
+
+        return Excel::download(new CategoriesExport, 'cartography_categories_' . $date . '.xlsx');
+    }
+
+    /**
+     * Export the categories.
+     *
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function exportCategoriesJson()
     {
         $date = date('Y_m_d_hh_ii_ss');
 
@@ -25,7 +37,7 @@ class CategoryController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function exportSubcategories()
+    public function exportSubcategoriesExcel()
     {
         $date = date('Y_m_d_hh_ii_ss');
 

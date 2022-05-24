@@ -226,7 +226,7 @@
                         @foreach($categories as $category)
                         <div class="mb-2 px-2 py-2 rounded-lg" style="background-color: {{ $category->icon_color }};">
                             <div class="flex justify-start">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                <i data-fa-symbol="{{ $category->slug }}" class="fa-solid fa-{{ $category->icon_image }} fa-fw"></i>
                                 <svg class="h-5 w-5 mr-2">
                                     <use xlink:href="#{{ $category->slug }}"></use>
                                 </svg>
@@ -236,7 +236,7 @@
                             <div class="flex w-full px-2">
                                 <a href="{{ route('front.index', ['category' => $subcategory->slug]) }}" class="flex flex-row justify-between m-1 w-full">
                                     <span class="inline-flex align-middle mt-1">
-                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
+                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fa-solid fa-{{ $subcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $subcategory->icon_style }} h-5 w-5 mr-2">
                                             <use xlink:href="#{{ $subcategory->slug }}"></use>
                                         </svg>

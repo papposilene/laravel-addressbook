@@ -8,7 +8,7 @@
                     @ucfirst(__('app.list_of', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))
                 </a>&nbsp;/&nbsp;
                 <a href="{{ route('front.category.index', ['filter' => $subcategory->belongsToCategory->slug]) }}" class="inline-flex align-middle">
-                    <i data-fa-symbol="{{ $subcategory->belongsToCategory->slug }}" class="fas fa-{{ $subcategory->belongsToCategory->icon_image }} fa-fw"></i>
+                    <i data-fa-symbol="{{ $subcategory->belongsToCategory->slug }}" class="fa-solid fa-{{ $subcategory->belongsToCategory->icon_image }} fa-fw"></i>
                     <svg class="h-5 w-5">
                         <use xlink:href="#{{ $subcategory->belongsToCategory->slug }}"></use>
                     </svg>&nbsp;
@@ -16,7 +16,7 @@
                 </a>&nbsp;/&nbsp;
             </span>
             <span class="inline-flex align-middle">
-                <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
+                <i data-fa-symbol="{{ $subcategory->slug }}" class="fa-solid fa-{{ $subcategory->icon_image }} fa-fw"></i>
                 <svg class="h-5 w-5">
                     <use xlink:href="#{{ $subcategory->slug }}"></use>
                 </svg>&nbsp;
@@ -27,12 +27,12 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
+        <i data-fa-symbol="icons" class="fa-solid fa-icons fa-fw"></i>
+        <i data-fa-symbol="create" class="fa-solid fa-plus fa-fw text-green-500"></i>
+        <i data-fa-symbol="delete" class="fa-solid fa-trash fa-fw text-red-500"></i>
+        <i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="show" class="fa-solid fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
             <div class="flex flex-col pl-2 pr-2 w-full lg:w-3/4">
@@ -102,8 +102,8 @@
                                 </td>
                                 <td>
                                     <p class="flex flex-row h-12 items-center justify-center">
-                                        <i data-fa-symbol="closed" class="fas fa-times fa-fw text-red-500"></i>
-                                        <i data-fa-symbol="open" class="fas fa-check fa-fw text-green-500"></i>
+                                        <i data-fa-symbol="closed" class="fa-solid fa-times fa-fw text-red-500"></i>
+                                        <i data-fa-symbol="open" class="fa-solid fa-check fa-fw text-green-500"></i>
                                         <svg class="h-5 w-5"><use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use></svg>
                                     </p>
                                 </td>
@@ -155,7 +155,7 @@
                     <li class="{{ $category->icon_style }} rounded">
                         <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
                             <span class="inline-flex align-middle mt-1">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                <i data-fa-symbol="{{ $category->slug }}" class="fa-solid fa-{{ $category->icon_image }} fa-fw"></i>
                                 <svg class="{{ $category->icon_style }} h-5 w-5">
                                     <use xlink:href="#{{ $category->slug }}"></use>
                                 </svg>&nbsp;

@@ -11,14 +11,14 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-500"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-500"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-500"></i>
-        <i data-fa-symbol="export" class="fas fa-file-arrow-down fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="import" class="fas fa-file-arrow-up fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
+        <i data-fa-symbol="icons" class="fa-solid fa-icons fa-fw"></i>
+        <i data-fa-symbol="create" class="fa-solid fa-plus fa-fw text-green-500"></i>
+        <i data-fa-symbol="delete" class="fa-solid fa-trash fa-fw text-red-500"></i>
+        <i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw text-blue-500"></i>
+        <i data-fa-symbol="export" class="fa-solid fa-file-arrow-down fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="import" class="fa-solid fa-file-arrow-up fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw text-yellow-500"></i>
+        <i data-fa-symbol="show" class="fa-solid fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="flex flex-col lg:flex-row-reverse w-full lg:max-w-7xl lg:mx-auto py-5 px-6">
             <div class="flex flex-col pl-2 pr-2 w-full lg:w-3/4">
@@ -76,7 +76,7 @@
                                 <td class="text-center hidden lg:table-cell text-gray-800">{{ $loop->iteration }}</td>
                                 <td class="hidden lg:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center text-gray-800">
-                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fas fa-{{ $subcategory->icon_image }} fa-fw"></i>
+                                        <i data-fa-symbol="{{ $subcategory->slug }}" class="fa-solid fa-{{ $subcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $subcategory->icon_style }} h-5 w-5">
                                             <use xlink:href="#{{ $subcategory->slug }}"></use>
                                         </svg>
@@ -150,7 +150,7 @@
                     <li class="{{ $category->icon_style }} rounded">
                         <a href="{{ route('front.category.index', ['filter' => $category->slug]) }}" class="flex flex-row justify-between m-1">
                             <span class="inline-flex align-middle mt-1">
-                                <i data-fa-symbol="{{ $category->slug }}" class="fas fa-{{ $category->icon_image }} fa-fw"></i>
+                                <i data-fa-symbol="{{ $category->slug }}" class="fa-solid fa-{{ $category->icon_image }} fa-fw"></i>
                                 <svg class="h-5 w-5">
                                     <use xlink:href="#{{ $category->slug }}"></use>
                                 </svg>&nbsp;
@@ -170,7 +170,7 @@
                 </h3>
                 <ul class="flex flex-col bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded">
                     <li class="flex w-full mb-3">
-                        <a href="{{ route('admin.category.exportCategories') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                        <a href="{{ route('admin.category.export.categoriesExcel') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
                            title="@ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.categories')]))">
                             <svg class="h-6 w-6 mr-2">
                                 <use xlink:href="#export"></use>
@@ -179,7 +179,7 @@
                         </a>
                     </li>
                     <li class="flex w-full">
-                        <a href="{{ route('admin.category.exportSubcategories') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                        <a href="{{ route('admin.category.export.subcategoriesExcel') }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
                            title="@ucfirst(__('app.export_', ['pronoun' => __('category.pronoun_pl'), 'what' => __('category.subcategories')]))">
                             <svg class="h-6 w-6 mr-2">
                                 <use xlink:href="#export"></use>

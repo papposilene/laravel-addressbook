@@ -11,14 +11,12 @@
 
     <div>
         <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-        <i data-fa-symbol="icons" class="fas fa-icons fa-fw"></i>
-        <i data-fa-symbol="create" class="fas fa-plus fa-fw text-green-400"></i>
-        <i data-fa-symbol="delete" class="fas fa-trash fa-fw text-red-400"></i>
-        <i data-fa-symbol="edit" class="fas fa-pencil fa-fw text-blue-400"></i>
-        <i data-fa-symbol="export" class="fas fa-file-arrow-down fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="import" class="fas fa-file-arrow-up fa-fw text-yellow-500"></i>
-        <i data-fa-symbol="favorite" class="fas fa-star fa-fw text-yellow-400"></i>
-        <i data-fa-symbol="show" class="fas fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
+        <i data-fa-symbol="icons" class="fa-solid fa-icons fa-fw"></i>
+        <i data-fa-symbol="create" class="fa-solid fa-plus fa-fw text-green-400"></i>
+        <i data-fa-symbol="delete" class="fa-solid fa-trash fa-fw text-red-400"></i>
+        <i data-fa-symbol="edit" class="fa-solid fa-pencil fa-fw text-blue-400"></i>
+        <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw text-yellow-400"></i>
+        <i data-fa-symbol="show" class="fa-solid fa-magnifying-glass-arrow-right fa-fw text-green-600"></i>
 
         <div class="max-w-7xl mx-auto py-5 px-6">
             @if ($errors->any())
@@ -41,11 +39,21 @@
                             <use xlink:href="#create"></use>
                         </svg>
                     </a>
-                    <a href="{{ route('admin.address.export') }}" class="inline-flex items-center bg-slate-200 py-2 px-4 rounded"
+                    <a href="{{ route('admin.address.export.addressesExcel') }}" class="inline-flex items-center bg-slate-200 py-2 px-4 rounded-l"
                        title="@ucfirst(__('app.export_', ['pronoun' => __('address.pronoun_pl'), 'what' => __('address.addresses')]))">
-                        <svg class="h-6 w-6">
-                            <use xlink:href="#export"></use>
+                        <i data-fa-symbol="exportExcel" class="fa-solid fa-file-excel fa-fw text-yellow-500"></i>
+                        <svg class="h-6 w-6 mr-2">
+                            <use xlink:href="#exportExcel"></use>
                         </svg>
+                        Excel
+                    </a>
+                    <a href="{{ route('admin.address.export.addressesJson') }}" class="inline-flex items-center bg-slate-200 py-2 px-4 rounded-r"
+                       title="@ucfirst(__('app.export_', ['pronoun' => __('address.pronoun_pl'), 'what' => __('address.addresses')]))">
+                        <svg class="h-6 w-6 mr-2">
+                            <i data-fa-symbol="exportJson" class="fa-solid fa-file-code fa-fw text-yellow-500"></i>
+                            <use xlink:href="#exportJson"></use>
+                        </svg>
+                        JSON
                     </a>
                     @endcan
                     @livewire('interfaces.toggle')
@@ -67,7 +75,7 @@
                         <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
                         <th class="w-1/12 p-3">
                             <p class="flex flex-row items-center justify-center">
-                                <i data-fa-symbol="globe" class="fas fa-globe fa-fw"></i>
+                                <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw"></i>
                                 <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
                             </p>
                         </th>
@@ -92,7 +100,7 @@
                                    class="{{ $address->belongsToCategory->icon_style }} px-1.5 rounded">
                                     <span class="inline-flex align-middle">
                                         <i data-fa-symbol="{{ $address->belongsToSubcategory->slug }}"
-                                           class="fas fa-{{ $address->belongsToSubcategory->icon_image }} fa-fw"></i>
+                                           class="fa-solid fa-{{ $address->belongsToSubcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $address->belongsToSubcategory->icon_style }} h-5 w-5">
                                             <use xlink:href="#{{ $address->belongsToSubcategory->slug }}"></use>
                                         </svg>&nbsp;
@@ -107,8 +115,8 @@
                             </td>
                             <td>
                                 <p class="flex flex-row h-12 items-center justify-center">
-                                    <i data-fa-symbol="closed" class="fas fa-times fa-fw text-red-400"></i>
-                                    <i data-fa-symbol="open" class="fas fa-check fa-fw text-green-400"></i>
+                                    <i data-fa-symbol="closed" class="fa-solid fa-times fa-fw text-red-400"></i>
+                                    <i data-fa-symbol="open" class="fa-solid fa-check fa-fw text-green-400"></i>
                                     <svg class="h-5 w-5" aria-label="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}"
                                          title="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}">
                                         <use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use>
