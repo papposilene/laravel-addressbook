@@ -8,6 +8,7 @@ use App\Models\Country;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 class AddressController extends Controller
 {
@@ -28,14 +29,15 @@ class AddressController extends Controller
      */
     public function exportJson()
     {
-        $date = date('Y_m_d_hh_ii_ss');
+        $date = date('Y_m_d_his');
+        $zipFile = storage_path('extracts/cartography_addresses_extracts.zip');
         $countries = Country::withCount('hasAddresses')->get();
 
-        foreach($countries->where('has_addresses_count', '>', 0) as $country) {
+        foreach ($countries->where('has_addresses_count', '>', 0) as $country) {
             $body = [];
             $name = 'cartography_addresses_' . $country->cca3 . '_' . $date . '.json';
 
-            foreach($country->hasAddresses()->get() as $address) {
+            foreach ($country->hasAddresses()->get() as $address) {
                 $body[] = [
                     'geolocation' => [
                         'lat' => $address->address_lat,
@@ -71,7 +73,21 @@ class AddressController extends Controller
             ];
 
             $file = json_encode($json, JSON_PRETTY_PRINT);
-            File::put(storage_path('extracts/' . $name), $file);
+            File::put(storage_path('temp/' . $name), $file);
         }
+
+        File::delete($zipFile);
+        $zip = new ZipArchive;
+        if ($zip->open($zipFile, ZipArchive::CREATE) === TRUE) {
+            foreach (glob(storage_path('temp/*.json')) as $key => $value) {
+                $relativeNameInZipFile = basename($value);
+                $zip->addFile($value, $relativeNameInZipFile);
+            }
+            $zip->close();
+        }
+
+        File::delete(glob(storage_path('temp/*.json')));
+
+        return response()->download($zipFile);
     }
 }
