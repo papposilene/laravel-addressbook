@@ -31,7 +31,7 @@
         <!-- Matomo -->
         <script type="opt-in" data-type="application/javascript" data-name="matomo">
         var _paq = window._paq = window._paq || [];
-        _paq.push(["setDomains", ["*.map.psln.nl"]]);
+        _paq.push(["setDomains", ["map.psln.nl", "*.map.psln.nl"]]);
         _paq.push(["setDoNotTrack", true]);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
