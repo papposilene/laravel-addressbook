@@ -15,7 +15,7 @@
     bottom: 0;
     width: 100%;
     overflow: hidden;
-    z-index: 2000; }
+    z-index: 20000; }
 .sidebar.collapsed {
     width: 40px; }
 @media (min-width: 768px) {
