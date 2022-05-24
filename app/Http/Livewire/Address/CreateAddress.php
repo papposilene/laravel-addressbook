@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Country;
 use App\Models\Subcategory;
 use Filament\Forms;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CreateAddress extends Component implements Forms\Contracts\HasForms
@@ -154,25 +155,25 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
         $isCountry = Country::where('cca3', $answers['cca3'])->firstOrFail();
 
         $address = new Address();
-        $address->place_name = $answers['place_name'];
+        $address->place_name = Str::trim($answers['place_name']);
         $address->place_status = $answers['place_status'];
-        $address->address_number = $answers['address_number'];
-        $address->address_street = $answers['address_street'];
-        $address->address_postcode = $answers['address_postcode'];
-        $address->address_city = $answers['address_city'];
+        $address->address_number = Str::trim($answers['address_number']);
+        $address->address_street = Str::trim($answers['address_street']);
+        $address->address_postcode = Str::trim($answers['address_postcode']);
+        $address->address_city = Str::trim($answers['address_city']);
         $address->city_uuid = $isCity->uuid ?? null;
         $address->region_uuid = $isRegion->uuid ?? null;
         $address->country_cca3 = $isCountry->cca3;
-        $address->address_lat = $answers['address_lat'];
-        $address->address_lon = $answers['address_lon'];
+        $address->address_lat = Str::trim($answers['address_lat']);
+        $address->address_lon = Str::trim($answers['address_lon']);
         $address->details = [
-            'phone' => $answers['phone'] ?? null,
-            'website' => $answers['website'] ?? null,
-            'wikidata' => $answers['wikidata'] ?? null,
+            'phone' => Str::trim($answers['phone']) ?? null,
+            'website' => Str::trim($answers['website']) ?? null,
+            'wikidata' => Str::trim($answers['wikidata']) ?? null,
         ];
-        $address->description = $answers['description'];
+        $address->description = Str::trim($answers['description']);
         $address->subcategory_slug = $answers['subcategory_slug'];
-        $address->osm_id = $answers['osm_id'];
+        $address->osm_id = Str::trim($answers['osm_id']);
         $address->save();
 
         session()->flash('message', 'Address successfully created.');

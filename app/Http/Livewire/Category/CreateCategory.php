@@ -82,9 +82,9 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
         $category = new Subcategory();
         $category->category_slug = $answers['category_slug'];
         $category->slug = Str::slug($name, '-');
-        $category->name = $name;
-        $category->icon_image = $answers['icon_image'];
-        $category->icon_style = $answers['icon_style'];
+        $category->name = Str::trim($name);
+        $category->icon_image = Str::trim($answers['icon_image']);
+        $category->icon_style = Str::trim($answers['icon_style']);
         $category->translations = $answers['translations'];
         $category->descriptions = $answers['descriptions'];
         $category->save();
