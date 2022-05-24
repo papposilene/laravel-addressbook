@@ -32,11 +32,11 @@
             <div class="flex flex-row flex-wrap py-5">
                 <div class="flex flex-col w-full lg:pr-1 lg:w-1/3">
                     <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
-                        Pays
+                        @ucfirst(__('app.statistics'))
                     </h3>
                     <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('country.count_of', [
+                            <span class="">@ucfirst(__('app.count_of', [
                                 'pronoun' => __('country.pronoun_pl'),
                                 'what' => __('country.continents')
                             ]))</span>
@@ -45,7 +45,7 @@
                             </span>
                         </li>
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('country.count_of', [
+                            <span class="">@ucfirst(__('app.count_of', [
                                 'pronoun' => __('country.pronoun_pl'),
                                 'what' => __('country.subcontinents')
                             ]))</span>
@@ -54,7 +54,7 @@
                             </span>
                         </li>
                         <li class="flex flex-row justify-between m-1">
-                            <span class="">@ucfirst(__('country.count_of', [
+                            <span class="">@ucfirst(__('app.count_of', [
                                 'pronoun' => __('country.pronoun_pl'),
                                 'what' => __('country.countries')
                             ]))</span>
@@ -62,23 +62,34 @@
                                 @leadingzero($countries->count())
                             </span>
                         </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('category.pronoun_pl'),
+                                'what' => __('category.categories')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($categories->count())
+                            </span>
+                        </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('category.pronoun_pl'),
+                                'what' => __('category.subcategories')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($subcategories->count())
+                            </span>
+                        </li>
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('address.pronoun_pl'),
+                                'what' => __('address.addresses')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($addresses->count())
+                            </span>
+                        </li>
                     </ul>
-                </div>
-
-                <div class="flex flex-col w-full lg:px-1 lg:w-1/3">
-                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
-                        @ucfirst(__('app.top10_of', ['what' => __('category.categories')]))
-                    </h3>
-                    <div class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
-                        @livewire('chart.pie', [
-                            'name' => 'topCategoriesChart',
-                            'api' => route('api.category.index', [
-                                'limit' => 10,
-                                'sortby' => 'has_addresses_count',
-                                'orderby' => 'desc'
-                            ]),
-                        ])
-                    </div>
                 </div>
 
                 <div class="flex flex-col w-full lg:pl-1 lg:w-1/3">
@@ -93,6 +104,22 @@
                                 'sortby' => 'has_addresses_count',
                                 'orderby' => 'desc'
                             ]),
+                        ])
+                    </div>
+                </div>
+
+                <div class="flex flex-col w-full lg:px-1 lg:w-1/3">
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
+                        @ucfirst(__('app.top10_of', ['what' => __('category.categories')]))
+                    </h3>
+                    <div class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                        @livewire('chart.pie', [
+                        'name' => 'topCategoriesChart',
+                        'api' => route('api.category.index', [
+                        'limit' => 10,
+                        'sortby' => 'has_addresses_count',
+                        'orderby' => 'desc'
+                        ]),
                         ])
                     </div>
                 </div>
