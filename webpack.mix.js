@@ -31,8 +31,9 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ]);
 
+mix.copy('public/js', 'htdocs/js');
+mix.copy('public/css', 'htdocs/css');
 mix.copy('resources/svg', 'public/img');
-mix.copy('public', 'htdocs');
 
 if (mix.inProduction()) {
     mix.version();
