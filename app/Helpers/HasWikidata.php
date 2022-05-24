@@ -46,7 +46,7 @@ if (!function_exists('hasWikidata')) {
                     $lang => $pediaData['title'],
                 ],
                 'wikipedia_text' => [
-                    $lang => $pediaData['extract'],
+                    $lang => $pediaData['extracts'],
                 ],
             ]);
         }
