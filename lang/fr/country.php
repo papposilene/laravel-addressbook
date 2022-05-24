@@ -33,6 +33,4 @@ return [
     'state' => 'région',
     'states' => 'régions',
 
-    'count_of' => 'nombre :pronoun :what',
-
 ];

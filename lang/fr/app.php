@@ -54,8 +54,9 @@ return [
     'yes' => 'oui',
 
     // Placeholders strings
-    'delete_' => 'supprimer :pronoun :what',
+    'count_of' => 'nombre :pronoun :what',
     'edit_' => 'modifier :pronoun :what',
+    'delete_' => 'supprimer :pronoun :what',
     'list_of' => 'liste :pronoun :what',
     'name_of' => 'nom :pronoun :what',
     'save_' => 'ajouter :pronoun :what',
