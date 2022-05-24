@@ -201,6 +201,7 @@
                                     <div class="flex w-full px-2">
                                         <a href="{{ route('front.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
                                             <span class="inline-flex align-middle mt-1">
+                                                {{ $country->flag }}
                                                 {{ $country->name_translations['common'] }}
                                             </span>
                                             <span class="bg-white text-black text-sm font-semibold inline-flex items-center p-1 rounded-full">
