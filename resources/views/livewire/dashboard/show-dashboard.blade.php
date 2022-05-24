@@ -44,6 +44,21 @@
                                 @leadingzero($continents->count())
                             </span>
                         </li>
+                    </ul>
+
+                    <h3 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
+                        @ucfirst(__('app.statistics'))
+                    </h3>
+                    <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                        <li class="flex flex-row justify-between m-1">
+                            <span class="">@ucfirst(__('app.count_of', [
+                                'pronoun' => __('country.pronoun_pl'),
+                                'what' => __('country.continents')
+                            ]))</span>
+                            <span class="bg-blue-200 text-blue-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full">
+                                @leadingzero($continents->count())
+                            </span>
+                        </li>
                         <li class="flex flex-row justify-between m-1">
                             <span class="">@ucfirst(__('app.count_of', [
                                 'pronoun' => __('country.pronoun_pl'),

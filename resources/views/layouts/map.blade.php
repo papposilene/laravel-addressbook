@@ -30,18 +30,18 @@
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->
         <script type="opt-in" data-type="application/javascript" data-name="matomo">
-            var _paq = window._paq = window._paq || [];
-            _paq.push(["setDomains", ["*.map.psln.nl"]]);
-            _paq.push(["setDoNotTrack", true]);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-                var u="//pwk.psln.nl/";
-                _paq.push(['setTrackerUrl', u+'matomo.php']);
-                _paq.push(['setSiteId', '8']);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-            })();
+        var _paq = window._paq = window._paq || [];
+        _paq.push(["setDomains", ["*.map.psln.nl"]]);
+        _paq.push(["setDoNotTrack", true]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="{{ env('MATOMO_URL') }}";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '{{ env('MATOMO_SITE', 0) }}']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
         </script>
         <!-- End Matomo Code -->
         @endif
