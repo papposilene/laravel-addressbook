@@ -44,7 +44,7 @@ if (!function_exists('hasWikidata')) {
             } else {
                 return null;
             }
-            
+
             $cache = \App\Models\Wikidata::create([
                 'address_uuid' => $uuid,
                 'wikidata_id' => $wikidata,
