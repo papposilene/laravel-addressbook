@@ -37,6 +37,14 @@ if (!function_exists('hasWikidata')) {
             $pagesid = array_keys($pediaFile['query']['pages']);
             $pediaData = $pediaFile['query']['pages'][$pagesid[0]];
 
+            if (array_key_exists('extracts', $pediaData)) {
+                $text = $pediaData['extracts'];
+            } elseif (array_key_exists('extract', $pediaData)) {
+                $text = $pediaData['extract'];
+            } else {
+                return null;
+            }
+            
             $cache = \App\Models\Wikidata::create([
                 'address_uuid' => $uuid,
                 'wikidata_id' => $wikidata,
@@ -46,7 +54,7 @@ if (!function_exists('hasWikidata')) {
                     $lang => $pediaData['title'],
                 ],
                 'wikipedia_text' => [
-                    $lang => $pediaData['extracts'],
+                    $lang => $text,
                 ],
             ]);
         }
