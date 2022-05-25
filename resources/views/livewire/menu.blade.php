@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('front.index') }}">
-                        <x-logo class="block h-9 w-auto invisible md:visible">{{ config('app.name', 'My Address Book') }}</x-logo>
+                        <x-logo class="block h-9 w-auto">{{ config('app.name', 'My Address Book') }}</x-logo>
                     </a>
                 </div>
 
@@ -192,7 +192,7 @@
                 </form>
 
                 @else
-                <x-jet-nav-link href="{{ route('login') }}" class="text-slate-100" >
+                <x-jet-nav-link href="{{ route('login') }}" >
                     @ucfirst(__('auth.login'))
                 </x-jet-nav-link>
                 @endauth
