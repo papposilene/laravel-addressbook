@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('front.index') }}">
-                        <x-logo class="block h-9 w-auto">{{ config('app.name', 'My Address Book') }}</x-logo>
+                        <x-logo class="block h-9 w-auto invisible md:visible">{{ config('app.name', 'My Address Book') }}</x-logo>
                     </a>
                 </div>
 
@@ -134,19 +134,19 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('front.dashboard') }}"
-                class="text-slate-100" :active="request()->routeIs('*.dashboard')">
+                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('*.dashboard')">
                 @ucfirst(__('app.dashboard'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.country.index') }}"
-                class="text-slate-100" :active="request()->routeIs('*.country.*')">
+                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('*.country.*')">
                 @ucfirst(__('country.countries'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.category.index') }}"
-                class="text-slate-100" :active="request()->routeIs('*.category.*')">
+                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('*.category.*')">
                 @ucfirst(__('category.categories'))
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('front.address.index') }}"
-                class="text-slate-100" :active="request()->routeIs('*.address.*')">
+                class="text-slate-900 dark:text-slate-100" :active="request()->routeIs('*.address.*')">
                 @ucfirst(__('address.addresses'))
             </x-jet-responsive-nav-link>
         </div>
