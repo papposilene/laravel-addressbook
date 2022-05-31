@@ -47,22 +47,21 @@
                 <div class="py-5">
                     <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-400 dark:bg-slate-600">
-                            <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 p-3 hidden lg:table-cell">
-                                <p class="flex flex-row items-center justify-center p-3">
-                                    <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw"></i>
-                                    <svg class="h-5 w-5">
-                                        <use xlink:href="#globe"></use>
-                                    </svg>
-                                </p>
-                            </th>
-                            <th class="w-1/12 p-3 hidden lg:table-cell text-center">@ucfirst(__('country.flag_icon'))
-                            </th>
-                            <th class="w-6/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
-                            <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
-                            <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
-                        </tr>
+                            <tr class="bg-slate-400 dark:bg-slate-600">
+                                <th class="sm:w-1/12 text-center hidden sm:table-cell">@ucfirst(__('app.iteration'))</th>
+                                <th class="sm:w-2/12 text-center hidden sm:table-cell">
+                                    <p class="flex flex-row items-center justify-center p-3">
+                                        <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw"></i>
+                                        <svg class="h-5 w-5">
+                                            <use xlink:href="#globe"></use>
+                                        </svg>
+                                    </p>
+                                </th>
+                                <th class="w-2/12 p-3 text-center">@ucfirst(__('country.flag_icon'))</th>
+                                <th class="w-6/12 sm:w-6/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
+                                <th class="w-4/12 sm:w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
+                                <th class="sm:w-1/12 text-center hidden sm:table-cell">@ucfirst(__('app.actions'))</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @foreach($countries as $country)
@@ -71,7 +70,7 @@
                                 <td class="hidden lg:table-cell text-gray-800">
                                     {{ $country->belongsToContinent->name }}
                                 </td>
-                                <td class="hidden lg:table-cell text-center">{{ $country->flag }}</td>
+                                <td class="text-center">{{ $country->flag }}</td>
                                 <td class="break-words p-3">
                                     <a href="{{ route('front.address.index', ['filter' => $country->cca3]) }}">
                                         {{ $country->name_eng_common }}
@@ -80,7 +79,7 @@
                                 <td class="text-center text-gray-800">
                                     {{ $country->has_addresses_count }}
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center">
                                         <a href="{{ route('front.address.index', ['filter' => $country->cca3]) }}"
                                            class="mx-1">
