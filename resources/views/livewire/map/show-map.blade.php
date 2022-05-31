@@ -360,8 +360,6 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
 
                 onAdd: function (map) {
                     this.container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-
-
                     this.loaderContainer = L.DomUtil.create('div', 'leaflet-loader-container', this._map._container);
                     this.loaderBG = L.DomUtil.create('div', 'leaflet-loader-background', this.loaderContainer);
                     this.loader = L.DomUtil.create('div', 'leaflet-loader', this.loaderBG);
@@ -381,7 +379,7 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
                     this.loaderBG.style.webkitAnimationName ="hideLoader 1s";
                     this.loaderBG.style.opacity ="0";
 
-                    var _this =this;
+                    var _this = this;
                     setTimeout(function (){_this.loaderContainer.style.display ="none";},500);
                     this._map.dragging.enable();
                     this._map.touchZoom.enable();
