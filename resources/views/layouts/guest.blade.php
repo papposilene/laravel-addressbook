@@ -38,5 +38,12 @@
         <div class="antialiased font-sans bg-slate-100 text-black dark:bg-gray-700 dark:text-white">
             {{ $slot }}
         </div>
+
+        @if (App::environment(['prod', 'production']))
+        <!-- Matomo -->
+        <noscript>
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ env('MATOMO_URL') }}/matomo.php?idsite={{ env('MATOMO_SITE', 0) }}&amp;rec=1" style="border:0;" alt="" />
+        </noscript>
+        @endif
     </body>
 </html>

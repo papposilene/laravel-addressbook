@@ -61,7 +61,7 @@
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->
         <noscript>
-            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="//pwk.psln.nl/matomo.php?idsite=8&amp;rec=1" style="border:0;" alt="" />
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ env('MATOMO_URL') }}/matomo.php?idsite={{ env('MATOMO_SITE', 0) }}&amp;rec=1" style="border:0;" alt="" />
         </noscript>
         @endif
     </body>
