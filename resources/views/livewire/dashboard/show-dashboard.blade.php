@@ -142,12 +142,12 @@
                     </h3>
                     <div class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
                         @livewire('chart.pie', [
-                        'name' => 'topCategoriesChart',
-                        'api' => route('api.category.index', [
-                        'limit' => 10,
-                        'sortby' => 'has_addresses_count',
-                        'orderby' => 'desc'
-                        ]),
+                            'name' => 'topCategoriesChart',
+                            'api' => route('api.category.index', [
+                                'limit' => 10,
+                                'sortby' => 'has_addresses_count',
+                                'orderby' => 'desc'
+                            ]),
                         ])
                     </div>
                 </div>

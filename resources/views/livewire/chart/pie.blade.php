@@ -56,9 +56,7 @@
                     }
                 });
             }
-
             loadChart();
-
         });
     </script>
 </div>
