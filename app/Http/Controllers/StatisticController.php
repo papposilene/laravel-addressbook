@@ -11,8 +11,8 @@ class StatisticController extends Controller
     /**
      * Update the count of clics then redirect the user to an URL.
      *
-     * @param  uuid  $uuid
-     * @param  \App\Models\Statistic  $statistic
+     * @param string $uuid
+     * @param \App\Models\Statistic $statistic
      * @return \Illuminate\Http\Response
      */
     public function redirectUrl($uuid, Statistic $statistic)

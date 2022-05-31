@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\AddressesExport;
 use App\Models\Address;
 use App\Models\Country;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
 use ZipArchive;
 
@@ -89,5 +90,21 @@ class AddressController extends Controller
         File::delete(glob(storage_path('temp/*.json')));
 
         return response()->download($zipFile);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param string $uuid
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function delete($uuid)
+    {
+        $address = Address::findOrFail($uuid);
+        $address->delete();
+
+        session()->flash('message', 'Address successfully deleted.');
+        return redirect()->to('/addresses');
     }
 }

@@ -85,7 +85,7 @@
                         @ucfirst(__('address.no_website'))
                     </div>
                     @endif
-                    <div class="grow bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center">
+                    <div class="grow bg-slate-200 dark:bg-slate-400 py-2 px-4 hidden sm:inline-flex sm:items-center">
                         &nbsp;
                     </div>
                     <div class="grow-0 bg-slate-200 dark:bg-slate-400 py-2 px-4 inline-flex items-center rounded-r">
@@ -231,6 +231,35 @@
                         </li>
                     @endforeach
                 </ul>
+                <!-- End of suggestions -->
+
+                @can('manage_addresses')
+                <!-- Administration -->
+                <h5 class="bg-gray-300 dark:bg-gray-600 font-semibold text-xl p-3 rounded-t">
+                    @ucfirst(__('app.administration'))
+                </h5>
+                <ul class="bg-gray-200 dark:bg-gray-400 p-3 mb-3 rounded-b">
+                    <li class="flex w-full mb-3">
+                        <a href="{{ route('admin.address.edit', ['uuid' => $address->uuid]) }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                           title="@ucfirst(__('address.edit_one'))">
+                            <svg class="h-6 w-6 mr-2">
+                                <use xlink:href="#edit"></use>
+                            </svg>
+                            @ucfirst(__('address.edit_one'))
+                        </a>
+                    </li>
+                    <li class="flex w-full">
+                        <a href="{{ route('admin.address.delete', ['uuid' => $address->uuid]) }}" class="inline-flex items-center w-full bg-slate-300 p-2 rounded"
+                           title="@ucfirst(__('address.delete_one'))" onclick="return confirm('@ucfirst(__('address.delete_confirm'))');">
+                            <svg class="h-6 w-6 mr-2">
+                                <use xlink:href="#delete"></use>
+                            </svg>
+                            @ucfirst(__('address.delete_one'))
+                        </a>
+                    </li>
+                </ul>
+                <!-- End of administration -->
+                @endcan
             </div>
         </div>
     </div>
