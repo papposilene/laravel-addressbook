@@ -32,6 +32,9 @@ class ListAddress extends Component
         $addresses = Address::where('country_cca3', 'like', '%'.$this->filter.'%')
             ->where(function($query) {
                 $query->where('place_name', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_street', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_postcode', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_city', 'like', '%'.$this->search.'%')
                     ->orWhere('description', 'like', '%'.$this->search.'%');
             })
             ->orderBy('place_name', 'asc')
