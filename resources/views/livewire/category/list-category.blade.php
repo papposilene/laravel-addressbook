@@ -58,16 +58,16 @@
                     <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
                             <tr class="bg-slate-400 dark:bg-slate-600">
-                                <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                                <th class="w-1/12 p-3 hidden lg:table-cell">
+                                <th class="sm:w-1/12 text-center hidden sm:table-cell">@ucfirst(__('app.iteration'))</th>
+                                <th class="sm:w-1/12 text-center hidden sm:table-cell">
                                     <p class="flex flex-row items-center justify-center">
                                         <svg class="h-5 w-5"><use xlink:href="#icons"></use></svg>
                                     </p>
                                 </th>
-                                <th class="w-3/12 p-3 text-center hidden lg:table-cell">@ucfirst(__('category.categories'))</th>
-                                <th class="w-4/12 p-3 text-center">@ucfirst(__('category.name'))</th>
-                                <th class="w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
-                                <th class="w-2/12 p-3 text-center">@ucfirst(__('app.actions'))</th>
+                                <th class="sm:w-3/12 p-3 text-center hidden lg:table-cell">@ucfirst(__('category.categories'))</th>
+                                <th class="w-8/12 sm:w-4/12 p-3 text-center">@ucfirst(__('category.name'))</th>
+                                <th class="w-4/12 sm:w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
+                                <th class="sm:w-2/12 text-center hidden sm:table-cell">@ucfirst(__('app.actions'))</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,7 +96,7 @@
                                 <td class="text-center text-gray-800">
                                     {{ $subcategory->has_addresses_count }}
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center">
                                         @can('manage_categories')
                                         <a href="{{ route('front.category.show', ['slug' => $subcategory->slug]) }}" class="mx-1">

@@ -77,14 +77,19 @@
                 <div class="py-5">
                     <table class="bg-slate-200 dark:bg-slate-500 p-5 table-fixed w-full rounded">
                         <thead>
-                        <tr class="bg-slate-400 dark:bg-slate-600">
-                            <th class="w-1/12 text-center p-3 hidden lg:table-cell">@ucfirst(__('app.iteration'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('country.name_common'))</th>
-                            <th class="w-6/12 text-center">@ucfirst(__('address.name'))</th>
-                            <th class="w-1/12 text-center">@ucfirst(__('address.status'))</th>
-                            <th class="w-2/12 text-center">@ucfirst(__('app.actions'))</th>
-                        </tr>
-                        </thead>
+                            <tr class="bg-slate-400 dark:bg-slate-600">
+                                <th class="sm:w-2/12 text-center hidden sm:table-cell">@ucfirst(__('app.iteration'))</th>
+                                <th class="w-2/12 sm:w-1/12 p-3">
+                                    <p class="flex flex-row items-center justify-center">
+                                        <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw"></i>
+                                        <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
+                                    </p>
+                                </th>
+                                <th class="w-10/12 sm:w-6/12 p-3 text-center">@ucfirst(__('address.name'))</th>
+                                <th class="sm:w-2/12 text-center hidden sm:table-cell">@ucfirst(__('address.status'))</th>
+                                <th class="sm:w-2/12 text-center hidden sm:table-cell">@ucfirst(__('app.actions'))</th>
+                            </tr>
+                            </thead>
                         <tbody>
                         @foreach($addresses as $address)
                             <tr class="border-b border-slate-300 border-dashed h-12 w-12 p-4">
@@ -92,7 +97,7 @@
                                 <td class="break-words text-center text-gray-800">
                                     <a href="{{ route('front.country.show', ['cca3' => $address->belongsToCountry->cca3]) }}">
                                         {{ $address->belongsToCountry->flag }}
-                                        @uppercase($address->belongsToCountry->cca3)
+                                        <span class="hidden sm:contents">@uppercase($address->belongsToCountry->cca3)</span>
                                     </a>
                                 </td>
                                 <td class="break-words">
@@ -100,14 +105,14 @@
                                         {{ $address->place_name }}
                                     </a>
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center">
                                         <i data-fa-symbol="closed" class="fa-solid fa-times fa-fw text-red-500"></i>
                                         <i data-fa-symbol="open" class="fa-solid fa-check fa-fw text-green-500"></i>
                                         <svg class="h-5 w-5"><use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use></svg>
                                     </p>
                                 </td>
-                                <td>
+                                <td class="hidden sm:table-cell">
                                     <p class="flex flex-row h-12 items-center justify-center">
                                         @can('manage_categories')
                                         <a href="{{ route('front.address.show', ['uuid' => $address->uuid]) }}" class="mx-1">
