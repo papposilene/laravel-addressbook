@@ -57,9 +57,9 @@
                                         </svg>
                                     </p>
                                 </th>
-                                <th class="w-2/12 p-3 text-center">@ucfirst(__('country.flag_icon'))</th>
-                                <th class="w-6/12 sm:w-6/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
-                                <th class="w-4/12 sm:w-1/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
+                                <th class="w-2/12 sm:w-2/12 p-3 text-center">@ucfirst(__('country.flag_icon'))</th>
+                                <th class="w-6/12 sm:w-4/12 p-3 text-center">@ucfirst(__('country.name_common'))</th>
+                                <th class="w-4/12 sm:w-2/12 p-3 text-center">@ucfirst(__('address.addresses'))</th>
                                 <th class="sm:w-1/12 text-center hidden sm:table-cell">@ucfirst(__('app.actions'))</th>
                             </tr>
                         </thead>
