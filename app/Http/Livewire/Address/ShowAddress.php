@@ -36,7 +36,8 @@ class ShowAddress extends Component
         $this->address = Address::findOrFail($this->uuid);
         $this->suggestions = Address::where('place_status', true)
             ->where(function($query) {
-                $query->where('region_uuid', $this->address->region_uuid);
+                $query->where('address_city', $this->address->address_city)
+                    ->orWhere('country_cca3', $this->address->country_cca3);
             })
             ->inRandomOrder()
             ->limit(10)
