@@ -54,7 +54,10 @@ return [
 
 
     'create_one' => 'ajouter une adresse',
+    'delete_one' => 'supprimer l’adresse',
+    'delete_confirm' => 'etes-vous sûr de vouloir supprimer cette adresse ?',
     'delete_that' => 'supprimer l’adresse « :what »',
+    'edit_one' => 'modifier l’adresse',
     'edit_that' => 'modifier l’adresse « :what »',
 
 ];
