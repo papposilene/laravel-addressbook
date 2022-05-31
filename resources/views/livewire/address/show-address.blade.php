@@ -35,8 +35,16 @@
                     </div>
                 @endif
 
-                <h3 class="bg-slate-300 dark:bg-slate-500 font-bold text-xl p-3 rounded-t">
+                <h3 class="p-3 bg-slate-300 dark:bg-slate-500 font-bold text-xl rounded-t">
                     {{ $address->place_name }}
+                    <i data-fa-symbol="closed" class="fa-solid fa-times fa-fw text-red-600"></i>
+                    <i data-fa-symbol="open" class="fa-solid fa-check fa-fw text-green-600"></i>
+                    <span class="float-right inline-flex items-center p-1.5 rounded-full {{ ($address->place_status ? 'bg-green-200' : 'bg-red-200') }} text-sm font-bold">
+                        <svg class="h-5 w-5" aria-label="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}"
+                             title="{{ ($address->place_status ? __('address.status_open') : __('address.status_close')) }}">
+                            <use xlink:href="#{{ ($address->place_status ? 'open' : 'closed') }}"></use>
+                        </svg>
+                    </span>
                 </h3>
 
                 <!-- Address -->
@@ -107,11 +115,11 @@
                         </h4>
                     </div>
                     @livewire('interfaces.map', [
-                    'address' => $address,
-                    'classes' => 'w-full',
-                    'key' => $address->uuid,
-                    'styles' => 'height:300px;',
-                    'zoom' => 14,
+                        'address' => $address,
+                        'classes' => 'w-full',
+                        'key' => $address->uuid,
+                        'styles' => 'height:300px;',
+                        'zoom' => 14,
                     ])
                     <div class="flex flex-col lg:flex-row pb-1 text-sm">
                         <i data-fa-symbol="applemap" class="fa-brands fa-apple fa-fw"></i>

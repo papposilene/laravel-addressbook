@@ -56,7 +56,8 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
-            const map = L.map('leaflet-geocoder').setView([25, 0], 2.5);
+            const map = L.map('leaflet-geocoder').setView([{{ $address->address_lat }}, {{ $address->address_lon }}], 14);
+            L.marker([{{ $address->address_lat }}, {{ $address->address_lon }}]).addTo(map);
             L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
             L.Control.geocoder({
                 collapsed: false,
