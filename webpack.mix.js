@@ -30,9 +30,16 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ]);
 
-mix.copy('public/js', 'htdocs/js');
-mix.copy('public/css', 'htdocs/css');
-mix.copy('resources/svg', 'public/img');
+mix.copyDirectory('resources/svg/!(*.DS_Store)', 'public/img');
+mix.copyDirectory('public/css/!(*.DS_Store)', 'htdocs/css');
+mix.copyDirectory('public/js/!(*.DS_Store)', 'htdocs/js');
+mix.copyDirectory('public/img/!(*.DS_Store)', 'htdocs/img');
+
+// mix.copyDirectory([
+//         '../public/js/!(*.DS_Store)',
+//         '../public/css/!(*.DS_Store)',
+//         '../public/img/!(*.DS_Store)',
+//     ], 'htdocs');
 
 if (mix.inProduction()) {
     mix.version();
