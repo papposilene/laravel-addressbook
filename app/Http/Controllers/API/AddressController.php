@@ -40,6 +40,7 @@ class AddressController extends Controller
                     $isCategory = Subcategory::where('slug', $category)->firstOrFail();
                     $query->where('subcategory_slug', $isCategory->slug);
                 })
+                ->where('place_status', 1)
                 ->orderBy($sort, $order)
                 ->limit($limit)
                 ->get();
@@ -47,11 +48,13 @@ class AddressController extends Controller
 
         }
         elseif($limit) {
-            $addresses = Address::orderBy($sort, $order)
+            $addresses = Address::where('place_status', 1)
+                ->orderBy($sort, $order)
                 ->limit($limit)
                 ->get();
         } else {
-            $addresses = Address::all();
+            $addresses = Address::where('place_status', 1)
+                ->get();
         }
 
         return new AddressCollection($addresses);
