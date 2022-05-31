@@ -48,7 +48,7 @@ class EditCategory extends Component implements Forms\Contracts\HasForms
             Forms\Components\Hidden::make('slug'),
             Forms\Components\Select::make('category_slug')
                 ->label(ucfirst(__('category.categories')))
-                ->options(Category::orderBy('slug', 'asc')->pluck('name', 'slug'))
+                ->options(Category::orderBy('translations', 'asc')->pluck('translations', 'slug'))
                 //->searchable() // if uncommented, the selected attribute will not work
                 ->required(),
             Forms\Components\Grid::make([

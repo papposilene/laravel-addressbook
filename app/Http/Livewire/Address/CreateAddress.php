@@ -54,7 +54,7 @@ class CreateAddress extends Component implements Forms\Contracts\HasForms
                         ->required(),
                     Forms\Components\Select::make('subcategory_slug')
                         ->label(ucfirst(__('category.categories')))
-                        ->options(Subcategory::orderBy('slug', 'asc')->pluck('name', 'slug'))
+                        ->options(Subcategory::orderBy('slug', 'asc')->pluck('translations', 'slug'))
                         ->searchable()
                         ->required(),
                 ])->columns(1),

@@ -38,7 +38,7 @@ class CreateCategory extends Component implements Forms\Contracts\HasForms
         return [
             Forms\Components\Select::make('category_slug')
                 ->label(ucfirst(__('category.categories')))
-                ->options(Category::orderBy('slug', 'asc')->pluck('name', 'slug'))
+                ->options(Category::orderBy('translations', 'asc')->pluck('translations', 'slug'))
                 ->searchable()
                 ->required(),
             Forms\Components\Grid::make([
