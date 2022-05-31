@@ -42,7 +42,8 @@ class ListCategory extends Component
                     ->orWhere('descriptions', 'like', '%'.$this->search.'%')
                     ->orWhere('translations', 'like', '%'.$this->search.'%');
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('category_slug', 'asc')
+            ->orderBy('slug', 'asc')
             ->withCount('hasAddresses')
             ->has('hasAddresses', '>=', $this->withAddresses)
             ->paginate(25);
