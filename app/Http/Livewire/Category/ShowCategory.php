@@ -46,7 +46,7 @@ class ShowCategory extends Component
             'subcategory' => $this->subcategory,
             'addresses' => $this->subcategory
                 ->hasAddresses()
-                ->orderBy('created_at', 'desc')
+                ->orderBy('place_name', 'asc')
                 ->paginate(25),
         ]);
     }
