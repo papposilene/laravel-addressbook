@@ -54,6 +54,9 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
     Route::get('/address/export/json', [AddressController::class, 'exportJson'])
         ->middleware('can:manage_addresses')
         ->name('admin.address.export.addressesJson');
+    Route::get('/address/delete/{uuid}', [AddressController::class, 'delete'])
+        ->middleware('can:manage_addresses')
+        ->name('admin.address.delete');
 
     // Categories
     Route::get('/category/create', CreateCategory::class)
