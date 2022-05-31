@@ -20,11 +20,14 @@
             </h5>
             <div class="text-left w-full">
                 <p class="mb-3">
+                    Les adresses référencées sur cette carte sont le fruit de glanage lors de voyage ou de discussions.<br /><br />
+                    Certaines peuvent être périmées ou pire avoir perdu de leur saveur, auquel cas j'en suis le premier désolé.
+                    Le cas échéant, n'hésitez pas à m'en informer que la déception ne se propage pas trop.
+                </p>
+                <p class="mb-3">
                     Créée par <a href="https://dev.psln.nl/" class="hover:text-red-500" target="_blank">Philippe-Alexandre Pierre</a>
-                    en 2022 pour son usage personnel, cette application web de carnet d'adresses personnel a été réalisée avec le concours du
-                    <a href="https://laravel.com/docs/9.x" class="hover:text-red-500" target="_blank">framework Laravel 9</a>, de
-                    <a href="https://laravel-livewire.com/docs/2.x/" class="hover:text-red-500" target="_blank">Livewire 2</a>, et de
-                    <a href="https://tailwindcss.com/" class="hover:text-red-500" target="_blank">TailwindCSS 3</a>.
+                    en 2022 pour son usage personnel, cette application web de carnet d'adresses personnel a été conçu artisanalement
+                    avec les outils Laravel 9, Livewire 2, Tailwind CSS 3, FontAwesome 6 et Leaflet 1.8.
                 </p>
                 <p class="mb-3">
                     Enfin, son code-source complet, sous licence MIT, est <a href="https://github.com/papposilene/laravel-addressbook" class="hover:text-red-500" target="_blank">disponible sur Github</a>.

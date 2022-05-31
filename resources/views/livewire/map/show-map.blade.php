@@ -160,22 +160,18 @@
                                 <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                             </span>
                         </h1>
-
                         <div class="flex-grow">
                             <p class="my-6 text-2xl">
                                 Carnet de bonnes adresses
                             </p>
-
                             <p class="my-2">
                                 Les adresses référencées sur cette carte sont le fruit de glanage lors de voyage ou de discussions.
                             </p>
-
                             <p class="my-2">
                                 Certaines peuvent être périmées ou pire avoir perdu de leur saveur, auquel cas j'en suis le premier désolé.
                                 Le cas échéant, n'hésitez pas à m'en informer que la déception ne se propage pas trop.
                             </p>
                         </div>
-
                         <div class="relative -t-5 b-5 px-1 text-xs text-slate-500 font-mono">
                             Conçu artisanalement avec les outils Laravel 9, Livewire 2, Tailwind CSS 3, FontAwesome 6 et Leaflet 1.8.
                             Le code source de cette application web est <a href="https://github.com/papposilene/laravel-addressbook" target="_blank">disponible sur Github</a>.
