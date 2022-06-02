@@ -20,13 +20,12 @@
         <!-- Matomo -->
         <script type="opt-in" data-type="application/javascript" data-name="matomo">
         var _paq = window._paq = window._paq || [];
-        _paq.push(["setDoNotTrack", true]);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u="{{ env('MATOMO_URL') }}";
+            var u="{{ config('app.matomo_url') }}";
             _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '{{ env('MATOMO_SITE', 0) }}']);
+            _paq.push(['setSiteId', '{{ config('app.matomo_site') }}']);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
@@ -42,7 +41,7 @@
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->
         <noscript>
-            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ env('MATOMO_URL') }}/matomo.php?idsite={{ env('MATOMO_SITE', 0) }}&amp;rec=1" style="border:0;" alt="" />
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ config('app.matomo_url') }}/matomo.php?idsite={{ config('app.matomo_site') }}&amp;rec=1" style="border:0;" alt="" />
         </noscript>
         @endif
     </body>
