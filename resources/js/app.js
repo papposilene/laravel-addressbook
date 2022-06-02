@@ -3,13 +3,7 @@ require('./bootstrap');
 import Alpine from 'alpinejs';
 import FormsAlpinePlugin from '../../vendor/filament/forms/dist/module.esm'
 
-/* TailwindCSS */
-//import resolveConfig from 'tailwindcss/resolveConfig';
-//import tailwindConfig from '../../tailwind.config.js';
-//const tailwind = resolveConfig(tailwindConfig);
-
 /* FontAwesome */
-//require('@fortawesome/fontawesome-free/js/all.js');
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
