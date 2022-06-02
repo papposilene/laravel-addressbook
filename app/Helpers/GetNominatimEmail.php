@@ -5,6 +5,6 @@ if (!function_exists('getNominatimEmail')) {
     {
         // Nominatim's Usage Policy
         // @see https://operations.osmfoundation.org/policies/nominatim/
-        return env('MAIL_FROM_ADDRESS', new \Exception('No MAIL_FROM_ADDRESS key into your .env'));
+        return config('mail.from.address', new \Exception('No mail.from.address in your config.'));
     }
 }
