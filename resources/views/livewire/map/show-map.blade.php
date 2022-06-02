@@ -115,22 +115,26 @@
             <div class="sidebar-tabs">
                 <ul role="tablist">
                     <li>
-                        <a href="{{ route('front.index') }}" class="p-2" role="tab">
+                        <a href="{{ route('front.index') }}" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Home']);">
                             <svg class="h-5 w-5"><use xlink:href="#globe"></use></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="#countries" class="p-2" role="tab">
+                        <a href="#countries" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Countries']);">
                             <svg class="h-5 w-5"><use xlink:href="#countries"></use></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="#categories" class="p-2" role="tab">
+                        <a href="#categories" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Categories']);">
                             <svg class="h-5 w-5"><use xlink:href="#categories"></use></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="#address-informations" class="p-2" role="tab">
+                        <a href="#address-informations" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Address Informations']);">
                             <svg class="h-5 w-5"><use xlink:href="#addresses-info"></use></svg>
                         </a>
                     </li>
@@ -138,12 +142,14 @@
 
                 <ul role="tablist">
                     <li>
-                        <a href="#about" class="p-2" role="tab">
+                        <a href="#about" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'About']);">
                             <svg class="h-5 w-5"><use xlink:href="#about"></use></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('front.dashboard') }}" class="p-2" role="tab">
+                        <a href="{{ route('front.dashboard') }}" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Dashboard']);">
                             <svg class="h-5 w-5"><use xlink:href="#admin"></use></svg>
                         </a>
                     </li>
@@ -322,13 +328,13 @@
     ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
 </ul>
 ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-500">'+this.options.data.wikipedia.summary+'<br /><br />Plus d’informations sur Wikipedia : <a href="'+this.options.data.wikipedia.link+'" target="_blank">'+this.options.data.wikipedia.link+'</a></p>' : ''}
-                            ` )});
+                            `, this.options.data.place_name, this.options.data.country.cca3)});
                         });
                         loader.hide();
                     });
             }
 
-            function setContent(content) {
+            function setContent(content, place_name, country) {
                 const sidebar = L.DomUtil.get('sidebar');
                 const container = L.DomUtil.get('address-informations');
                 const contenter = L.DomUtil.get('address-informations-content');
@@ -346,6 +352,9 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
                 if (L.DomUtil.hasClass(sidebar, 'collapsed')) {
                     L.DomUtil.removeClass(sidebar, 'collapsed');
                 }
+
+                _paq.push(['trackEvent', 'Map', 'Marker', 'Country', country]);
+                _paq.push(['trackEvent', 'Map', 'Marker', 'Address', place_name]);
 
                 return this;
             }
