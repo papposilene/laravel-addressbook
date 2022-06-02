@@ -24,6 +24,7 @@ mix.options({
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
+        require('postcss-nested'),
         require('postcss-url')(
             { url: (asset) => `../img/${asset.pathname?.replace(/^.*(\\|\/|\:)/, '')}` },
         ),
@@ -31,15 +32,6 @@ mix.js('resources/js/app.js', 'public/js')
     ]);
 
 mix.copyDirectory('resources/svg/!(*.DS_Store)', 'public/img');
-mix.copyDirectory('public/css/!(*.DS_Store)', 'htdocs/css');
-mix.copyDirectory('public/js/!(*.DS_Store)', 'htdocs/js');
-mix.copyDirectory('public/img/!(*.DS_Store)', 'htdocs/img');
-
-// mix.copyDirectory([
-//         '../public/js/!(*.DS_Store)',
-//         '../public/css/!(*.DS_Store)',
-//         '../public/img/!(*.DS_Store)',
-//     ], 'htdocs');
 
 if (mix.inProduction()) {
     mix.version();
