@@ -28,4 +28,7 @@ import 'sidebar-v2/js/leaflet-sidebar.js';
 
 Alpine.plugin(FormsAlpinePlugin)
 window.Alpine = Alpine;
+window._paq = [];
 Alpine.start();
+
+
