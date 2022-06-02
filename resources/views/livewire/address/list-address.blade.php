@@ -78,7 +78,7 @@
                                     <span class="hidden sm:contents">@uppercase($address->belongsToCountry->cca3)</span>
                                 </a>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center sm:text-left">
                                 <a href="{{ route('front.category.show', ['slug' => $address->belongsToSubcategory->slug]) }}"
                                    class="{{ $address->belongsToCategory->icon_style }} px-1.5 rounded">
                                     <span class="inline-flex align-middle">
