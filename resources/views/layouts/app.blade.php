@@ -32,7 +32,7 @@
 
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->
-        <script type="opt-in" data-type="application/javascript" data-name="matomo">
+        <script data-type="application/javascript" data-name="matomo">
         var _paq = window._paq = window._paq || [];
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
