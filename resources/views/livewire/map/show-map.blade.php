@@ -318,7 +318,7 @@
                                 .addTo(leafletMap)
                                 .on("click", function (e) { setContent(`
 <p class="mt-3 font-semibold text-lg">${this.options.data.place_name}</p>
-<p class="mt-5 font-sans">${this.options.data.description}</p>
+<p class="mt-5 font-sans">${this.options.data.description ?? '&nbsp;'}</p>
 <ul class="mt-5 px-1 text-sm text-slate-500 font-mono">
     ${this.options.data.details.phone ? '<li class="inline-flex w-full align-middle pb-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#phone"></use></svg><a href="tel:'+this.options.data.details.phone+'">'+this.options.data.details.phone+'</a></li>' : ''}
     ${this.options.data.details.website ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#website"></use></svg><a href="'+this.options.data.details.website+'" target="_blank">'+this.options.data.details.website+'</a></li>' : ''}
