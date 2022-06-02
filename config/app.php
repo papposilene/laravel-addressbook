@@ -60,6 +60,9 @@ return [
 
     'mix_url' => env('MIX_ASSET_URL', 'localhost'),
 
+    'matomo_url' => env('MATOMO_URL', 'localhost'),
+    'matomo_site' => env('MATOMO_SITE', 0),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
