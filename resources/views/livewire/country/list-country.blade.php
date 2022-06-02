@@ -35,7 +35,7 @@
                     <div class="flex flex-wrap">
 
                     </div>
-                    <x-forms.input wire:model="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))"/>
+                    <x-forms.input wire:model.debounce.500ms="search" type="search" class="ml-2" :placeholder="@ucfirst(__('app.search'))"/>
                 </div>
                 <!-- End of navigation and search -->
 
