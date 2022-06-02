@@ -201,7 +201,8 @@
                                 @foreach($continent->hasCountries()->get() as $country)
                                     @php if($country->hasAddresses()->count() === 0) { continue; } @endphp
                                     <div class="flex w-full px-2">
-                                        <a href="{{ route('front.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full">
+                                        <a href="{{ route('front.index', ['country' => $country->cca3]) }}" class="flex flex-row justify-between m-1 w-full"
+                                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Countries', '{{ $country->cca3 }}']);">
                                             <span class="inline-flex align-middle mt-1">
                                                 {{ $country->flag }}
                                                 {{ $country->name_translations['common'] }}
@@ -236,7 +237,8 @@
                             </div>
                             @foreach($category->hasSubcategories()->get() as $subcategory)
                             <div class="flex w-full px-2">
-                                <a href="{{ route('front.index', ['category' => $subcategory->slug]) }}" class="flex flex-row justify-between m-1 w-full">
+                                <a href="{{ route('front.index', ['category' => $subcategory->slug]) }}" class="flex flex-row justify-between m-1 w-full"
+                                   onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Categories', '{{ $subcategory->translations }}']);">
                                     <span class="inline-flex align-middle mt-1">
                                         <i data-fa-symbol="{{ $subcategory->slug }}" class="fa-solid fa-{{ $subcategory->icon_image }} fa-fw"></i>
                                         <svg class="{{ $subcategory->icon_style }} h-5 w-5 mr-2">
