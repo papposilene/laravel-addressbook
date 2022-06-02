@@ -47,6 +47,7 @@ Thumbs.db
 *.dll
 *.exe
 *.o
+*.sh
 *.so
 
 # Packages #
