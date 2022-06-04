@@ -5,7 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Livewire\Address\{ CreateAddress, EditAddress, ListAddress, ShowAddress };
 use App\Http\Livewire\Category\{ CreateCategory, EditCategory, ListCategory, ShowCategory };
 use App\Http\Livewire\City\ShowCity;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\Country\{ ListCountry, ShowCountry };
 use App\Http\Livewire\Dashboard\ShowDashboard;
 use App\Http\Livewire\Map\ShowMap;
@@ -21,12 +20,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Auth::routes([
-    'register' => false,
-    //'reset' => false,
-    //'verify' => false,
-]);
 
 Route::get('/', ShowMap::class)->name('front.index');
 Route::get('/dashboard', ShowDashboard::class)->name('front.dashboard');
