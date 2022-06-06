@@ -57,7 +57,7 @@ module.exports = {
         'bg-violet-900', 'bg-violet-600', 'bg-emerald-900', 'bg-emerald-600',
         'bg-red-900', 'bg-red-400', 'bg-slate-900', 'bg-slate-600',
         'bg-sky-800', 'bg-sky-200', 'bg-stone-700', 'bg-stone-300',
-        'bg-yellow-900', 'bg-yellow-600',
+        'bg-yellow-900', 'bg-yellow-600', 'pt-3',
     ],
 
     plugins: [
