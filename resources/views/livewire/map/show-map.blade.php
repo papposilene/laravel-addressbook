@@ -274,14 +274,7 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
-            @foreach($subcategories as $subcategory)
-            var @camel($subcategory->slug)Marker = L.AwesomeMarkers.icon({
-                extraClasses: 'pt-2',
-                icon: '{{ $subcategory->icon_image }}',
-                markerColor: '{{ $subcategory->belongsToCategory->icon_color }}',
-                prefix: 'fa'
-            });
-            @endforeach
+
 
             const leafletMap = L.map('leaflet-addresses-map', {
                 center: {{ $center }},
@@ -314,7 +307,11 @@
                     .then(response => response.json())
                     .then(json => {
                         json.data.map(function(e) {
-                            L.marker([e.address_lat, e.address_lon], {data: e})
+                            L.marker([e.address_lat, e.address_lon], {data: e, icon: L.icon.fontAwesome({
+                                    iconClasses: 'h-4 w-4 fas fa-' + e.subcategory.icon_image,
+                                    iconYOffset: -7,
+                                    markerColor: e.category.icon_color,
+                                })})
                                 .addTo(leafletMap)
                                 .on("click", function (e) { setContent(`
 <p class="mt-3 font-semibold text-lg">${this.options.data.place_name}</p>
