@@ -15,7 +15,8 @@ import 'chart.js/dist/chart.js';
 /* Leaflet */
 import 'leaflet/dist/leaflet-src.js';
 import 'leaflet-ajax/dist/leaflet.ajax.js';
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
+//import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
+import 'leaflet-fa-markers/L.Icon.FontAwesome.js';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
 import 'leaflet.locatecontrol/src/L.Control.Locate.js';
 import 'sidebar-v2/js/leaflet-sidebar.js';

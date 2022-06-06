@@ -5,7 +5,8 @@
 @import 'tailwindcss/utilities';
 
 @import 'leaflet/dist/leaflet.css';
-@import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+/**@import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';**/
+@import 'leaflet-fa-markers/L.Icon.FontAwesome.css';
 @import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 @import 'leaflet.locatecontrol/src/L.Control.Locate.scss';
 
