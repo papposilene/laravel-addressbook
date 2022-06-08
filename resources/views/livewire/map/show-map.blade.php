@@ -293,6 +293,8 @@
 
                 _paq.push(['trackEvent', 'Map', 'Marker', 'Country', country]);
                 _paq.push(['trackEvent', 'Map', 'Marker', 'Address', place_name]);
+                _paq.push(['trackEvent', 'Map', 'Marker', 'Category', category]);
+                _paq.push(['trackEvent', 'Map', 'Marker', 'Subcategory', subcategory]);
 
                 return this;
             }
@@ -377,6 +379,10 @@
                                 }
                             ).on("click", function (e) { setContent(`
 <h3 class="mt-3 font-semibold text-lg">${this.options.data.name}</h3>
+<p class="mt-5 font-sans py-0.5 px-1.5 rounded-lg ${this.options.data.category.icon_style}">
+    ${this.options.data.category.name} /
+    ${this.options.data.subcategory.name}
+</p>
 <p class="mt-5 font-sans">${this.options.data.description ?? '&nbsp;'}</p>
 <ul class="mt-5 px-1 text-sm text-slate-500 font-mono">
     ${this.options.data.details.phone ? '<li class="inline-flex w-full align-middle pb-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#phone"></use></svg><a href="tel:'+this.options.data.details.phone+'">'+this.options.data.details.phone+'</a></li>' : ''}
@@ -389,7 +395,7 @@
     ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
 </ul>
 ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-500">'+this.options.data.wikipedia.summary+'<br /><br />Plus d’informations sur Wikipedia : <a href="'+this.options.data.wikipedia.link+'" target="_blank">'+this.options.data.wikipedia.link+'</a></p>' : ''}
-                            `, this.options.data.place_name, this.options.data.country.cca3)})
+                            `, this.options.data.place_name, this.options.data.country.cca3, this.options.data.category.name, this.options.data.subcategory.name)})
                         }
                     }).addTo(leafletMap);
                     loader.hide();
