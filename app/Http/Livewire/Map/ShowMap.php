@@ -11,8 +11,9 @@ use Livewire\Component;
 
 class ShowMap extends Component
 {
-    public string $api;
+    public string $apiGeo, $apiSearch;
     public string $center = '[25, 0]';
+    public string $search = '';
     public float $zoom = 2.5;
 
     public function render(Request $request)
@@ -34,14 +35,17 @@ class ShowMap extends Component
             ->get();
         $this->subcategories = Subcategory::all();
 
-        $this->api = route('api.address.index', [
+        $this->apiGeo = route('api.address.geojson', [
             'country' => $cca3,
             'region' => $region,
             'category' => $category
         ]);
 
+        $this->apiSearch = route('api.address.search', ['q' => $this->search]);
+
         return view('livewire.map.show-map', [
-            'api' => $this->api,
+            'apiGeo' => $this->apiGeo,
+            'apiSearch' => $this->apiSearch,
             'center'=> $this->center,
             'countries' => $this->continents,
             'categories' => $this->categories,

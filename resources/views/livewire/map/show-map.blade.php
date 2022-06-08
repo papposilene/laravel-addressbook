@@ -97,7 +97,7 @@
     <i data-fa-symbol="categories" class="fa-solid fa-clipboard-list fa-fw text-white"></i>
     <i data-fa-symbol="countries" class="fa-solid fa-book-atlas fa-fw text-white"></i>
     <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw text-white"></i>
-    <i data-fa-symbol="updates" class="fa-solid fa-highlighter fa-fw text-white"></i>
+    <i data-fa-symbol="search" class="fa-solid fa-search fa-fw text-white"></i>
 
     <i data-fa-symbol="phone" class="fa-solid fa-phone fa-fw text-white"></i>
     <i data-fa-symbol="website" class="fa-solid fa-link fa-fw text-white"></i>
@@ -130,12 +130,12 @@
                             <svg class="h-5 w-5"><use xlink:href="#categories"></use></svg>
                         </a>
                     </li>
-                    <!--li>
-                        <a href="#updates" class="p-2" role="tab"
-                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Last updates']);">
-                            <svg class="h-5 w-5"><use xlink:href="#updates"></use></svg>
+                    <li>
+                        <a href="#search" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Search']);">
+                            <svg class="h-5 w-5"><use xlink:href="#search"></use></svg>
                         </a>
-                    </li-->
+                    </li>
                     <li>
                         <a href="#address-informations" class="p-2" role="tab"
                            onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Address Informations']);">
@@ -190,12 +190,12 @@
                 </div>
 
                 <div class="sidebar-pane" id="countries">
-                    <h1 class="sidebar-header">
+                    <h2 class="sidebar-header">
                         @ucfirst(__('country.countries'))
                         <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
-                    </h1>
+                    </h2>
                     <div class="flex flex-col text-white">
                         @foreach($continents as $continent)
                             <div class="mb-2 px-2 py-2 rounded-lg">
@@ -223,12 +223,12 @@
                 </div>
 
                 <div class="sidebar-pane" id="categories">
-                    <h1 class="sidebar-header">
+                    <h2 class="sidebar-header">
                         @ucfirst(__('category.categories'))
                         <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
-                    </h1>
+                    </h2>
                     <div class="flex flex-col text-white">
                         @foreach($categories as $category)
                         <div class="mb-2 px-2 py-2 rounded-lg" style="background-color: {{ $category->icon_color }};">
@@ -261,13 +261,33 @@
                     </div>
                 </div>
 
+                <div class="sidebar-pane" id="search">
+                    <h2 class="sidebar-header">
+                        @ucfirst(__('app.search'))
+                        <span class="sidebar-close p-2">
+                            <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
+                        </span>
+                    </h2>
+                    <div wire:submit.prevent="search">
+                        <input type="search" wire:model.debounce.500ms="search" placeholder="@ucfirst(__('app.search'))"
+                           class="border-slate-700 text-black focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm w-full" />
+                        <ul class="w-full" wire:ignore>
+                            @isset($addresses)
+                            @foreach($addresses as $address)
+                                <li>{{ $address->place_name }}</li>
+                            @endforeach
+                            @endisset
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="sidebar-pane" id="address-informations">
-                    <h1 class="sidebar-header">
+                    <h2 class="sidebar-header">
                         @ucfirst(__('app.informations'))
                         <span class="sidebar-close p-2">
                             <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
                         </span>
-                    </h1>
+                    </h2>
                     <div class="flex flex-col text-white" id="address-informations-content">
                         <p>Pour obtenir des informations sur une adresse, veuillez en sélectionner une sur la carte.</p>
                     </div>
@@ -278,63 +298,6 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
-            const leafletMap = L.map('leaflet-addresses-map', {
-                center: {{ $center }},
-                zoom: {{ $zoom }},
-                zoomControl: false
-            });
-
-            L.control.zoom({
-                position: 'topright'
-            }).addTo(leafletMap);
-
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(leafletMap);
-
-            L.control.locate({
-                enableHighAccuracy: true,
-                flyTo: true,
-                position: 'topright',
-                strings: {
-                    title: "@ucfirst(__('app.map_whereiam'))"
-                }
-            }).addTo(leafletMap);
-
-            L.control.sidebar('sidebar').addTo(leafletMap);
-
-            async function loadMap() {
-                await fetch('{!! $api !!}')
-                    .then(response => response.json())
-                    .then(json => {
-                        json.data.map(function(e) {
-                            L.marker([e.address_lat, e.address_lon], {data: e, icon: L.icon.fontAwesome({
-                                    iconClasses: 'h-4 w-4 fa-solid fa-location-dot',
-                                    iconYOffset: -7,
-                                    markerColor: e.category.icon_color,
-                                })})
-                                .addTo(leafletMap)
-                                .on("click", function (e) { setContent(`
-<p class="mt-3 font-semibold text-lg">${this.options.data.place_name}</p>
-<p class="mt-5 font-sans">${this.options.data.description ?? '&nbsp;'}</p>
-<ul class="mt-5 px-1 text-sm text-slate-500 font-mono">
-    ${this.options.data.details.phone ? '<li class="inline-flex w-full align-middle pb-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#phone"></use></svg><a href="tel:'+this.options.data.details.phone+'">'+this.options.data.details.phone+'</a></li>' : ''}
-    ${this.options.data.details.website ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#website"></use></svg><a href="'+this.options.data.details.website+'" target="_blank">'+this.options.data.details.website+'</a></li>' : ''}
-    <li class="inline-flex w-full align-middle py-1">
-        <svg class="h-4 w-4 mr-2"><use xlink:href="#address"></use></svg>
-        ${this.options.data.address_number ?? ''} ${this.options.data.address_street ?? ''}<br />
-        ${this.options.data.address_postcode ?? ''} ${this.options.data.address_city}
-    </li>
-    ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
-</ul>
-${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-500">'+this.options.data.wikipedia.summary+'<br /><br />Plus d’informations sur Wikipedia : <a href="'+this.options.data.wikipedia.link+'" target="_blank">'+this.options.data.wikipedia.link+'</a></p>' : ''}
-                            `, this.options.data.place_name, this.options.data.country.cca3)});
-                        });
-                        loader.hide();
-                    });
-            }
-
             function setContent(content, place_name, country) {
                 const sidebar = L.DomUtil.get('sidebar');
                 const container = L.DomUtil.get('address-informations');
@@ -360,10 +323,33 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
                 return this;
             }
 
+            const leafletMap = L.map('leaflet-addresses-map', {
+                center: {{ $center }},
+                zoom: {{ $zoom }},
+                zoomControl: false
+            });
+
+            L.control.zoom({
+                position: 'topright'
+            }).addTo(leafletMap);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(leafletMap);
+
+            L.control.locate({
+                enableHighAccuracy: true,
+                flyTo: true,
+                position: 'topright',
+                strings: {
+                    title: "@ucfirst(__('app.map_whereiam'))"
+                }
+            }).addTo(leafletMap);
+
+            L.control.sidebar('sidebar').addTo(leafletMap);
             L.Control.Loader = L.Control.extend({
                 options: {
                 },
-
                 onAdd: function (map) {
                     this.container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
                     this.loaderContainer = L.DomUtil.create('div', 'leaflet-loader-container', this._map._container);
@@ -400,7 +386,40 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
 
             const loader = L.control.loader().addTo(leafletMap);
 
-            loadMap();
-        })
+            fetch('{!! $apiGeo !!}')
+                .then(res => res.json())
+                .then(data => {
+                    L.geoJSON(data, {
+                        pointToLayer: function (feature) {
+                            return L.marker(
+                                [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
+                                {
+                                    data: feature.properties,
+                                    icon: L.icon.fontAwesome({
+                                        iconClasses: 'h-4 w-4 fa-solid fa-location-dot',
+                                        iconYOffset: -7,
+                                        markerColor: feature.properties.category.icon_color,
+                                    })
+                                }
+                            ).on("click", function (e) { setContent(`
+<h3 class="mt-3 font-semibold text-lg">${this.options.data.name}</h3>
+<p class="mt-5 font-sans">${this.options.data.description ?? '&nbsp;'}</p>
+<ul class="mt-5 px-1 text-sm text-slate-500 font-mono">
+    ${this.options.data.details.phone ? '<li class="inline-flex w-full align-middle pb-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#phone"></use></svg><a href="tel:'+this.options.data.details.phone+'">'+this.options.data.details.phone+'</a></li>' : ''}
+    ${this.options.data.details.website ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#website"></use></svg><a href="'+this.options.data.details.website+'" target="_blank">'+this.options.data.details.website+'</a></li>' : ''}
+    <li class="inline-flex w-full align-middle py-1">
+        <svg class="h-4 w-4 mr-2"><use xlink:href="#address"></use></svg>
+        ${this.options.data.address_number ?? ''} ${this.options.data.address_street ?? ''}<br />
+        ${this.options.data.address_postcode ?? ''} ${this.options.data.address_city}
+    </li>
+    ${this.options.data.details.opening_hours ? '<li class="inline-flex w-full align-middle py-1"><svg class="h-4 w-4 mr-2"><use xlink:href="#hours"></use></svg>'+this.options.data.details.opening_hours+'</li>' : ''}
+</ul>
+${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-500">'+this.options.data.wikipedia.summary+'<br /><br />Plus d’informations sur Wikipedia : <a href="'+this.options.data.wikipedia.link+'" target="_blank">'+this.options.data.wikipedia.link+'</a></p>' : ''}
+                            `, this.options.data.place_name, this.options.data.country.cca3)})
+                        }
+                    }).addTo(leafletMap);
+                    loader.hide();
+                });
+        });
     </script>
 </div>
