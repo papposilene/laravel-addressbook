@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AddressCollection;
 use App\Http\Resources\AddressResource;
 use App\Models\Address;
+use App\Models\Country;
 use App\Models\Region;
 use App\Models\Subcategory;
+use App\Models\Wikidata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AddressController extends Controller
 {
@@ -105,6 +108,10 @@ class AddressController extends Controller
         $features = [];
 
         foreach($json as $key => $value) {
+            $country = Country::findByCca3($value->country_cca3);
+            $subcategory = Subcategory::findBySlug($value->subcategory_slug);
+            $wikipedia = Wikidata::findByWikidata($value->details->wikidata);
+
             $features[] = [
                 'type' => 'Feature',
                 'geometry' => [
@@ -121,7 +128,33 @@ class AddressController extends Controller
                     'address_street' => $value->address_street,
                     'address_postcode' => $value->address_postcode,
                     'address_city' => $value->address_city,
+                    'country' => [
+                        'cca2' => $country->cca2,
+                        'cca3' => $country->cca3,
+                        'names' => $country->name_translations,
+                    ],
+                    'category' => [
+                        'name' => $subcategory->belongsToCategory->name,
+                        'slug' => $subcategory->belongsToCategory->slug,
+                        'camelSlug' => Str::camel($subcategory->belongsToCategory->slug),
+                        'icon_image' => $subcategory->belongsToCategory->icon_image,
+                        'icon_style' => $subcategory->belongsToCategory->icon_style,
+                        'icon_color' => $subcategory->belongsToCategory->icon_color,
+                    ],
+                    'subcategory' => [
+                        'name' => $subcategory->name,
+                        'slug' => $subcategory->slug,
+                        'camelSlug' => Str::camel($subcategory->slug),
+                        'icon_image' => $subcategory->icon_image,
+                        'icon_style' => $subcategory->icon_style,
+                        'icon_color' => $subcategory->icon_color,
+                    ],
+                    'details' => $value->details,
                     'description' => $value->description,
+                    'wikipedia' => [
+                        'link' => $wikipedia->wikipedia_link ?? null,
+                        'summary' => $wikipedia->wikipedia_text ?? null,
+                    ],
                 ],
             ];
         };
@@ -129,6 +162,38 @@ class AddressController extends Controller
         $allfeatures = array('type' => 'FeatureCollection', 'features' => $features);
         return json_encode($allfeatures, JSON_PRETTY_PRINT);
     }
+
+    /**
+     * Display a listing of the searched resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return AddressCollection
+     */
+    public string $search = '';
+    public function search(Request $request)
+    {
+        $this->search = $request->get('q', null);
+
+        if($this->search) {
+            $addresses = Address::where(function($query) {
+                $query->where('place_name', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_street', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_postcode', 'like', '%'.$this->search.'%')
+                    ->orWhere('address_city', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%');
+                })
+                ->limit(10)
+                ->get();
+
+            return new AddressCollection($addresses);
+        }
+
+        return json_encode([
+            'message' => 'Pas de recherche initiée',
+            'code' => 200
+        ]);
+    }
+
 
     /**
      * Display the specified resource.
