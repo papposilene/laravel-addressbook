@@ -172,7 +172,7 @@ class AddressController extends Controller
     public string $search = '';
     public function search(Request $request)
     {
-        $this->search = $request->get('q', null);
+        $this->search = $request->get('q', '');
 
         if($this->search) {
             $addresses = Address::where(function($query) {
