@@ -131,12 +131,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#search" class="p-2" role="tab"
-                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Search']);">
-                            <svg class="h-5 w-5"><use xlink:href="#search"></use></svg>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#address-informations" class="p-2" role="tab"
                            onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Address Informations']);">
                             <svg class="h-5 w-5"><use xlink:href="#addresses-info"></use></svg>
@@ -258,26 +252,6 @@
                             @endforeach
                         </div>
                         @endforeach
-                    </div>
-                </div>
-
-                <div class="sidebar-pane" id="search">
-                    <h2 class="sidebar-header">
-                        @ucfirst(__('app.search'))
-                        <span class="sidebar-close p-2">
-                            <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
-                        </span>
-                    </h2>
-                    <div wire:submit.prevent="search">
-                        <input type="search" wire:model.debounce.500ms="search" placeholder="@ucfirst(__('app.search'))"
-                           class="border-slate-700 text-black focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm w-full" />
-                        <ul class="w-full" wire:ignore>
-                            @isset($addresses)
-                            @foreach($addresses as $address)
-                                <li>{{ $address->place_name }}</li>
-                            @endforeach
-                            @endisset
-                        </ul>
                     </div>
                 </div>
 
