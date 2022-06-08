@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('1.1')->group(function () {
     // Addresses
     Route::get('/addresses', [AddressController::class, 'index'])->name('api.address.index');
+    Route::get('/addresses/geojson', [AddressController::class, 'geojson'])->name('api.address.geojson');
     Route::get('/addresses/{uuid}', [AddressController::class, 'show'])->name('api.address.show');
 
     // Categories
