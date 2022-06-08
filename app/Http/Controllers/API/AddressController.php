@@ -169,10 +169,10 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return AddressCollection
      */
-    public string $search = '';
+    public string|null $search = '';
     public function search(Request $request)
     {
-        $this->search = $request->get('q', '');
+        $this->search = $request->get('q');
 
         if($this->search) {
             $addresses = Address::where(function($query) {
