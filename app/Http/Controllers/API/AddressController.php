@@ -134,7 +134,7 @@ class AddressController extends Controller
                         'names' => $country->name_translations,
                     ],
                     'category' => [
-                        'name' => $subcategory->belongsToCategory->name,
+                        'name' => $subcategory->belongsToCategory->translations,
                         'slug' => $subcategory->belongsToCategory->slug,
                         'camelSlug' => Str::camel($subcategory->belongsToCategory->slug),
                         'icon_image' => $subcategory->belongsToCategory->icon_image,
@@ -142,7 +142,7 @@ class AddressController extends Controller
                         'icon_color' => $subcategory->belongsToCategory->icon_color,
                     ],
                     'subcategory' => [
-                        'name' => $subcategory->name,
+                        'name' => $subcategory->translations,
                         'slug' => $subcategory->slug,
                         'camelSlug' => Str::camel($subcategory->slug),
                         'icon_image' => $subcategory->icon_image,
