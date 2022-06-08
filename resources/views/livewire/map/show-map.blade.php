@@ -5,10 +5,8 @@
         .leaflet-loader-container {
             height: 100%;
             width: 100%;
-
             position: absolute;
             z-index: 1000;
-
             cursor: auto;
         }
         .leaflet-loader-container .leaflet-loader-background {
@@ -21,7 +19,6 @@
         .leaflet-loader {
             width:57.6px;
             margin: 30em auto;
-
         }
 
         @-webkit-keyframes hideLoader {
@@ -93,13 +90,14 @@
     </style>
 
     <!-- @see https://fontawesome.com/docs/web/add-icons/svg-symbols -->
-    <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw text-white"></i>
-    <i data-fa-symbol="categories" class="fa-solid fa-clipboard-list fa-fw text-white"></i>
-    <i data-fa-symbol="countries" class="fa-solid fa-book-atlas fa-fw text-white"></i>
-    <i data-fa-symbol="addresses-info" class="fa-solid fa-circle-info fa-fw text-white"></i>
     <i data-fa-symbol="about" class="fa-solid fa-address-card fa-fw text-white"></i>
+    <i data-fa-symbol="addresses-info" class="fa-solid fa-circle-info fa-fw text-white"></i>
     <i data-fa-symbol="admin" class="fa-solid fa-gear fa-fw text-white"></i>
     <i data-fa-symbol="caret" class="fa-solid fa-caret-left fa-fw text-white"></i>
+    <i data-fa-symbol="categories" class="fa-solid fa-clipboard-list fa-fw text-white"></i>
+    <i data-fa-symbol="countries" class="fa-solid fa-book-atlas fa-fw text-white"></i>
+    <i data-fa-symbol="globe" class="fa-solid fa-globe fa-fw text-white"></i>
+    <i data-fa-symbol="updates" class="fa-solid fa-highlighter fa-fw text-white"></i>
 
     <i data-fa-symbol="phone" class="fa-solid fa-phone fa-fw text-white"></i>
     <i data-fa-symbol="website" class="fa-solid fa-link fa-fw text-white"></i>
@@ -132,6 +130,12 @@
                             <svg class="h-5 w-5"><use xlink:href="#categories"></use></svg>
                         </a>
                     </li>
+                    <!--li>
+                        <a href="#updates" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Last updates']);">
+                            <svg class="h-5 w-5"><use xlink:href="#updates"></use></svg>
+                        </a>
+                    </li-->
                     <li>
                         <a href="#address-informations" class="p-2" role="tab"
                            onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Address Informations']);">
@@ -274,8 +278,6 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
-
-
             const leafletMap = L.map('leaflet-addresses-map', {
                 center: {{ $center }},
                 zoom: {{ $zoom }},
@@ -308,7 +310,7 @@
                     .then(json => {
                         json.data.map(function(e) {
                             L.marker([e.address_lat, e.address_lon], {data: e, icon: L.icon.fontAwesome({
-                                    iconClasses: 'h-4 w-4 fas fa-' + e.subcategory.icon_image,
+                                    iconClasses: 'h-4 w-4 fa-solid fa-location-dot',
                                     iconYOffset: -7,
                                     markerColor: e.category.icon_color,
                                 })})
