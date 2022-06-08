@@ -272,7 +272,7 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
-            function setContent(content, place_name, country) {
+            function setContent(content, place_name, country, category, subcategory) {
                 const sidebar = L.DomUtil.get('sidebar');
                 const container = L.DomUtil.get('address-informations');
                 const contenter = L.DomUtil.get('address-informations-content');
