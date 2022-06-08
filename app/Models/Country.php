@@ -203,24 +203,6 @@ class Country extends Model
     }
 
     /**
-     * Find a country by its name.
-     *
-     * @param string $name
-     *
-     * @return Country
-     */
-    public static function findByName(string $name): Country
-    {
-        $country = static::find($name);
-
-        if (!$country) {
-            throw CountryDoesNotExist::named($name);
-        }
-
-        return $country;
-    }
-
-    /**
      * Find a country by its id.
      *
      * @param int $id
@@ -229,7 +211,7 @@ class Country extends Model
      */
     public static function findById(int $id): Country
     {
-        $country = static::findById($id);
+        $country = static::where('id', $id)->first();
 
         if (!$country) {
             throw CountryDoesNotExist::withId($id);
@@ -247,7 +229,7 @@ class Country extends Model
      */
     public static function findByCca2(string $cca2): Country
     {
-        $country = static::findByCca2($cca2);
+        $country = static::where('cca2', $cca2)->first();
 
         if (!$country) {
             throw CountryDoesNotExist::withCca2($cca2);
@@ -265,7 +247,7 @@ class Country extends Model
      */
     public static function findByCca3(string $cca3): Country
     {
-        $country = static::findByCca3($cca3);
+        $country = static::where('cca3', $cca3)->first();
 
         if (!$country) {
             throw CountryDoesNotExist::withCca3($cca3);

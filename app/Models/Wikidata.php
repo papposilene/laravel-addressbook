@@ -103,4 +103,21 @@ class Wikidata extends Model
         });
     }
 
+    /**
+     * Find a Wikipedia article by its wikidata id.
+     *
+     * @param string|null $wikidata
+     * @return Wikidata|null
+     */
+    public static function findByWikidata(?string $wikidata): ?Wikidata
+    {
+        $wikipedia = self::where('wikidata_id', $wikidata)->first();
+
+        if (!$wikipedia) {
+            return null;
+        }
+
+        return $wikipedia;
+    }
+
 }
