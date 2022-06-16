@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AddressCollection;
 use App\Http\Resources\AddressResource;
 use App\Models\Address;
+use App\Models\City;
 use App\Models\Country;
-use App\Models\Region;
 use App\Models\Subcategory;
 use App\Models\Wikidata;
 use Illuminate\Http\Request;
@@ -28,16 +28,16 @@ class AddressController extends Controller
         $order = $request->get('orderby', 'asc');
 
         $country = $request->get('country', null);
-        $region = $request->get('region', null);
+        $city = $request->get('city', null);
         $category = $request->get('category', null);
 
-        if($country || $region || $category) {
+        if($country || $city || $category) {
             $addresses = Address::when($country, function ($query, $country) {
                     $query->where('country_cca3', $country);
                 })
-                ->when($region, function ($query, $region) {
-                    $isRegion = Region::where('slug', $region)->firstOrFail();
-                    $query->where('region_uuid', $isRegion->uuid);
+                ->when($city, function ($query, $city) {
+                    $isCity = City::where('slug', $city)->firstOrFail();
+                    $query->where('city_uuid', $isCity->uuid);
                 })
                 ->when($category, function ($query, $category) {
                     $isCategory = Subcategory::where('slug', $category)->firstOrFail();
@@ -74,16 +74,16 @@ class AddressController extends Controller
         $order = $request->get('orderby', 'asc');
 
         $country = $request->get('country', null);
-        $region = $request->get('region', null);
+        $city = $request->get('city', null);
         $category = $request->get('category', null);
 
-        if($country || $region || $category) {
+        if($country || $city || $category) {
             $addresses = Address::when($country, function ($query, $country) {
                 $query->where('country_cca3', $country);
             })
-                ->when($region, function ($query, $region) {
-                    $isRegion = Region::where('slug', $region)->firstOrFail();
-                    $query->where('region_uuid', $isRegion->uuid);
+                ->when($city, function ($query, $city) {
+                    $isCity = City::where('slug', $city)->firstOrFail();
+                    $query->where('city_uuid', $isCity->uuid);
                 })
                 ->when($category, function ($query, $category) {
                     $isCategory = Subcategory::where('slug', $category)->firstOrFail();
