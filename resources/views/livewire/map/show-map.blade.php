@@ -108,7 +108,7 @@
     <div class="flex flex-col w-full">
         <div id="leaflet-addresses-map" class="h-screen w-full" wire:ignore></div>
 
-        <div id="sidebar" class="sidebar collapsed font-sans bg-black text-white z-10000">
+        <div id="sidebar" class="sidebar collapsed font-sans bg-black text-white z-10000" wire:ignore>
             <!-- Nav tabs -->
             <div class="sidebar-tabs">
                 <ul role="tablist">
