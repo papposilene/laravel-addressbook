@@ -21,13 +21,13 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
     public $city_uuid, $region_uuid, $cca3, $category_slug, $osm_id;
     public $description, $details;
 
-    public function mount(string $uuid): void
-    {
-        $this->address = Address::findOrFail($uuid);
+        public function mount(string $uuid): void
+        {
+            $this->address = Address::findOrFail($uuid);
 
-        $this->form->fill([
-            'uuid' => $this->address->uuid,
-            'place_name' => $this->address->place_name,
+            $this->form->fill([
+                'uuid' => $this->address->uuid,
+                'place_name' => $this->address->place_name,
             'place_status' => $this->address->place_status,
             'address_number' => $this->address->address_number,
             'address_street' => $this->address->address_street,

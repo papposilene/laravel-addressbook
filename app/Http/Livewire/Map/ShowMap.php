@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Map;
 
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Continent;
 use App\Models\Country;
 use App\Models\Subcategory;
@@ -14,7 +15,7 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    public string $category = '', $city = '', $country = '';
+    public $category, $city, $country;
     public string $apiGeo, $apiSearch;
     public string $center = '[25, 0]';
     public string $search = '';
@@ -44,6 +45,25 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
         ];
     }
 
+    public function mount(Request $request): void
+    {
+        $requestedCategory = $request->query('category');
+        $requestedCity = $request->query('city');
+        $requestedCountry = $request->query('country');
+
+        if($requestedCategory || $requestedCity || $requestedCountry) {
+            $this->category = Subcategory::findOrFail($requestedCategory);
+            //$this->city = City::findOrFail($requestedCity);
+            $this->country = Country::findByCca3($requestedCountry);
+
+            $this->form->fill([
+                'category' => $this->category->slug,
+                //'city' => $this->address->uuid,
+                'country' => $this->country->cca3,
+            ]);
+        }
+    }
+
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -60,14 +80,14 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
 
     public function render(Request $request)
     {
-        $cca3 = $request->get('country', null);
-        $city = $request->get('city', null);
-        $category = $request->get('category', null);
+        $requestedCategory = $request->get('category', null);
+        $requestedCity = $request->get('city', null);
+        $requestedCountry = $request->get('country', null);
 
-        $hasRequest = $cca3 ?? $region ?? $category;
+        $hasRequest = $requestedCategory ?? $requestedCity ?? $requestedCountry;
 
-        if ($cca3) {
-            $country = Country::where('cca3', $cca3)->firstOrFail();
+        if ($requestedCountry) {
+            $country = Country::where('cca3', $requestedCountry)->firstOrFail();
             $this->center = '[' . $country->lon . ', ' . $country->lat . ']';
             $this->zoom = 6;
         }
@@ -80,9 +100,9 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
         $this->subcategories = Subcategory::all();
 
         $this->apiGeo = route('api.address.geojson', [
-            'country' => $cca3,
-            'city' => $city,
-            'category' => $category
+            'category' => $requestedCategory,
+            'city' => $requestedCity,
+            'country' => $requestedCountry,
         ]);
 
         $this->apiSearch = route('api.address.search', ['q' => $this->search]);
