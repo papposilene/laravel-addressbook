@@ -51,17 +51,23 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
         $requestedCity = $request->query('city');
         $requestedCountry = $request->query('country');
 
-        if($requestedCategory || $requestedCity || $requestedCountry) {
+        if ($requestedCategory) {
             $this->category = Subcategory::findOrFail($requestedCategory);
-            //$this->city = City::findOrFail($requestedCity);
-            $this->country = Country::findByCca3($requestedCountry);
-
-            $this->form->fill([
-                'category' => $this->category->slug,
-                //'city' => $this->address->uuid,
-                'country' => $this->country->cca3,
-            ]);
         }
+
+        if ($requestedCity) {
+            $this->city = City::findOrFail($requestedCity);
+        }
+
+        if ($requestedCountry) {
+            $this->country = Country::findByCca3($requestedCountry);
+        }
+
+        $this->form->fill([
+            'category' => $this->category->slug ?? null,
+            //'city' => $this->address->uuid ?? null,
+            'country' => $this->country->cca3 ?? null,
+        ]);
     }
 
     /**
