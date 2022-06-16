@@ -119,6 +119,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#addresses-lookup" class="p-2" role="tab"
+                           onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Lookup']);">
+                            <svg class="h-5 w-5"><use xlink:href="#search"></use></svg>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#countries" class="p-2" role="tab"
                            onclick="_paq.push(['trackEvent', 'Map', 'Sidebar', 'Menu', 'Countries']);">
                             <svg class="h-5 w-5"><use xlink:href="#countries"></use></svg>
@@ -180,6 +186,26 @@
                             Conçu artisanalement avec les outils Laravel 9, Livewire 2, Tailwind CSS 3, FontAwesome 6 et Leaflet 1.8.
                             Le code source de cette application web est <a href="https://github.com/papposilene/laravel-addressbook" target="_blank">disponible sur Github</a>.
                         </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-pane" id="addresses-lookup">
+                    <h2 class="sidebar-header">
+                        @ucfirst(__('app.search'))
+                        <span class="sidebar-close p-2">
+                            <svg class="h-5 w-5"><use xlink:href="#caret"></use></svg>
+                        </span>
+                    </h2>
+                    <div class="flex flex-col text-white">
+                        <form wire:submit.prevent="submit">
+                            {{ $this->form }}
+
+                            <div class="flex flex-inline justify-end space-x-4 pt-5">
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    @ucfirst(__('app.search'))
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -272,6 +298,7 @@
 
     <script>
         document.addEventListener('livewire:load', function () {
+            @if($hasRequest)
             function setContent(content, place_name, country, category, subcategory) {
                 const sidebar = L.DomUtil.get('sidebar');
                 const container = L.DomUtil.get('address-informations');
@@ -298,6 +325,7 @@
 
                 return this;
             }
+            @endif
 
             const leafletMap = L.map('leaflet-addresses-map', {
                 center: {{ $center }},
@@ -323,6 +351,7 @@
             }).addTo(leafletMap);
 
             L.control.sidebar('sidebar').addTo(leafletMap);
+            @if($hasRequest)
             L.Control.Loader = L.Control.extend({
                 options: {
                 },
@@ -400,6 +429,17 @@ ${this.options.data.wikipedia.summary ? '<p class="w-full pt-1 pr-3 text-slate-5
                     }).addTo(leafletMap);
                     loader.hide();
                 });
+            @endif
+
+            @if(!$hasRequest)
+            const sidebar = L.DomUtil.get('sidebar');
+            const container = L.DomUtil.get('addresses-lookup');
+
+            L.DomUtil.addClass(container, 'active');
+            if (L.DomUtil.hasClass(sidebar, 'collapsed')) {
+                L.DomUtil.removeClass(sidebar, 'collapsed');
+            }
+            @endif
         });
     </script>
 </div>
