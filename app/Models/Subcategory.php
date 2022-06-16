@@ -35,7 +35,7 @@ class Subcategory extends Model
      * @var array
      */
     protected $casts = [
-        //'uuid' => 'uuid',
+        //'uuid' => 'string',
     ];
 
     /**
