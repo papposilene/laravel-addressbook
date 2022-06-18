@@ -15,7 +15,7 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    public $category, $city, $country;
+    public $category, $city, $country, $subcategory;
     public string $apiGeo, $apiSearch;
     public string $center = '[25, 0]';
     public string $search = '';
@@ -58,9 +58,15 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
         $requestedCategory = $request->query('category');
         $requestedCity = $request->query('city');
         $requestedCountry = $request->query('country');
+        $requestedSubcategory = $request->query('subcategory');
+
+        if ($requestedSubcategory) {
+            $requestedCategory = null;
+            $this->subcategory = Subcategory::findBySlug($requestedSubcategory);
+        }
 
         if ($requestedCategory) {
-            $this->category = Subcategory::findOrFail($requestedCategory);
+            $this->category = category::findBySlug($requestedCategory);
         }
 
         if ($requestedCity) {
@@ -75,6 +81,7 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
             'category' => $this->category->slug ?? null,
             //'city' => $this->address->uuid ?? null,
             'country' => $this->country->cca3 ?? null,
+            'subcategory' => $this->subcategory->slug ?? null,
         ]);
     }
 
@@ -89,6 +96,7 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
             'category' => $search['category'] ?? null,
             'city' => $search['city'] ?? null,
             'country' => $search['country'] ?? null,
+            'subcategory' => $search['subcategory'] ?? null,
         ]);
     }
 
@@ -97,13 +105,18 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
         $requestedCategory = $request->get('category', null);
         $requestedCity = $request->get('city', null);
         $requestedCountry = $request->get('country', null);
+        $requestedSubcategory = $request->query('subcategory');
 
-        $hasRequest = $requestedCategory ?? $requestedCity ?? $requestedCountry;
+        $hasRequest = $requestedSubcategory ?? $requestedCategory ?? $requestedCity ?? $requestedCountry;
 
         if ($requestedCountry) {
             $country = Country::where('cca3', $requestedCountry)->firstOrFail();
             $this->center = '[' . $country->lon . ', ' . $country->lat . ']';
             $this->zoom = 6;
+        }
+
+        if ($requestedSubcategory) {
+            $requestedCategory = null;
         }
 
         $this->categories = Category::withCount('hasAddresses')
@@ -117,6 +130,7 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
             'category' => $requestedCategory,
             'city' => $requestedCity,
             'country' => $requestedCountry,
+            'subcategory' => $requestedSubcategory,
         ]);
 
         $this->apiSearch = route('api.address.search', ['q' => $this->search]);
