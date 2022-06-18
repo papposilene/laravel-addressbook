@@ -35,6 +35,10 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
                         ->where('has_addresses_count', '>', 0)
                         ->pluck('name_eng_common', 'cca3')
                 )
+                ->placeholder(ucfirst(__('app.list_of', [
+                    'pronoun' => __('country.pronoun_pl'),
+                    'what' => __('country.countries')
+                ])))
                 ->searchable(),
             Forms\Components\Select::make('category')
                 ->label(ucfirst(__('category.categories')))
@@ -42,6 +46,10 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
                     Category::orderBy('translations->'.$lang)
                         ->pluck('translations', 'slug')
                 )
+                ->placeholder(ucfirst(__('app.list_of', [
+                    'pronoun' => __('category.pronoun_pl'),
+                    'what' => __('category.categories')
+                ])))
                 ->searchable(),
             Forms\Components\Select::make('subcategory')
                 ->label(ucfirst(__('category.subcategories')))
@@ -49,6 +57,10 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
                     Subcategory::orderBy('translations->'.$lang)
                         ->pluck('translations', 'slug')
                 )
+                ->placeholder(ucfirst(__('app.list_of', [
+                    'pronoun' => __('category.pronoun_pl'),
+                    'what' => __('category.subcategories')
+                ])))
                 ->searchable(),
         ];
     }
