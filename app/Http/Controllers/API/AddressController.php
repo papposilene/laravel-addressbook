@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AddressCollection;
 use App\Http\Resources\AddressResource;
 use App\Models\Address;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Subcategory;
@@ -73,11 +74,12 @@ class AddressController extends Controller
         $sort = $request->get('sortby', 'place_name');
         $order = $request->get('orderby', 'asc');
 
-        $country = $request->get('country', null);
-        $city = $request->get('city', null);
         $category = $request->get('category', null);
+        $city = $request->get('city', null);
+        $country = $request->get('country', null);
+        $subcategory = $request->get('subcategory', null);
 
-        if($country || $city || $category) {
+        if($country || $city || $category || $subcategory) {
             $addresses = Address::when($country, function ($query, $country) {
                 $query->where('country_cca3', $country);
             })
@@ -85,9 +87,13 @@ class AddressController extends Controller
                     $isCity = City::where('slug', $city)->firstOrFail();
                     $query->where('city_uuid', $isCity->uuid);
                 })
+                ->when($subcategory, function ($query, $subcategory) {
+                    $isSubcategory = Subcategory::where('slug', $subcategory)->firstOrFail();
+                    $query->where('subcategory_slug', $isSubcategory->slug);
+                })
                 ->when($category, function ($query, $category) {
-                    $isCategory = Subcategory::where('slug', $category)->firstOrFail();
-                    $query->where('subcategory_slug', $isCategory->slug);
+                    $isCategory = Subcategory::where('category_slug', $category)->pluck('slug');
+                    $query->whereIn('subcategory_slug', $isCategory->toArray());
                 })
                 ->where('place_status', 1)
                 ->orderBy($sort, $order)
