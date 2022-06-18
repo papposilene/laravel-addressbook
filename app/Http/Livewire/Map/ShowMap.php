@@ -23,6 +23,8 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
 
     protected function getFormSchema(): array
     {
+        $lang = app()->getLocale();
+
         return [
             Forms\Components\Select::make('country')
                 ->label(ucfirst(__('country.countries')))
@@ -33,12 +35,18 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
                         ->where('has_addresses_count', '>', 0)
                         ->pluck('name_eng_common', 'cca3')
                 )
-                ->autofocus()
                 ->searchable(),
             Forms\Components\Select::make('category')
                 ->label(ucfirst(__('category.categories')))
                 ->options(
-                    Subcategory::orderBy('slug', 'asc')
+                    Category::orderBy('translations->'.$lang)
+                        ->pluck('translations', 'slug')
+                )
+                ->searchable(),
+            Forms\Components\Select::make('subcategory')
+                ->label(ucfirst(__('category.subcategories')))
+                ->options(
+                    Subcategory::orderBy('translations->'.$lang)
                         ->pluck('translations', 'slug')
                 )
                 ->searchable(),

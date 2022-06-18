@@ -49,6 +49,8 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
 
     protected function getFormSchema(): array
     {
+        $lang = app()->getLocale();
+
         return [
             Forms\Components\Hidden::make('uuid'),
             Forms\Components\Section::make(ucfirst(__('address.nameHeading')))
@@ -71,7 +73,10 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
                         ->required(),
                     Forms\Components\Select::make('subcategory_slug')
                         ->label(ucfirst(__('category.categories')))
-                        ->options(Subcategory::orderBy('slug', 'asc')->pluck('translations', 'slug'))
+                        ->options(
+                            Subcategory::orderBy('translations->'.$lang)
+                                ->pluck('translations', 'slug')
+                        )
                         ->searchable()
                         ->required(),
                 ])->columns(1),
@@ -101,7 +106,10 @@ class EditAddress extends Component implements Forms\Contracts\HasForms
                         ->required(),
                     Forms\Components\Select::make('cca3')
                         ->label(ucfirst(__('country.countries')))
-                        ->options(Country::orderBy('name_eng_common', 'asc')->pluck('name_eng_common', 'cca3'))
+                        ->options(
+                            Country::orderBy('name_eng_common', 'asc')
+                                ->pluck('name_eng_common', 'cca3')
+                        )
                         ->searchable()
                         ->required(),
                 ])->columns(2),
