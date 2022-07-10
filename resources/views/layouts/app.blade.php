@@ -77,7 +77,7 @@
         @if (App::environment(['prod', 'production']))
         <!-- Matomo -->
         <noscript>
-            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ config('app.matomo_url') }}/matomo.php?idsite={{ config('app.matomo_site') }}&amp;rec=1" style="border:0;" alt="" />
+            <img type="opt-in" data-type="application/javascript" data-name="matomo" data-src="{{ config('app.matomo_url') }}matomo.php?idsite={{ config('app.matomo_site') }}&amp;rec=1" style="border:0;" alt="" />
         </noscript>
         @endif
     </body>
