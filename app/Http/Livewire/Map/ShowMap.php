@@ -40,6 +40,17 @@ class ShowMap extends Component implements Forms\Contracts\HasForms
                     'what' => __('country.countries')
                 ])))
                 ->searchable(),
+//            Forms\Components\Select::make('city')
+//                ->label(ucfirst(__('city.cities')))
+//                ->options(
+//                    City::orderBy('name_translations->'.$lang)
+//                        ->pluck('name_translations', 'name_slug')
+//                )
+//                ->placeholder(ucfirst(__('app.list_of', [
+//                    'pronoun' => __('city.pronoun_pl'),
+//                    'what' => __('city.cities')
+//                ])))
+//                ->searchable(),
             Forms\Components\Select::make('category')
                 ->label(ucfirst(__('category.categories')))
                 ->options(
